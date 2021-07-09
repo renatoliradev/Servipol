@@ -1,0 +1,5 @@
+﻿[CONEXAO]
+ip_bd=localhost
+nome_bd=controleinternoservipol
+senha_bd=cmo4lat1
+user_bd=postgres
