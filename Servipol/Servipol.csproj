@@ -60,6 +60,186 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\ATA\Agente\frmAtaAgenteConsultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ATA\Agente\frmAtaAgenteConsultar.Designer.cs">
+      <DependentUpon>frmAtaAgenteConsultar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ATA\Agente\frmAtaAgenteRegistrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ATA\Agente\frmAtaAgenteRegistrar.Designer.cs">
+      <DependentUpon>frmAtaAgenteRegistrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ATA\Operador\frmAtaOperadorConsultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ATA\Operador\frmAtaOperadorConsultar.Designer.cs">
+      <DependentUpon>frmAtaOperadorConsultar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ATA\Operador\frmAtaOperadorRegistrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ATA\Operador\frmAtaOperadorRegistrar.Designer.cs">
+      <DependentUpon>frmAtaOperadorRegistrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cadastros\Clientes\frmClientesCadastrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cadastros\Clientes\frmClientesCadastrar.Designer.cs">
+      <DependentUpon>frmClientesCadastrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cadastros\Clientes\frmClientesConsultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cadastros\Clientes\frmClientesConsultar.Designer.cs">
+      <DependentUpon>frmClientesConsultar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cadastros\Equipamentos\frmEquipamentosCadastrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cadastros\Equipamentos\frmEquipamentosCadastrar.Designer.cs">
+      <DependentUpon>frmEquipamentosCadastrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cadastros\Equipamentos\frmEquipamentosConsultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cadastros\Equipamentos\frmEquipamentosConsultar.Designer.cs">
+      <DependentUpon>frmEquipamentosConsultar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cadastros\Funcionários\frmFuncionariosCadastrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cadastros\Funcionários\frmFuncionariosCadastrar.Designer.cs">
+      <DependentUpon>frmFuncionariosCadastrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cadastros\Funcionários\frmFuncionariosConsultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cadastros\Funcionários\frmFuncionariosConsultar.Designer.cs">
+      <DependentUpon>frmFuncionariosConsultar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configuração\Controle de Acesso\frmPerfilUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configuração\Controle de Acesso\frmPerfilUsuario.Designer.cs">
+      <DependentUpon>frmPerfilUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioCadastrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioCadastrar.Designer.cs">
+      <DependentUpon>frmUsuarioCadastrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioConsultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioConsultar.Designer.cs">
+      <DependentUpon>frmUsuarioConsultar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configuração\frmEmpresaSistema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configuração\frmEmpresaSistema.Designer.cs">
+      <DependentUpon>frmEmpresaSistema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configuração\frmParametrosSistema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configuração\frmParametrosSistema.Designer.cs">
+      <DependentUpon>frmParametrosSistema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configuração\frmTipoContratoCadastrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configuração\frmTipoContratoCadastrar.Designer.cs">
+      <DependentUpon>frmTipoContratoCadastrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configuração\frmTipoContratoConsultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configuração\frmTipoContratoConsultar.Designer.cs">
+      <DependentUpon>frmTipoContratoConsultar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmLocalManutencaoCadastrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmLocalManutencaoCadastrar.Designer.cs">
+      <DependentUpon>frmLocalManutencaoCadastrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmLocalManutencaoConsultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmLocalManutencaoConsultar.Designer.cs">
+      <DependentUpon>frmLocalManutencaoConsultar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmTipoManutencaoCadastrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmTipoManutencaoCadastrar.Designer.cs">
+      <DependentUpon>frmTipoManutencaoCadastrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmTipoManutencaoConsultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmTipoManutencaoConsultar.Designer.cs">
+      <DependentUpon>frmTipoManutencaoConsultar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmVeiculosCadastrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmVeiculosCadastrar.Designer.cs">
+      <DependentUpon>frmVeiculosCadastrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmVeiculosConsultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmVeiculosConsultar.Designer.cs">
+      <DependentUpon>frmVeiculosConsultar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoConsultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoConsultar.Designer.cs">
+      <DependentUpon>frmManutencaoConsultar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoMotivoExcluir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoMotivoExcluir.Designer.cs">
+      <DependentUpon>frmManutencaoMotivoExcluir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmProxTrocaOleoRevisao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmProxTrocaOleoRevisao.Designer.cs">
+      <DependentUpon>frmProxTrocaOleoRevisao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmRegistrarKmDiario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmRegistrarKmDiario.Designer.cs">
+      <DependentUpon>frmRegistrarKmDiario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoRegistrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoRegistrar.Designer.cs">
+      <DependentUpon>frmManutencaoRegistrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoDetalhadaVeiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoDetalhadaVeiculo.Designer.cs">
+      <DependentUpon>frmManutencaoDetalhadaVeiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoDetalhadaMesTotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoDetalhadaMesTotal.Designer.cs">
+      <DependentUpon>frmManutencaoDetalhadaMesTotal.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +285,13 @@
     <Folder Include="Entidades\Classes\" />
     <Folder Include="Entidades\Enums\" />
     <Folder Include="Entidades\Interfaces\" />
+    <Folder Include="Forms\Manutenção de Veículos\Abastecimento\" />
+    <Folder Include="Forms\Relatórios\ATA\Agente\" />
+    <Folder Include="Forms\Relatórios\ATA\Operador\" />
+    <Folder Include="Forms\Relatórios\Clientes\" />
+    <Folder Include="Forms\Relatórios\Equipamentos\" />
+    <Folder Include="Forms\Relatórios\Funcionários\" />
+    <Folder Include="Forms\Relatórios\Manutenção de Veículos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
