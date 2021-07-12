@@ -62,8 +62,8 @@ namespace Servipol
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem26 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem27 = new DevExpress.XtraBars.BarButtonItem();
-            this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
-            this.barStaticItem3 = new DevExpress.XtraBars.BarStaticItem();
+            this.statusBarUsuario = new DevExpress.XtraBars.BarStaticItem();
+            this.statusBarVersaoSistema = new DevExpress.XtraBars.BarStaticItem();
             this.btnRegistrarKmDiario = new DevExpress.XtraBars.BarButtonItem();
             this.btnRegistrarManutencao = new DevExpress.XtraBars.BarButtonItem();
             this.btnRegistrarAbastecimento = new DevExpress.XtraBars.BarButtonItem();
@@ -109,13 +109,13 @@ namespace Servipol
             this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup19 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
+            this.documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage7 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,6 +126,7 @@ namespace Servipol
             this.ribbonControl.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
+            this.ribbonControl.SearchEditItem,
             this.barButtonItem1,
             this.barButtonItem2,
             this.btnClientes,
@@ -154,8 +155,8 @@ namespace Servipol
             this.barSubItem3,
             this.barButtonItem14,
             this.barSubItem4,
-            this.barStaticItem2,
-            this.barStaticItem3,
+            this.statusBarUsuario,
+            this.statusBarVersaoSistema,
             this.btnRegistrarKmDiario,
             this.btnRegistrarManutencao,
             this.btnRegistrarAbastecimento,
@@ -176,8 +177,7 @@ namespace Servipol
             this.btnTipoManutencao,
             this.btnLocalManutencao,
             this.skinDropDownButtonItem2,
-            this.skinDropDownButtonItem3,
-            this.ribbonControl.SearchEditItem});
+            this.skinDropDownButtonItem3});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl.MaxItemId = 16;
             this.ribbonControl.Name = "ribbonControl";
@@ -213,6 +213,7 @@ namespace Servipol
             this.btnClientes.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.ImageOptions.Image")));
             this.btnClientes.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnClientes.ImageOptions.LargeImage")));
             this.btnClientes.Name = "btnClientes";
+            this.btnClientes.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnClientes_ItemClick);
             // 
             // barButtonItem4
             // 
@@ -249,6 +250,7 @@ namespace Servipol
             this.btnFuncionarios.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFuncionarios.ImageOptions.Image")));
             this.btnFuncionarios.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnFuncionarios.ImageOptions.LargeImage")));
             this.btnFuncionarios.Name = "btnFuncionarios";
+            this.btnFuncionarios.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFuncionarios_ItemClick);
             // 
             // btnEquipamentos
             // 
@@ -257,6 +259,7 @@ namespace Servipol
             this.btnEquipamentos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEquipamentos.ImageOptions.Image")));
             this.btnEquipamentos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnEquipamentos.ImageOptions.LargeImage")));
             this.btnEquipamentos.Name = "btnEquipamentos";
+            this.btnEquipamentos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEquipamentos_ItemClick);
             // 
             // barButtonItem10
             // 
@@ -413,23 +416,22 @@ namespace Servipol
             this.barButtonItem27.Id = 51;
             this.barButtonItem27.Name = "barButtonItem27";
             // 
-            // barStaticItem2
+            // statusBarUsuario
             // 
-            this.barStaticItem2.Id = 34;
-            this.barStaticItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItem2.ImageOptions.Image")));
-            this.barStaticItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barStaticItem2.ImageOptions.LargeImage")));
-            this.barStaticItem2.Name = "barStaticItem2";
-            this.barStaticItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.statusBarUsuario.Id = 34;
+            this.statusBarUsuario.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItem2.ImageOptions.Image")));
+            this.statusBarUsuario.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barStaticItem2.ImageOptions.LargeImage")));
+            this.statusBarUsuario.Name = "statusBarUsuario";
             // 
-            // barStaticItem3
+            // statusBarVersaoSistema
             // 
-            this.barStaticItem3.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.barStaticItem3.Caption = "Versão 0.0.0.0";
-            this.barStaticItem3.Id = 35;
-            this.barStaticItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItem3.ImageOptions.Image")));
-            this.barStaticItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barStaticItem3.ImageOptions.LargeImage")));
-            this.barStaticItem3.Name = "barStaticItem3";
-            this.barStaticItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.statusBarVersaoSistema.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.statusBarVersaoSistema.Caption = "Versão 0.0.0.0";
+            this.statusBarVersaoSistema.Id = 35;
+            this.statusBarVersaoSistema.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItem3.ImageOptions.Image")));
+            this.statusBarVersaoSistema.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barStaticItem3.ImageOptions.LargeImage")));
+            this.statusBarVersaoSistema.Name = "statusBarVersaoSistema";
+            this.statusBarVersaoSistema.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // btnRegistrarKmDiario
             // 
@@ -438,6 +440,7 @@ namespace Servipol
             this.btnRegistrarKmDiario.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRegistrarKmDiario.ImageOptions.Image")));
             this.btnRegistrarKmDiario.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRegistrarKmDiario.ImageOptions.LargeImage")));
             this.btnRegistrarKmDiario.Name = "btnRegistrarKmDiario";
+            this.btnRegistrarKmDiario.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRegistrarKmDiario_ItemClick);
             // 
             // btnRegistrarManutencao
             // 
@@ -446,6 +449,7 @@ namespace Servipol
             this.btnRegistrarManutencao.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRegistrarManutencao.ImageOptions.Image")));
             this.btnRegistrarManutencao.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRegistrarManutencao.ImageOptions.LargeImage")));
             this.btnRegistrarManutencao.Name = "btnRegistrarManutencao";
+            this.btnRegistrarManutencao.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRegistrarManutencao_ItemClick);
             // 
             // btnRegistrarAbastecimento
             // 
@@ -454,6 +458,7 @@ namespace Servipol
             this.btnRegistrarAbastecimento.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRegistrarAbastecimento.ImageOptions.Image")));
             this.btnRegistrarAbastecimento.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRegistrarAbastecimento.ImageOptions.LargeImage")));
             this.btnRegistrarAbastecimento.Name = "btnRegistrarAbastecimento";
+            this.btnRegistrarAbastecimento.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRegistrarAbastecimento_ItemClick);
             // 
             // btnPainelBI
             // 
@@ -462,6 +467,7 @@ namespace Servipol
             this.btnPainelBI.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPainelBI.ImageOptions.Image")));
             this.btnPainelBI.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPainelBI.ImageOptions.LargeImage")));
             this.btnPainelBI.Name = "btnPainelBI";
+            this.btnPainelBI.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPainelBI_ItemClick);
             // 
             // btnManutencoesRealizadas
             // 
@@ -470,6 +476,7 @@ namespace Servipol
             this.btnManutencoesRealizadas.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnManutencoesRealizadas.ImageOptions.Image")));
             this.btnManutencoesRealizadas.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnManutencoesRealizadas.ImageOptions.LargeImage")));
             this.btnManutencoesRealizadas.Name = "btnManutencoesRealizadas";
+            this.btnManutencoesRealizadas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnManutencoesRealizadas_ItemClick);
             // 
             // btnAbastecimentosRealizados
             // 
@@ -478,6 +485,7 @@ namespace Servipol
             this.btnAbastecimentosRealizados.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAbastecimentosRealizados.ImageOptions.Image")));
             this.btnAbastecimentosRealizados.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAbastecimentosRealizados.ImageOptions.LargeImage")));
             this.btnAbastecimentosRealizados.Name = "btnAbastecimentosRealizados";
+            this.btnAbastecimentosRealizados.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAbastecimentosRealizados_ItemClick);
             // 
             // btnProxTrocaOleoRevisao
             // 
@@ -486,6 +494,7 @@ namespace Servipol
             this.btnProxTrocaOleoRevisao.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnProxTrocaOleoRevisao.ImageOptions.Image")));
             this.btnProxTrocaOleoRevisao.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnProxTrocaOleoRevisao.ImageOptions.LargeImage")));
             this.btnProxTrocaOleoRevisao.Name = "btnProxTrocaOleoRevisao";
+            this.btnProxTrocaOleoRevisao.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProxTrocaOleoRevisao_ItemClick);
             // 
             // barSubItem5
             // 
@@ -544,6 +553,7 @@ namespace Servipol
             this.btnVeiculos.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnVeiculos.ImageOptions.SvgImage")));
             this.btnVeiculos.Name = "btnVeiculos";
             this.btnVeiculos.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.btnVeiculos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVeiculos_ItemClick);
             // 
             // btnTipoManutencao
             // 
@@ -552,6 +562,7 @@ namespace Servipol
             this.btnTipoManutencao.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTipoManutencao.ImageOptions.SvgImage")));
             this.btnTipoManutencao.Name = "btnTipoManutencao";
             this.btnTipoManutencao.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.btnTipoManutencao.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTipoManutencao_ItemClick);
             // 
             // btnLocalManutencao
             // 
@@ -560,6 +571,7 @@ namespace Servipol
             this.btnLocalManutencao.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLocalManutencao.ImageOptions.SvgImage")));
             this.btnLocalManutencao.Name = "btnLocalManutencao";
             this.btnLocalManutencao.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.btnLocalManutencao.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLocalManutencao_ItemClick);
             // 
             // skinDropDownButtonItem2
             // 
@@ -801,19 +813,19 @@ namespace Servipol
             // 
             // ribbonStatusBar1
             // 
-            this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem2);
-            this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem3);
+            this.ribbonStatusBar1.ItemLinks.Add(this.statusBarUsuario);
+            this.ribbonStatusBar1.ItemLinks.Add(this.statusBarVersaoSistema);
             this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 526);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl;
             this.ribbonStatusBar1.Size = new System.Drawing.Size(984, 25);
             // 
-            // documentManager1
+            // documentManager
             // 
-            this.documentManager1.ContainerControl = this;
-            this.documentManager1.MenuManager = this.ribbonControl;
-            this.documentManager1.View = this.tabbedView1;
-            this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
+            this.documentManager.MdiParent = this;
+            this.documentManager.MenuManager = this.ribbonControl;
+            this.documentManager.View = this.tabbedView1;
+            this.documentManager.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
             // 
             // ribbonPageGroup7
@@ -849,6 +861,7 @@ namespace Servipol
             this.Controls.Add(this.ribbonControl);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.Name = "frmPrincipal";
             this.Ribbon = this.ribbonControl;
@@ -858,7 +871,7 @@ namespace Servipol
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -872,7 +885,7 @@ namespace Servipol
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
+        private DevExpress.XtraBars.Docking2010.DocumentManager documentManager;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
         private DevExpress.XtraBars.BarButtonItem btnClientes;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
@@ -910,8 +923,8 @@ namespace Servipol
         private DevExpress.XtraBars.BarSubItem barSubItem2;
         private DevExpress.XtraBars.BarSubItem barSubItem3;
         private DevExpress.XtraBars.BarSubItem barSubItem4;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem2;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem3;
+        private DevExpress.XtraBars.BarStaticItem statusBarUsuario;
+        private DevExpress.XtraBars.BarStaticItem statusBarVersaoSistema;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;

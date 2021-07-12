@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Servipol.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v19.1" />
     <Reference Include="DevExpress.Data.v19.1" />
@@ -60,6 +63,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidades\Classes\ConexaoBD.cs" />
+    <Compile Include="Entidades\Classes\Login.cs" />
+    <Compile Include="Entidades\Classes\VersaoSistema.cs" />
     <Compile Include="Forms\ATA\Agente\frmAtaAgenteConsultar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +260,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Cadastros\Clientes\frmClientesConsultar.resx">
+      <DependentUpon>frmClientesConsultar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -282,7 +291,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entidades\Classes\" />
     <Folder Include="Entidades\Enums\" />
     <Folder Include="Entidades\Interfaces\" />
     <Folder Include="Forms\Manutenção de Veículos\Abastecimento\" />
