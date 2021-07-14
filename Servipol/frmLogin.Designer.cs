@@ -37,6 +37,7 @@ namespace Servipol
             this.tBoxSenha = new System.Windows.Forms.TextBox();
             this.btnSair = new DevExpress.XtraEditors.SimpleButton();
             this.btnEntrar = new DevExpress.XtraEditors.SimpleButton();
+            this.auxSenhaSistema = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gbUsuario)).BeginInit();
             this.gbUsuario.SuspendLayout();
@@ -74,6 +75,7 @@ namespace Servipol
             this.cBoxUsuario.Name = "cBoxUsuario";
             this.cBoxUsuario.Size = new System.Drawing.Size(296, 21);
             this.cBoxUsuario.TabIndex = 0;
+            this.cBoxUsuario.SelectedIndexChanged += new System.EventHandler(this.cBoxUsuario_SelectedIndexChanged);
             // 
             // gbSenha
             // 
@@ -95,18 +97,23 @@ namespace Servipol
             // 
             // btnSair
             // 
-            this.btnSair.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.Appearance.Options.UseFont = true;
             this.btnSair.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnSair.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSair.ImageOptions.SvgImage")));
             this.btnSair.Location = new System.Drawing.Point(397, 128);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(96, 47);
             this.btnSair.TabIndex = 113;
             this.btnSair.Text = "Sair";
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // btnEntrar
             // 
+            this.btnEntrar.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEntrar.Appearance.Options.UseFont = true;
             this.btnEntrar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnEntrar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnEntrar.ImageOptions.SvgImage")));
             this.btnEntrar.Location = new System.Drawing.Point(187, 128);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(204, 47);
@@ -114,12 +121,22 @@ namespace Servipol
             this.btnEntrar.Text = "Entrar";
             this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
             // 
+            // auxSenhaSistema
+            // 
+            this.auxSenhaSistema.AutoSize = true;
+            this.auxSenhaSistema.Location = new System.Drawing.Point(791, 70);
+            this.auxSenhaSistema.Name = "auxSenhaSistema";
+            this.auxSenhaSistema.Size = new System.Drawing.Size(96, 13);
+            this.auxSenhaSistema.TabIndex = 115;
+            this.auxSenhaSistema.Text = "auxSenhaSistema";
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(505, 191);
+            this.ClientSize = new System.Drawing.Size(507, 191);
             this.ControlBox = false;
+            this.Controls.Add(this.auxSenhaSistema);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.gbUsuario);
             this.Controls.Add(this.gbSenha);
@@ -140,6 +157,7 @@ namespace Servipol
             this.gbSenha.ResumeLayout(false);
             this.gbSenha.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -152,5 +170,6 @@ namespace Servipol
         private System.Windows.Forms.TextBox tBoxSenha;
         private DevExpress.XtraEditors.SimpleButton btnSair;
         private DevExpress.XtraEditors.SimpleButton btnEntrar;
+        private System.Windows.Forms.Label auxSenhaSistema;
     }
 }

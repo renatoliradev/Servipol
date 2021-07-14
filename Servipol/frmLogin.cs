@@ -44,17 +44,15 @@ namespace Servipol
                 cBoxUsuario.DisplayMember = "login";
                 cBoxUsuario.DataSource = dt;
 
-                while (dr.Read())
-                {
-                    SenhaSistema = dr["senha"].ToString();
-                }
+                auxSenhaSistema.DataBindings.Clear();
+                auxSenhaSistema.DataBindings.Add(new Binding("Text", dt, "senha"));
 
                 gbSenha.Focus();
                 tBoxSenha.Select();
             }
             catch (Exception e)
             {
-                XtraMessageBox.Show(e.Message, "Falha no comando ao banco de dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                XtraMessageBox.Show(e.Message, "Erro ao carregar usuários.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -67,12 +65,15 @@ namespace Servipol
             try
             {
                 string path = Environment.CurrentDirectory.ToString();
-                StreamWriter escreve = new StreamWriter(path + @"opt\hidden\uul.prime");
+                StreamWriter escreve = new StreamWriter(path + @"\opt\hidden\uul.prime");
                 escreve.WriteLine($"UUL= {cBoxUsuario.SelectedValue}");
                 escreve.Flush();
                 escreve.Close();
             }
-            catch { }
+            catch (Exception err)
+            {
+                XtraMessageBox.Show(err.Message);
+            }
         }
 
         private void BuscaUltimoUsuarioLogin()
@@ -81,7 +82,7 @@ namespace Servipol
             try
             {
                 string path = Environment.CurrentDirectory.ToString();
-                StreamReader rd = new StreamReader(path + @"opt\hidden\uul.prime");
+                StreamReader rd = new StreamReader(path + @"\opt\hidden\uul.prime");
 
                 while (!rd.EndOfStream)
                 {
@@ -103,12 +104,12 @@ namespace Servipol
             {
                 BD.Conectar();
 
-                if (md5.GerarMD5(tBoxSenha.Text).Trim().ToUpper() == SenhaSistema)
+                if (md5.GerarMD5(tBoxSenha.Text).Trim().ToUpper() == auxSenhaSistema.Text)
                 {
-                    NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE sessao_login SET data_logout = CURRENT_TIMESTAMP, online = 'N' WHERE nome_pc = '{Environment.MachineName}' AND online = 'S'", BD.ObjetoConexao);
+                    NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE sis_sessao_login SET data_logout = CURRENT_TIMESTAMP, online = 'N' WHERE nome_pc = '{Environment.MachineName}' AND online = 'S'", BD.ObjetoConexao);
                     update1.ExecuteNonQuery();
 
-                    NpgsqlCommand command = new NpgsqlCommand($"INSERT INTO sessao_login VALUES (nextval('seq_id_sessao_login'), {cBoxUsuario.SelectedValue}, '{Environment.MachineName}', CURRENT_TIMESTAMP, NULL, 'S')", BD.ObjetoConexao);
+                    NpgsqlCommand command = new NpgsqlCommand($"INSERT INTO sis_sessao_login VALUES (nextval('seq_id_sis_sessao_login'), {cBoxUsuario.SelectedValue}, '{Environment.MachineName}', CURRENT_TIMESTAMP, NULL, 'S')", BD.ObjetoConexao);
                     command.ExecuteNonQuery();
 
                     GravaUltimoUsuarioLogin();
@@ -127,6 +128,17 @@ namespace Servipol
             {
                 BD.Desconectar();
             }
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void cBoxUsuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            gbSenha.Focus();
+            tBoxSenha.Select();
         }
     }
 }

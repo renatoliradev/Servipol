@@ -17,6 +17,7 @@ using Servipol.Forms.Manutenção_de_Veículos.Cadastros;
 using Servipol.Forms.Manutenção_de_Veículos.Manutenção;
 using Servipol.Entidades.Classes;
 using Npgsql;
+using DevExpress.XtraEditors;
 
 namespace Servipol
 {
@@ -37,12 +38,13 @@ namespace Servipol
         {
             statusBarVersaoSistema.Caption = VerificaVersao.VersaoSistema();
 
+            EfetuaLogout();
             IniciaSessao();
             if (statusBarUsuario.Caption == string.Empty)
             {
-                frmLogin frmLogin = new frmLogin();
-                frmLogin.Owner = this;
-                frmLogin.ShowDialog();
+                frmLogin login = new frmLogin();
+                login.Owner = this;
+                login.ShowDialog();
             }
         }
 
@@ -70,7 +72,7 @@ namespace Servipol
             finally
             {
                 BD.Desconectar();
-                util.FechaForms();
+                FechaForms();
             }
         }
 
@@ -84,12 +86,38 @@ namespace Servipol
 
                 new SessaoSistema(0, null);
 
-                statusUsuarioLogado.Caption = string.Empty;
+                statusBarUsuario.Caption = string.Empty;
             }
             finally
             {
                 BD.Desconectar();
-                util.FechaForms();
+                FechaForms();
+            }
+        }
+
+        public void FechaForms()
+        {
+            foreach (Form childForm in MdiChildren)
+            {
+                childForm.Close();
+            }
+            util.LimpaMemoria();
+        }
+
+        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                var result = XtraMessageBox.Show("Deseja Sair do Sistema ?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (result != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    EfetuaLogout();
+                    BD.DisposeConexao();
+                }
             }
         }
 
@@ -104,7 +132,12 @@ namespace Servipol
 
         private void btnEfetuarLogout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            FechaForms();
+            EfetuaLogout();
 
+            frmLogin login = new frmLogin();
+            login.Owner = this;
+            login.ShowDialog();
         }
 
         private void btnClientes_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -419,17 +419,18 @@ namespace Servipol
             // statusBarUsuario
             // 
             this.statusBarUsuario.Id = 34;
-            this.statusBarUsuario.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItem2.ImageOptions.Image")));
-            this.statusBarUsuario.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barStaticItem2.ImageOptions.LargeImage")));
+            this.statusBarUsuario.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("statusBarUsuario.ImageOptions.Image")));
+            this.statusBarUsuario.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("statusBarUsuario.ImageOptions.LargeImage")));
             this.statusBarUsuario.Name = "statusBarUsuario";
+            this.statusBarUsuario.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // statusBarVersaoSistema
             // 
             this.statusBarVersaoSistema.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.statusBarVersaoSistema.Caption = "Versão 0.0.0.0";
             this.statusBarVersaoSistema.Id = 35;
-            this.statusBarVersaoSistema.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItem3.ImageOptions.Image")));
-            this.statusBarVersaoSistema.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barStaticItem3.ImageOptions.LargeImage")));
+            this.statusBarVersaoSistema.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("statusBarVersaoSistema.ImageOptions.Image")));
+            this.statusBarVersaoSistema.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("statusBarVersaoSistema.ImageOptions.LargeImage")));
             this.statusBarVersaoSistema.Name = "statusBarVersaoSistema";
             this.statusBarVersaoSistema.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -867,8 +868,9 @@ namespace Servipol
             this.Ribbon = this.ribbonControl;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar1;
-            this.Text = "Servipol - Sistema de Gerenciamento Interno";
+            this.Text = "Servipol - Sistema de Gerenciamento Inteligente";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager)).EndInit();

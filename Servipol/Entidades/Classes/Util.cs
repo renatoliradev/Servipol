@@ -1,26 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
-namespace Servipol
+namespace Servipol.Entidades.Classes
 {
-    class Util : frmPrincipal
+    class Util
     {
         [DllImport("kernel32.dll")]
         private static extern int SetProcessWorkingSetSize(IntPtr process, int minimumWorkingSetSize, int maximumWorkingSetSize);
 
         public Util() { }
 
-        public void FechaForms()
-        {
-            foreach (Form childForm in MdiChildren)
-            {
-                childForm.Close();
-            }
-            LimpaMemoria();
-        }
         public void LimpaMemoria()
         {
             GC.Collect();

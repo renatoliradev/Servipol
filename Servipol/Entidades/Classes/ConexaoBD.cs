@@ -10,7 +10,7 @@ namespace Servipol.Entidades.Classes
     {
         private String _stringConexao;
         private NpgsqlConnection _conexao;
-        private static string Arq_Config = @"prime.pme";
+        private static string Arq_Config = @"opt\hidden\prime.prime";
         private static string IP_BD;
         private static string PORTA_BD;
         private static string NOME_BD;
@@ -53,9 +53,9 @@ namespace Servipol.Entidades.Classes
                 Application.Exit();
             }
 
-            _conexao = new NpgsqlConnection();
-            _stringConexao = StringConexao;
-            _conexao.ConnectionString = StringConexao;
+            this._conexao = new NpgsqlConnection();
+            this._stringConexao = StringConexao;
+            this._conexao.ConnectionString = StringConexao;
         }
 
         public String StringConexao
