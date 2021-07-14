@@ -64,7 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidades\Classes\ConexaoBD.cs" />
-    <Compile Include="Entidades\Classes\Login.cs" />
+    <Compile Include="Entidades\Classes\Criptografia.cs" />
+    <Compile Include="Entidades\Classes\SessaoSistema.cs" />
     <Compile Include="Entidades\Classes\VersaoSistema.cs" />
     <Compile Include="Forms\ATA\Agente\frmAtaAgenteConsultar.cs">
       <SubType>Form</SubType>
@@ -260,6 +261,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <EmbeddedResource Include="Forms\Cadastros\Clientes\frmClientesConsultar.resx">
       <DependentUpon>frmClientesConsultar.cs</DependentUpon>
     </EmbeddedResource>

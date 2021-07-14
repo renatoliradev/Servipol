@@ -16,7 +16,7 @@ using Servipol.Forms.Manutenção_de_Veículos;
 using Servipol.Forms.Manutenção_de_Veículos.Cadastros;
 using Servipol.Forms.Manutenção_de_Veículos.Manutenção;
 using Servipol.Entidades.Classes;
-
+using Npgsql;
 
 namespace Servipol
 {
@@ -24,6 +24,9 @@ namespace Servipol
     {
         ConexaoBD BD = new ConexaoBD();
         VerificaVersaoSistema VerificaVersao = new VerificaVersaoSistema();
+        Util util = new Util();
+
+        private static string _usuarioId, _usuarioNome;
 
         public frmPrincipal()
         {
@@ -33,7 +36,64 @@ namespace Servipol
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             statusBarVersaoSistema.Caption = VerificaVersao.VersaoSistema();
+
+            IniciaSessao();
+            if (statusBarUsuario.Caption == string.Empty)
+            {
+                frmLogin frmLogin = new frmLogin();
+                frmLogin.Owner = this;
+                frmLogin.ShowDialog();
+            }
         }
+
+        #region Métodos
+
+        public void IniciaSessao()
+        {
+            try
+            {
+                BD.Conectar();
+
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT u.id_usuario, u.login FROM usuarios AS u WHERE u.id_usuario = (SELECT id_usuario FROM sis_sessao_login WHERE nome_pc = '{Environment.MachineName}' AND online = 'S')", BD.ObjetoConexao);
+                using (NpgsqlDataReader dr = com.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        _usuarioId = dr["id_usuario"].ToString();
+                        _usuarioNome = dr["login"].ToString();
+                    }
+                    statusBarUsuario.Caption = _usuarioNome;
+
+                    new SessaoSistema(Convert.ToInt32(_usuarioId), _usuarioNome);
+                }
+            }
+            finally
+            {
+                BD.Desconectar();
+                util.FechaForms();
+            }
+        }
+
+        public void EfetuaLogout()
+        {
+            try
+            {
+                BD.Conectar();
+                NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE sis_sessao_login SET data_logout = CURRENT_TIMESTAMP, online = 'N' WHERE nome_pc = '{Environment.MachineName}' AND online = 'S'", BD.ObjetoConexao);
+                update1.ExecuteNonQuery();
+
+                new SessaoSistema(0, null);
+
+                statusUsuarioLogado.Caption = string.Empty;
+            }
+            finally
+            {
+                BD.Desconectar();
+                util.FechaForms();
+            }
+        }
+
+        #endregion
 
         #region Botôes
 
@@ -46,8 +106,6 @@ namespace Servipol
         {
 
         }
-
-        #endregion
 
         private void btnClientes_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -128,5 +186,8 @@ namespace Servipol
         {
 
         }
+        #endregion
+
+
     }
 }

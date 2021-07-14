@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Servipol.Entidades.Classes;
 
 namespace Servipol.Forms.Cadastros.Clientes
 {
@@ -16,6 +17,11 @@ namespace Servipol.Forms.Cadastros.Clientes
         public frmClientesConsultar()
         {
             InitializeComponent();
+        }
+
+        private void frmClientesConsultar_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }

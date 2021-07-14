@@ -10,13 +10,12 @@ namespace Servipol.Entidades.Classes
     {
         private String _stringConexao;
         private NpgsqlConnection _conexao;
-        private static string Arq_Config = @"opt\hidden\prime.prime";
+        private static string Arq_Config = @"prime.pme";
         private static string IP_BD;
         private static string PORTA_BD;
         private static string NOME_BD;
         private static string SENHA_BD;
         private static string USER_BD;
-        private static string StringConexaoBD;
 
         public ConexaoBD()
         {

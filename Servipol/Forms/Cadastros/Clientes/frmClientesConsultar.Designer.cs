@@ -50,6 +50,7 @@ namespace Servipol.Forms.Cadastros.Clientes
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmClientesConsultar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmClientesConsultar_Load);
             this.ResumeLayout(false);
 
         }
