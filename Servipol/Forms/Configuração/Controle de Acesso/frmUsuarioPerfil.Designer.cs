@@ -1,7 +1,7 @@
 ﻿
 namespace Servipol.Forms.Configuração.Controle_de_Acesso
 {
-    partial class frmPerfilUsuario
+    partial class frmUsuarioPerfil
     {
         /// <summary>
         /// Required designer variable.

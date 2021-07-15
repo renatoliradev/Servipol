@@ -15,6 +15,7 @@ using Servipol.Forms.Configuração;
 using Servipol.Forms.Manutenção_de_Veículos;
 using Servipol.Forms.Manutenção_de_Veículos.Cadastros;
 using Servipol.Forms.Manutenção_de_Veículos.Manutenção;
+using Servipol.Forms.Configuração.Controle_de_Acesso;
 using Servipol.Entidades.Classes;
 using Npgsql;
 using DevExpress.XtraEditors;
@@ -23,9 +24,11 @@ namespace Servipol
 {
     public partial class frmPrincipal : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        #region Instâncias
         ConexaoBD BD = new ConexaoBD();
         VerificaVersaoSistema VerificaVersao = new VerificaVersaoSistema();
         Util util = new Util();
+        #endregion
 
         private static string _usuarioId, _usuarioNome;
 
@@ -39,16 +42,14 @@ namespace Servipol
             statusBarVersaoSistema.Caption = VerificaVersao.VersaoSistema();
 
             EfetuaLogout();
-            IniciaSessao();
-            if (statusBarUsuario.Caption == string.Empty)
-            {
-                frmLogin login = new frmLogin();
-                login.Owner = this;
-                login.ShowDialog();
-            }
+
+            frmLogin login = new frmLogin();
+            login.Owner = this;
+            login.ShowDialog();
+
         }
 
-        #region Métodos
+        #region Methods
 
         public void IniciaSessao()
         {
@@ -66,7 +67,8 @@ namespace Servipol
                     }
                     statusBarUsuario.Caption = _usuarioNome;
 
-                    new SessaoSistema(Convert.ToInt32(_usuarioId), _usuarioNome);
+                    SessaoSistema.UsuarioId = _usuarioId;
+                    SessaoSistema.UsuarioNome = _usuarioNome;
                 }
             }
             finally
@@ -84,7 +86,8 @@ namespace Servipol
                 NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE sis_sessao_login SET data_logout = CURRENT_TIMESTAMP, online = 'N' WHERE nome_pc = '{Environment.MachineName}' AND online = 'S'", BD.ObjetoConexao);
                 update1.ExecuteNonQuery();
 
-                new SessaoSistema(0, null);
+                SessaoSistema.UsuarioId = null;
+                SessaoSistema.UsuarioNome = null;
 
                 statusBarUsuario.Caption = string.Empty;
             }
@@ -123,11 +126,13 @@ namespace Servipol
 
         #endregion
 
-        #region Botôes
+        #region Buttons
 
         private void btnAlterarSenha_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            frmUsuarioAlterarSenha frmUsuarioAlterarSenha = new frmUsuarioAlterarSenha(statusBarUsuario.Caption);
+            frmUsuarioAlterarSenha.Owner = this;
+            frmUsuarioAlterarSenha.ShowDialog();
         }
 
         private void btnEfetuarLogout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -186,7 +191,6 @@ namespace Servipol
         {
             frmRegistrarKmDiario frmRegistrarKmDiario = new frmRegistrarKmDiario();
             frmRegistrarKmDiario.Owner = this;
-            frmRegistrarKmDiario.ShowInTaskbar = false;
             frmRegistrarKmDiario.ShowDialog();
         }
 

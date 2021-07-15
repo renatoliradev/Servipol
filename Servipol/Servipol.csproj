@@ -128,11 +128,17 @@
     <Compile Include="Forms\Cadastros\Funcionários\frmFuncionariosConsultar.Designer.cs">
       <DependentUpon>frmFuncionariosConsultar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Configuração\Controle de Acesso\frmPerfilUsuario.cs">
+    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioPerfil.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Configuração\Controle de Acesso\frmPerfilUsuario.Designer.cs">
-      <DependentUpon>frmPerfilUsuario.cs</DependentUpon>
+    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioPerfil.Designer.cs">
+      <DependentUpon>frmUsuarioPerfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioAlterarSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioAlterarSenha.Designer.cs">
+      <DependentUpon>frmUsuarioAlterarSenha.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioCadastrar.cs">
       <SubType>Form</SubType>
@@ -264,6 +270,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Cadastros\Clientes\frmClientesConsultar.resx">
       <DependentUpon>frmClientesConsultar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configuração\Controle de Acesso\frmUsuarioAlterarSenha.resx">
+      <DependentUpon>frmUsuarioAlterarSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmRegistrarKmDiario.resx">
+      <DependentUpon>frmRegistrarKmDiario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

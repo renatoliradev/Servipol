@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Servipol.Forms.Configuração.Controle_de_Acesso
 {
-    public partial class frmPerfilUsuario : DevExpress.XtraEditors.XtraForm
+    public partial class frmUsuarioPerfil : DevExpress.XtraEditors.XtraForm
     {
-        public frmPerfilUsuario()
+        public frmUsuarioPerfil()
         {
             InitializeComponent();
         }
