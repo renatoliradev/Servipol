@@ -12,7 +12,7 @@ namespace Servipol
     {
         #region INSTANCIAS
         readonly ConexaoBD BD = new ConexaoBD();
-        Criptografia md5 = new Criptografia();
+        Criptografia criptografia = new Criptografia();
 
         public static string SenhaSistema = string.Empty;
         #endregion
@@ -104,7 +104,7 @@ namespace Servipol
             {
                 BD.Conectar();
 
-                if (md5.GerarMD5(tBoxSenha.Text).Trim().ToUpper() == auxSenhaSistema.Text)
+                if (criptografia.GerarMD5(tBoxSenha.Text).Trim().ToUpper() == auxSenhaSistema.Text)
                 {
                     NpgsqlCommand command = new NpgsqlCommand($"INSERT INTO sis_sessao_login VALUES (nextval('seq_id_sis_sessao_login'), {cBoxUsuario.SelectedValue}, '{Environment.MachineName}', CURRENT_TIMESTAMP, NULL, 'S')", BD.ObjetoConexao);
                     command.ExecuteNonQuery();
@@ -136,6 +136,16 @@ namespace Servipol
         {
             gbSenha.Focus();
             tBoxSenha.Select();
+        }
+
+        private void tBoxSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    btnEntrar_Click(sender, e);
+                    break;
+            }
         }
     }
 }

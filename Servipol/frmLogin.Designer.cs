@@ -94,6 +94,7 @@ namespace Servipol
             this.tBoxSenha.Size = new System.Drawing.Size(296, 22);
             this.tBoxSenha.TabIndex = 5;
             this.tBoxSenha.UseSystemPasswordChar = true;
+            this.tBoxSenha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tBoxSenha_KeyDown);
             // 
             // btnSair
             // 

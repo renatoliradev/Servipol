@@ -459,6 +459,7 @@ namespace Servipol
             this.btnRegistrarAbastecimento.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRegistrarAbastecimento.ImageOptions.Image")));
             this.btnRegistrarAbastecimento.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRegistrarAbastecimento.ImageOptions.LargeImage")));
             this.btnRegistrarAbastecimento.Name = "btnRegistrarAbastecimento";
+            this.btnRegistrarAbastecimento.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.btnRegistrarAbastecimento.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRegistrarAbastecimento_ItemClick);
             // 
             // btnPainelBI
@@ -486,6 +487,7 @@ namespace Servipol
             this.btnAbastecimentosRealizados.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAbastecimentosRealizados.ImageOptions.Image")));
             this.btnAbastecimentosRealizados.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAbastecimentosRealizados.ImageOptions.LargeImage")));
             this.btnAbastecimentosRealizados.Name = "btnAbastecimentosRealizados";
+            this.btnAbastecimentosRealizados.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.btnAbastecimentosRealizados.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAbastecimentosRealizados_ItemClick);
             // 
             // btnProxTrocaOleoRevisao
@@ -759,7 +761,6 @@ namespace Servipol
             this.ribbonPageGroup11.ItemLinks.Add(this.btnRegistrarAtaAgente);
             this.ribbonPageGroup11.Name = "ribbonPageGroup11";
             this.ribbonPageGroup11.ShowCaptionButton = false;
-            this.ribbonPageGroup11.Text = "Ações";
             // 
             // ribbonPageGroup14
             // 
@@ -767,7 +768,6 @@ namespace Servipol
             this.ribbonPageGroup14.ItemLinks.Add(this.btnVerAtasFechadasAgente);
             this.ribbonPageGroup14.Name = "ribbonPageGroup14";
             this.ribbonPageGroup14.ShowCaptionButton = false;
-            this.ribbonPageGroup14.Text = "Consultas";
             // 
             // ribbonPageGroup18
             // 
@@ -793,7 +793,6 @@ namespace Servipol
             this.ribbonPageGroup12.ItemLinks.Add(this.btnRegistrarAtaOperador);
             this.ribbonPageGroup12.Name = "ribbonPageGroup12";
             this.ribbonPageGroup12.ShowCaptionButton = false;
-            this.ribbonPageGroup12.Text = "Ações";
             // 
             // ribbonPageGroup15
             // 
@@ -801,7 +800,6 @@ namespace Servipol
             this.ribbonPageGroup15.ItemLinks.Add(this.btnVerAtasFechadasOperador);
             this.ribbonPageGroup15.Name = "ribbonPageGroup15";
             this.ribbonPageGroup15.ShowCaptionButton = false;
-            this.ribbonPageGroup15.Text = "Consultas";
             // 
             // ribbonPageGroup19
             // 

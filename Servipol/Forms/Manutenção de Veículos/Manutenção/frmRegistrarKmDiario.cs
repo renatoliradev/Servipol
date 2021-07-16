@@ -43,7 +43,15 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
         #region Buttons
 
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+
+        }
 
         #endregion
 
@@ -57,7 +65,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
                 NpgsqlCommand com = new NpgsqlCommand();
                 com.Connection = BD.ObjetoConexao;
-                com.CommandText = "SELECT v.id_id_veiculo, CAST(CASE WHEN tv.descricao = 'CARRO' THEN v.descricao_veiculo || ' ' || v.placa ELSE tv.descricao || ' ' || v.codigo_veiculo END AS VARCHAR) AS veiculo FROM veiculos AS v JOIN tipo_veiculo AS tv ON(tv.id = v.tipo_veiculo) WHERE v.ativo = 'S' ORDER BY  v.tipo_veiculo DESC, v.codigo_veiculo ASC";
+                com.CommandText = "SELECT v.id_veiculo, CAST(CASE WHEN tv.descricao = 'CARRO' THEN v.descricao_veiculo || ' ' || v.placa ELSE tv.descricao || ' ' || v.codigo_veiculo END AS VARCHAR) AS veiculo FROM veiculos AS v JOIN tipo_veiculo AS tv ON(tv.id = v.tipo_veiculo) WHERE v.ativo = 'S' ORDER BY  v.tipo_veiculo DESC, v.codigo_veiculo ASC";
                 NpgsqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
@@ -137,5 +145,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         }
 
         #endregion
+
     }
 }

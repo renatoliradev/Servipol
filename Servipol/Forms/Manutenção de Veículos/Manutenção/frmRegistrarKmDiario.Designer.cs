@@ -61,6 +61,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.btnFechar.TabIndex = 1005;
             this.btnFechar.TabStop = false;
             this.btnFechar.Text = "[Esc] - Sair";
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // btnConfirmar
             // 
@@ -73,6 +74,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.btnConfirmar.Size = new System.Drawing.Size(258, 208);
             this.btnConfirmar.TabIndex = 1001;
             this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // groupBox6
             // 
@@ -187,7 +189,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 444);
+            this.ClientSize = new System.Drawing.Size(547, 323);
             this.ControlBox = false;
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnConfirmar);
@@ -198,6 +200,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MdiChildCaptionFormatString = "{0} - {1}";
             this.MinimizeBox = false;
             this.Name = "frmRegistrarKmDiario";
             this.ShowIcon = false;

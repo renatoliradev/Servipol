@@ -274,6 +274,9 @@
     <EmbeddedResource Include="Forms\Configuração\Controle de Acesso\frmUsuarioAlterarSenha.resx">
       <DependentUpon>frmUsuarioAlterarSenha.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configuração\frmParametrosSistema.resx">
+      <DependentUpon>frmParametrosSistema.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmRegistrarKmDiario.resx">
       <DependentUpon>frmRegistrarKmDiario.cs</DependentUpon>
     </EmbeddedResource>
