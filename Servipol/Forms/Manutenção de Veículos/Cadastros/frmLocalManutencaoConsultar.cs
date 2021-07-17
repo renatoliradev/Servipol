@@ -17,5 +17,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         {
             InitializeComponent();
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            frmLocalManutencaoCadastrar frmLocalManutencaoCadastrar = new frmLocalManutencaoCadastrar("TipoManutencao", 0);
+            frmLocalManutencaoCadastrar.Owner = this;
+            frmLocalManutencaoCadastrar.ShowInTaskbar = false;
+            frmLocalManutencaoCadastrar.ShowDialog();
+        }
     }
 }

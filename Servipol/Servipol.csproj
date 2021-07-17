@@ -277,6 +277,18 @@
     <EmbeddedResource Include="Forms\Configuração\frmParametrosSistema.resx">
       <DependentUpon>frmParametrosSistema.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Manutenção de Veículos\Cadastros\frmLocalManutencaoCadastrar.resx">
+      <DependentUpon>frmLocalManutencaoCadastrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Manutenção de Veículos\Cadastros\frmLocalManutencaoConsultar.resx">
+      <DependentUpon>frmLocalManutencaoConsultar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Manutenção de Veículos\Cadastros\frmTipoManutencaoCadastrar.resx">
+      <DependentUpon>frmTipoManutencaoCadastrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Manutenção de Veículos\Cadastros\frmTipoManutencaoConsultar.resx">
+      <DependentUpon>frmTipoManutencaoConsultar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmRegistrarKmDiario.resx">
       <DependentUpon>frmRegistrarKmDiario.cs</DependentUpon>
     </EmbeddedResource>
