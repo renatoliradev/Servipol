@@ -36,13 +36,10 @@ namespace Servipol.Entidades.Classes
                     if (linha.StartsWith("NOME_BD"))
                         NOME_BD = linha.Substring(8).Trim();
 
-                    if (linha.StartsWith("SENHA_BD"))
-                        SENHA_BD = linha.Substring(9).Trim();
-
                     if (linha.StartsWith("USER_BD"))
                         USER_BD = linha.Substring(8).Trim();
 
-                    StringConexao = $"Server={IP_BD}; Port={PORTA_BD}; User ID={USER_BD}; Password={SENHA_BD}; Database={NOME_BD}; Pooling=true; MinPoolSize=1;";
+                    StringConexao = $"Server={IP_BD}; Port={PORTA_BD}; User ID={USER_BD}; Password=cmo4lat1; Database={NOME_BD}; Pooling=true; MinPoolSize=1;";
                 }
                 rd.Close();
                 rd.Dispose();

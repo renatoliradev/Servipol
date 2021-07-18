@@ -151,6 +151,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.gbDenominacao);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmTipoManutencaoCadastrar";
