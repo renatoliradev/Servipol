@@ -14,7 +14,6 @@ namespace Servipol.Entidades.Classes
         private static string IP_BD;
         private static string PORTA_BD;
         private static string NOME_BD;
-        private static string SENHA_BD;
         private static string USER_BD;
 
         public ConexaoBD()

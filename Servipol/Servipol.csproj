@@ -289,6 +289,18 @@
     <EmbeddedResource Include="Forms\Manutenção de Veículos\Cadastros\frmTipoManutencaoConsultar.resx">
       <DependentUpon>frmTipoManutencaoConsultar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Manutenção de Veículos\Cadastros\frmVeiculosCadastrar.resx">
+      <DependentUpon>frmVeiculosCadastrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoMotivoExcluir.resx">
+      <DependentUpon>frmManutencaoMotivoExcluir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoRegistrar.resx">
+      <DependentUpon>frmManutencaoRegistrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmProxTrocaOleoRevisao.resx">
+      <DependentUpon>frmProxTrocaOleoRevisao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmRegistrarKmDiario.resx">
       <DependentUpon>frmRegistrarKmDiario.cs</DependentUpon>
     </EmbeddedResource>
