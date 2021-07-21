@@ -105,7 +105,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             }
             finally
             {
-                bd.Desconectar();
+                BD.Desconectar();
             }
         }
 

@@ -165,7 +165,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 BD.Conectar();
                 NpgsqlCommand com = new NpgsqlCommand();
                 com.Connection = BD.ObjetoConexao;
-                com.CommandText = $"SELECT id FROM codigocarro WHERE id_veiculo = " + auxIDVeiculo + " OR id_veiculo IS NULL ORDER BY 1 ASC";
+                com.CommandText = $"SELECT id FROM codigocarro WHERE id_veiculo = {auxIDVeiculo} OR id_veiculo IS NULL ORDER BY 1 ASC";
                 NpgsqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
@@ -191,7 +191,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 BD.Conectar();
                 NpgsqlCommand com = new NpgsqlCommand();
                 com.Connection = BD.ObjetoConexao;
-                com.CommandText = "SELECT id FROM codigomoto WHERE id_veiculo = " + auxIDVeiculo + " OR  id_veiculo IS NULL ORDER BY 1 ASC";
+                com.CommandText = $"SELECT id FROM codigomoto WHERE id_veiculo = {auxIDVeiculo} OR  id_veiculo IS NULL ORDER BY 1 ASC";
                 NpgsqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);

@@ -112,7 +112,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                         }
                     }
 
-                    if (CDV_id_km_diario != string.Empty)
+                    if (!string.IsNullOrEmpty(CDV_id_km_diario))
                     {
                         NpgsqlCommand com3 = new NpgsqlCommand($"SELECT km_veiculo, TO_CHAR(data_km_diario, 'dd/MM/yyyy') AS data_km_diario FROM km_diario WHERE id_km_diario = {CDV_id_km_diario}", BD.ObjetoConexao);
                         using (NpgsqlDataReader dr3 = com3.ExecuteReader())
