@@ -51,7 +51,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo AS id_veiculo, tv.descricao AS tipo, v.codigo, v.descricao, v.placa, v.combustivel, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculos AS v INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) WHERE v.ativo = '{situacao}' ORDER BY v.codigo", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo AS id_veiculo, tv.descricao AS tipo, v.codigo, v.descricao, v.placa, v.combustivel, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculo AS v INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) WHERE v.ativo = '{situacao}' ORDER BY v.codigo", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
 
@@ -101,7 +101,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo AS id_veiculo, tv.descricao AS tipo, v.codigo, v.descricao, v.placa, v.combustivel, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculos AS v INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) WHERE v.tipo = {cBoxTipoVeiculo.SelectedValue} AND v.ativo = '{situacao}' ORDER BY v.codigo", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo AS id_veiculo, tv.descricao AS tipo, v.codigo, v.descricao, v.placa, v.combustivel, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculo AS v INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) WHERE v.tipo = {cBoxTipoVeiculo.SelectedValue} AND v.ativo = '{situacao}' ORDER BY v.codigo", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
 

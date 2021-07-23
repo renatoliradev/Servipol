@@ -1,15 +1,9 @@
 ﻿using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Servipol.Entidades.Classes;
 using Npgsql;
+using Servipol.Entidades.Classes;
+using System;
+using System.Data;
+using System.Windows.Forms;
 
 namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 {
@@ -47,7 +41,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     this.Text = "Incluir Veículo";
 
                     cBoxTipoVeiculo.SelectedIndex = -1;
-                    cBoxCodigoVeiculo.SelectedIndex = -1;
                     cBoxCombustivel.SelectedIndex = -1;
                     tBoxDescricaoVeiculo.Clear();
                     tBoxPlacaVeiculo.Clear();
@@ -58,7 +51,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     this.Text = "Incluir Veículo";
 
                     cBoxTipoVeiculo.SelectedIndex = -1;
-                    cBoxCodigoVeiculo.SelectedIndex = -1;
                     cBoxCombustivel.SelectedIndex = -1;
                     tBoxDescricaoVeiculo.Clear();
                     tBoxPlacaVeiculo.Clear();
@@ -91,11 +83,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                         {
                             case "1":
                                 carregaCodigoCarro();
-                                cBoxCodigoVeiculo.SelectedValue = codigo_veiculo;
+                               // cBoxCodigoVeiculo.SelectedValue = codigo_veiculo;
                                 break;
                             case "2":
                                 carregaCodigoMoto();
-                                cBoxCodigoVeiculo.SelectedValue = codigo_veiculo;
+                                //cBoxCodigoVeiculo.SelectedValue = codigo_veiculo;
                                 break;
                         }
 
@@ -170,9 +162,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 DataTable dt = new DataTable();
                 dt.Load(dr);
 
-                cBoxCodigoVeiculo.ValueMember = "id";
-                cBoxCodigoVeiculo.DisplayMember = "id";
-                cBoxCodigoVeiculo.DataSource = dt;
+               // cBoxCodigoVeiculo.ValueMember = "id";
+               // cBoxCodigoVeiculo.DisplayMember = "id";
+               // cBoxCodigoVeiculo.DataSource = dt;
             }
             catch (Exception e)
             {
@@ -196,9 +188,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 DataTable dt = new DataTable();
                 dt.Load(dr);
 
-                cBoxCodigoVeiculo.ValueMember = "id";
-                cBoxCodigoVeiculo.DisplayMember = "id";
-                cBoxCodigoVeiculo.DataSource = dt;
+               // cBoxCodigoVeiculo.ValueMember = "id";
+                //cBoxCodigoVeiculo.DisplayMember = "id";
+                //cBoxCodigoVeiculo.DataSource = dt;
             }
             catch (Exception e)
             {
@@ -215,7 +207,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
