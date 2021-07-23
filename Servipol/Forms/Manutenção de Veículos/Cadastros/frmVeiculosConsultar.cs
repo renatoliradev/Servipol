@@ -27,7 +27,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         private void frmVeiculosConsultar_Load(object sender, EventArgs e)
         {
             carregaTipoVeiculo();
-            CarregaTabelaVeiculos();
+            carregaTipoVeiculo();
+
+            cBoxSituacao.SelectedIndex = 0;
+            cBoxTipoBusca.SelectedIndex = 0;
         }
 
         #region Methods
@@ -48,7 +51,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo AS id_veiculo, tv.descricao AS tipo_veiculo, v.codigo, v.descricao, v.placa, v.combustivel, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculos AS v INNER JOIN veiculo_tipo AS tv ON(v.veiculo_tipo = tv.id_veiculo_tipo) WHERE v.ativo = '{situacao}' ORDER BY v.codigo_veiculo", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo AS id_veiculo, tv.descricao AS tipo, v.codigo, v.descricao, v.placa, v.combustivel, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculos AS v INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) WHERE v.ativo = '{situacao}' ORDER BY v.codigo", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
 
@@ -98,12 +101,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo AS id_veiculo, tv.descricao AS veiculo_tipo, v.codigo, v.descricao, v.placa, v.combustivel, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculos AS v INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) WHERE v.tipo = {cBoxTipoVeiculo.SelectedValue} AND v.ativo = '{situacao}' ORDER BY v.codigo", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo AS id_veiculo, tv.descricao AS tipo, v.codigo, v.descricao, v.placa, v.combustivel, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculos AS v INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) WHERE v.tipo = {cBoxTipoVeiculo.SelectedValue} AND v.ativo = '{situacao}' ORDER BY v.codigo", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
 
                 dGridVeiculos.DataSource = dp;
             }
+            catch { }
             finally
             {
                 BD.Desconectar();
@@ -115,7 +119,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             //mostrar todos
             if (cBoxTipoBusca.SelectedIndex == 0)
             {
-                cBoxTipoVeiculo.SelectedIndex = 0;
+                cBoxTipoVeiculo.SelectedIndex = -1;
                 gbTipoVeiculoBusca.Text = string.Empty;
                 cBoxTipoVeiculo.Visible = false;
                 CarregaTabelaVeiculos();
@@ -124,10 +128,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             else if (cBoxTipoBusca.SelectedIndex == 1)
             {
                 cBoxTipoVeiculo.Visible = true;
-                cBoxTipoVeiculo.SelectedIndex = 0;
+                cBoxTipoVeiculo.SelectedIndex = -1;
                 gbTipoVeiculoBusca.Text = "Tipo";
                 gbTipoVeiculoBusca.Focus();
                 cBoxTipoVeiculo.Select();
+                CarregaTabelaVeiculos();
             }
         }
 
@@ -148,7 +153,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             }
             else if (cBoxTipoBusca.SelectedIndex == 1)
             {
-
+                BuscaPorTipo();
             }
         }
 

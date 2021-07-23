@@ -42,13 +42,15 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.gbPlaca = new System.Windows.Forms.GroupBox();
             this.tBoxPlacaVeiculo = new System.Windows.Forms.MaskedTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.cBoxCodigoVeiculo = new System.Windows.Forms.ComboBox();
             this.tBoxDescricaoVeiculo = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cBoxTipoVeiculo = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.btnConfirmar = new DevExpress.XtraEditors.SimpleButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -56,6 +58,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // cBoxFazRevisao
@@ -82,16 +85,16 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             "Diesel"});
             this.cBoxCombustivel.Location = new System.Drawing.Point(6, 22);
             this.cBoxCombustivel.Name = "cBoxCombustivel";
-            this.cBoxCombustivel.Size = new System.Drawing.Size(152, 22);
+            this.cBoxCombustivel.Size = new System.Drawing.Size(163, 22);
             this.cBoxCombustivel.TabIndex = 2;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cBoxCombustivel);
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(252, 210);
+            this.groupBox1.Location = new System.Drawing.Point(252, 144);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(164, 60);
+            this.groupBox1.Size = new System.Drawing.Size(175, 68);
             this.groupBox1.TabIndex = 228;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Combustível preferencial*";
@@ -99,10 +102,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // rBtnPlacaAntiga
             // 
             this.rBtnPlacaAntiga.AutoSize = true;
-            this.rBtnPlacaAntiga.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rBtnPlacaAntiga.Location = new System.Drawing.Point(8, 46);
+            this.rBtnPlacaAntiga.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rBtnPlacaAntiga.Location = new System.Drawing.Point(6, 43);
             this.rBtnPlacaAntiga.Name = "rBtnPlacaAntiga";
-            this.rBtnPlacaAntiga.Size = new System.Drawing.Size(104, 18);
+            this.rBtnPlacaAntiga.Size = new System.Drawing.Size(92, 17);
             this.rBtnPlacaAntiga.TabIndex = 1;
             this.rBtnPlacaAntiga.Text = "Modelo Antigo";
             this.rBtnPlacaAntiga.UseVisualStyleBackColor = true;
@@ -110,10 +113,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // rBtnPlacaMercosul
             // 
             this.rBtnPlacaMercosul.AutoSize = true;
-            this.rBtnPlacaMercosul.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rBtnPlacaMercosul.Location = new System.Drawing.Point(8, 22);
+            this.rBtnPlacaMercosul.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rBtnPlacaMercosul.Location = new System.Drawing.Point(6, 22);
             this.rBtnPlacaMercosul.Name = "rBtnPlacaMercosul";
-            this.rBtnPlacaMercosul.Size = new System.Drawing.Size(116, 18);
+            this.rBtnPlacaMercosul.Size = new System.Drawing.Size(105, 17);
             this.rBtnPlacaMercosul.TabIndex = 0;
             this.rBtnPlacaMercosul.Text = "Padrão Mercosul";
             this.rBtnPlacaMercosul.UseVisualStyleBackColor = true;
@@ -122,9 +125,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // 
             this.groupBox5.Controls.Add(this.cBoxFazRevisao);
             this.groupBox5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(422, 210);
+            this.groupBox5.Location = new System.Drawing.Point(12, 218);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(211, 60);
+            this.groupBox5.Size = new System.Drawing.Size(211, 68);
             this.groupBox5.TabIndex = 229;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Fazendo revisão na concessionária*";
@@ -134,9 +137,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox6.Controls.Add(this.rBtnPlacaAntiga);
             this.groupBox6.Controls.Add(this.rBtnPlacaMercosul);
             this.groupBox6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(12, 210);
+            this.groupBox6.Location = new System.Drawing.Point(12, 144);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(145, 77);
+            this.groupBox6.Size = new System.Drawing.Size(145, 68);
             this.groupBox6.TabIndex = 221;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Modelo de Placa";
@@ -163,9 +166,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // 
             this.gbPlaca.Controls.Add(this.tBoxPlacaVeiculo);
             this.gbPlaca.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbPlaca.Location = new System.Drawing.Point(163, 210);
+            this.gbPlaca.Location = new System.Drawing.Point(163, 144);
             this.gbPlaca.Name = "gbPlaca";
-            this.gbPlaca.Size = new System.Drawing.Size(83, 53);
+            this.gbPlaca.Size = new System.Drawing.Size(83, 68);
             this.gbPlaca.TabIndex = 222;
             this.gbPlaca.TabStop = false;
             this.gbPlaca.Text = "Placa*";
@@ -182,53 +185,45 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.cBoxCodigoVeiculo);
+            this.groupBox4.Controls.Add(this.textBox1);
             this.groupBox4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(12, 78);
+            this.groupBox4.Location = new System.Drawing.Point(142, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(621, 60);
+            this.groupBox4.Size = new System.Drawing.Size(285, 60);
             this.groupBox4.TabIndex = 219;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Código*";
             // 
-            // cBoxCodigoVeiculo
-            // 
-            this.cBoxCodigoVeiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxCodigoVeiculo.Font = new System.Drawing.Font("Calibri", 9F);
-            this.cBoxCodigoVeiculo.FormattingEnabled = true;
-            this.cBoxCodigoVeiculo.Location = new System.Drawing.Point(6, 22);
-            this.cBoxCodigoVeiculo.Name = "cBoxCodigoVeiculo";
-            this.cBoxCodigoVeiculo.Size = new System.Drawing.Size(609, 22);
-            this.cBoxCodigoVeiculo.TabIndex = 2;
-            // 
             // tBoxDescricaoVeiculo
             // 
+            this.tBoxDescricaoVeiculo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tBoxDescricaoVeiculo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tBoxDescricaoVeiculo.Font = new System.Drawing.Font("Calibri", 9F);
             this.tBoxDescricaoVeiculo.Location = new System.Drawing.Point(6, 22);
             this.tBoxDescricaoVeiculo.Name = "tBoxDescricaoVeiculo";
-            this.tBoxDescricaoVeiculo.Size = new System.Drawing.Size(609, 22);
+            this.tBoxDescricaoVeiculo.Size = new System.Drawing.Size(403, 22);
             this.tBoxDescricaoVeiculo.TabIndex = 1;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tBoxDescricaoVeiculo);
             this.groupBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 144);
+            this.groupBox2.Location = new System.Drawing.Point(12, 78);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(621, 60);
+            this.groupBox2.Size = new System.Drawing.Size(415, 60);
             this.groupBox2.TabIndex = 220;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Descrição*";
             // 
             // cBoxTipoVeiculo
             // 
+            this.cBoxTipoVeiculo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cBoxTipoVeiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBoxTipoVeiculo.Font = new System.Drawing.Font("Calibri", 9F);
             this.cBoxTipoVeiculo.FormattingEnabled = true;
             this.cBoxTipoVeiculo.Location = new System.Drawing.Point(6, 22);
             this.cBoxTipoVeiculo.Name = "cBoxTipoVeiculo";
-            this.cBoxTipoVeiculo.Size = new System.Drawing.Size(609, 22);
+            this.cBoxTipoVeiculo.Size = new System.Drawing.Size(112, 22);
             this.cBoxTipoVeiculo.TabIndex = 1;
             // 
             // groupBox3
@@ -237,40 +232,75 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(621, 60);
+            this.groupBox3.Size = new System.Drawing.Size(124, 60);
             this.groupBox3.TabIndex = 218;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tipo*";
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Appearance.Options.UseFont = true;
             this.btnCancelar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnCancelar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCancelar.ImageOptions.SvgImage")));
-            this.btnCancelar.Location = new System.Drawing.Point(12, 293);
+            this.btnCancelar.Location = new System.Drawing.Point(12, 292);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(198, 44);
+            this.btnCancelar.Size = new System.Drawing.Size(145, 35);
             this.btnCancelar.TabIndex = 231;
             this.btnCancelar.Text = "[Esc] - Cancelar";
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmar.Appearance.Options.UseFont = true;
             this.btnConfirmar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConfirmar.ImageOptions.SvgImage")));
-            this.btnConfirmar.Location = new System.Drawing.Point(435, 293);
+            this.btnConfirmar.Location = new System.Drawing.Point(282, 292);
             this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(198, 44);
+            this.btnConfirmar.Size = new System.Drawing.Size(145, 35);
             this.btnConfirmar.TabIndex = 230;
             this.btnConfirmar.Text = "[F12] - Confirmar";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textBox1.Font = new System.Drawing.Font("Calibri", 9F);
+            this.textBox1.Location = new System.Drawing.Point(6, 22);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(273, 22);
+            this.textBox1.TabIndex = 2;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.comboBox1);
+            this.groupBox7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(229, 218);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(198, 68);
+            this.groupBox7.TabIndex = 230;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Obrigatório registrar Km Diário*";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Calibri", 9F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Sim",
+            "Não"});
+            this.comboBox1.Location = new System.Drawing.Point(6, 22);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(186, 22);
+            this.comboBox1.TabIndex = 2;
             // 
             // frmVeiculosCadastrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 352);
+            this.ClientSize = new System.Drawing.Size(438, 342);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.groupBox1);
@@ -299,9 +329,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.gbPlaca.ResumeLayout(false);
             this.gbPlaca.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,12 +353,14 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         private System.Windows.Forms.GroupBox gbPlaca;
         private System.Windows.Forms.MaskedTextBox tBoxPlacaVeiculo;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ComboBox cBoxCodigoVeiculo;
         private System.Windows.Forms.TextBox tBoxDescricaoVeiculo;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cBoxTipoVeiculo;
         private System.Windows.Forms.GroupBox groupBox3;
         private DevExpress.XtraEditors.SimpleButton btnCancelar;
         private DevExpress.XtraEditors.SimpleButton btnConfirmar;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
