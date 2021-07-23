@@ -212,5 +212,15 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
 
         #endregion
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

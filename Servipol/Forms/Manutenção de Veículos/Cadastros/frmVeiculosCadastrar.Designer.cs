@@ -245,9 +245,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.btnCancelar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCancelar.ImageOptions.SvgImage")));
             this.btnCancelar.Location = new System.Drawing.Point(12, 292);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(145, 35);
+            this.btnCancelar.Size = new System.Drawing.Size(145, 38);
             this.btnCancelar.TabIndex = 231;
             this.btnCancelar.Text = "[Esc] - Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnConfirmar
             // 
@@ -257,9 +258,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConfirmar.ImageOptions.SvgImage")));
             this.btnConfirmar.Location = new System.Drawing.Point(282, 292);
             this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(145, 35);
+            this.btnConfirmar.Size = new System.Drawing.Size(145, 38);
             this.btnConfirmar.TabIndex = 230;
             this.btnConfirmar.Text = "[F12] - Confirmar";
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // textBox1
             // 
