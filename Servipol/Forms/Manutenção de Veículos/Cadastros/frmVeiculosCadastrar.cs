@@ -46,16 +46,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     tBoxPlacaVeiculo.Clear();
                     tBoxDescricaoVeiculo.Focus();
                 }
-                else if (auxTipoChamada == "frmManutencaoVeiculo")
-                {
-                    this.Text = "Incluir Veículo";
-
-                    cBoxTipoVeiculo.SelectedIndex = -1;
-                    cBoxCombustivel.SelectedIndex = -1;
-                    tBoxDescricaoVeiculo.Clear();
-                    tBoxPlacaVeiculo.Clear();
-                    tBoxDescricaoVeiculo.Focus();
-                }
                 else if (auxTipoChamada == "Editar")
                 {
                     this.Text = "Editar Veículo";
@@ -83,7 +73,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                         {
                             case "1":
                                 carregaCodigoCarro();
-                               // cBoxCodigoVeiculo.SelectedValue = codigo_veiculo;
+                                // cBoxCodigoVeiculo.SelectedValue = codigo_veiculo;
                                 break;
                             case "2":
                                 carregaCodigoMoto();
@@ -162,9 +152,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 DataTable dt = new DataTable();
                 dt.Load(dr);
 
-               // cBoxCodigoVeiculo.ValueMember = "id";
-               // cBoxCodigoVeiculo.DisplayMember = "id";
-               // cBoxCodigoVeiculo.DataSource = dt;
+                // cBoxCodigoVeiculo.ValueMember = "id";
+                // cBoxCodigoVeiculo.DisplayMember = "id";
+                // cBoxCodigoVeiculo.DataSource = dt;
             }
             catch (Exception e)
             {
@@ -188,7 +178,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 DataTable dt = new DataTable();
                 dt.Load(dr);
 
-               // cBoxCodigoVeiculo.ValueMember = "id";
+                // cBoxCodigoVeiculo.ValueMember = "id";
                 //cBoxCodigoVeiculo.DisplayMember = "id";
                 //cBoxCodigoVeiculo.DataSource = dt;
             }
@@ -203,7 +193,28 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         }
 
 
+        private void rBtnPlacaMercosul_CheckedChanged(object sender, EventArgs e)
+        {
+            tBoxPlacaVeiculo.Clear();
+            tBoxPlacaVeiculo.Mask = "LLL0L00";
+            tBoxPlacaVeiculo.Select();
+        }
+
+        private void rBtnPlacaAntiga_CheckedChanged(object sender, EventArgs e)
+        {
+            tBoxPlacaVeiculo.Clear();
+            tBoxPlacaVeiculo.Mask = "LLL-0000";
+            tBoxPlacaVeiculo.Select();
+        }
+
+        private void tBoxPlacaVeiculo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = (e.KeyChar.ToString()).ToUpper().ToCharArray()[0];
+        }
+
         #endregion
+
+        #region Buttons
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -214,5 +225,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         {
 
         }
+
+        #endregion
     }
 }
