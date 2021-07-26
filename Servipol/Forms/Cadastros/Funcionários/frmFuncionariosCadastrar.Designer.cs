@@ -31,12 +31,24 @@ namespace Servipol.Forms.Cadastros.Funcionários
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFuncionariosCadastrar));
             this.tabDadosAdicionaisASE = new System.Windows.Forms.TabPage();
+            this.groupBox26 = new System.Windows.Forms.GroupBox();
+            this.tBoxDataValidadeCursoVigilante = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tBoxCidadeCursoVigilante = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cBoxUfCursoVigilante = new System.Windows.Forms.ComboBox();
+            this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tBoxLocalCursoVigilante = new System.Windows.Forms.TextBox();
+            this.rBtnCursoVigilanteNao = new System.Windows.Forms.RadioButton();
+            this.rBtnCursoVigilanteSim = new System.Windows.Forms.RadioButton();
             this.gbQRA = new System.Windows.Forms.GroupBox();
-            this.tBoxQRA = new System.Windows.Forms.TextBox();
+            this.tBoxQraASE = new System.Windows.Forms.TextBox();
             this.gbCodigo = new System.Windows.Forms.GroupBox();
-            this.cBoxCodigoFuncionario = new System.Windows.Forms.ComboBox();
+            this.cBoxCodigoASE = new System.Windows.Forms.ComboBox();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
-            this.cBoxCargo = new System.Windows.Forms.ComboBox();
+            this.cBoxCargoASE = new System.Windows.Forms.ComboBox();
             this.tabContatos = new System.Windows.Forms.TabPage();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.tBoxNomeContato4 = new System.Windows.Forms.TextBox();
@@ -47,9 +59,13 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.tBoxNomeContato1 = new System.Windows.Forms.TextBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.tBoxTipoContato4 = new System.Windows.Forms.TextBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.tBoxTipoContato3 = new System.Windows.Forms.TextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.tBoxTipoContato2 = new System.Windows.Forms.TextBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.tBoxTipoContato1 = new System.Windows.Forms.TextBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.tBoxCep = new System.Windows.Forms.MaskedTextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -82,7 +98,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox21 = new System.Windows.Forms.GroupBox();
             this.tBoxPisPasep = new System.Windows.Forms.TextBox();
             this.gbDataAdmissao = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.tBoxDataAdmissao = new System.Windows.Forms.DateTimePicker();
             this.tabPrincipal = new System.Windows.Forms.TabPage();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
             this.cBoxTipoSanguineo = new System.Windows.Forms.ComboBox();
@@ -98,7 +114,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tBoxDataNascimento = new System.Windows.Forms.DateTimePicker();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.tBoxDataExpRg = new System.Windows.Forms.DateTimePicker();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cBoxUfExpRg = new System.Windows.Forms.ComboBox();
             this.gbObs = new System.Windows.Forms.GroupBox();
@@ -116,18 +132,16 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.chkBoxCatCnhB = new System.Windows.Forms.CheckBox();
             this.chkBoxCatCnhA = new System.Windows.Forms.CheckBox();
             this.gbValidadeCNH = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.tBoxDataValidadeCnh = new System.Windows.Forms.DateTimePicker();
             this.gbCargo = new System.Windows.Forms.GroupBox();
-            this.cBoxTipoFuncionario = new System.Windows.Forms.ComboBox();
+            this.cBoxCargo = new System.Windows.Forms.ComboBox();
             this.tabControlFuncionario = new System.Windows.Forms.TabControl();
-            this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.btnConfirmar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLimparCampos = new DevExpress.XtraEditors.SimpleButton();
             this.tabDadosAdicionaisASE.SuspendLayout();
+            this.groupBox26.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
             this.gbQRA.SuspendLayout();
             this.gbCodigo.SuspendLayout();
             this.groupBox22.SuspendLayout();
@@ -177,6 +191,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // 
             // tabDadosAdicionaisASE
             // 
+            this.tabDadosAdicionaisASE.Controls.Add(this.groupBox26);
             this.tabDadosAdicionaisASE.Controls.Add(this.gbQRA);
             this.tabDadosAdicionaisASE.Controls.Add(this.gbCodigo);
             this.tabDadosAdicionaisASE.Controls.Add(this.groupBox22);
@@ -188,9 +203,162 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tabDadosAdicionaisASE.Text = "Dados Adicionais (Operacional Externo)";
             this.tabDadosAdicionaisASE.UseVisualStyleBackColor = true;
             // 
+            // groupBox26
+            // 
+            this.groupBox26.Controls.Add(this.tBoxDataValidadeCursoVigilante);
+            this.groupBox26.Controls.Add(this.label4);
+            this.groupBox26.Controls.Add(this.label2);
+            this.groupBox26.Controls.Add(this.tBoxCidadeCursoVigilante);
+            this.groupBox26.Controls.Add(this.label3);
+            this.groupBox26.Controls.Add(this.cBoxUfCursoVigilante);
+            this.groupBox26.Controls.Add(this.separatorControl1);
+            this.groupBox26.Controls.Add(this.label1);
+            this.groupBox26.Controls.Add(this.tBoxLocalCursoVigilante);
+            this.groupBox26.Controls.Add(this.rBtnCursoVigilanteNao);
+            this.groupBox26.Controls.Add(this.rBtnCursoVigilanteSim);
+            this.groupBox26.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox26.Location = new System.Drawing.Point(6, 201);
+            this.groupBox26.Name = "groupBox26";
+            this.groupBox26.Size = new System.Drawing.Size(620, 74);
+            this.groupBox26.TabIndex = 40;
+            this.groupBox26.TabStop = false;
+            this.groupBox26.Text = "Possui Curso de Vigilante*";
+            // 
+            // tBoxDataValidadeCursoVigilante
+            // 
+            this.tBoxDataValidadeCursoVigilante.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.tBoxDataValidadeCursoVigilante.Location = new System.Drawing.Point(520, 18);
+            this.tBoxDataValidadeCursoVigilante.Name = "tBoxDataValidadeCursoVigilante";
+            this.tBoxDataValidadeCursoVigilante.Size = new System.Drawing.Size(94, 23);
+            this.tBoxDataValidadeCursoVigilante.TabIndex = 15;
+            this.tBoxDataValidadeCursoVigilante.Value = new System.DateTime(2021, 7, 26, 0, 0, 0, 0);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(457, 49);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(25, 15);
+            this.label4.TabIndex = 44;
+            this.label4.Text = "UF:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(457, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 15);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Validade:";
+            // 
+            // tBoxCidadeCursoVigilante
+            // 
+            this.tBoxCidadeCursoVigilante.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxCidadeCursoVigilante.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxCidadeCursoVigilante.Location = new System.Drawing.Point(179, 43);
+            this.tBoxCidadeCursoVigilante.Name = "tBoxCidadeCursoVigilante";
+            this.tBoxCidadeCursoVigilante.Size = new System.Drawing.Size(255, 21);
+            this.tBoxCidadeCursoVigilante.TabIndex = 43;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(86, 49);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 15);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Cidade:";
+            // 
+            // cBoxUfCursoVigilante
+            // 
+            this.cBoxUfCursoVigilante.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cBoxUfCursoVigilante.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxUfCursoVigilante.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxUfCursoVigilante.FormattingEnabled = true;
+            this.cBoxUfCursoVigilante.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "PB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
+            this.cBoxUfCursoVigilante.Location = new System.Drawing.Point(520, 43);
+            this.cBoxUfCursoVigilante.Name = "cBoxUfCursoVigilante";
+            this.cBoxUfCursoVigilante.Size = new System.Drawing.Size(94, 21);
+            this.cBoxUfCursoVigilante.TabIndex = 42;
+            // 
+            // separatorControl1
+            // 
+            this.separatorControl1.LineOrientation = System.Windows.Forms.Orientation.Vertical;
+            this.separatorControl1.Location = new System.Drawing.Point(59, 11);
+            this.separatorControl1.Name = "separatorControl1";
+            this.separatorControl1.Size = new System.Drawing.Size(21, 63);
+            this.separatorControl1.TabIndex = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(86, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 15);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Local do curso:";
+            // 
+            // tBoxLocalCursoVigilante
+            // 
+            this.tBoxLocalCursoVigilante.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxLocalCursoVigilante.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxLocalCursoVigilante.Location = new System.Drawing.Point(179, 20);
+            this.tBoxLocalCursoVigilante.Name = "tBoxLocalCursoVigilante";
+            this.tBoxLocalCursoVigilante.Size = new System.Drawing.Size(255, 21);
+            this.tBoxLocalCursoVigilante.TabIndex = 11;
+            // 
+            // rBtnCursoVigilanteNao
+            // 
+            this.rBtnCursoVigilanteNao.AutoSize = true;
+            this.rBtnCursoVigilanteNao.Location = new System.Drawing.Point(6, 47);
+            this.rBtnCursoVigilanteNao.Name = "rBtnCursoVigilanteNao";
+            this.rBtnCursoVigilanteNao.Size = new System.Drawing.Size(47, 19);
+            this.rBtnCursoVigilanteNao.TabIndex = 2;
+            this.rBtnCursoVigilanteNao.TabStop = true;
+            this.rBtnCursoVigilanteNao.Text = "Não";
+            this.rBtnCursoVigilanteNao.UseVisualStyleBackColor = true;
+            // 
+            // rBtnCursoVigilanteSim
+            // 
+            this.rBtnCursoVigilanteSim.AutoSize = true;
+            this.rBtnCursoVigilanteSim.Location = new System.Drawing.Point(6, 22);
+            this.rBtnCursoVigilanteSim.Name = "rBtnCursoVigilanteSim";
+            this.rBtnCursoVigilanteSim.Size = new System.Drawing.Size(45, 19);
+            this.rBtnCursoVigilanteSim.TabIndex = 1;
+            this.rBtnCursoVigilanteSim.TabStop = true;
+            this.rBtnCursoVigilanteSim.Text = "Sim";
+            this.rBtnCursoVigilanteSim.UseVisualStyleBackColor = true;
+            // 
             // gbQRA
             // 
-            this.gbQRA.Controls.Add(this.tBoxQRA);
+            this.gbQRA.Controls.Add(this.tBoxQraASE);
             this.gbQRA.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbQRA.Location = new System.Drawing.Point(6, 72);
             this.gbQRA.Name = "gbQRA";
@@ -199,18 +367,18 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbQRA.TabStop = false;
             this.gbQRA.Text = "QRA*";
             // 
-            // tBoxQRA
+            // tBoxQraASE
             // 
-            this.tBoxQRA.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxQRA.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxQRA.Location = new System.Drawing.Point(6, 22);
-            this.tBoxQRA.Name = "tBoxQRA";
-            this.tBoxQRA.Size = new System.Drawing.Size(606, 21);
-            this.tBoxQRA.TabIndex = 10;
+            this.tBoxQraASE.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxQraASE.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxQraASE.Location = new System.Drawing.Point(6, 22);
+            this.tBoxQraASE.Name = "tBoxQraASE";
+            this.tBoxQraASE.Size = new System.Drawing.Size(606, 21);
+            this.tBoxQraASE.TabIndex = 10;
             // 
             // gbCodigo
             // 
-            this.gbCodigo.Controls.Add(this.cBoxCodigoFuncionario);
+            this.gbCodigo.Controls.Add(this.cBoxCodigoASE);
             this.gbCodigo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCodigo.Location = new System.Drawing.Point(6, 6);
             this.gbCodigo.Name = "gbCodigo";
@@ -219,19 +387,19 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbCodigo.TabStop = false;
             this.gbCodigo.Text = "Código*";
             // 
-            // cBoxCodigoFuncionario
+            // cBoxCodigoASE
             // 
-            this.cBoxCodigoFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxCodigoFuncionario.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBoxCodigoFuncionario.FormattingEnabled = true;
-            this.cBoxCodigoFuncionario.Location = new System.Drawing.Point(6, 25);
-            this.cBoxCodigoFuncionario.Name = "cBoxCodigoFuncionario";
-            this.cBoxCodigoFuncionario.Size = new System.Drawing.Size(606, 21);
-            this.cBoxCodigoFuncionario.TabIndex = 9;
+            this.cBoxCodigoASE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxCodigoASE.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxCodigoASE.FormattingEnabled = true;
+            this.cBoxCodigoASE.Location = new System.Drawing.Point(6, 25);
+            this.cBoxCodigoASE.Name = "cBoxCodigoASE";
+            this.cBoxCodigoASE.Size = new System.Drawing.Size(606, 21);
+            this.cBoxCodigoASE.TabIndex = 9;
             // 
             // groupBox22
             // 
-            this.groupBox22.Controls.Add(this.cBoxCargo);
+            this.groupBox22.Controls.Add(this.cBoxCargoASE);
             this.groupBox22.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox22.Location = new System.Drawing.Point(6, 138);
             this.groupBox22.Name = "groupBox22";
@@ -240,18 +408,18 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox22.TabStop = false;
             this.groupBox22.Text = "Cargo Operacional Externo*";
             // 
-            // cBoxCargo
+            // cBoxCargoASE
             // 
-            this.cBoxCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxCargo.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBoxCargo.FormattingEnabled = true;
-            this.cBoxCargo.Items.AddRange(new object[] {
+            this.cBoxCargoASE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxCargoASE.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxCargoASE.FormattingEnabled = true;
+            this.cBoxCargoASE.Items.AddRange(new object[] {
             "Agente",
             "Supervisor"});
-            this.cBoxCargo.Location = new System.Drawing.Point(6, 22);
-            this.cBoxCargo.Name = "cBoxCargo";
-            this.cBoxCargo.Size = new System.Drawing.Size(606, 21);
-            this.cBoxCargo.TabIndex = 16;
+            this.cBoxCargoASE.Location = new System.Drawing.Point(6, 22);
+            this.cBoxCargoASE.Name = "cBoxCargoASE";
+            this.cBoxCargoASE.Size = new System.Drawing.Size(606, 21);
+            this.cBoxCargoASE.TabIndex = 16;
             // 
             // tabContatos
             // 
@@ -297,7 +465,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // 
             this.tBoxNomeContato4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tBoxNomeContato4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxNomeContato4.Location = new System.Drawing.Point(8, 22);
+            this.tBoxNomeContato4.Location = new System.Drawing.Point(6, 22);
             this.tBoxNomeContato4.Name = "tBoxNomeContato4";
             this.tBoxNomeContato4.Size = new System.Drawing.Size(345, 21);
             this.tBoxNomeContato4.TabIndex = 14;
@@ -364,7 +532,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // 
             // groupBox14
             // 
-            this.groupBox14.Controls.Add(this.textBox4);
+            this.groupBox14.Controls.Add(this.tBoxTipoContato4);
             this.groupBox14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox14.Location = new System.Drawing.Point(146, 402);
             this.groupBox14.Name = "groupBox14";
@@ -373,9 +541,19 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Tipo de contato";
             // 
+            // tBoxTipoContato4
+            // 
+            this.tBoxTipoContato4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxTipoContato4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxTipoContato4.Location = new System.Drawing.Point(6, 22);
+            this.tBoxTipoContato4.Name = "tBoxTipoContato4";
+            this.tBoxTipoContato4.Size = new System.Drawing.Size(106, 21);
+            this.tBoxTipoContato4.TabIndex = 17;
+            this.tBoxTipoContato4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // groupBox13
             // 
-            this.groupBox13.Controls.Add(this.textBox3);
+            this.groupBox13.Controls.Add(this.tBoxTipoContato3);
             this.groupBox13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox13.Location = new System.Drawing.Point(146, 336);
             this.groupBox13.Name = "groupBox13";
@@ -384,9 +562,19 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Tipo de contato";
             // 
+            // tBoxTipoContato3
+            // 
+            this.tBoxTipoContato3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxTipoContato3.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxTipoContato3.Location = new System.Drawing.Point(6, 22);
+            this.tBoxTipoContato3.Name = "tBoxTipoContato3";
+            this.tBoxTipoContato3.Size = new System.Drawing.Size(106, 21);
+            this.tBoxTipoContato3.TabIndex = 16;
+            this.tBoxTipoContato3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // groupBox12
             // 
-            this.groupBox12.Controls.Add(this.textBox2);
+            this.groupBox12.Controls.Add(this.tBoxTipoContato2);
             this.groupBox12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox12.Location = new System.Drawing.Point(146, 270);
             this.groupBox12.Name = "groupBox12";
@@ -395,9 +583,19 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Tipo de contato";
             // 
+            // tBoxTipoContato2
+            // 
+            this.tBoxTipoContato2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxTipoContato2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxTipoContato2.Location = new System.Drawing.Point(6, 22);
+            this.tBoxTipoContato2.Name = "tBoxTipoContato2";
+            this.tBoxTipoContato2.Size = new System.Drawing.Size(106, 21);
+            this.tBoxTipoContato2.TabIndex = 15;
+            this.tBoxTipoContato2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // groupBox11
             // 
-            this.groupBox11.Controls.Add(this.textBox1);
+            this.groupBox11.Controls.Add(this.tBoxTipoContato1);
             this.groupBox11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox11.Location = new System.Drawing.Point(146, 204);
             this.groupBox11.Name = "groupBox11";
@@ -406,13 +604,23 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Tipo de contato";
             // 
+            // tBoxTipoContato1
+            // 
+            this.tBoxTipoContato1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxTipoContato1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxTipoContato1.Location = new System.Drawing.Point(6, 22);
+            this.tBoxTipoContato1.Name = "tBoxTipoContato1";
+            this.tBoxTipoContato1.Size = new System.Drawing.Size(106, 21);
+            this.tBoxTipoContato1.TabIndex = 14;
+            this.tBoxTipoContato1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // groupBox10
             // 
             this.groupBox10.Controls.Add(this.tBoxCep);
             this.groupBox10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox10.Location = new System.Drawing.Point(7, 138);
+            this.groupBox10.Location = new System.Drawing.Point(536, 72);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(133, 60);
+            this.groupBox10.Size = new System.Drawing.Size(91, 60);
             this.groupBox10.TabIndex = 23;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "CEP";
@@ -420,10 +628,10 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // tBoxCep
             // 
             this.tBoxCep.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxCep.Location = new System.Drawing.Point(19, 25);
+            this.tBoxCep.Location = new System.Drawing.Point(6, 25);
             this.tBoxCep.Mask = "00,000-000";
             this.tBoxCep.Name = "tBoxCep";
-            this.tBoxCep.Size = new System.Drawing.Size(92, 21);
+            this.tBoxCep.Size = new System.Drawing.Size(79, 21);
             this.tBoxCep.TabIndex = 21;
             this.tBoxCep.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -451,9 +659,9 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // 
             this.groupBox8.Controls.Add(this.tBoxEmail);
             this.groupBox8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox8.Location = new System.Drawing.Point(146, 138);
+            this.groupBox8.Location = new System.Drawing.Point(6, 138);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(481, 60);
+            this.groupBox8.Size = new System.Drawing.Size(621, 60);
             this.groupBox8.TabIndex = 24;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "E-mail";
@@ -464,7 +672,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tBoxEmail.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tBoxEmail.Location = new System.Drawing.Point(6, 25);
             this.tBoxEmail.Name = "tBoxEmail";
-            this.tBoxEmail.Size = new System.Drawing.Size(469, 21);
+            this.tBoxEmail.Size = new System.Drawing.Size(609, 21);
             this.tBoxEmail.TabIndex = 14;
             // 
             // gbLogradouro
@@ -572,7 +780,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // 
             this.gbUF.Controls.Add(this.cBoxEstado);
             this.gbUF.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbUF.Location = new System.Drawing.Point(536, 72);
+            this.gbUF.Location = new System.Drawing.Point(439, 72);
             this.gbUF.Name = "gbUF";
             this.gbUF.Size = new System.Drawing.Size(91, 60);
             this.gbUF.TabIndex = 22;
@@ -581,6 +789,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // 
             // cBoxEstado
             // 
+            this.cBoxEstado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cBoxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBoxEstado.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cBoxEstado.FormattingEnabled = true;
@@ -612,7 +821,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             "SP",
             "SE",
             "TO"});
-            this.cBoxEstado.Location = new System.Drawing.Point(6, 26);
+            this.cBoxEstado.Location = new System.Drawing.Point(6, 25);
             this.cBoxEstado.Name = "cBoxEstado";
             this.cBoxEstado.Size = new System.Drawing.Size(79, 21);
             this.cBoxEstado.TabIndex = 16;
@@ -643,18 +852,19 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbCidade.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCidade.Location = new System.Drawing.Point(241, 72);
             this.gbCidade.Name = "gbCidade";
-            this.gbCidade.Size = new System.Drawing.Size(289, 60);
+            this.gbCidade.Size = new System.Drawing.Size(192, 60);
             this.gbCidade.TabIndex = 21;
             this.gbCidade.TabStop = false;
             this.gbCidade.Text = "Cidade";
             // 
             // tBoxCidade
             // 
+            this.tBoxCidade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tBoxCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tBoxCidade.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tBoxCidade.Location = new System.Drawing.Point(6, 25);
             this.tBoxCidade.Name = "tBoxCidade";
-            this.tBoxCidade.Size = new System.Drawing.Size(277, 21);
+            this.tBoxCidade.Size = new System.Drawing.Size(180, 21);
             this.tBoxCidade.TabIndex = 15;
             this.tBoxCidade.Text = "UMUARAMA";
             // 
@@ -783,7 +993,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // 
             // gbDataAdmissao
             // 
-            this.gbDataAdmissao.Controls.Add(this.dateTimePicker3);
+            this.gbDataAdmissao.Controls.Add(this.tBoxDataAdmissao);
             this.gbDataAdmissao.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDataAdmissao.Location = new System.Drawing.Point(7, 3);
             this.gbDataAdmissao.Name = "gbDataAdmissao";
@@ -792,16 +1002,16 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbDataAdmissao.TabStop = false;
             this.gbDataAdmissao.Text = "Data Admissão*";
             // 
-            // dateTimePicker3
+            // tBoxDataAdmissao
             // 
-            this.dateTimePicker3.CalendarFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker3.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(6, 22);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(114, 21);
-            this.dateTimePicker3.TabIndex = 18;
-            this.dateTimePicker3.Value = new System.DateTime(2021, 7, 24, 0, 0, 0, 0);
+            this.tBoxDataAdmissao.CalendarFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxDataAdmissao.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxDataAdmissao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.tBoxDataAdmissao.Location = new System.Drawing.Point(6, 22);
+            this.tBoxDataAdmissao.Name = "tBoxDataAdmissao";
+            this.tBoxDataAdmissao.Size = new System.Drawing.Size(114, 21);
+            this.tBoxDataAdmissao.TabIndex = 18;
+            this.tBoxDataAdmissao.Value = new System.DateTime(2021, 7, 24, 0, 0, 0, 0);
             // 
             // tabPrincipal
             // 
@@ -981,7 +1191,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.dateTimePicker1);
+            this.groupBox5.Controls.Add(this.tBoxDataExpRg);
             this.groupBox5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(475, 206);
             this.groupBox5.Name = "groupBox5";
@@ -990,16 +1200,16 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Data Expedição RG*";
             // 
-            // dateTimePicker1
+            // tBoxDataExpRg
             // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(6, 20);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(137, 21);
-            this.dateTimePicker1.TabIndex = 1;
-            this.dateTimePicker1.Value = new System.DateTime(2021, 7, 24, 0, 0, 0, 0);
+            this.tBoxDataExpRg.CalendarFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxDataExpRg.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxDataExpRg.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.tBoxDataExpRg.Location = new System.Drawing.Point(6, 20);
+            this.tBoxDataExpRg.Name = "tBoxDataExpRg";
+            this.tBoxDataExpRg.Size = new System.Drawing.Size(137, 21);
+            this.tBoxDataExpRg.TabIndex = 1;
+            this.tBoxDataExpRg.Value = new System.DateTime(2021, 7, 24, 0, 0, 0, 0);
             // 
             // groupBox4
             // 
@@ -1207,7 +1417,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // 
             // gbValidadeCNH
             // 
-            this.gbValidadeCNH.Controls.Add(this.dateTimePicker2);
+            this.gbValidadeCNH.Controls.Add(this.tBoxDataValidadeCnh);
             this.gbValidadeCNH.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbValidadeCNH.Location = new System.Drawing.Point(475, 262);
             this.gbValidadeCNH.Name = "gbValidadeCNH";
@@ -1216,20 +1426,20 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbValidadeCNH.TabStop = false;
             this.gbValidadeCNH.Text = "Validade CNH*";
             // 
-            // dateTimePicker2
+            // tBoxDataValidadeCnh
             // 
-            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(6, 18);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(137, 21);
-            this.dateTimePicker2.TabIndex = 2;
-            this.dateTimePicker2.Value = new System.DateTime(2021, 7, 24, 0, 0, 0, 0);
+            this.tBoxDataValidadeCnh.CalendarFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxDataValidadeCnh.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxDataValidadeCnh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.tBoxDataValidadeCnh.Location = new System.Drawing.Point(6, 18);
+            this.tBoxDataValidadeCnh.Name = "tBoxDataValidadeCnh";
+            this.tBoxDataValidadeCnh.Size = new System.Drawing.Size(137, 21);
+            this.tBoxDataValidadeCnh.TabIndex = 2;
+            this.tBoxDataValidadeCnh.Value = new System.DateTime(2021, 7, 24, 0, 0, 0, 0);
             // 
             // gbCargo
             // 
-            this.gbCargo.Controls.Add(this.cBoxTipoFuncionario);
+            this.gbCargo.Controls.Add(this.cBoxCargo);
             this.gbCargo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCargo.Location = new System.Drawing.Point(6, 6);
             this.gbCargo.Name = "gbCargo";
@@ -1238,15 +1448,15 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbCargo.TabStop = false;
             this.gbCargo.Text = "Cargo*";
             // 
-            // cBoxTipoFuncionario
+            // cBoxCargo
             // 
-            this.cBoxTipoFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxTipoFuncionario.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBoxTipoFuncionario.FormattingEnabled = true;
-            this.cBoxTipoFuncionario.Location = new System.Drawing.Point(6, 21);
-            this.cBoxTipoFuncionario.Name = "cBoxTipoFuncionario";
-            this.cBoxTipoFuncionario.Size = new System.Drawing.Size(196, 21);
-            this.cBoxTipoFuncionario.TabIndex = 1;
+            this.cBoxCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxCargo.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxCargo.FormattingEnabled = true;
+            this.cBoxCargo.Location = new System.Drawing.Point(6, 21);
+            this.cBoxCargo.Name = "cBoxCargo";
+            this.cBoxCargo.Size = new System.Drawing.Size(196, 21);
+            this.cBoxCargo.TabIndex = 1;
             // 
             // tabControlFuncionario
             // 
@@ -1260,94 +1470,68 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tabControlFuncionario.Size = new System.Drawing.Size(642, 496);
             this.tabControlFuncionario.TabIndex = 126;
             // 
-            // btnIncluir
+            // btnConfirmar
             // 
-            this.btnIncluir.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIncluir.Appearance.Options.UseFont = true;
-            this.btnIncluir.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnIncluir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIncluir.ImageOptions.SvgImage")));
-            this.btnIncluir.Location = new System.Drawing.Point(487, 514);
-            this.btnIncluir.Name = "btnIncluir";
-            this.btnIncluir.Size = new System.Drawing.Size(144, 44);
-            this.btnIncluir.TabIndex = 186;
-            this.btnIncluir.Text = "[F12] - Confirmar";
+            this.btnConfirmar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmar.Appearance.Options.UseFont = true;
+            this.btnConfirmar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConfirmar.ImageOptions.SvgImage")));
+            this.btnConfirmar.Location = new System.Drawing.Point(487, 514);
+            this.btnConfirmar.Name = "btnConfirmar";
+            this.btnConfirmar.Size = new System.Drawing.Size(144, 44);
+            this.btnConfirmar.TabIndex = 186;
+            this.btnConfirmar.Text = "[F12] - Confirmar";
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // simpleButton1
+            // btnCancelar
             // 
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.simpleButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-            this.simpleButton1.Location = new System.Drawing.Point(11, 514);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(144, 44);
-            this.simpleButton1.TabIndex = 187;
-            this.simpleButton1.Text = "[Esc] - Cancelar";
+            this.btnCancelar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Appearance.Options.UseFont = true;
+            this.btnCancelar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnCancelar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCancelar.ImageOptions.SvgImage")));
+            this.btnCancelar.Location = new System.Drawing.Point(11, 514);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(144, 44);
+            this.btnCancelar.TabIndex = 187;
+            this.btnCancelar.Text = "[Esc] - Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // simpleButton2
+            // btnLimparCampos
             // 
-            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.simpleButton2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton2.ImageOptions.SvgImage")));
-            this.simpleButton2.Location = new System.Drawing.Point(161, 514);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(166, 44);
-            this.simpleButton2.TabIndex = 188;
-            this.simpleButton2.Text = "[F5] - Limpar campos";
-            // 
-            // textBox1
-            // 
-            this.textBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(6, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(106, 21);
-            this.textBox1.TabIndex = 14;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox2
-            // 
-            this.textBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(6, 22);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(106, 21);
-            this.textBox2.TabIndex = 15;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox3
-            // 
-            this.textBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox3.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(6, 22);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(106, 21);
-            this.textBox3.TabIndex = 16;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox4
-            // 
-            this.textBox4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(6, 22);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(106, 21);
-            this.textBox4.TabIndex = 17;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnLimparCampos.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimparCampos.Appearance.Options.UseFont = true;
+            this.btnLimparCampos.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnLimparCampos.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLimparCampos.ImageOptions.SvgImage")));
+            this.btnLimparCampos.Location = new System.Drawing.Point(161, 514);
+            this.btnLimparCampos.Name = "btnLimparCampos";
+            this.btnLimparCampos.Size = new System.Drawing.Size(166, 44);
+            this.btnLimparCampos.TabIndex = 188;
+            this.btnLimparCampos.Text = "[F5] - Limpar campos";
+            this.btnLimparCampos.Click += new System.EventHandler(this.btnLimparCampos_Click);
             // 
             // frmFuncionariosCadastrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 561);
-            this.Controls.Add(this.simpleButton2);
-            this.Controls.Add(this.simpleButton1);
-            this.Controls.Add(this.btnIncluir);
+            this.Controls.Add(this.btnLimparCampos);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.tabControlFuncionario);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmFuncionariosCadastrar";
-            this.Text = "frmFuncionariosCadastrar";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Cadastrar Funcionário";
+            this.Load += new System.EventHandler(this.frmFuncionariosCadastrar_Load);
             this.tabDadosAdicionaisASE.ResumeLayout(false);
+            this.groupBox26.ResumeLayout(false);
+            this.groupBox26.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
             this.gbQRA.ResumeLayout(false);
             this.gbQRA.PerformLayout();
             this.gbCodigo.ResumeLayout(false);
@@ -1431,11 +1615,11 @@ namespace Servipol.Forms.Cadastros.Funcionários
 
         private System.Windows.Forms.TabPage tabDadosAdicionaisASE;
         private System.Windows.Forms.GroupBox gbQRA;
-        private System.Windows.Forms.TextBox tBoxQRA;
+        private System.Windows.Forms.TextBox tBoxQraASE;
         private System.Windows.Forms.GroupBox gbCodigo;
-        private System.Windows.Forms.ComboBox cBoxCodigoFuncionario;
+        private System.Windows.Forms.ComboBox cBoxCodigoASE;
         private System.Windows.Forms.GroupBox groupBox22;
-        private System.Windows.Forms.ComboBox cBoxCargo;
+        private System.Windows.Forms.ComboBox cBoxCargoASE;
         private System.Windows.Forms.TabPage tabContatos;
         private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.TextBox tBoxNomeContato4;
@@ -1513,18 +1697,30 @@ namespace Servipol.Forms.Cadastros.Funcionários
         private System.Windows.Forms.CheckBox chkBoxCatCnhA;
         private System.Windows.Forms.GroupBox gbValidadeCNH;
         private System.Windows.Forms.GroupBox gbCargo;
-        private System.Windows.Forms.ComboBox cBoxTipoFuncionario;
+        private System.Windows.Forms.ComboBox cBoxCargo;
         private System.Windows.Forms.TabControl tabControlFuncionario;
         private System.Windows.Forms.DateTimePicker tBoxDataNascimento;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private DevExpress.XtraEditors.SimpleButton btnIncluir;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DateTimePicker tBoxDataExpRg;
+        private System.Windows.Forms.DateTimePicker tBoxDataValidadeCnh;
+        private System.Windows.Forms.DateTimePicker tBoxDataAdmissao;
+        private DevExpress.XtraEditors.SimpleButton btnConfirmar;
+        private DevExpress.XtraEditors.SimpleButton btnCancelar;
+        private DevExpress.XtraEditors.SimpleButton btnLimparCampos;
+        private System.Windows.Forms.TextBox tBoxTipoContato4;
+        private System.Windows.Forms.TextBox tBoxTipoContato3;
+        private System.Windows.Forms.TextBox tBoxTipoContato2;
+        private System.Windows.Forms.TextBox tBoxTipoContato1;
+        private System.Windows.Forms.GroupBox groupBox26;
+        private System.Windows.Forms.RadioButton rBtnCursoVigilanteNao;
+        private System.Windows.Forms.RadioButton rBtnCursoVigilanteSim;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker tBoxDataValidadeCursoVigilante;
+        private System.Windows.Forms.Label label2;
+        private DevExpress.XtraEditors.SeparatorControl separatorControl1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tBoxLocalCursoVigilante;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tBoxCidadeCursoVigilante;
+        private System.Windows.Forms.ComboBox cBoxUfCursoVigilante;
     }
 }
