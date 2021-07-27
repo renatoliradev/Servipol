@@ -124,7 +124,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tBoxCpf = new System.Windows.Forms.MaskedTextBox();
             this.gbNome = new System.Windows.Forms.GroupBox();
-            this.tBoxNomeCompletoFuncionario = new System.Windows.Forms.TextBox();
+            this.tBoxNomeCompleto = new System.Windows.Forms.TextBox();
             this.gbCatCNH = new System.Windows.Forms.GroupBox();
             this.chkBoxCatCnhD = new System.Windows.Forms.CheckBox();
             this.chkBoxCatCnhE = new System.Windows.Forms.CheckBox();
@@ -1327,7 +1327,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // 
             // gbNome
             // 
-            this.gbNome.Controls.Add(this.tBoxNomeCompletoFuncionario);
+            this.gbNome.Controls.Add(this.tBoxNomeCompleto);
             this.gbNome.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbNome.Location = new System.Drawing.Point(6, 63);
             this.gbNome.Name = "gbNome";
@@ -1336,14 +1336,14 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbNome.TabStop = false;
             this.gbNome.Text = "Nome Completo*";
             // 
-            // tBoxNomeCompletoFuncionario
+            // tBoxNomeCompleto
             // 
-            this.tBoxNomeCompletoFuncionario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxNomeCompletoFuncionario.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxNomeCompletoFuncionario.Location = new System.Drawing.Point(6, 21);
-            this.tBoxNomeCompletoFuncionario.Name = "tBoxNomeCompletoFuncionario";
-            this.tBoxNomeCompletoFuncionario.Size = new System.Drawing.Size(607, 21);
-            this.tBoxNomeCompletoFuncionario.TabIndex = 11;
+            this.tBoxNomeCompleto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxNomeCompleto.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxNomeCompleto.Location = new System.Drawing.Point(6, 21);
+            this.tBoxNomeCompleto.Name = "tBoxNomeCompleto";
+            this.tBoxNomeCompleto.Size = new System.Drawing.Size(607, 21);
+            this.tBoxNomeCompleto.TabIndex = 11;
             // 
             // gbCatCNH
             // 
@@ -1457,6 +1457,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.cBoxCargo.Name = "cBoxCargo";
             this.cBoxCargo.Size = new System.Drawing.Size(196, 21);
             this.cBoxCargo.TabIndex = 1;
+            this.cBoxCargo.SelectedIndexChanged += new System.EventHandler(this.cBoxCargo_SelectedIndexChanged);
             // 
             // tabControlFuncionario
             // 
@@ -1688,7 +1689,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.MaskedTextBox tBoxCpf;
         private System.Windows.Forms.GroupBox gbNome;
-        private System.Windows.Forms.TextBox tBoxNomeCompletoFuncionario;
+        private System.Windows.Forms.TextBox tBoxNomeCompleto;
         private System.Windows.Forms.GroupBox gbCatCNH;
         private System.Windows.Forms.CheckBox chkBoxCatCnhD;
         private System.Windows.Forms.CheckBox chkBoxCatCnhE;

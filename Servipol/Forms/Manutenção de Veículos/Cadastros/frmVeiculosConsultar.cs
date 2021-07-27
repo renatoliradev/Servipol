@@ -169,7 +169,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             string idVeiculoGrid = dGridVeiculos.SelectedRows[0].Cells[0].Value.ToString();
             frmVeiculosCadastrar frmVeiculosCadastrar = new frmVeiculosCadastrar("Editar", int.Parse(idVeiculoGrid));
             frmVeiculosCadastrar.Owner = this;
-            frmVeiculosCadastrar.ShowDialog();        }
+            frmVeiculosCadastrar.ShowDialog();
+        }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
@@ -178,6 +179,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         #endregion
 
-        
+
     }
 }

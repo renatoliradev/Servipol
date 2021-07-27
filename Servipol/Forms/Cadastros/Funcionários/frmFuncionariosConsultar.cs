@@ -1,15 +1,7 @@
-﻿using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Npgsql;
 using Servipol.Entidades.Classes;
-using Npgsql;
+using System;
+using System.Data;
 
 namespace Servipol.Forms.Cadastros.Funcionários
 {
@@ -26,7 +18,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
 
         private void frmFuncionariosConsultar_Load(object sender, EventArgs e)
         {
-            carregaTabelaFuncionarios();
+            //carregaTabelaFuncionarios();
         }
 
         #region Methods
@@ -36,7 +28,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT f.id, tf.descricao_tipo_funcionario, f.cod_controle, f.codigo, f.nome, f.data_admissao, f.telefone_funcionario_1, f.telefone_funcionario_2, f.telefone_funcionario_3, CASE WHEN f.ativo = 'S' THEN 'SIM' ELSE 'NÃO' END AS ativo FROM funcionarios AS f INNER JOIN tipo_funcionario AS tf ON(f.id_tipo_funcionario = tf.id_tipo_funcionario) WHERE f.ativo = 'S' ORDER BY f.codigo ASC", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT f.id, tf.descricao_tipo_funcionario, f.cod_controle, f.codigo, f.nome, f.data_admissao, f.telefone_funcionario_1, f.telefone_funcionario_2, f.telefone_funcionario_3, CASE WHEN f.ativo = 'S' THEN 'SIM' ELSE 'NÃO' END AS ativo FROM funcionario AS f INNER JOIN tipo_funcionario AS tf ON(f.id_tipo_funcionario = tf.id_tipo_funcionario) WHERE f.ativo = 'S' ORDER BY f.codigo ASC", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
 
@@ -59,12 +51,17 @@ namespace Servipol.Forms.Cadastros.Funcionários
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {
-
+            frmFuncionariosCadastrar frmFuncionariosCadastrar = new frmFuncionariosCadastrar("Incluir", 0);
+            frmFuncionariosCadastrar.Owner = this;
+            frmFuncionariosCadastrar.ShowDialog();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-
+            string idFuncionarioGrid = dGridFuncionarios.SelectedRows[0].Cells[0].Value.ToString();
+            frmFuncionariosCadastrar frmFuncionariosCadastrar = new frmFuncionariosCadastrar("Editar", int.Parse(idFuncionarioGrid));
+            frmFuncionariosCadastrar.Owner = this;
+            frmFuncionariosCadastrar.ShowDialog();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)

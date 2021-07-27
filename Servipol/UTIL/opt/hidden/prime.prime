@@ -1,0 +1,5 @@
+﻿[CONEXAO]
+IP_BD=    localhost
+PORTA_BD= 5432
+NOME_BD=  controleinternoservipol
+USER_BD=  postgres

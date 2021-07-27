@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?><root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxDiagramStringId.SimpleView">
+    <value>Simple View</value>
+  </data>
+  <data name="ASPxDiagramStringId.AutoZoom_Width">
+    <value>Enable auto zoom by width</value>
+  </data>
+  <data name="ASPxDiagramStringId.AutoZoom_Content">
+    <value>Enable auto zoom by content</value>
+  </data>
+  <data name="ASPxDiagramStringId.FitTo_Width">
+    <value>Fit to width</value>
+  </data>
+  <data name="ASPxDiagramStringId.FitTo_Content">
+    <value>Fit to content</value>
+  </data>
+  <data name="ASPxDiagramStringId.Settings_Style">
+    <value>Style</value>
+  </data>
+  <data name="ASPxDiagramStringId.Settings_Style_Text">
+    <value>Text</value>
+  </data>
+  <data name="ASPxDiagramStringId.Settings_Style_Line">
+    <value>Line</value>
+  </data>
+  <data name="ASPxDiagramStringId.Settings_Page">
+    <value>Page</value>
+  </data>
+  <data name="ASPxDiagramStringId.Settings_Page_Layout">
+    <value>Layout</value>
+  </data>
+  <data name="ASPxDiagramStringId.Settings_Page_View">
+    <value>View</value>
+  </data>
+  <data name="ASPxDiagramStringId.Settings_Layout">
+    <value>Layout</value>
+  </data>
+  <data name="ASPxDiagramStringId.Settings_Layout_Arrange">
+    <value>Arrange</value>
+  </data>
+  <data name="ASPxDiagramStringId.Settings_Layout_AutoLayout">
+    <value>Auto Layout</value>
+  </data>
+  <data name="ASPxDiagramStringId.Settings_Layout_AutoLayout_Horizontal">
+    <value>Horizontal</value>
+  </data>
+  <data name="ASPxDiagramStringId.Settings_Layout_AutoLayout_Vertical">
+    <value>Vertical</value>
+  </data>
+  <data name="ASPxDiagramStringId.Connector_Orthogonal">
+    <value>Orthogonal</value>
+  </data>
+  <data name="ASPxDiagramStringId.Connector_Straight">
+    <value>Straight</value>
+  </data>
+  <data name="ASPxDiagramStringId.Connector_LineEnding_None">
+    <value>None</value>
+  </data>
+  <data name="ASPxDiagramStringId.Connector_LineEnding_Arrow">
+    <value>Arrow</value>
+  </data>
+  <data name="ASPxDiagramStringId.Settings_Page_Layout_Landscape">
+    <value>Landscape</value>
+  </data>
+  <data name="ASPxDiagramStringId.Settings_Page_Layout_Portrait">
+    <value>Portrait</value>
+  </data>
+  <data name="ASPxDiagramStringId.ShowToolbox">
+    <value>Show Toolbox</value>
+  </data>
+  <data name="ASPxDiagramStringId.ShowGrid">
+    <value>Show Grid</value>
+  </data>
+  <data name="ASPxDiagramStringId.SnapToGrid">
+    <value>Snap to Grid</value>
+  </data>
+  <data name="ASPxDiagramStringId.Toolbox_General">
+    <value>General</value>
+  </data>
+  <data name="ASPxDiagramStringId.Toolbox_FlowChart">
+    <value>Flow Chart</value>
+  </data>
+  <data name="ASPxDiagramStringId.Toolbox_Containers">
+    <value>Containers</value>
+  </data>
+  <data name="ASPxDiagramStringId.Toolbox_Custom">
+    <value>Custom</value>
+  </data>
+</root>
