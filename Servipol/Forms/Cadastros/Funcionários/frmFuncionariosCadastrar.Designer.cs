@@ -1529,6 +1529,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar Funcionário";
             this.Load += new System.EventHandler(this.frmFuncionariosCadastrar_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFuncionariosCadastrar_KeyDown);
             this.tabDadosAdicionaisASE.ResumeLayout(false);
             this.groupBox26.ResumeLayout(false);
             this.groupBox26.PerformLayout();

@@ -18,8 +18,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
         #region Instâncias
         ConexaoBD BD = new ConexaoBD();
 
-        private static string TipoChamada = string.Empty;
-        private static int IdFuncionario = 0;
+        public string TipoChamada { get; set; }
+        public int IdFuncionario { get; set; }
         #endregion
 
         public frmFuncionariosCadastrar(string tipoChamada, int idFuncionario)
@@ -98,6 +98,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
                 cBoxCodigoASE.ValueMember = "codigo";
                 cBoxCodigoASE.DisplayMember = "codigo";
                 cBoxCodigoASE.DataSource = dt;
+
+                cBoxCodigoASE.SelectedIndex = -1;
             }
             catch (Exception err)
             {
@@ -114,18 +116,21 @@ namespace Servipol.Forms.Cadastros.Funcionários
             if (cBoxCargo.SelectedIndex < 0)
             {
                 XtraMessageBox.Show("Selecione o [Cargo] do funcionário.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                tabControlFuncionario.SelectTab(tabPrincipal);
                 cBoxCargo.Focus();
                 return false;
             }
             else if (cBoxTipoSanguineo.SelectedIndex < 0)
             {
                 XtraMessageBox.Show("Selecione o [Tipo Sanguíneo] do funcionário.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                tabControlFuncionario.SelectTab(tabPrincipal);
                 cBoxTipoSanguineo.Focus();
                 return false;
             }
             else if (string.IsNullOrEmpty(tBoxNomeCompleto.Text))
             {
                 XtraMessageBox.Show("Informe o [Nome Completo] do funcionário.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                tabControlFuncionario.SelectTab(tabPrincipal);
                 tBoxNomeCompleto.Focus();
                 return false;
             }
@@ -260,13 +265,32 @@ namespace Servipol.Forms.Cadastros.Funcionários
             }
         }
 
+        private void frmFuncionariosCadastrar_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F12:
+                    btnConfirmar_Click(sender, e);
+                    break;
+                case Keys.F5:
+                    if (TipoChamada == "Incluir")
+                    {
+                        btnLimparCampos_Click(sender, e);
+                    }
+                    break;
+                case Keys.Escape:
+                    btnCancelar_Click(sender, e);
+                    break;
+            }
+        }
+
         #endregion
 
         #region Buttons
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
@@ -286,9 +310,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
             }
         }
 
-
         #endregion
 
-
+        
     }
 }
