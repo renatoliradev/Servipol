@@ -75,3 +75,5 @@
 ###### ALTER TABLE public.funcionario  ADD COLUMN curso_vigilante_uf character varying(2);
 
 ###### ALTER TABLE public.funcionario  ADD COLUMN curso_vigilante_validade date;
+
+###### ALTER TABLE public.funcionario  ADD COLUMN tem_curso_vigilante character(1);

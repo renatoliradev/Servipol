@@ -83,7 +83,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbTelefone3 = new System.Windows.Forms.GroupBox();
             this.tBoxTelefone3 = new System.Windows.Forms.MaskedTextBox();
             this.gbUF = new System.Windows.Forms.GroupBox();
-            this.cBoxEstado = new System.Windows.Forms.ComboBox();
+            this.cBoxUfEndereco = new System.Windows.Forms.ComboBox();
             this.gbTelefone2 = new System.Windows.Forms.GroupBox();
             this.tBoxTelefone2 = new System.Windows.Forms.MaskedTextBox();
             this.gbCidade = new System.Windows.Forms.GroupBox();
@@ -226,10 +226,11 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // 
             // tBoxDataValidadeCursoVigilante
             // 
+            this.tBoxDataValidadeCursoVigilante.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tBoxDataValidadeCursoVigilante.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.tBoxDataValidadeCursoVigilante.Location = new System.Drawing.Point(520, 18);
             this.tBoxDataValidadeCursoVigilante.Name = "tBoxDataValidadeCursoVigilante";
-            this.tBoxDataValidadeCursoVigilante.Size = new System.Drawing.Size(94, 23);
+            this.tBoxDataValidadeCursoVigilante.Size = new System.Drawing.Size(94, 21);
             this.tBoxDataValidadeCursoVigilante.TabIndex = 15;
             this.tBoxDataValidadeCursoVigilante.Value = new System.DateTime(2021, 7, 26, 0, 0, 0, 0);
             // 
@@ -778,7 +779,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // 
             // gbUF
             // 
-            this.gbUF.Controls.Add(this.cBoxEstado);
+            this.gbUF.Controls.Add(this.cBoxUfEndereco);
             this.gbUF.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbUF.Location = new System.Drawing.Point(439, 72);
             this.gbUF.Name = "gbUF";
@@ -787,13 +788,13 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbUF.TabStop = false;
             this.gbUF.Text = "Estado";
             // 
-            // cBoxEstado
+            // cBoxUfEndereco
             // 
-            this.cBoxEstado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cBoxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxEstado.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBoxEstado.FormattingEnabled = true;
-            this.cBoxEstado.Items.AddRange(new object[] {
+            this.cBoxUfEndereco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cBoxUfEndereco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxUfEndereco.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxUfEndereco.FormattingEnabled = true;
+            this.cBoxUfEndereco.Items.AddRange(new object[] {
             "AC",
             "AL",
             "AP",
@@ -821,10 +822,10 @@ namespace Servipol.Forms.Cadastros.Funcionários
             "SP",
             "SE",
             "TO"});
-            this.cBoxEstado.Location = new System.Drawing.Point(6, 25);
-            this.cBoxEstado.Name = "cBoxEstado";
-            this.cBoxEstado.Size = new System.Drawing.Size(79, 21);
-            this.cBoxEstado.TabIndex = 16;
+            this.cBoxUfEndereco.Location = new System.Drawing.Point(6, 25);
+            this.cBoxUfEndereco.Name = "cBoxUfEndereco";
+            this.cBoxUfEndereco.Size = new System.Drawing.Size(79, 21);
+            this.cBoxUfEndereco.TabIndex = 16;
             // 
             // gbTelefone2
             // 
@@ -1652,7 +1653,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
         private System.Windows.Forms.GroupBox gbTelefone3;
         private System.Windows.Forms.MaskedTextBox tBoxTelefone3;
         private System.Windows.Forms.GroupBox gbUF;
-        private System.Windows.Forms.ComboBox cBoxEstado;
+        private System.Windows.Forms.ComboBox cBoxUfEndereco;
         private System.Windows.Forms.GroupBox gbTelefone2;
         private System.Windows.Forms.MaskedTextBox tBoxTelefone2;
         private System.Windows.Forms.GroupBox gbCidade;

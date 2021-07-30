@@ -127,6 +127,13 @@ namespace Servipol.Forms.Cadastros.Funcionários
                 cBoxTipoSanguineo.Focus();
                 return false;
             }
+            else if (tBoxDataNascimento.Text == DateTime.Now.ToString("d"))
+            {
+                XtraMessageBox.Show("Informe a [Data de Nascimento] do funcionário.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                tabControlFuncionario.SelectTab(tabPrincipal);
+                tBoxDataNascimento.Focus();
+                return false;
+            }
             else if (string.IsNullOrEmpty(tBoxNomeCompleto.Text))
             {
                 XtraMessageBox.Show("Informe o [Nome Completo] do funcionário.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -217,7 +224,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             tBoxNumero.Clear();
             tBoxBairro.Clear();
             tBoxCidade.Clear();
-            cBoxEstado.SelectedIndex = -1;
+            cBoxUfEndereco.SelectedIndex = -1;
             tBoxCep.Clear();
             tBoxEmail.Clear();
             tBoxTelefone1.Clear();
@@ -306,12 +313,98 @@ namespace Servipol.Forms.Cadastros.Funcionários
             }
             else
             {
-                XtraMessageBox.Show("Tudo certo");
+                #region Variáveis
+                string cargo, codigo, tipo_sanguineo, qra, cod_controle, nome_completo, cpf, rg, uf_exp_rg, data_exp_rg, data_nascimento, data_admissao, data_validade_cnh, cat_cnh_a, cat_cnh_b, cat_cnh_c, cat_cnh_d, cat_cnh_e, observacao, end_logradouro, end_numero, end_bairro,
+                    end_cidade, end_uf, end_cep, email, telefone_1, telefone_2, telefone_3, telefone_4, contato_1, contato_2, contato_3, contato_4, nome_contato_1, nome_contato_2, nome_contato_3, nome_contato_4, numero_registro_cnh, cargo_agente, pis_pasep, numero_ctps, serie_ctps, uf_emissao_ctps, nome_mae, nome_pai, tem_curso_vigilante, local_curso_vigilante, cidade_curso_vigilante, uf_curso_vigilante, data_validade_curso_vigilante;
+
+                //Principal
+                cargo = cBoxCargo.SelectedValue.ToString();
+                cod_controle = string.IsNullOrEmpty(tBoxCodControle.Text) ? "" : tBoxCodControle.Text.ToUpper().Trim();
+                tipo_sanguineo = cBoxTipoSanguineo.SelectedItem.ToString().ToUpper();
+                data_nascimento = tBoxDataNascimento.Text;
+                nome_completo = tBoxNomeCompleto.Text.ToUpper().Trim();
+                nome_mae = tBoxNomeMae.Text == string.Empty ? "" : tBoxNomeMae.Text.ToUpper().Trim();
+                nome_pai = tBoxNomePai.Text == string.Empty ? "" : tBoxNomePai.Text.ToUpper().Trim();
+                cpf = tBoxCpf.Text;
+                rg = tBoxRg.Text.Trim();
+                uf_exp_rg = cBoxUfExpRg.SelectedIndex == -1 ? "" : cBoxUfExpRg.SelectedItem.ToString();
+                data_exp_rg = tBoxDataExpRg.Text;
+                cat_cnh_a = chkBoxCatCnhA.Checked ? "S" : "N";
+                cat_cnh_b = chkBoxCatCnhB.Checked ? "S" : "N";
+                cat_cnh_c = chkBoxCatCnhC.Checked ? "S" : "N";
+                cat_cnh_d = chkBoxCatCnhD.Checked ? "S" : "N";
+                cat_cnh_e = chkBoxCatCnhE.Checked ? "S" : "N";
+                numero_registro_cnh = tBoxNumeroRegistroCNH.Text.ToUpper().Trim();
+                data_validade_cnh = tBoxDataValidadeCnh.Text;
+                observacao = tBoxObs.Text.ToUpper().Trim();
+
+                //Dados Profissionais
+                data_admissao = tBoxDataAdmissao.Text;
+                pis_pasep = tBoxPisPasep.Text == string.Empty ? "" : tBoxPisPasep.Text.ToUpper().Trim();
+                numero_ctps = tBoxNrCTPS.Text == string.Empty ? "" : tBoxNrCTPS.Text.ToUpper().Trim();
+                serie_ctps = tBoxSerieCTPS.Text == string.Empty ? "" : tBoxSerieCTPS.Text.ToUpper().Trim();
+                uf_emissao_ctps = cBoxUfEmissaoCTPS.SelectedIndex == -1 ? "" : cBoxUfEmissaoCTPS.SelectedItem.ToString();
+
+                //Endereços e Contatos
+                end_logradouro = tBoxLogradouro.Text.ToUpper().Trim();
+                end_numero = tBoxNumero.Text.ToUpper().Trim();
+                end_bairro = tBoxBairro.Text.ToUpper().Trim();
+                end_cidade = tBoxCidade.Text.ToUpper().Trim();
+                end_uf = cBoxUfEndereco.SelectedIndex == -1 ? "" : cBoxUfEndereco.SelectedItem.ToString();
+                end_cep = tBoxCep.Text;
+                email = tBoxEmail.Text.ToLower().Trim();
+                telefone_1 = tBoxTelefone1.Text;
+                telefone_2 = tBoxTelefone2.Text;
+                telefone_3 = tBoxTelefone3.Text;
+                telefone_4 = tBoxTelefone4.Text;
+                contato_1 = tBoxTipoContato1.Text.ToUpper().Trim();
+                contato_2 = tBoxTipoContato2.Text.ToUpper().Trim();
+                contato_3 = tBoxTipoContato3.Text.ToUpper().Trim();
+                contato_4 = tBoxTipoContato4.Text.ToUpper().Trim();
+                nome_contato_1 = tBoxNomeContato1.Text.ToUpper().Trim();
+                nome_contato_2 = tBoxNomeContato2.Text.ToUpper().Trim();
+                nome_contato_3 = tBoxNomeContato3.Text.ToUpper().Trim();
+                nome_contato_4 = tBoxNomeContato4.Text.ToUpper().Trim();
+
+                //Dados Adicionais (Operacional Externo)
+                codigo = cBoxCodigoASE.SelectedIndex == -1 ? "" : cBoxCodigoASE.SelectedValue.ToString();
+                qra = string.IsNullOrEmpty(tBoxQraASE.Text) ? "" : tBoxQraASE.Text.ToUpper().Trim();
+                cargo_agente = cBoxCargoASE.SelectedIndex == -1 ? "" : cBoxCargoASE.SelectedItem.ToString();
+                tem_curso_vigilante = rBtnCursoVigilanteSim.Checked == true ? "S" : "N";
+                local_curso_vigilante = tBoxLocalCursoVigilante.Text.ToUpper().Trim();
+                cidade_curso_vigilante = tBoxCidadeCursoVigilante.Text.ToUpper().Trim();
+                uf_curso_vigilante = cBoxUfCursoVigilante.SelectedIndex == -1 ? "" : cBoxUfCursoVigilante.SelectedItem.ToString();
+                data_validade_curso_vigilante = tBoxDataValidadeCursoVigilante.Text;
+
+                #endregion
+
+                string sqlCommand = $"INSERT INTO funcionario VALUES (nextval('seq_funcionario'), {cargo}, '{codigo}', '{qra}', '{nome_completo}', '{data_admissao}', '{end_logradouro}', '{end_numero}', '{end_bairro}', '{end_cidade}', '{end_uf}', '{telefone_1}', '{telefone_2}', '{telefone_3}', '{observacao}', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, '{cat_cnh_a}', '{cat_cnh_b}', '{cat_cnh_c}', '{cat_cnh_d}', '{cat_cnh_e}', '{data_validade_cnh}', NULL, NULL, 'S', '{cod_controle}', '{cpf}', '{rg}', '{uf_exp_rg}', '{data_exp_rg}', '{data_nascimento}', '{end_cep}', '{email}', '{telefone_4}', '{contato_1}', '{contato_2}', '{contato_3}', '{contato_4}', '{nome_contato_1}', '{nome_contato_2}', '{nome_contato_3}', '{nome_contato_4}', '{numero_registro_cnh}', '{pis_pasep}', '{numero_ctps}', '{serie_ctps}', '{uf_emissao_ctps}', '{cargo_agente}', '{nome_mae}', '{nome_pai}', {local_curso_vigilante}, {cidade_curso_vigilante}, {uf_curso_vigilante}, {data_validade_curso_vigilante}, {tem_curso_vigilante})";
+                NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
+                command.ExecuteNonQuery();
+
+                if (cBoxCargo.SelectedIndex == 0)
+                {
+                    string sqlCommand2 = $"UPDATE codigoqra SET id_funcionario = (SELECT MAX(id_funcionario) AS id FROM funcionario) WHERE codigo = {cBoxCodigoASE.SelectedValue}";
+                    NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
+                    command2.ExecuteNonQuery();
+                }
+
+                CarregaCodigoASE();
+
+                if (XtraMessageBox.Show("Funcionário Cadastrado com Sucesso! \n \n Deseja cadastrar um novo funcionário ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    ((frmFuncionariosConsultar)this.Owner).AtualizaDG();
+                    this.Close();
+                }
+                else
+                {
+                    btnLimparCampos_Click(sender, e);
+                }
             }
         }
 
         #endregion
 
-        
+
     }
 }

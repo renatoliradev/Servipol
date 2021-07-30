@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using DevExpress.XtraEditors;
+using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
 using System.Data;
@@ -18,12 +19,12 @@ namespace Servipol.Forms.Cadastros.Funcionários
 
         private void frmFuncionariosConsultar_Load(object sender, EventArgs e)
         {
-            //carregaTabelaFuncionarios();
+            CarregaTabelaFuncionarios();
         }
 
         #region Methods
 
-        public void carregaTabelaFuncionarios()
+        public void CarregaTabelaFuncionarios()
         {
             try
             {
@@ -38,6 +39,14 @@ namespace Servipol.Forms.Cadastros.Funcionários
             {
                 BD.Desconectar();
             }
+        }
+
+        public void AtualizaDG()
+        {
+            cBoxSituacao.SelectedIndex = 0;
+            cBoxTipoBusca.SelectedIndex = 0;
+            tBoxTextoConsulta.Clear();
+            CarregaTabelaFuncionarios();
         }
 
         #endregion
@@ -58,10 +67,17 @@ namespace Servipol.Forms.Cadastros.Funcionários
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            string idFuncionarioGrid = dGridFuncionarios.SelectedRows[0].Cells[0].Value.ToString();
-            frmFuncionariosCadastrar frmFuncionariosCadastrar = new frmFuncionariosCadastrar("Editar", int.Parse(idFuncionarioGrid));
-            frmFuncionariosCadastrar.Owner = this;
-            frmFuncionariosCadastrar.ShowDialog();
+            try
+            {
+                string idFuncionarioGrid = dGridFuncionarios.SelectedRows[0].Cells[0].Value.ToString();
+                frmFuncionariosCadastrar frmFuncionariosCadastrar = new frmFuncionariosCadastrar("Editar", int.Parse(idFuncionarioGrid));
+                frmFuncionariosCadastrar.Owner = this;
+                frmFuncionariosCadastrar.ShowDialog();
+            }
+            catch
+            {
+                XtraMessageBox.Show("Primeiro selecione o registro que deseja editar.", "Atenção", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
+            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
