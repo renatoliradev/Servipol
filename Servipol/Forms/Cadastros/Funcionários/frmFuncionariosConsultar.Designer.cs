@@ -48,10 +48,10 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
             this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricao_tipo_funcionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_funcionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao_funcionario_cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_admissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigo_ase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo_sanguineo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefone_funcionario_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -182,10 +182,10 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.dGridFuncionarios.BackgroundColor = System.Drawing.Color.White;
             this.dGridFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGridFuncionarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.descricao_tipo_funcionario,
+            this.id_funcionario,
+            this.descricao_funcionario_cargo,
             this.data_admissao,
-            this.codigo,
+            this.codigo_ase,
             this.nome,
             this.tipo_sanguineo,
             this.telefone_funcionario_1,
@@ -286,24 +286,24 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.panel3.Size = new System.Drawing.Size(1238, 355);
             this.panel3.TabIndex = 138;
             // 
-            // id
+            // id_funcionario
             // 
-            this.id.DataPropertyName = "id_funcionario";
-            this.id.FillWeight = 1F;
-            this.id.HeaderText = "ID";
-            this.id.MinimumWidth = 2;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
+            this.id_funcionario.DataPropertyName = "id_funcionario";
+            this.id_funcionario.FillWeight = 1F;
+            this.id_funcionario.HeaderText = "ID";
+            this.id_funcionario.MinimumWidth = 2;
+            this.id_funcionario.Name = "id_funcionario";
+            this.id_funcionario.ReadOnly = true;
+            this.id_funcionario.Visible = false;
             // 
-            // descricao_tipo_funcionario
+            // descricao_funcionario_cargo
             // 
-            this.descricao_tipo_funcionario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.descricao_tipo_funcionario.DataPropertyName = "descricao_funcionario_cargo";
-            this.descricao_tipo_funcionario.HeaderText = "Cargo";
-            this.descricao_tipo_funcionario.Name = "descricao_tipo_funcionario";
-            this.descricao_tipo_funcionario.ReadOnly = true;
-            this.descricao_tipo_funcionario.Width = 63;
+            this.descricao_funcionario_cargo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.descricao_funcionario_cargo.DataPropertyName = "descricao_funcionario_cargo";
+            this.descricao_funcionario_cargo.HeaderText = "Cargo";
+            this.descricao_funcionario_cargo.Name = "descricao_funcionario_cargo";
+            this.descricao_funcionario_cargo.ReadOnly = true;
+            this.descricao_funcionario_cargo.Width = 63;
             // 
             // data_admissao
             // 
@@ -316,15 +316,15 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.data_admissao.ReadOnly = true;
             this.data_admissao.Width = 99;
             // 
-            // codigo
+            // codigo_ase
             // 
-            this.codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.codigo.DataPropertyName = "codigo";
-            this.codigo.FillWeight = 80F;
-            this.codigo.HeaderText = "Cód. Agente";
-            this.codigo.Name = "codigo";
-            this.codigo.ReadOnly = true;
-            this.codigo.Width = 88;
+            this.codigo_ase.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.codigo_ase.DataPropertyName = "codigo_ase";
+            this.codigo_ase.FillWeight = 80F;
+            this.codigo_ase.HeaderText = "Cód. Agente";
+            this.codigo_ase.Name = "codigo_ase";
+            this.codigo_ase.ReadOnly = true;
+            this.codigo_ase.Width = 88;
             // 
             // nome
             // 
@@ -440,10 +440,10 @@ namespace Servipol.Forms.Cadastros.Funcionários
         private DevExpress.XtraEditors.SimpleButton btnEditar;
         private DevExpress.XtraEditors.SimpleButton btnConsultar;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descricao_tipo_funcionario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_funcionario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricao_funcionario_cargo;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_admissao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigo_ase;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo_sanguineo;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefone_funcionario_1;

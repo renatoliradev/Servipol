@@ -184,7 +184,7 @@ CREATE TABLE public.funcionario
 
  codigo_ase character(4),
 
- qra_ase character varying(50),qra character varying(50),
+ qra_ase character varying(50),
 
  tem_curso_vigilante character(1),
 
@@ -315,5 +315,7 @@ MINVALUE 1
 MAXVALUE 9223372036854775807
 START 1
 CACHE 1;
+
+DELETE FROM sis_sessao_login;
 ```
 

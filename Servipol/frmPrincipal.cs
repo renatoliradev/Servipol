@@ -57,7 +57,7 @@ namespace Servipol
             {
                 BD.Conectar();
 
-                NpgsqlCommand com = new NpgsqlCommand($"SELECT u.id_usuario, u.login FROM usuarios AS u WHERE u.id_usuario = (SELECT id_usuario FROM sis_sessao_login WHERE nome_pc = '{Environment.MachineName}' AND online = 'S')", BD.ObjetoConexao);
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT u.id_usuario, u.login FROM usuario AS u WHERE u.id_usuario = (SELECT id_usuario FROM sis_sessao_login WHERE nome_pc = '{Environment.MachineName}' AND online = 'S')", BD.ObjetoConexao);
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     while (dr.Read())

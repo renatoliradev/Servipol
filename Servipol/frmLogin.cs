@@ -35,7 +35,7 @@ namespace Servipol
 
                 NpgsqlCommand com = new NpgsqlCommand();
                 com.Connection = BD.ObjetoConexao;
-                com.CommandText = "SELECT id_usuario, login, senha FROM usuarios WHERE ativo = 'S' ORDER BY login ASC";
+                com.CommandText = "SELECT id_usuario, login, senha FROM usuario WHERE ativo = 'S' ORDER BY login ASC";
                 NpgsqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
@@ -106,7 +106,7 @@ namespace Servipol
 
                 if (criptografia.GerarMD5(tBoxSenha.Text).Trim().ToUpper() == auxSenhaSistema.Text)
                 {
-                    NpgsqlCommand command = new NpgsqlCommand($"INSERT INTO sis_sessao_login VALUES (nextval('seq_id_sis_sessao_login'), {cBoxUsuario.SelectedValue}, '{Environment.MachineName}', CURRENT_TIMESTAMP, NULL, 'S')", BD.ObjetoConexao);
+                    NpgsqlCommand command = new NpgsqlCommand($"INSERT INTO sis_sessao_login VALUES (nextval('seq_sis_sessao_login'), {cBoxUsuario.SelectedValue}, '{Environment.MachineName}', CURRENT_TIMESTAMP, NULL, 'S')", BD.ObjetoConexao);
                     command.ExecuteNonQuery();
 
                     GravaUltimoUsuarioLogin();
@@ -116,10 +116,14 @@ namespace Servipol
                 }
                 else
                 {
-                    XtraMessageBox.Show("Senha inválida!", "Erro de Login", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    XtraMessageBox.Show("Senha inválida!", "Tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     tBoxSenha.Clear();
                     tBoxSenha.Focus();
                 }
+            }
+            catch (Exception err)
+            {
+                throw err;
             }
             finally
             {

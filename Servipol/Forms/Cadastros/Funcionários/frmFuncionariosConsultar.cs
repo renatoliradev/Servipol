@@ -3,6 +3,7 @@ using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Servipol.Forms.Cadastros.Funcionários
 {
@@ -29,7 +30,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT f.id, tf.descricao_tipo_funcionario, f.cod_controle, f.codigo, f.nome, f.data_admissao, f.telefone_funcionario_1, f.telefone_funcionario_2, f.telefone_funcionario_3, CASE WHEN f.ativo = 'S' THEN 'SIM' ELSE 'NÃO' END AS ativo FROM funcionario AS f INNER JOIN tipo_funcionario AS tf ON(f.id_tipo_funcionario = tf.id_tipo_funcionario) WHERE f.ativo = 'S' ORDER BY f.codigo ASC", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT f.id_funcionario, fc.descricao AS descricao_funcionario_cargo, f.tipo_sanguineo, f.codigo_ase, f.nome, f.data_admissao, f.telefone_1, f.telefone_2, f.telefone_3, telefone_4, CASE WHEN f.ativo = 'S' THEN 'SIM' ELSE 'NÃO' END AS ativo FROM funcionario AS f INNER JOIN funcionario_cargo AS fc ON(f.id_funcionario_cargo = fc.id_funcionario_cargo) WHERE f.ativo = 'S' ORDER BY f.codigo_ase ASC", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
 
@@ -76,7 +77,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             }
             catch
             {
-                XtraMessageBox.Show("Primeiro selecione o registro que deseja editar.", "Atenção", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Primeiro selecione o registro que deseja editar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
