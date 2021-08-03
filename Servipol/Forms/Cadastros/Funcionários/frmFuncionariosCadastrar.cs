@@ -1,15 +1,9 @@
 ﻿using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Servipol.Entidades.Classes;
 using Npgsql;
+using Servipol.Entidades.Classes;
+using System;
+using System.Data;
+using System.Windows.Forms;
 
 namespace Servipol.Forms.Cadastros.Funcionários
 {
@@ -46,6 +40,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
                 if (TipoChamada == "Incluir")
                 {
                     this.Text = "Cadastrar Funcionário";
+                    tabDadosRegistro.Parent = null;
                     LimparCampos();
                 }
                 else if (TipoChamada == "Editar")
@@ -54,10 +49,329 @@ namespace Servipol.Forms.Cadastros.Funcionários
                     btnLimparCampos.Enabled = false;
                     btnLimparCampos.Visible = false;
                 }
+                else if (TipoChamada == "Visualizar")
+                {
+                    this.Text = "Visualizar Cadastro de Funcionário";
+                    btnLimparCampos.Enabled = false;
+                    btnLimparCampos.Visible = false;
+
+                    #region campos em ReadOnly
+                    //Principal
+                    cBoxCargo.Enabled = false;
+                    tBoxCodControle.ReadOnly = true;
+                    cBoxTipoSanguineo.Enabled = false;
+                    tBoxDataNascimento.Enabled = false;
+                    tBoxNomeCompleto.ReadOnly = true;
+                    tBoxNomeMae.ReadOnly = true;
+                    tBoxNomePai.ReadOnly = true;
+                    tBoxCpf.ReadOnly = true;
+                    tBoxRg.ReadOnly = true;
+                    cBoxUfExpRg.Enabled = false;
+                    tBoxDataExpRg.Enabled = false;
+                    chkBoxCatCnhA.Enabled = false;
+                    chkBoxCatCnhB.Enabled = false;
+                    chkBoxCatCnhC.Enabled = false;
+                    chkBoxCatCnhD.Enabled = false;
+                    chkBoxCatCnhE.Enabled = false;
+                    tBoxNumeroRegistroCNH.ReadOnly = true;
+                    tBoxDataValidadeCnh.Enabled = false;
+                    tBoxObs.ReadOnly = true;
+
+                    //Dados Profissionais
+                    tBoxDataAdmissao.Enabled = false;
+                    tBoxPisPasep.ReadOnly = true;
+                    tBoxNrCTPS.ReadOnly = true;
+                    tBoxSerieCTPS.ReadOnly = true;
+                    cBoxUfEmissaoCTPS.Enabled = false;
+
+                    //Endereço e Contatos
+                    tBoxLogradouro.ReadOnly = true;
+                    tBoxNumero.ReadOnly = true;
+                    tBoxBairro.ReadOnly = true;
+                    tBoxCidade.ReadOnly = true;
+                    cBoxUfEndereco.Enabled = false;
+                    tBoxCep.ReadOnly = true;
+                    tBoxEmail.ReadOnly = true;
+                    tBoxTelefone1.ReadOnly = true;
+                    tBoxTelefone2.ReadOnly = true;
+                    tBoxTelefone3.ReadOnly = true;
+                    tBoxTelefone4.ReadOnly = true;
+                    tBoxTipoContato1.ReadOnly = true;
+                    tBoxTipoContato2.ReadOnly = true;
+                    tBoxTipoContato3.ReadOnly = true;
+                    tBoxTipoContato4.ReadOnly = true;
+                    tBoxNomeContato1.ReadOnly = true;
+                    tBoxNomeContato2.ReadOnly = true;
+                    tBoxNomeContato3.ReadOnly = true;
+                    tBoxNomeContato4.ReadOnly = true;
+
+                    //Dados Adicionais (Operacional Externo)
+                    cBoxCodigoASE.Enabled = false;
+                    tBoxQraASE.ReadOnly = true;
+                    cBoxCargoASE.Enabled = false;
+                    rBtnCursoVigilanteSim.Enabled = false;
+                    rBtnCursoVigilanteNao.Enabled = false;
+                    tBoxLocalCursoVigilante.ReadOnly = true;
+                    tBoxCidadeCursoVigilante.ReadOnly = true;
+                    cBoxUfCursoVigilante.Enabled = false;
+                    tBoxDataValidadeCursoVigilante.Enabled = false;
+                    #endregion
+                }
             }
             catch (Exception err)
             {
                 throw err;
+            }
+        }
+
+        private void CarregaRegistroParaEdicao()
+        {
+            try
+            {
+                BD.Conectar();
+
+                #region Variáveis
+                string cargo, codigo, tipo_sanguineo, qra, cod_controle, nome_completo, cpf, rg, uf_exp_rg, data_exp_rg, data_nascimento, data_admissao, data_validade_cnh, cat_cnh_a, cat_cnh_b, cat_cnh_c, cat_cnh_d, cat_cnh_e, observacao, end_logradouro, end_numero, end_bairro,
+                    end_cidade, end_uf, end_cep, email, telefone_1, telefone_2, telefone_3, telefone_4, contato_1, contato_2, contato_3, contato_4, nome_contato_1, nome_contato_2, nome_contato_3, nome_contato_4, numero_registro_cnh, cargo_agente, pis_pasep, numero_ctps, serie_ctps, uf_emissao_ctps, nome_mae, nome_pai, tem_curso_vigilante, local_curso_vigilante, cidade_curso_vigilante, uf_curso_vigilante, data_validade_curso_vigilante;
+
+                //Principal
+                cargo = string.Empty;
+                cod_controle = string.Empty;
+                tipo_sanguineo = string.Empty;
+                data_nascimento = string.Empty;
+                nome_completo = string.Empty;
+                nome_mae = string.Empty;
+                nome_pai = string.Empty;
+                cpf = string.Empty;
+                rg = string.Empty;
+                uf_exp_rg = string.Empty;
+                data_exp_rg = string.Empty;
+                cat_cnh_a = string.Empty;
+                cat_cnh_b = string.Empty;
+                cat_cnh_c = string.Empty;
+                cat_cnh_d = string.Empty;
+                cat_cnh_e = string.Empty;
+                numero_registro_cnh = string.Empty;
+                data_validade_cnh = string.Empty;
+                observacao = string.Empty;
+
+                //Dados Profissionais
+                data_admissao = string.Empty;
+                pis_pasep = string.Empty;
+                numero_ctps = string.Empty;
+                serie_ctps = string.Empty;
+                uf_emissao_ctps = string.Empty;
+
+                //Endereços e Contatos
+                end_logradouro = string.Empty;
+                end_numero = string.Empty;
+                end_bairro = string.Empty;
+                end_cidade = string.Empty;
+                end_uf = string.Empty;
+                end_cep = string.Empty;
+                email = string.Empty;
+                telefone_1 = string.Empty;
+                telefone_2 = string.Empty;
+                telefone_3 = string.Empty;
+                telefone_4 = string.Empty;
+                contato_1 = string.Empty;
+                contato_2 = string.Empty;
+                contato_3 = string.Empty;
+                contato_4 = string.Empty;
+                nome_contato_1 = string.Empty;
+                nome_contato_2 = string.Empty;
+                nome_contato_3 = string.Empty;
+                nome_contato_4 = string.Empty;
+
+                //Dados Adicionais (Operacional Externo)
+                codigo = string.Empty;
+                qra = string.Empty;
+                cargo_agente = string.Empty;
+                tem_curso_vigilante = string.Empty;
+                local_curso_vigilante = string.Empty;
+                cidade_curso_vigilante = string.Empty;
+                uf_curso_vigilante = string.Empty;
+                data_validade_curso_vigilante = string.Empty;
+                #endregion
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT tf.id_tipo_funcionario, f.cod_controle, f.cpf, f.rg, f.uf_exp_rg, f.data_exp_rg, f.data_nascimento, f.cep_endereco_funcionario, f.email, f.codigo, f.qra, f.nome, f.data_admissao, f.logradouro_endereco_funcionario, f.numero_endereco_funcionario, f.bairro_endereco_funcionario, f.cidade_endereco_funcionario, f.estado_endereco_funcionario, f.telefone_funcionario_1, f.telefone_funcionario_2, f.telefone_funcionario_3, f.telefone_funcionario_4, f.tipo_contato_1, f.tipo_contato_2, f.tipo_contato_3, f.tipo_contato_4, f.nome_contato_1, f.nome_contato_2, f.nome_contato_3, f.nome_contato_4, f.observacao_funcionario, uc.nome AS usuario_cadastro, f.data_cadastro, ud.nome AS usuario_desativacao, f.data_desativacao, ur.nome AS usuario_reativacao, f.data_reativacao, f.cat_cnh_a, f.cat_cnh_b, f.cat_cnh_c, f.cat_cnh_d, f.cat_cnh_e, f.pis_pasep, f.numero_ctps, f.serie_ctps, f.uf_emissao_ctps, f.cargo, f.numero_registro_cnh, f.data_validade_cnh FROM funcionarios AS f INNER JOIN tipo_funcionario AS tf ON(tf.id_tipo_funcionario = f.id_tipo_funcionario) LEFT OUTER JOIN usuarios AS uc ON(uc.id = f.id_usuario_cadastro) LEFT OUTER JOIN usuarios AS ud ON(ud.id = f.id_usuario_desativacao) LEFT OUTER JOIN usuarios AS ur ON(ur.id = f.id_usuario_reativacao) WHERE f.id = " + auxIdFuncionario + "", bd.ObjetoConexao);
+                using (NpgsqlDataReader dr = com.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        //Principal
+                        cargo = dr["id_funcionario_cargo"].ToString();
+                        cod_controle = string.Empty;
+                        tipo_sanguineo = string.Empty;
+                        data_nascimento = string.Empty;
+                        nome_completo = string.Empty;
+                        nome_mae = string.Empty;
+                        nome_pai = string.Empty;
+                        cpf = string.Empty;
+                        rg = string.Empty;
+                        uf_exp_rg = string.Empty;
+                        data_exp_rg = string.Empty;
+                        cat_cnh_a = string.Empty;
+                        cat_cnh_b = string.Empty;
+                        cat_cnh_c = string.Empty;
+                        cat_cnh_d = string.Empty;
+                        cat_cnh_e = string.Empty;
+                        numero_registro_cnh = string.Empty;
+                        data_validade_cnh = string.Empty;
+                        observacao = string.Empty;
+
+                        //Dados Profissionais
+                        data_admissao = string.Empty;
+                        pis_pasep = string.Empty;
+                        numero_ctps = string.Empty;
+                        serie_ctps = string.Empty;
+                        uf_emissao_ctps = string.Empty;
+
+                        //Endereços e Contatos
+                        end_logradouro = string.Empty;
+                        end_numero = string.Empty;
+                        end_bairro = string.Empty;
+                        end_cidade = string.Empty;
+                        end_uf = string.Empty;
+                        end_cep = string.Empty;
+                        email = string.Empty;
+                        telefone_1 = string.Empty;
+                        telefone_2 = string.Empty;
+                        telefone_3 = string.Empty;
+                        telefone_4 = string.Empty;
+                        contato_1 = string.Empty;
+                        contato_2 = string.Empty;
+                        contato_3 = string.Empty;
+                        contato_4 = string.Empty;
+                        nome_contato_1 = string.Empty;
+                        nome_contato_2 = string.Empty;
+                        nome_contato_3 = string.Empty;
+                        nome_contato_4 = string.Empty;
+
+                        //Dados Adicionais (Operacional Externo)
+                        codigo = string.Empty;
+                        qra = string.Empty;
+                        cargo_agente = string.Empty;
+                        tem_curso_vigilante = string.Empty;
+                        local_curso_vigilante = string.Empty;
+                        cidade_curso_vigilante = string.Empty;
+                        uf_curso_vigilante = string.Empty;
+                        data_validade_curso_vigilante = string.Empty;
+                    }
+
+                    cBoxCargo.SelectedValue = cargo;
+                    tBoxCodControle.Text = cod_controle;
+                    tBoxDataNascimento.Text = data_nascimento;
+                    tBoxNomeCompletoFuncionario.Text = nome_completo;
+                    tBoxCpf.Text = cpf;
+                    tBoxRg.Text = rg;
+                    cBoxUfExpRg.SelectedItem = uf_exp_rg;
+                    tBoxDataExpRg.Text = data_exp_rg;
+                    tBoxNumeroRegistroCNH.Text = registro_cnh;
+                    tBoxValidadeCnh.Text = data_validade_cnh;
+                    tBoxObs.Text = obs;
+
+                    tBoxDataAdmissao.Text = data_admissao;
+                    tBoxPisPasep.Text = pis_pasep;
+                    tBoxNrCTPS.Text = numero_ctps;
+                    tBoxSerieCTPS.Text = serie_ctps;
+                    cBoxUfEmissaoCTPS.SelectedItem = uf_emissao_ctps;
+
+                    tBoxLogradouro.Text = end_logradouro;
+                    tBoxNumero.Text = end_numero;
+                    tBoxBairro.Text = end_bairro;
+                    tBoxCidade.Text = end_cidade;
+                    cBoxEstado.SelectedItem = end_uf;
+                    tBoxCep.Text = end_cep;
+                    tBoxEmail.Text = email;
+                    tBoxTelefone1.Text = telefone_1;
+                    tBoxTelefone2.Text = telefone_2;
+                    tBoxTelefone3.Text = telefone_3;
+                    tBoxTelefone4.Text = telefone_4;
+                    cBoxTipoContato1.SelectedItem = tipo_contato_1;
+                    cBoxTipoContato2.SelectedItem = tipo_contato_2;
+                    cBoxTipoContato3.SelectedItem = tipo_contato_3;
+                    cBoxTipoContato4.SelectedItem = tipo_contato_4;
+                    tBoxNomeContato1.Text = nome_contato_1;
+                    tBoxNomeContato2.Text = nome_contato_2;
+                    tBoxNomeContato3.Text = nome_contato_3;
+                    tBoxNomeContato4.Text = nome_contato_4;
+
+                    cBoxCodigoFuncionario.SelectedValue = codigo_agente;
+                    tBoxQRA.Text = qra_agente;
+                    cBoxCargo.SelectedItem = cargo_agente;
+
+                    tBoxUsuarioCadastro.Text = usuario_cadastro;
+                    tBoxDataCadastro.Text = data_cadastro;
+                    tBoxUsuarioDesativacao.Text = usuario_desativacao_cadastro;
+                    tBoxDataDesativacao.Text = data_desativacao_cadastro;
+                    tBoxUsuarioReativacao.Text = usuario_reativacao_cadastro;
+                    tBoxDataReativacao.Text = data_reativacao_cadastro;
+                }
+
+                #region Conversão categoria CNH
+                if (cat_cnh_a == "S")
+                {
+                    chkBoxCatCnhA.Checked = true;
+                }
+                else
+                {
+                    chkBoxCatCnhB.Checked = false;
+                }
+                if (cat_cnh_b == "S")
+                {
+                    chkBoxCatCnhB.Checked = true;
+                }
+                else
+                {
+                    chkBoxCatCnhB.Checked = false;
+                }
+                if (cat_cnh_c == "S")
+                {
+                    chkBoxCatCnhC.Checked = true;
+                }
+                else
+                {
+                    chkBoxCatCnhC.Checked = false;
+                }
+                if (cat_cnh_d == "S")
+                {
+                    chkBoxCatCnhD.Checked = true;
+                }
+                else
+                {
+                    chkBoxCatCnhD.Checked = false;
+                }
+                if (cat_cnh_e == "S")
+                {
+                    chkBoxCatCnhE.Checked = true;
+                }
+                else
+                {
+                    chkBoxCatCnhE.Checked = false;
+                }
+                #endregion
+
+                if (tipo_funcionario == "1")
+                {
+                    tabDadosAdicionaisASE.Parent = tabControlFuncionario;
+                }
+                else
+                {
+                    cBoxCodigoFuncionario.SelectedIndex = -1;
+                    tBoxQRA.Clear();
+                    cBoxCargo.SelectedIndex = -1;
+                    tabDadosAdicionaisASE.Parent = null;
+                }
+
+            }
+            catch (Exception e)
+            {
+                //XtraMessageBox.Show(e.Message, "Falha na função CarregaFuncionario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            finally
+            {
+                bd.Desconectar();
             }
         }
 

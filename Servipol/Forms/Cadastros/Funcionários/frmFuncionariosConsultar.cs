@@ -81,6 +81,21 @@ namespace Servipol.Forms.Cadastros.Funcionários
             }
         }
 
+        private void btnVisualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string idFuncionarioGrid = dGridFuncionarios.SelectedRows[0].Cells[0].Value.ToString();
+                frmFuncionariosCadastrar frmFuncionariosCadastrar = new frmFuncionariosCadastrar("Visualizar", int.Parse(idFuncionarioGrid));
+                frmFuncionariosCadastrar.Owner = this;
+                frmFuncionariosCadastrar.ShowDialog();
+            }
+            catch
+            {
+                XtraMessageBox.Show("Primeiro selecione o registro que deseja visualizar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private void btnExcluir_Click(object sender, EventArgs e)
         {
 
@@ -91,8 +106,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
 
         }
 
-        #endregion
 
+        #endregion
 
     }
 }
