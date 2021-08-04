@@ -194,7 +194,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
                 data_validade_curso_vigilante = string.Empty;
                 #endregion
 
-                NpgsqlCommand com = new NpgsqlCommand("SELECT tf.id_tipo_funcionario, f.cod_controle, f.cpf, f.rg, f.uf_exp_rg, f.data_exp_rg, f.data_nascimento, f.cep_endereco_funcionario, f.email, f.codigo, f.qra, f.nome, f.data_admissao, f.logradouro_endereco_funcionario, f.numero_endereco_funcionario, f.bairro_endereco_funcionario, f.cidade_endereco_funcionario, f.estado_endereco_funcionario, f.telefone_funcionario_1, f.telefone_funcionario_2, f.telefone_funcionario_3, f.telefone_funcionario_4, f.tipo_contato_1, f.tipo_contato_2, f.tipo_contato_3, f.tipo_contato_4, f.nome_contato_1, f.nome_contato_2, f.nome_contato_3, f.nome_contato_4, f.observacao_funcionario, uc.nome AS usuario_cadastro, f.data_cadastro, ud.nome AS usuario_desativacao, f.data_desativacao, ur.nome AS usuario_reativacao, f.data_reativacao, f.cat_cnh_a, f.cat_cnh_b, f.cat_cnh_c, f.cat_cnh_d, f.cat_cnh_e, f.pis_pasep, f.numero_ctps, f.serie_ctps, f.uf_emissao_ctps, f.cargo, f.numero_registro_cnh, f.data_validade_cnh FROM funcionarios AS f INNER JOIN tipo_funcionario AS tf ON(tf.id_tipo_funcionario = f.id_tipo_funcionario) LEFT OUTER JOIN usuarios AS uc ON(uc.id = f.id_usuario_cadastro) LEFT OUTER JOIN usuarios AS ud ON(ud.id = f.id_usuario_desativacao) LEFT OUTER JOIN usuarios AS ur ON(ur.id = f.id_usuario_reativacao) WHERE f.id = " + auxIdFuncionario + "", bd.ObjetoConexao);
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT * FROM FUNCIONARIO", BD.ObjetoConexao);
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     while (dr.Read())
@@ -262,14 +262,14 @@ namespace Servipol.Forms.Cadastros.Funcionários
                     cBoxCargo.SelectedValue = cargo;
                     tBoxCodControle.Text = cod_controle;
                     tBoxDataNascimento.Text = data_nascimento;
-                    tBoxNomeCompletoFuncionario.Text = nome_completo;
+                    tBoxNomeCompleto.Text = nome_completo;
                     tBoxCpf.Text = cpf;
                     tBoxRg.Text = rg;
                     cBoxUfExpRg.SelectedItem = uf_exp_rg;
                     tBoxDataExpRg.Text = data_exp_rg;
-                    tBoxNumeroRegistroCNH.Text = registro_cnh;
-                    tBoxValidadeCnh.Text = data_validade_cnh;
-                    tBoxObs.Text = obs;
+                    tBoxNumeroRegistroCNH.Text = numero_registro_cnh;
+                    tBoxDataValidadeCnh.Text = data_validade_cnh;
+                    tBoxObs.Text = observacao;
 
                     tBoxDataAdmissao.Text = data_admissao;
                     tBoxPisPasep.Text = pis_pasep;
@@ -281,32 +281,32 @@ namespace Servipol.Forms.Cadastros.Funcionários
                     tBoxNumero.Text = end_numero;
                     tBoxBairro.Text = end_bairro;
                     tBoxCidade.Text = end_cidade;
-                    cBoxEstado.SelectedItem = end_uf;
+                    cBoxUfEndereco.SelectedItem = end_uf;
                     tBoxCep.Text = end_cep;
                     tBoxEmail.Text = email;
                     tBoxTelefone1.Text = telefone_1;
                     tBoxTelefone2.Text = telefone_2;
                     tBoxTelefone3.Text = telefone_3;
                     tBoxTelefone4.Text = telefone_4;
-                    cBoxTipoContato1.SelectedItem = tipo_contato_1;
-                    cBoxTipoContato2.SelectedItem = tipo_contato_2;
-                    cBoxTipoContato3.SelectedItem = tipo_contato_3;
-                    cBoxTipoContato4.SelectedItem = tipo_contato_4;
+                    tBoxTipoContato1.Text = contato_1;
+                    tBoxTipoContato2.Text = contato_1;
+                    tBoxTipoContato3.Text = contato_1;
+                    tBoxTipoContato4.Text = contato_1;
                     tBoxNomeContato1.Text = nome_contato_1;
                     tBoxNomeContato2.Text = nome_contato_2;
                     tBoxNomeContato3.Text = nome_contato_3;
                     tBoxNomeContato4.Text = nome_contato_4;
 
-                    cBoxCodigoFuncionario.SelectedValue = codigo_agente;
-                    tBoxQRA.Text = qra_agente;
+                    cBoxCodigoASE.SelectedValue = codigo;
+                    tBoxQraASE.Text = qra;
                     cBoxCargo.SelectedItem = cargo_agente;
 
-                    tBoxUsuarioCadastro.Text = usuario_cadastro;
-                    tBoxDataCadastro.Text = data_cadastro;
-                    tBoxUsuarioDesativacao.Text = usuario_desativacao_cadastro;
-                    tBoxDataDesativacao.Text = data_desativacao_cadastro;
-                    tBoxUsuarioReativacao.Text = usuario_reativacao_cadastro;
-                    tBoxDataReativacao.Text = data_reativacao_cadastro;
+                    //tBoxUsuarioCadastro.Text = usuario_cadastro;
+                    //tBoxDataCadastro.Text = data_cadastro;
+                    //tBoxUsuarioDesativacao.Text = usuario_desativacao_cadastro;
+                    //tBoxDataDesativacao.Text = data_desativacao_cadastro;
+                    //tBoxUsuarioReativacao.Text = usuario_reativacao_cadastro;
+                    //tBoxDataReativacao.Text = data_reativacao_cadastro;
                 }
 
                 #region Conversão categoria CNH
@@ -352,26 +352,30 @@ namespace Servipol.Forms.Cadastros.Funcionários
                 }
                 #endregion
 
-                if (tipo_funcionario == "1")
+                if (cargo == "1")
                 {
                     tabDadosAdicionaisASE.Parent = tabControlFuncionario;
                 }
                 else
                 {
-                    cBoxCodigoFuncionario.SelectedIndex = -1;
-                    tBoxQRA.Clear();
+                    cBoxCodigoASE.SelectedIndex = -1;
+                    tBoxQraASE.Clear();
                     cBoxCargo.SelectedIndex = -1;
+                    rBtnCursoVigilanteSim.Checked = false;
+                    rBtnCursoVigilanteNao.Checked = true;
+                    tBoxLocalCursoVigilante.Clear();
+
                     tabDadosAdicionaisASE.Parent = null;
                 }
 
             }
-            catch (Exception e)
+            catch (Exception err)
             {
-                //XtraMessageBox.Show(e.Message, "Falha na função CarregaFuncionario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                throw err;
             }
             finally
             {
-                bd.Desconectar();
+                BD.Desconectar();
             }
         }
 
