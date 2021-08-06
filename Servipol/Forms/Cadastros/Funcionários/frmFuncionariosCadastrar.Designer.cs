@@ -136,9 +136,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbCargo = new System.Windows.Forms.GroupBox();
             this.cBoxCargo = new System.Windows.Forms.ComboBox();
             this.tabControlFuncionario = new System.Windows.Forms.TabControl();
-            this.btnConfirmar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnLimparCampos = new DevExpress.XtraEditors.SimpleButton();
             this.tabDadosRegistro = new System.Windows.Forms.TabPage();
             this.groupBox27 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -155,6 +152,10 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tBoxDataDesativacao = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tBoxUsuarioDesativacao = new System.Windows.Forms.TextBox();
+            this.btnConfirmar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLimparCampos = new DevExpress.XtraEditors.SimpleButton();
+            this.btnImprimir = new DevExpress.XtraEditors.SimpleButton();
             this.tabDadosAdicionaisASE.SuspendLayout();
             this.groupBox26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
@@ -1493,45 +1494,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tabControlFuncionario.Size = new System.Drawing.Size(642, 496);
             this.tabControlFuncionario.TabIndex = 126;
             // 
-            // btnConfirmar
-            // 
-            this.btnConfirmar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmar.Appearance.Options.UseFont = true;
-            this.btnConfirmar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConfirmar.ImageOptions.SvgImage")));
-            this.btnConfirmar.Location = new System.Drawing.Point(487, 514);
-            this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(144, 44);
-            this.btnConfirmar.TabIndex = 186;
-            this.btnConfirmar.Text = "[F12] - Confirmar";
-            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Appearance.Options.UseFont = true;
-            this.btnCancelar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnCancelar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCancelar.ImageOptions.SvgImage")));
-            this.btnCancelar.Location = new System.Drawing.Point(11, 514);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(144, 44);
-            this.btnCancelar.TabIndex = 187;
-            this.btnCancelar.Text = "[Esc] - Cancelar";
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnLimparCampos
-            // 
-            this.btnLimparCampos.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimparCampos.Appearance.Options.UseFont = true;
-            this.btnLimparCampos.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnLimparCampos.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLimparCampos.ImageOptions.SvgImage")));
-            this.btnLimparCampos.Location = new System.Drawing.Point(161, 514);
-            this.btnLimparCampos.Name = "btnLimparCampos";
-            this.btnLimparCampos.Size = new System.Drawing.Size(166, 44);
-            this.btnLimparCampos.TabIndex = 188;
-            this.btnLimparCampos.Text = "[F5] - Limpar campos";
-            this.btnLimparCampos.Click += new System.EventHandler(this.btnLimparCampos_Click);
-            // 
             // tabDadosRegistro
             // 
             this.tabDadosRegistro.Controls.Add(this.groupBox27);
@@ -1719,6 +1681,59 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tBoxUsuarioDesativacao.Size = new System.Drawing.Size(562, 15);
             this.tBoxUsuarioDesativacao.TabIndex = 12;
             // 
+            // btnConfirmar
+            // 
+            this.btnConfirmar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmar.Appearance.Options.UseFont = true;
+            this.btnConfirmar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConfirmar.ImageOptions.SvgImage")));
+            this.btnConfirmar.Location = new System.Drawing.Point(487, 514);
+            this.btnConfirmar.Name = "btnConfirmar";
+            this.btnConfirmar.Size = new System.Drawing.Size(143, 44);
+            this.btnConfirmar.TabIndex = 186;
+            this.btnConfirmar.Text = "[F12] - Confirmar";
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Appearance.Options.UseFont = true;
+            this.btnCancelar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnCancelar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCancelar.ImageOptions.SvgImage")));
+            this.btnCancelar.Location = new System.Drawing.Point(11, 514);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(144, 44);
+            this.btnCancelar.TabIndex = 187;
+            this.btnCancelar.Text = "[Esc] - Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnLimparCampos
+            // 
+            this.btnLimparCampos.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimparCampos.Appearance.Options.UseFont = true;
+            this.btnLimparCampos.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnLimparCampos.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLimparCampos.ImageOptions.SvgImage")));
+            this.btnLimparCampos.Location = new System.Drawing.Point(161, 514);
+            this.btnLimparCampos.Name = "btnLimparCampos";
+            this.btnLimparCampos.Size = new System.Drawing.Size(166, 44);
+            this.btnLimparCampos.TabIndex = 188;
+            this.btnLimparCampos.Text = "[F5] - Limpar campos";
+            this.btnLimparCampos.Click += new System.EventHandler(this.btnLimparCampos_Click);
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.Appearance.Options.UseFont = true;
+            this.btnImprimir.Enabled = false;
+            this.btnImprimir.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnImprimir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
+            this.btnImprimir.Location = new System.Drawing.Point(464, 514);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(166, 44);
+            this.btnImprimir.TabIndex = 189;
+            this.btnImprimir.Text = "[CTRL + P] - Imprimir";
+            this.btnImprimir.Visible = false;
+            // 
             // frmFuncionariosCadastrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1728,6 +1743,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.tabControlFuncionario);
+            this.Controls.Add(this.btnImprimir);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1956,5 +1972,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
         private System.Windows.Forms.TextBox tBoxDataDesativacao;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox tBoxUsuarioDesativacao;
+        private DevExpress.XtraEditors.SimpleButton btnImprimir;
     }
 }

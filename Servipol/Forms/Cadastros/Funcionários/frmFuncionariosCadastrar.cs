@@ -58,6 +58,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
                     btnConfirmar.Enabled = false;
                     btnConfirmar.Visible = false;
                     btnCancelar.Text = "[Esc] - Fechar";
+                    btnImprimir.Visible = true;
+                    btnImprimir.Enabled = true;
                     CarregaRegistroParaEdicaoVisualizacao();
 
                     #region campos em ReadOnly
@@ -208,7 +210,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
                 data_reativacao = string.Empty;
                 #endregion
 
-                NpgsqlCommand com = new NpgsqlCommand($"SELECT f.id_funcionario_cargo, f.cod_controle, f.tipo_sanguineo, f.data_nascimento, f.nome, f.nome_mae, f.nome_pai, f.cpf, f.rg, f.uf_exp_rg, f.data_exp_rg, f.cat_cnh_a, f.cat_cnh_b, f.cat_cnh_c, f.cat_cnh_d, f.cat_cnh_e, f.numero_registro_cnh, f.data_validade_cnh, f.observacao, f.data_admissao, f.pis_pasep, f.numero_ctps, f.serie_ctps, f.uf_emissao_ctps, f.logradouro_endereco, f.numero_endereco, f.bairro_endereco, f.cidade_endereco, f.uf_endereco, f.cep_endereco, f.email, f.telefone_1, f.telefone_2, f.telefone_3, f.telefone_4, f.tipo_contato_1, f.tipo_contato_2, f.tipo_contato_3, f.tipo_contato_4, f.nome_contato_1, f.nome_contato_2, f.nome_contato_3, f.nome_contato_4, f.cargo_ase, f.codigo_ase, f.qra_ase, f.tem_curso_vigilante, f.curso_vigilante_local, f.curso_vigilante_cidade, f.curso_vigilante_uf, f.curso_vigilante_validade, f.id_usuario_cadastro, f.data_cadastro, f.id_usuario_desativacao, f.data_desativacao, f.id_usuario_reativacao, f.data_reativacao, f.ativo FROM funcionario AS f WHERE f.id_funcionario = {IdFuncionario}", BD.ObjetoConexao);
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT f.id_funcionario_cargo, f.cod_controle, f.tipo_sanguineo, f.data_nascimento, f.nome, f.nome_mae, f.nome_pai, f.cpf, f.rg, f.uf_exp_rg, f.data_exp_rg, f.cat_cnh_a, f.cat_cnh_b, f.cat_cnh_c, f.cat_cnh_d, f.cat_cnh_e, f.numero_registro_cnh, f.data_validade_cnh, f.observacao, f.data_admissao, f.pis_pasep, f.numero_ctps, f.serie_ctps, f.uf_emissao_ctps, f.logradouro_endereco, f.numero_endereco, f.bairro_endereco, f.cidade_endereco, f.uf_endereco, f.cep_endereco, f.email, f.telefone_1, f.telefone_2, f.telefone_3, f.telefone_4, f.tipo_contato_1, f.tipo_contato_2, f.tipo_contato_3, f.tipo_contato_4, f.nome_contato_1, f.nome_contato_2, f.nome_contato_3, f.nome_contato_4, f.cargo_ase, f.codigo_ase, f.qra_ase, f.tem_curso_vigilante, f.curso_vigilante_local, f.curso_vigilante_cidade, f.curso_vigilante_uf, f.curso_vigilante_validade, uc.nome AS usuario_cadastro, f.data_cadastro, ud.nome AS usuario_desativacao, f.data_desativacao, ur.nome AS usuario_reativacao, f.data_reativacao, f.ativo FROM funcionario AS f INNER JOIN usuario AS uc ON(uc.id_usuario = f.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = f.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ur ON(ur.id_usuario = f.id_usuario_reativacao) WHERE f.id_funcionario = {IdFuncionario}", BD.ObjetoConexao);
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     while (dr.Read())
@@ -216,7 +218,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
                         //Principal
                         cargo = dr["id_funcionario_cargo"].ToString();
                         cod_controle = dr["cod_controle"].ToString();
-                        tipo_sanguineo = dr["tipo_sanguineo"].ToString();
+                        tipo_sanguineo = dr["tipo_sanguineo"].ToString().Trim();
                         data_nascimento = dr["data_nascimento"].ToString();
                         nome_completo = dr["nome"].ToString();
                         nome_mae = dr["nome_mae"].ToString();
@@ -273,11 +275,11 @@ namespace Servipol.Forms.Cadastros.Funcionários
                         data_validade_curso_vigilante = dr["curso_vigilante_validade"].ToString();
 
                         //Dados do Registro
-                        usuario_cadastro = dr["id_usuario_cadastro"].ToString();
+                        usuario_cadastro = dr["usuario_cadastro"].ToString();
                         data_cadastro = dr["data_cadastro"].ToString();
-                        usuario_desativacao = dr["id_usuario_desativacao"].ToString();
+                        usuario_desativacao = dr["usuario_desativacao"].ToString();
                         data_desativacao = dr["data_desativacao"].ToString();
-                        usuario_reativacao = dr["id_usuario_reativacao"].ToString();
+                        usuario_reativacao = dr["usuario_reativacao"].ToString();
                         data_reativacao = dr["data_reativacao"].ToString();
                     }
 
@@ -305,7 +307,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
                     cBoxUfEmissaoCTPS.SelectedItem = uf_emissao_ctps;
 
                     //Endereços e Contatos
-                    cBoxUfEndereco.Text = end_logradouro;
+                    tBoxLogradouro.Text = end_logradouro;
                     tBoxNumero.Text = end_numero;
                     tBoxBairro.Text = end_bairro;
                     tBoxCidade.Text = end_cidade;
@@ -326,7 +328,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
                     tBoxNomeContato4.Text = nome_contato_4;
 
                     //Dados Adicionais (Operacional Externo)
-                    cBoxCodigoASE.SelectedValue = codigo;
+                    cBoxCodigoASE.SelectedValue = string.IsNullOrEmpty(codigo) ? "" : codigo;
                     tBoxQraASE.Text = qra;
                     cBoxCargoASE.SelectedItem = cargo_agente;
                     tBoxLocalCursoVigilante.Text = local_curso_vigilante;
@@ -395,9 +397,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
                         rBtnCursoVigilanteNao.Checked = false;
                     }
                     #endregion
+
                 }
-
-
 
                 if (cargo == "1")
                 {
@@ -405,16 +406,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
                 }
                 else
                 {
-                    cBoxCodigoASE.SelectedIndex = -1;
-                    tBoxQraASE.Clear();
-                    cBoxCargo.SelectedIndex = -1;
-                    rBtnCursoVigilanteSim.Checked = false;
-                    rBtnCursoVigilanteNao.Checked = true;
-                    tBoxLocalCursoVigilante.Clear();
-
                     tabDadosAdicionaisASE.Parent = null;
                 }
-
             }
             catch (Exception err)
             {
@@ -631,14 +624,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             }
             else
             {
-                tBoxQraASE.Clear();
-                cBoxCodigoASE.SelectedIndex = -1;
-                cBoxCargoASE.SelectedIndex = -1;
-                rBtnCursoVigilanteNao.Checked = true;
-                tBoxLocalCursoVigilante.Clear();
-                tBoxCidadeCursoVigilante.Clear();
-                cBoxUfCursoVigilante.SelectedIndex = -1;
-                tBoxDataValidadeCursoVigilante.ResetText();
                 tabDadosAdicionaisASE.Parent = null;
             }
         }
