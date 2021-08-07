@@ -322,6 +322,7 @@ ALTER TABLE public.funcionario DROP COLUMN ativo;
 ALTER TABLE public.funcionario ADD COLUMN id_usuario_alteracao integer;
 ALTER TABLE public.funcionario ADD COLUMN data_alteracao timestamp without time zone;
 ALTER TABLE public.funcionario ADD COLUMN ativo character;
+UPDATE funcionario SET ativo = 'S';
 
 ```
 
