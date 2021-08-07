@@ -317,5 +317,11 @@ START 1
 CACHE 1;
 
 DELETE FROM sis_sessao_login;
+
+ALTER TABLE public.funcionario DROP COLUMN ativo;
+ALTER TABLE public.funcionario ADD COLUMN id_usuario_alteracao integer;
+ALTER TABLE public.funcionario ADD COLUMN data_alteracao timestamp without time zone;
+ALTER TABLE public.funcionario ADD COLUMN ativo character;
+
 ```
 

@@ -156,6 +156,11 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.btnLimparCampos = new DevExpress.XtraEditors.SimpleButton();
             this.btnImprimir = new DevExpress.XtraEditors.SimpleButton();
+            this.groupBox30 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tBoxDataAlteracao = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tBoxUsuarioAlteracao = new System.Windows.Forms.TextBox();
             this.tabDadosAdicionaisASE.SuspendLayout();
             this.groupBox26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
@@ -208,6 +213,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox27.SuspendLayout();
             this.groupBox28.SuspendLayout();
             this.groupBox29.SuspendLayout();
+            this.groupBox30.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabDadosAdicionaisASE
@@ -1496,6 +1502,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // 
             // tabDadosRegistro
             // 
+            this.tabDadosRegistro.Controls.Add(this.groupBox30);
             this.tabDadosRegistro.Controls.Add(this.groupBox27);
             this.tabDadosRegistro.Controls.Add(this.groupBox28);
             this.tabDadosRegistro.Controls.Add(this.groupBox29);
@@ -1726,13 +1733,72 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.btnImprimir.Appearance.Options.UseFont = true;
             this.btnImprimir.Enabled = false;
             this.btnImprimir.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnImprimir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
+            this.btnImprimir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnImprimir.ImageOptions.SvgImage")));
             this.btnImprimir.Location = new System.Drawing.Point(464, 514);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(166, 44);
             this.btnImprimir.TabIndex = 189;
             this.btnImprimir.Text = "[CTRL + P] - Imprimir";
             this.btnImprimir.Visible = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // groupBox30
+            // 
+            this.groupBox30.Controls.Add(this.label13);
+            this.groupBox30.Controls.Add(this.tBoxDataAlteracao);
+            this.groupBox30.Controls.Add(this.label14);
+            this.groupBox30.Controls.Add(this.tBoxUsuarioAlteracao);
+            this.groupBox30.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox30.Location = new System.Drawing.Point(1, 231);
+            this.groupBox30.Name = "groupBox30";
+            this.groupBox30.Size = new System.Drawing.Size(633, 69);
+            this.groupBox30.TabIndex = 159;
+            this.groupBox30.TabStop = false;
+            this.groupBox30.Text = "Dados da Última Alteração do Cadastro";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Calibri", 9F);
+            this.label13.Location = new System.Drawing.Point(6, 45);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(36, 14);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Data:";
+            // 
+            // tBoxDataAlteracao
+            // 
+            this.tBoxDataAlteracao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxDataAlteracao.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tBoxDataAlteracao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxDataAlteracao.Font = new System.Drawing.Font("Calibri", 9F);
+            this.tBoxDataAlteracao.Location = new System.Drawing.Point(65, 45);
+            this.tBoxDataAlteracao.Name = "tBoxDataAlteracao";
+            this.tBoxDataAlteracao.ReadOnly = true;
+            this.tBoxDataAlteracao.Size = new System.Drawing.Size(563, 15);
+            this.tBoxDataAlteracao.TabIndex = 14;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Calibri", 9F);
+            this.label14.Location = new System.Drawing.Point(6, 25);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(53, 14);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "Usuário:";
+            // 
+            // tBoxUsuarioAlteracao
+            // 
+            this.tBoxUsuarioAlteracao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxUsuarioAlteracao.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tBoxUsuarioAlteracao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxUsuarioAlteracao.Font = new System.Drawing.Font("Calibri", 9F);
+            this.tBoxUsuarioAlteracao.Location = new System.Drawing.Point(65, 25);
+            this.tBoxUsuarioAlteracao.Name = "tBoxUsuarioAlteracao";
+            this.tBoxUsuarioAlteracao.ReadOnly = true;
+            this.tBoxUsuarioAlteracao.Size = new System.Drawing.Size(562, 15);
+            this.tBoxUsuarioAlteracao.TabIndex = 12;
             // 
             // frmFuncionariosCadastrar
             // 
@@ -1841,6 +1907,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox28.PerformLayout();
             this.groupBox29.ResumeLayout(false);
             this.groupBox29.PerformLayout();
+            this.groupBox30.ResumeLayout(false);
+            this.groupBox30.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1973,5 +2041,10 @@ namespace Servipol.Forms.Cadastros.Funcionários
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox tBoxUsuarioDesativacao;
         private DevExpress.XtraEditors.SimpleButton btnImprimir;
+        private System.Windows.Forms.GroupBox groupBox30;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox tBoxDataAlteracao;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox tBoxUsuarioAlteracao;
     }
 }

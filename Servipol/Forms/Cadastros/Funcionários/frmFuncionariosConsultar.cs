@@ -68,17 +68,17 @@ namespace Servipol.Forms.Cadastros.Funcionários
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 string idFuncionarioGrid = dGridFuncionarios.SelectedRows[0].Cells[0].Value.ToString();
                 frmFuncionariosCadastrar frmFuncionariosCadastrar = new frmFuncionariosCadastrar("Editar", int.Parse(idFuncionarioGrid));
                 frmFuncionariosCadastrar.Owner = this;
                 frmFuncionariosCadastrar.ShowDialog();
-            }
-            catch
-            {
-                XtraMessageBox.Show("Primeiro selecione o registro que deseja editar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //}
+            //catch
+            //{
+            //    XtraMessageBox.Show("Primeiro selecione o registro que deseja editar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
 
         private void btnVisualizar_Click(object sender, EventArgs e)
@@ -103,7 +103,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
 
         private void btnImprimirConsulta_Click(object sender, EventArgs e)
         {
-
+            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
