@@ -100,6 +100,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbDataAdmissao = new System.Windows.Forms.GroupBox();
             this.tBoxDataAdmissao = new System.Windows.Forms.DateTimePicker();
             this.tabPrincipal = new System.Windows.Forms.TabPage();
+            this.gbSituacao = new System.Windows.Forms.GroupBox();
+            this.chkBoxRegistroAtivo = new System.Windows.Forms.CheckBox();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
             this.cBoxTipoSanguineo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -137,6 +139,11 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.cBoxCargo = new System.Windows.Forms.ComboBox();
             this.tabControlFuncionario = new System.Windows.Forms.TabControl();
             this.tabDadosRegistro = new System.Windows.Forms.TabPage();
+            this.groupBox30 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tBoxDataAlteracao = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tBoxUsuarioAlteracao = new System.Windows.Forms.TextBox();
             this.groupBox27 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tBoxDataReativacao = new System.Windows.Forms.TextBox();
@@ -156,11 +163,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.btnLimparCampos = new DevExpress.XtraEditors.SimpleButton();
             this.btnImprimir = new DevExpress.XtraEditors.SimpleButton();
-            this.groupBox30 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.tBoxDataAlteracao = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.tBoxUsuarioAlteracao = new System.Windows.Forms.TextBox();
             this.tabDadosAdicionaisASE.SuspendLayout();
             this.groupBox26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
@@ -194,6 +196,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox21.SuspendLayout();
             this.gbDataAdmissao.SuspendLayout();
             this.tabPrincipal.SuspendLayout();
+            this.gbSituacao.SuspendLayout();
             this.groupBox19.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox20.SuspendLayout();
@@ -210,10 +213,10 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbCargo.SuspendLayout();
             this.tabControlFuncionario.SuspendLayout();
             this.tabDadosRegistro.SuspendLayout();
+            this.groupBox30.SuspendLayout();
             this.groupBox27.SuspendLayout();
             this.groupBox28.SuspendLayout();
             this.groupBox29.SuspendLayout();
-            this.groupBox30.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabDadosAdicionaisASE
@@ -247,7 +250,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox26.Location = new System.Drawing.Point(6, 201);
             this.groupBox26.Name = "groupBox26";
             this.groupBox26.Size = new System.Drawing.Size(620, 74);
-            this.groupBox26.TabIndex = 40;
+            this.groupBox26.TabIndex = 42;
             this.groupBox26.TabStop = false;
             this.groupBox26.Text = "Possui Curso de Vigilante*";
             // 
@@ -258,8 +261,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tBoxDataValidadeCursoVigilante.Location = new System.Drawing.Point(520, 18);
             this.tBoxDataValidadeCursoVigilante.Name = "tBoxDataValidadeCursoVigilante";
             this.tBoxDataValidadeCursoVigilante.Size = new System.Drawing.Size(94, 21);
-            this.tBoxDataValidadeCursoVigilante.TabIndex = 15;
-            this.tBoxDataValidadeCursoVigilante.Value = new System.DateTime(2021, 7, 26, 0, 0, 0, 0);
+            this.tBoxDataValidadeCursoVigilante.TabIndex = 6;
+            this.tBoxDataValidadeCursoVigilante.Value = new System.DateTime(2100, 1, 1, 0, 0, 0, 0);
             // 
             // label4
             // 
@@ -286,7 +289,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tBoxCidadeCursoVigilante.Location = new System.Drawing.Point(179, 43);
             this.tBoxCidadeCursoVigilante.Name = "tBoxCidadeCursoVigilante";
             this.tBoxCidadeCursoVigilante.Size = new System.Drawing.Size(255, 21);
-            this.tBoxCidadeCursoVigilante.TabIndex = 43;
+            this.tBoxCidadeCursoVigilante.TabIndex = 4;
             // 
             // label3
             // 
@@ -334,7 +337,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.cBoxUfCursoVigilante.Location = new System.Drawing.Point(520, 43);
             this.cBoxUfCursoVigilante.Name = "cBoxUfCursoVigilante";
             this.cBoxUfCursoVigilante.Size = new System.Drawing.Size(94, 21);
-            this.cBoxUfCursoVigilante.TabIndex = 42;
+            this.cBoxUfCursoVigilante.TabIndex = 5;
             // 
             // separatorControl1
             // 
@@ -360,7 +363,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tBoxLocalCursoVigilante.Location = new System.Drawing.Point(179, 20);
             this.tBoxLocalCursoVigilante.Name = "tBoxLocalCursoVigilante";
             this.tBoxLocalCursoVigilante.Size = new System.Drawing.Size(255, 21);
-            this.tBoxLocalCursoVigilante.TabIndex = 11;
+            this.tBoxLocalCursoVigilante.TabIndex = 3;
             // 
             // rBtnCursoVigilanteNao
             // 
@@ -372,6 +375,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.rBtnCursoVigilanteNao.TabStop = true;
             this.rBtnCursoVigilanteNao.Text = "Não";
             this.rBtnCursoVigilanteNao.UseVisualStyleBackColor = true;
+            this.rBtnCursoVigilanteNao.CheckedChanged += new System.EventHandler(this.rBtnCursoVigilanteNao_CheckedChanged);
             // 
             // rBtnCursoVigilanteSim
             // 
@@ -391,7 +395,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbQRA.Location = new System.Drawing.Point(6, 72);
             this.gbQRA.Name = "gbQRA";
             this.gbQRA.Size = new System.Drawing.Size(620, 60);
-            this.gbQRA.TabIndex = 38;
+            this.gbQRA.TabIndex = 40;
             this.gbQRA.TabStop = false;
             this.gbQRA.Text = "QRA*";
             // 
@@ -411,7 +415,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbCodigo.Location = new System.Drawing.Point(6, 6);
             this.gbCodigo.Name = "gbCodigo";
             this.gbCodigo.Size = new System.Drawing.Size(620, 60);
-            this.gbCodigo.TabIndex = 37;
+            this.gbCodigo.TabIndex = 39;
             this.gbCodigo.TabStop = false;
             this.gbCodigo.Text = "Código*";
             // 
@@ -432,7 +436,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox22.Location = new System.Drawing.Point(6, 138);
             this.groupBox22.Name = "groupBox22";
             this.groupBox22.Size = new System.Drawing.Size(620, 57);
-            this.groupBox22.TabIndex = 39;
+            this.groupBox22.TabIndex = 41;
             this.groupBox22.TabStop = false;
             this.groupBox22.Text = "Cargo Operacional Externo*";
             // 
@@ -485,7 +489,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox18.Location = new System.Drawing.Point(270, 402);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Size = new System.Drawing.Size(357, 60);
-            this.groupBox18.TabIndex = 36;
+            this.groupBox18.TabIndex = 38;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Nome do contato";
             // 
@@ -505,7 +509,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox17.Location = new System.Drawing.Point(270, 336);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Size = new System.Drawing.Size(357, 60);
-            this.groupBox17.TabIndex = 33;
+            this.groupBox17.TabIndex = 35;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Nome do contato";
             // 
@@ -525,7 +529,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox16.Location = new System.Drawing.Point(270, 270);
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.Size = new System.Drawing.Size(357, 60);
-            this.groupBox16.TabIndex = 30;
+            this.groupBox16.TabIndex = 32;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Nome do contato";
             // 
@@ -545,7 +549,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox15.Location = new System.Drawing.Point(270, 204);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Size = new System.Drawing.Size(357, 60);
-            this.groupBox15.TabIndex = 27;
+            this.groupBox15.TabIndex = 29;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Nome do contato";
             // 
@@ -565,12 +569,31 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox14.Location = new System.Drawing.Point(146, 402);
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.Size = new System.Drawing.Size(118, 60);
-            this.groupBox14.TabIndex = 35;
+            this.groupBox14.TabIndex = 37;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Tipo de contato";
             // 
             // tBoxTipoContato4
             // 
+            this.tBoxTipoContato4.AutoCompleteCustomSource.AddRange(new string[] {
+            "PRÓPRIO",
+            "ESPOSA",
+            "ESPOSO",
+            "MÃE",
+            "PAI",
+            "TIO",
+            "TIA",
+            "IRMÃO",
+            "IRMÃ",
+            "AMIGO",
+            "CUNHADO",
+            "CUNHADA",
+            "FILHO",
+            "FILHA",
+            "CONHECIDO",
+            "CONHECIDA"});
+            this.tBoxTipoContato4.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tBoxTipoContato4.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tBoxTipoContato4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tBoxTipoContato4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tBoxTipoContato4.Location = new System.Drawing.Point(6, 22);
@@ -586,12 +609,31 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox13.Location = new System.Drawing.Point(146, 336);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(118, 60);
-            this.groupBox13.TabIndex = 32;
+            this.groupBox13.TabIndex = 34;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Tipo de contato";
             // 
             // tBoxTipoContato3
             // 
+            this.tBoxTipoContato3.AutoCompleteCustomSource.AddRange(new string[] {
+            "PRÓPRIO",
+            "ESPOSA",
+            "ESPOSO",
+            "MÃE",
+            "PAI",
+            "TIO",
+            "TIA",
+            "IRMÃO",
+            "IRMÃ",
+            "AMIGO",
+            "CUNHADO",
+            "CUNHADA",
+            "FILHO",
+            "FILHA",
+            "CONHECIDO",
+            "CONHECIDA"});
+            this.tBoxTipoContato3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tBoxTipoContato3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tBoxTipoContato3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tBoxTipoContato3.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tBoxTipoContato3.Location = new System.Drawing.Point(6, 22);
@@ -607,12 +649,31 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox12.Location = new System.Drawing.Point(146, 270);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(118, 60);
-            this.groupBox12.TabIndex = 29;
+            this.groupBox12.TabIndex = 31;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Tipo de contato";
             // 
             // tBoxTipoContato2
             // 
+            this.tBoxTipoContato2.AutoCompleteCustomSource.AddRange(new string[] {
+            "PRÓPRIO",
+            "ESPOSA",
+            "ESPOSO",
+            "MÃE",
+            "PAI",
+            "TIO",
+            "TIA",
+            "IRMÃO",
+            "IRMÃ",
+            "AMIGO",
+            "CUNHADO",
+            "CUNHADA",
+            "FILHO",
+            "FILHA",
+            "CONHECIDO",
+            "CONHECIDA"});
+            this.tBoxTipoContato2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tBoxTipoContato2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tBoxTipoContato2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tBoxTipoContato2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tBoxTipoContato2.Location = new System.Drawing.Point(6, 22);
@@ -628,12 +689,31 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox11.Location = new System.Drawing.Point(146, 204);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(118, 60);
-            this.groupBox11.TabIndex = 26;
+            this.groupBox11.TabIndex = 28;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Tipo de contato";
             // 
             // tBoxTipoContato1
             // 
+            this.tBoxTipoContato1.AutoCompleteCustomSource.AddRange(new string[] {
+            "PRÓPRIO",
+            "ESPOSA",
+            "ESPOSO",
+            "MÃE",
+            "PAI",
+            "TIO",
+            "TIA",
+            "IRMÃO",
+            "IRMÃ",
+            "AMIGO",
+            "CUNHADO",
+            "CUNHADA",
+            "FILHO",
+            "FILHA",
+            "CONHECIDO",
+            "CONHECIDA"});
+            this.tBoxTipoContato1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tBoxTipoContato1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tBoxTipoContato1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tBoxTipoContato1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tBoxTipoContato1.Location = new System.Drawing.Point(6, 22);
@@ -649,7 +729,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox10.Location = new System.Drawing.Point(536, 72);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(91, 60);
-            this.groupBox10.TabIndex = 23;
+            this.groupBox10.TabIndex = 25;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "CEP";
             // 
@@ -670,7 +750,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox9.Location = new System.Drawing.Point(6, 402);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(134, 60);
-            this.groupBox9.TabIndex = 34;
+            this.groupBox9.TabIndex = 36;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Telefone 4";
             // 
@@ -690,7 +770,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox8.Location = new System.Drawing.Point(6, 138);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(621, 60);
-            this.groupBox8.TabIndex = 24;
+            this.groupBox8.TabIndex = 26;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "E-mail";
             // 
@@ -710,7 +790,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbLogradouro.Location = new System.Drawing.Point(6, 6);
             this.gbLogradouro.Name = "gbLogradouro";
             this.gbLogradouro.Size = new System.Drawing.Size(524, 60);
-            this.gbLogradouro.TabIndex = 18;
+            this.gbLogradouro.TabIndex = 20;
             this.gbLogradouro.TabStop = false;
             this.gbLogradouro.Text = "Logradouro";
             // 
@@ -730,7 +810,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbNumero.Location = new System.Drawing.Point(536, 6);
             this.gbNumero.Name = "gbNumero";
             this.gbNumero.Size = new System.Drawing.Size(91, 60);
-            this.gbNumero.TabIndex = 19;
+            this.gbNumero.TabIndex = 21;
             this.gbNumero.TabStop = false;
             this.gbNumero.Text = "Número";
             // 
@@ -751,7 +831,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbTelefone1.Location = new System.Drawing.Point(6, 204);
             this.gbTelefone1.Name = "gbTelefone1";
             this.gbTelefone1.Size = new System.Drawing.Size(134, 60);
-            this.gbTelefone1.TabIndex = 25;
+            this.gbTelefone1.TabIndex = 27;
             this.gbTelefone1.TabStop = false;
             this.gbTelefone1.Text = "Telefone 1";
             // 
@@ -771,7 +851,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbBairro.Location = new System.Drawing.Point(6, 72);
             this.gbBairro.Name = "gbBairro";
             this.gbBairro.Size = new System.Drawing.Size(229, 60);
-            this.gbBairro.TabIndex = 20;
+            this.gbBairro.TabIndex = 22;
             this.gbBairro.TabStop = false;
             this.gbBairro.Text = "Bairro";
             // 
@@ -791,7 +871,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbTelefone3.Location = new System.Drawing.Point(6, 336);
             this.gbTelefone3.Name = "gbTelefone3";
             this.gbTelefone3.Size = new System.Drawing.Size(134, 60);
-            this.gbTelefone3.TabIndex = 31;
+            this.gbTelefone3.TabIndex = 33;
             this.gbTelefone3.TabStop = false;
             this.gbTelefone3.Text = "Telefone 3";
             // 
@@ -811,7 +891,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbUF.Location = new System.Drawing.Point(439, 72);
             this.gbUF.Name = "gbUF";
             this.gbUF.Size = new System.Drawing.Size(91, 60);
-            this.gbUF.TabIndex = 22;
+            this.gbUF.TabIndex = 24;
             this.gbUF.TabStop = false;
             this.gbUF.Text = "Estado";
             // 
@@ -861,7 +941,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbTelefone2.Location = new System.Drawing.Point(6, 270);
             this.gbTelefone2.Name = "gbTelefone2";
             this.gbTelefone2.Size = new System.Drawing.Size(134, 60);
-            this.gbTelefone2.TabIndex = 28;
+            this.gbTelefone2.TabIndex = 30;
             this.gbTelefone2.TabStop = false;
             this.gbTelefone2.Text = "Telefone 2";
             // 
@@ -881,7 +961,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbCidade.Location = new System.Drawing.Point(241, 72);
             this.gbCidade.Name = "gbCidade";
             this.gbCidade.Size = new System.Drawing.Size(192, 60);
-            this.gbCidade.TabIndex = 21;
+            this.gbCidade.TabIndex = 23;
             this.gbCidade.TabStop = false;
             this.gbCidade.Text = "Cidade";
             // 
@@ -917,7 +997,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox25.Location = new System.Drawing.Point(481, 135);
             this.groupBox25.Name = "groupBox25";
             this.groupBox25.Size = new System.Drawing.Size(145, 60);
-            this.groupBox25.TabIndex = 17;
+            this.groupBox25.TabIndex = 19;
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "UF Emissão CTPS";
             // 
@@ -966,7 +1046,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox24.Location = new System.Drawing.Point(320, 135);
             this.groupBox24.Name = "groupBox24";
             this.groupBox24.Size = new System.Drawing.Size(155, 60);
-            this.groupBox24.TabIndex = 16;
+            this.groupBox24.TabIndex = 18;
             this.groupBox24.TabStop = false;
             this.groupBox24.Text = "Série CTPS";
             // 
@@ -986,7 +1066,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox23.Location = new System.Drawing.Point(6, 135);
             this.groupBox23.Name = "groupBox23";
             this.groupBox23.Size = new System.Drawing.Size(308, 60);
-            this.groupBox23.TabIndex = 15;
+            this.groupBox23.TabIndex = 17;
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "Nr CTPS";
             // 
@@ -1006,7 +1086,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox21.Location = new System.Drawing.Point(6, 69);
             this.groupBox21.Name = "groupBox21";
             this.groupBox21.Size = new System.Drawing.Size(620, 60);
-            this.groupBox21.TabIndex = 14;
+            this.groupBox21.TabIndex = 16;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "PIS / PASEP";
             // 
@@ -1026,7 +1106,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbDataAdmissao.Location = new System.Drawing.Point(7, 3);
             this.gbDataAdmissao.Name = "gbDataAdmissao";
             this.gbDataAdmissao.Size = new System.Drawing.Size(126, 60);
-            this.gbDataAdmissao.TabIndex = 13;
+            this.gbDataAdmissao.TabIndex = 15;
             this.gbDataAdmissao.TabStop = false;
             this.gbDataAdmissao.Text = "Data Admissão*";
             // 
@@ -1043,6 +1123,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // 
             // tabPrincipal
             // 
+            this.tabPrincipal.Controls.Add(this.gbSituacao);
             this.tabPrincipal.Controls.Add(this.groupBox19);
             this.tabPrincipal.Controls.Add(this.groupBox1);
             this.tabPrincipal.Controls.Add(this.groupBox20);
@@ -1065,6 +1146,29 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tabPrincipal.Text = "Principal";
             this.tabPrincipal.UseVisualStyleBackColor = true;
             // 
+            // gbSituacao
+            // 
+            this.gbSituacao.Controls.Add(this.chkBoxRegistroAtivo);
+            this.gbSituacao.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbSituacao.Location = new System.Drawing.Point(6, 416);
+            this.gbSituacao.Name = "gbSituacao";
+            this.gbSituacao.Size = new System.Drawing.Size(128, 48);
+            this.gbSituacao.TabIndex = 15;
+            this.gbSituacao.TabStop = false;
+            this.gbSituacao.Text = "Situação";
+            // 
+            // chkBoxRegistroAtivo
+            // 
+            this.chkBoxRegistroAtivo.AutoSize = true;
+            this.chkBoxRegistroAtivo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkBoxRegistroAtivo.Font = new System.Drawing.Font("Calibri", 9F);
+            this.chkBoxRegistroAtivo.Location = new System.Drawing.Point(6, 22);
+            this.chkBoxRegistroAtivo.Name = "chkBoxRegistroAtivo";
+            this.chkBoxRegistroAtivo.Size = new System.Drawing.Size(100, 18);
+            this.chkBoxRegistroAtivo.TabIndex = 1;
+            this.chkBoxRegistroAtivo.Text = "Registro Ativo";
+            this.chkBoxRegistroAtivo.UseVisualStyleBackColor = true;
+            // 
             // groupBox19
             // 
             this.groupBox19.Controls.Add(this.cBoxTipoSanguineo);
@@ -1072,7 +1176,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox19.Location = new System.Drawing.Point(356, 6);
             this.groupBox19.Name = "groupBox19";
             this.groupBox19.Size = new System.Drawing.Size(114, 51);
-            this.groupBox19.TabIndex = 2;
+            this.groupBox19.TabIndex = 3;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Tipo Sanguíneo*";
             // 
@@ -1105,7 +1209,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox1.Location = new System.Drawing.Point(6, 120);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(619, 80);
-            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filiação";
             // 
@@ -1129,7 +1233,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tBoxNomePai.Location = new System.Drawing.Point(95, 48);
             this.tBoxNomePai.Name = "tBoxNomePai";
             this.tBoxNomePai.Size = new System.Drawing.Size(518, 21);
-            this.tBoxNomePai.TabIndex = 13;
+            this.tBoxNomePai.TabIndex = 1;
             // 
             // label7
             // 
@@ -1151,7 +1255,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tBoxNomeMae.Location = new System.Drawing.Point(95, 21);
             this.tBoxNomeMae.Name = "tBoxNomeMae";
             this.tBoxNomeMae.Size = new System.Drawing.Size(518, 21);
-            this.tBoxNomeMae.TabIndex = 11;
+            this.tBoxNomeMae.TabIndex = 0;
             // 
             // groupBox20
             // 
@@ -1160,7 +1264,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox20.Location = new System.Drawing.Point(228, 262);
             this.groupBox20.Name = "groupBox20";
             this.groupBox20.Size = new System.Drawing.Size(241, 48);
-            this.groupBox20.TabIndex = 10;
+            this.groupBox20.TabIndex = 12;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "Nr Registro CNH";
             // 
@@ -1201,7 +1305,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox6.Location = new System.Drawing.Point(476, 6);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(149, 51);
-            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Data Nascimento*";
             // 
@@ -1224,7 +1328,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox5.Location = new System.Drawing.Point(475, 206);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(150, 50);
-            this.groupBox5.TabIndex = 8;
+            this.groupBox5.TabIndex = 10;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Data Expedição RG*";
             // 
@@ -1246,7 +1350,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox4.Location = new System.Drawing.Point(324, 206);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(145, 50);
-            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "UF Expedição do RG";
             // 
@@ -1294,8 +1398,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbObs.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbObs.Location = new System.Drawing.Point(6, 316);
             this.gbObs.Name = "gbObs";
-            this.gbObs.Size = new System.Drawing.Size(619, 148);
-            this.gbObs.TabIndex = 12;
+            this.gbObs.Size = new System.Drawing.Size(619, 94);
+            this.gbObs.TabIndex = 14;
             this.gbObs.TabStop = false;
             this.gbObs.Text = "Observação";
             // 
@@ -1309,7 +1413,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tBoxObs.Location = new System.Drawing.Point(6, 25);
             this.tBoxObs.Multiline = true;
             this.tBoxObs.Name = "tBoxObs";
-            this.tBoxObs.Size = new System.Drawing.Size(607, 117);
+            this.tBoxObs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tBoxObs.Size = new System.Drawing.Size(607, 63);
             this.tBoxObs.TabIndex = 20;
             // 
             // groupBox3
@@ -1319,7 +1424,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox3.Location = new System.Drawing.Point(165, 206);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(153, 50);
-            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "RG";
             // 
@@ -1339,7 +1444,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox2.Location = new System.Drawing.Point(6, 206);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(153, 50);
-            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "CPF";
             // 
@@ -1360,7 +1465,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbNome.Location = new System.Drawing.Point(6, 63);
             this.gbNome.Name = "gbNome";
             this.gbNome.Size = new System.Drawing.Size(619, 51);
-            this.gbNome.TabIndex = 4;
+            this.gbNome.TabIndex = 5;
             this.gbNome.TabStop = false;
             this.gbNome.Text = "Nome Completo*";
             // 
@@ -1384,7 +1489,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbCatCNH.Location = new System.Drawing.Point(6, 262);
             this.gbCatCNH.Name = "gbCatCNH";
             this.gbCatCNH.Size = new System.Drawing.Size(216, 48);
-            this.gbCatCNH.TabIndex = 9;
+            this.gbCatCNH.TabIndex = 11;
             this.gbCatCNH.TabStop = false;
             this.gbCatCNH.Text = "Categoria CNH";
             // 
@@ -1395,7 +1500,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.chkBoxCatCnhD.Location = new System.Drawing.Point(135, 23);
             this.chkBoxCatCnhD.Name = "chkBoxCatCnhD";
             this.chkBoxCatCnhD.Size = new System.Drawing.Size(37, 18);
-            this.chkBoxCatCnhD.TabIndex = 6;
+            this.chkBoxCatCnhD.TabIndex = 4;
             this.chkBoxCatCnhD.Text = "D;";
             this.chkBoxCatCnhD.UseVisualStyleBackColor = true;
             // 
@@ -1406,7 +1511,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.chkBoxCatCnhE.Location = new System.Drawing.Point(177, 23);
             this.chkBoxCatCnhE.Name = "chkBoxCatCnhE";
             this.chkBoxCatCnhE.Size = new System.Drawing.Size(32, 18);
-            this.chkBoxCatCnhE.TabIndex = 7;
+            this.chkBoxCatCnhE.TabIndex = 5;
             this.chkBoxCatCnhE.Text = "E";
             this.chkBoxCatCnhE.UseVisualStyleBackColor = true;
             // 
@@ -1417,7 +1522,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.chkBoxCatCnhC.Location = new System.Drawing.Point(93, 23);
             this.chkBoxCatCnhC.Name = "chkBoxCatCnhC";
             this.chkBoxCatCnhC.Size = new System.Drawing.Size(35, 18);
-            this.chkBoxCatCnhC.TabIndex = 5;
+            this.chkBoxCatCnhC.TabIndex = 3;
             this.chkBoxCatCnhC.Text = "C;";
             this.chkBoxCatCnhC.UseVisualStyleBackColor = true;
             // 
@@ -1428,7 +1533,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.chkBoxCatCnhB.Location = new System.Drawing.Point(51, 23);
             this.chkBoxCatCnhB.Name = "chkBoxCatCnhB";
             this.chkBoxCatCnhB.Size = new System.Drawing.Size(36, 18);
-            this.chkBoxCatCnhB.TabIndex = 4;
+            this.chkBoxCatCnhB.TabIndex = 2;
             this.chkBoxCatCnhB.Text = "B;";
             this.chkBoxCatCnhB.UseVisualStyleBackColor = true;
             // 
@@ -1439,7 +1544,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.chkBoxCatCnhA.Location = new System.Drawing.Point(9, 23);
             this.chkBoxCatCnhA.Name = "chkBoxCatCnhA";
             this.chkBoxCatCnhA.Size = new System.Drawing.Size(36, 18);
-            this.chkBoxCatCnhA.TabIndex = 3;
+            this.chkBoxCatCnhA.TabIndex = 1;
             this.chkBoxCatCnhA.Text = "A;";
             this.chkBoxCatCnhA.UseVisualStyleBackColor = true;
             // 
@@ -1450,7 +1555,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbValidadeCNH.Location = new System.Drawing.Point(475, 262);
             this.gbValidadeCNH.Name = "gbValidadeCNH";
             this.gbValidadeCNH.Size = new System.Drawing.Size(150, 48);
-            this.gbValidadeCNH.TabIndex = 11;
+            this.gbValidadeCNH.TabIndex = 13;
             this.gbValidadeCNH.TabStop = false;
             this.gbValidadeCNH.Text = "Validade CNH*";
             // 
@@ -1514,6 +1619,64 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tabDadosRegistro.Text = "Dados do Registro";
             this.tabDadosRegistro.UseVisualStyleBackColor = true;
             // 
+            // groupBox30
+            // 
+            this.groupBox30.Controls.Add(this.label13);
+            this.groupBox30.Controls.Add(this.tBoxDataAlteracao);
+            this.groupBox30.Controls.Add(this.label14);
+            this.groupBox30.Controls.Add(this.tBoxUsuarioAlteracao);
+            this.groupBox30.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox30.Location = new System.Drawing.Point(1, 231);
+            this.groupBox30.Name = "groupBox30";
+            this.groupBox30.Size = new System.Drawing.Size(633, 69);
+            this.groupBox30.TabIndex = 999;
+            this.groupBox30.TabStop = false;
+            this.groupBox30.Text = "Dados da Última Alteração do Cadastro";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Calibri", 9F);
+            this.label13.Location = new System.Drawing.Point(6, 45);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(36, 14);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Data:";
+            // 
+            // tBoxDataAlteracao
+            // 
+            this.tBoxDataAlteracao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxDataAlteracao.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tBoxDataAlteracao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxDataAlteracao.Font = new System.Drawing.Font("Calibri", 9F);
+            this.tBoxDataAlteracao.Location = new System.Drawing.Point(65, 45);
+            this.tBoxDataAlteracao.Name = "tBoxDataAlteracao";
+            this.tBoxDataAlteracao.ReadOnly = true;
+            this.tBoxDataAlteracao.Size = new System.Drawing.Size(563, 15);
+            this.tBoxDataAlteracao.TabIndex = 14;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Calibri", 9F);
+            this.label14.Location = new System.Drawing.Point(6, 25);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(53, 14);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "Usuário:";
+            // 
+            // tBoxUsuarioAlteracao
+            // 
+            this.tBoxUsuarioAlteracao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxUsuarioAlteracao.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tBoxUsuarioAlteracao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxUsuarioAlteracao.Font = new System.Drawing.Font("Calibri", 9F);
+            this.tBoxUsuarioAlteracao.Location = new System.Drawing.Point(65, 25);
+            this.tBoxUsuarioAlteracao.Name = "tBoxUsuarioAlteracao";
+            this.tBoxUsuarioAlteracao.ReadOnly = true;
+            this.tBoxUsuarioAlteracao.Size = new System.Drawing.Size(562, 15);
+            this.tBoxUsuarioAlteracao.TabIndex = 12;
+            // 
             // groupBox27
             // 
             this.groupBox27.Controls.Add(this.label5);
@@ -1524,7 +1687,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox27.Location = new System.Drawing.Point(1, 156);
             this.groupBox27.Name = "groupBox27";
             this.groupBox27.Size = new System.Drawing.Size(633, 69);
-            this.groupBox27.TabIndex = 158;
+            this.groupBox27.TabIndex = 950;
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "Dados da Última Reativação do Cadastro";
             // 
@@ -1582,7 +1745,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox28.Location = new System.Drawing.Point(1, 6);
             this.groupBox28.Name = "groupBox28";
             this.groupBox28.Size = new System.Drawing.Size(633, 71);
-            this.groupBox28.TabIndex = 157;
+            this.groupBox28.TabIndex = 800;
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Dados de Inclusão do Cadastro";
             // 
@@ -1640,7 +1803,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox29.Location = new System.Drawing.Point(1, 80);
             this.groupBox29.Name = "groupBox29";
             this.groupBox29.Size = new System.Drawing.Size(633, 70);
-            this.groupBox29.TabIndex = 159;
+            this.groupBox29.TabIndex = 900;
             this.groupBox29.TabStop = false;
             this.groupBox29.Text = "Dados da Última Desativação do Cadastro";
             // 
@@ -1697,7 +1860,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.btnConfirmar.Location = new System.Drawing.Point(487, 514);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(143, 44);
-            this.btnConfirmar.TabIndex = 186;
+            this.btnConfirmar.TabIndex = 50;
             this.btnConfirmar.Text = "[F12] - Confirmar";
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
@@ -1711,6 +1874,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(144, 44);
             this.btnCancelar.TabIndex = 187;
+            this.btnCancelar.TabStop = false;
             this.btnCancelar.Text = "[Esc] - Cancelar";
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
@@ -1724,6 +1888,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.btnLimparCampos.Name = "btnLimparCampos";
             this.btnLimparCampos.Size = new System.Drawing.Size(166, 44);
             this.btnLimparCampos.TabIndex = 188;
+            this.btnLimparCampos.TabStop = false;
             this.btnLimparCampos.Text = "[F5] - Limpar campos";
             this.btnLimparCampos.Click += new System.EventHandler(this.btnLimparCampos_Click);
             // 
@@ -1737,68 +1902,11 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.btnImprimir.Location = new System.Drawing.Point(464, 514);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(166, 44);
-            this.btnImprimir.TabIndex = 189;
+            this.btnImprimir.TabIndex = 0;
+            this.btnImprimir.TabStop = false;
             this.btnImprimir.Text = "[CTRL + P] - Imprimir";
             this.btnImprimir.Visible = false;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
-            // groupBox30
-            // 
-            this.groupBox30.Controls.Add(this.label13);
-            this.groupBox30.Controls.Add(this.tBoxDataAlteracao);
-            this.groupBox30.Controls.Add(this.label14);
-            this.groupBox30.Controls.Add(this.tBoxUsuarioAlteracao);
-            this.groupBox30.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox30.Location = new System.Drawing.Point(1, 231);
-            this.groupBox30.Name = "groupBox30";
-            this.groupBox30.Size = new System.Drawing.Size(633, 69);
-            this.groupBox30.TabIndex = 159;
-            this.groupBox30.TabStop = false;
-            this.groupBox30.Text = "Dados da Última Alteração do Cadastro";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Calibri", 9F);
-            this.label13.Location = new System.Drawing.Point(6, 45);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(36, 14);
-            this.label13.TabIndex = 15;
-            this.label13.Text = "Data:";
-            // 
-            // tBoxDataAlteracao
-            // 
-            this.tBoxDataAlteracao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxDataAlteracao.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tBoxDataAlteracao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxDataAlteracao.Font = new System.Drawing.Font("Calibri", 9F);
-            this.tBoxDataAlteracao.Location = new System.Drawing.Point(65, 45);
-            this.tBoxDataAlteracao.Name = "tBoxDataAlteracao";
-            this.tBoxDataAlteracao.ReadOnly = true;
-            this.tBoxDataAlteracao.Size = new System.Drawing.Size(563, 15);
-            this.tBoxDataAlteracao.TabIndex = 14;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Calibri", 9F);
-            this.label14.Location = new System.Drawing.Point(6, 25);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(53, 14);
-            this.label14.TabIndex = 13;
-            this.label14.Text = "Usuário:";
-            // 
-            // tBoxUsuarioAlteracao
-            // 
-            this.tBoxUsuarioAlteracao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxUsuarioAlteracao.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tBoxUsuarioAlteracao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxUsuarioAlteracao.Font = new System.Drawing.Font("Calibri", 9F);
-            this.tBoxUsuarioAlteracao.Location = new System.Drawing.Point(65, 25);
-            this.tBoxUsuarioAlteracao.Name = "tBoxUsuarioAlteracao";
-            this.tBoxUsuarioAlteracao.ReadOnly = true;
-            this.tBoxUsuarioAlteracao.Size = new System.Drawing.Size(562, 15);
-            this.tBoxUsuarioAlteracao.TabIndex = 12;
             // 
             // frmFuncionariosCadastrar
             // 
@@ -1877,6 +1985,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox21.PerformLayout();
             this.gbDataAdmissao.ResumeLayout(false);
             this.tabPrincipal.ResumeLayout(false);
+            this.gbSituacao.ResumeLayout(false);
+            this.gbSituacao.PerformLayout();
             this.groupBox19.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -1901,14 +2011,14 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.gbCargo.ResumeLayout(false);
             this.tabControlFuncionario.ResumeLayout(false);
             this.tabDadosRegistro.ResumeLayout(false);
+            this.groupBox30.ResumeLayout(false);
+            this.groupBox30.PerformLayout();
             this.groupBox27.ResumeLayout(false);
             this.groupBox27.PerformLayout();
             this.groupBox28.ResumeLayout(false);
             this.groupBox28.PerformLayout();
             this.groupBox29.ResumeLayout(false);
             this.groupBox29.PerformLayout();
-            this.groupBox30.ResumeLayout(false);
-            this.groupBox30.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2046,5 +2156,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
         private System.Windows.Forms.TextBox tBoxDataAlteracao;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox tBoxUsuarioAlteracao;
+        private System.Windows.Forms.GroupBox gbSituacao;
+        private System.Windows.Forms.CheckBox chkBoxRegistroAtivo;
     }
 }

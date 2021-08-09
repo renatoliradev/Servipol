@@ -54,12 +54,12 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.telefone_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnVisualizar = new DevExpress.XtraEditors.SimpleButton();
             this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
             this.btnExcluir = new DevExpress.XtraEditors.SimpleButton();
             this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
             this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnVisualizar = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -77,7 +77,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox4.Location = new System.Drawing.Point(12, 12);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(115, 52);
-            this.groupBox4.TabIndex = 132;
+            this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Situação";
             // 
@@ -94,6 +94,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.cBoxSituacao.Name = "cBoxSituacao";
             this.cBoxSituacao.Size = new System.Drawing.Size(103, 22);
             this.cBoxSituacao.TabIndex = 117;
+            this.cBoxSituacao.TabStop = false;
+            this.cBoxSituacao.SelectedIndexChanged += new System.EventHandler(this.cBoxSituacao_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -103,7 +105,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox3.Location = new System.Drawing.Point(363, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(722, 52);
-            this.groupBox3.TabIndex = 134;
+            this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             // 
             // tBoxTextoConsulta
@@ -115,6 +117,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tBoxTextoConsulta.Name = "tBoxTextoConsulta";
             this.tBoxTextoConsulta.Size = new System.Drawing.Size(710, 22);
             this.tBoxTextoConsulta.TabIndex = 106;
+            this.tBoxTextoConsulta.TabStop = false;
+            this.tBoxTextoConsulta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tBoxTextoConsulta_KeyDown);
             // 
             // groupBox2
             // 
@@ -124,7 +128,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox2.Location = new System.Drawing.Point(133, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(224, 52);
-            this.groupBox2.TabIndex = 133;
+            this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Consultar Por";
             // 
@@ -135,13 +139,14 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.cBoxTipoBusca.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cBoxTipoBusca.FormattingEnabled = true;
             this.cBoxTipoBusca.Items.AddRange(new object[] {
-            "Código",
-            "QRA",
+            "Todos",
             "Nome"});
             this.cBoxTipoBusca.Location = new System.Drawing.Point(6, 22);
             this.cBoxTipoBusca.Name = "cBoxTipoBusca";
             this.cBoxTipoBusca.Size = new System.Drawing.Size(212, 22);
             this.cBoxTipoBusca.TabIndex = 105;
+            this.cBoxTipoBusca.TabStop = false;
+            this.cBoxTipoBusca.SelectedIndexChanged += new System.EventHandler(this.cBoxTipoBusca_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -167,7 +172,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.btnConsultar.Location = new System.Drawing.Point(1091, 18);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(144, 44);
-            this.btnConsultar.TabIndex = 186;
+            this.btnConsultar.TabIndex = 3;
             this.btnConsultar.Text = "[F5] - Consultar";
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
@@ -203,7 +208,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.dGridFuncionarios.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dGridFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGridFuncionarios.Size = new System.Drawing.Size(1236, 353);
-            this.dGridFuncionarios.TabIndex = 136;
+            this.dGridFuncionarios.TabIndex = 0;
             // 
             // id_funcionario
             // 
@@ -326,6 +331,21 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.panel2.Size = new System.Drawing.Size(1238, 61);
             this.panel2.TabIndex = 137;
             // 
+            // btnVisualizar
+            // 
+            this.btnVisualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVisualizar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVisualizar.Appearance.Options.UseFont = true;
+            this.btnVisualizar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnVisualizar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnVisualizar.ImageOptions.SvgImage")));
+            this.btnVisualizar.Location = new System.Drawing.Point(791, 9);
+            this.btnVisualizar.Name = "btnVisualizar";
+            this.btnVisualizar.Size = new System.Drawing.Size(144, 44);
+            this.btnVisualizar.TabIndex = 189;
+            this.btnVisualizar.TabStop = false;
+            this.btnVisualizar.Text = "[F8] - Visualizar";
+            this.btnVisualizar.Click += new System.EventHandler(this.btnVisualizar_Click);
+            // 
             // btnImprimirConsulta
             // 
             this.btnImprimirConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -337,6 +357,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.btnImprimirConsulta.Name = "btnImprimirConsulta";
             this.btnImprimirConsulta.Size = new System.Drawing.Size(233, 44);
             this.btnImprimirConsulta.TabIndex = 188;
+            this.btnImprimirConsulta.TabStop = false;
             this.btnImprimirConsulta.Text = "[CTRL + P] - Imprimir consulta";
             this.btnImprimirConsulta.Click += new System.EventHandler(this.btnImprimirConsulta_Click);
             // 
@@ -351,6 +372,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(144, 44);
             this.btnExcluir.TabIndex = 186;
+            this.btnExcluir.TabStop = false;
             this.btnExcluir.Text = "[Del] - Excluir";
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
@@ -365,6 +387,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.btnIncluir.Name = "btnIncluir";
             this.btnIncluir.Size = new System.Drawing.Size(144, 44);
             this.btnIncluir.TabIndex = 185;
+            this.btnIncluir.TabStop = false;
             this.btnIncluir.Text = "[F4] - Incluir";
             this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
@@ -379,6 +402,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(144, 44);
             this.btnEditar.TabIndex = 187;
+            this.btnEditar.TabStop = false;
             this.btnEditar.Text = "[F3] - Editar";
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
@@ -394,20 +418,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.panel3.Size = new System.Drawing.Size(1238, 355);
             this.panel3.TabIndex = 138;
             // 
-            // btnVisualizar
-            // 
-            this.btnVisualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVisualizar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVisualizar.Appearance.Options.UseFont = true;
-            this.btnVisualizar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnVisualizar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-            this.btnVisualizar.Location = new System.Drawing.Point(791, 9);
-            this.btnVisualizar.Name = "btnVisualizar";
-            this.btnVisualizar.Size = new System.Drawing.Size(144, 44);
-            this.btnVisualizar.TabIndex = 189;
-            this.btnVisualizar.Text = "[F8] - Visualizar";
-            this.btnVisualizar.Click += new System.EventHandler(this.btnVisualizar_Click);
-            // 
             // frmFuncionariosConsultar
             // 
             this.Appearance.Options.UseFont = true;
@@ -418,6 +428,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmFuncionariosConsultar";
@@ -426,7 +437,9 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Funcionários";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.frmFuncionariosConsultar_Activated);
             this.Load += new System.EventHandler(this.frmFuncionariosConsultar_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFuncionariosConsultar_KeyDown);
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

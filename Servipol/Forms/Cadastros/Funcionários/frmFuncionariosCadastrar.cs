@@ -9,7 +9,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
 {
     public partial class frmFuncionariosCadastrar : DevExpress.XtraEditors.XtraForm
     {
-        #region Instâncias
+        #region Instâncias e Propriedades
         ConexaoBD BD = new ConexaoBD();
 
         public string TipoChamada { get; set; }
@@ -29,6 +29,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
             CarregaCargos();
             CarregaCodigoASE();
             VerificaTipoChamada();
+
+            cBoxCargo.Select();
         }
 
         #region Methods
@@ -41,6 +43,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
                 {
                     this.Text = "Cadastrar Funcionário";
                     tabDadosRegistro.Parent = null;
+                    chkBoxRegistroAtivo.Checked = true;
+                    chkBoxRegistroAtivo.Enabled = false;
                     LimparCampos();
                 }
                 else if (TipoChamada == "Editar")
@@ -83,6 +87,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
                     tBoxNumeroRegistroCNH.ReadOnly = true;
                     tBoxDataValidadeCnh.Enabled = false;
                     tBoxObs.ReadOnly = true;
+                    chkBoxRegistroAtivo.Enabled = false;
 
                     //Dados Profissionais
                     tBoxDataAdmissao.Enabled = false;
@@ -140,7 +145,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
 
                 #region Variáveis
                 string cargo, codigo, tipo_sanguineo, qra, cod_controle, nome_completo, cpf, rg, uf_exp_rg, data_exp_rg, data_nascimento, data_admissao, data_validade_cnh, cat_cnh_a, cat_cnh_b, cat_cnh_c, cat_cnh_d, cat_cnh_e, observacao, end_logradouro, end_numero, end_bairro,
-                    end_cidade, end_uf, end_cep, email, telefone_1, telefone_2, telefone_3, telefone_4, contato_1, contato_2, contato_3, contato_4, nome_contato_1, nome_contato_2, nome_contato_3, nome_contato_4, numero_registro_cnh, cargo_agente, pis_pasep, numero_ctps, serie_ctps, uf_emissao_ctps, nome_mae, nome_pai, tem_curso_vigilante, local_curso_vigilante, cidade_curso_vigilante, uf_curso_vigilante, data_validade_curso_vigilante, usuario_cadastro, data_cadastro, usuario_desativacao, data_desativacao, usuario_reativacao, data_reativacao, usuario_alteracao, data_alteracao;
+                    end_cidade, end_uf, end_cep, email, telefone_1, telefone_2, telefone_3, telefone_4, contato_1, contato_2, contato_3, contato_4, nome_contato_1, nome_contato_2, nome_contato_3, nome_contato_4, numero_registro_cnh, cargo_agente, pis_pasep, numero_ctps, serie_ctps,
+                    uf_emissao_ctps, nome_mae, nome_pai, tem_curso_vigilante, local_curso_vigilante, cidade_curso_vigilante, uf_curso_vigilante, data_validade_curso_vigilante, usuario_cadastro, data_cadastro, usuario_desativacao, data_desativacao, usuario_reativacao, data_reativacao, usuario_alteracao, data_alteracao, registro_ativo;
 
                 //Principal
                 cargo = string.Empty;
@@ -210,6 +216,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
                 data_reativacao = string.Empty;
                 usuario_alteracao = string.Empty;
                 data_alteracao = string.Empty;
+                registro_ativo = string.Empty;
                 #endregion
 
                 NpgsqlCommand com = new NpgsqlCommand($"SELECT f.id_funcionario_cargo, f.cod_controle, f.tipo_sanguineo, f.data_nascimento, f.nome, f.nome_mae, f.nome_pai, f.cpf, f.rg, f.uf_exp_rg, f.data_exp_rg, f.cat_cnh_a, f.cat_cnh_b, f.cat_cnh_c, f.cat_cnh_d, f.cat_cnh_e, f.numero_registro_cnh, f.data_validade_cnh, f.observacao, f.data_admissao, f.pis_pasep, f.numero_ctps, f.serie_ctps, f.uf_emissao_ctps, f.logradouro_endereco, f.numero_endereco, f.bairro_endereco, f.cidade_endereco, f.uf_endereco, f.cep_endereco, f.email, f.telefone_1, f.telefone_2, f.telefone_3, f.telefone_4, f.tipo_contato_1, f.tipo_contato_2, f.tipo_contato_3, f.tipo_contato_4, f.nome_contato_1, f.nome_contato_2, f.nome_contato_3, f.nome_contato_4, f.cargo_ase, f.codigo_ase, f.qra_ase, f.tem_curso_vigilante, f.curso_vigilante_local, f.curso_vigilante_cidade, f.curso_vigilante_uf, f.curso_vigilante_validade, uc.nome AS usuario_cadastro, f.data_cadastro, ud.nome AS usuario_desativacao, f.data_desativacao, ur.nome AS usuario_reativacao, f.data_reativacao, ua.nome AS usuario_alteracao, f.data_alteracao, f.ativo FROM funcionario AS f INNER JOIN usuario AS uc ON(uc.id_usuario = f.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = f.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ur ON(ur.id_usuario = f.id_usuario_reativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = f.id_usuario_alteracao) WHERE f.id_funcionario = {IdFuncionario}", BD.ObjetoConexao);
@@ -237,6 +244,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
                         numero_registro_cnh = dr["numero_registro_cnh"].ToString();
                         data_validade_cnh = dr["data_validade_cnh"].ToString();
                         observacao = dr["observacao"].ToString();
+                        registro_ativo = dr["ativo"].ToString();
 
                         //Dados Profissionais
                         data_admissao = dr["data_admissao"].ToString();
@@ -331,14 +339,17 @@ namespace Servipol.Forms.Cadastros.Funcionários
                     tBoxNomeContato3.Text = nome_contato_3;
                     tBoxNomeContato4.Text = nome_contato_4;
 
-                    //Dados Adicionais (Operacional Externo)
-                    cBoxCodigoASE.SelectedValue = string.IsNullOrEmpty(codigo) ? "" : codigo;
-                    tBoxQraASE.Text = qra;
-                    cBoxCargoASE.SelectedItem = cargo_agente;
-                    tBoxLocalCursoVigilante.Text = local_curso_vigilante;
-                    tBoxCidadeCursoVigilante.Text = cidade_curso_vigilante;
-                    cBoxUfCursoVigilante.SelectedItem = uf_curso_vigilante;
-                    tBoxDataValidadeCursoVigilante.Text = data_validade_curso_vigilante;
+                    if (cBoxCargo.SelectedIndex == 0)
+                    {
+                        //Dados Adicionais (Operacional Externo)
+                        cBoxCodigoASE.SelectedValue = codigo;
+                        tBoxQraASE.Text = qra;
+                        cBoxCargoASE.SelectedItem = cargo_agente;
+                        tBoxLocalCursoVigilante.Text = local_curso_vigilante;
+                        tBoxCidadeCursoVigilante.Text = cidade_curso_vigilante;
+                        cBoxUfCursoVigilante.SelectedItem = uf_curso_vigilante;
+                        tBoxDataValidadeCursoVigilante.Text = data_validade_curso_vigilante;
+                    }
 
                     //Dados do Registro
                     tBoxUsuarioCadastro.Text = usuario_cadastro;
@@ -397,27 +408,42 @@ namespace Servipol.Forms.Cadastros.Funcionários
                     if (tem_curso_vigilante == "S")
                     {
                         rBtnCursoVigilanteSim.Checked = true;
+                        rBtnCursoVigilanteNao.Checked = false;
                     }
                     else
                     {
-                        rBtnCursoVigilanteNao.Checked = false;
+                        rBtnCursoVigilanteSim.Checked = false;
+                        rBtnCursoVigilanteNao.Checked = true;
                     }
                     #endregion
 
+                    #region Conversão Situação
+                    if (registro_ativo == "S")
+                    {
+                        chkBoxRegistroAtivo.Checked = true;
+                    }
+                    else
+                    {
+                        chkBoxRegistroAtivo.Checked = false;
+                    }
+                    #endregion
                 }
 
-                if (cargo == "1")
+                switch (cargo)
                 {
-                    tabDadosAdicionaisASE.Parent = tabControlFuncionario;
+                    case "1":
+                        tabDadosAdicionaisASE.Parent = tabControlFuncionario;
+                        break;
+                    default:
+                        tabDadosAdicionaisASE.Parent = null;
+                        break;
                 }
-                else
-                {
-                    tabDadosAdicionaisASE.Parent = null;
-                }
+
             }
-            catch (Exception err)
-            {
-            }
+            //catch (Exception err)
+            //{
+            //    XtraMessageBox
+            //}
             finally
             {
                 BD.Desconectar();
@@ -651,6 +677,21 @@ namespace Servipol.Forms.Cadastros.Funcionários
                     btnCancelar_Click(sender, e);
                     break;
             }
+            if (e.Control && e.KeyCode == Keys.P)
+            {
+                if (TipoChamada == "Visualizar")
+                {
+                    btnImprimir_Click(sender, e);
+                }
+            }
+        }
+
+        private void rBtnCursoVigilanteNao_CheckedChanged(object sender, EventArgs e)
+        {
+            tBoxLocalCursoVigilante.Clear();
+            tBoxCidadeCursoVigilante.Clear();
+            cBoxUfCursoVigilante.SelectedIndex = -1;
+            tBoxDataValidadeCursoVigilante.ResetText();
         }
 
         #endregion
@@ -676,6 +717,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
         {
             try
             {
+                BD.Conectar();
+
                 if (!ValidaCampos())
                 {
                     return;
@@ -686,7 +729,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
                     {
                         #region Variáveis
                         string cargo, codigo, tipo_sanguineo, qra, cod_controle, nome_completo, cpf, rg, uf_exp_rg, data_exp_rg, data_nascimento, data_admissao, data_validade_cnh, cat_cnh_a, cat_cnh_b, cat_cnh_c, cat_cnh_d, cat_cnh_e, observacao, end_logradouro, end_numero, end_bairro,
-                            end_cidade, end_uf, end_cep, email, telefone_1, telefone_2, telefone_3, telefone_4, contato_1, contato_2, contato_3, contato_4, nome_contato_1, nome_contato_2, nome_contato_3, nome_contato_4, numero_registro_cnh, cargo_agente, pis_pasep, numero_ctps, serie_ctps, uf_emissao_ctps, nome_mae, nome_pai, tem_curso_vigilante, local_curso_vigilante, cidade_curso_vigilante, uf_curso_vigilante, data_validade_curso_vigilante;
+                            end_cidade, end_uf, end_cep, email, telefone_1, telefone_2, telefone_3, telefone_4, contato_1, contato_2, contato_3, contato_4, nome_contato_1, nome_contato_2, nome_contato_3, nome_contato_4, numero_registro_cnh, cargo_agente, pis_pasep, numero_ctps, serie_ctps,
+                            uf_emissao_ctps, nome_mae, nome_pai, tem_curso_vigilante, local_curso_vigilante, cidade_curso_vigilante, uf_curso_vigilante, data_validade_curso_vigilante, registro_ativo;
 
                         //Principal
                         cargo = cBoxCargo.SelectedValue.ToString();
@@ -708,6 +752,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
                         numero_registro_cnh = tBoxNumeroRegistroCNH.Text.ToUpper().Trim();
                         data_validade_cnh = tBoxDataValidadeCnh.Text.Replace("/", "-");
                         observacao = tBoxObs.Text.ToUpper().Trim();
+                        registro_ativo = chkBoxRegistroAtivo.Checked ? "S" : "N";
 
                         //Dados Profissionais
                         data_admissao = string.IsNullOrEmpty(tBoxDataAdmissao.Text) ? DateTime.Now.ToString("d") : tBoxDataAdmissao.Text.Replace("/", "-");
@@ -748,7 +793,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
                         data_validade_curso_vigilante = string.IsNullOrEmpty(tBoxDataValidadeCursoVigilante.Text) && cBoxCargo.SelectedIndex != 0 ? "01-01-2100" : tBoxDataValidadeCursoVigilante.Text.Replace("/", "-");
 
                         #endregion
-                        BD.Conectar();
+
                         string sqlCommand = $"INSERT INTO funcionario VALUES (nextval('seq_funcionario'), {cargo}, '{cod_controle}', '{tipo_sanguineo}', '{data_nascimento}', '{nome_completo}', '{nome_mae}', '{nome_pai}', '{cpf}', '{rg}', '{uf_exp_rg}', '{data_exp_rg}', '{cat_cnh_a}', '{cat_cnh_b}', '{cat_cnh_c}', '{cat_cnh_d}', '{cat_cnh_e}', '{numero_registro_cnh}', '{data_validade_cnh}', '{observacao}', '{data_admissao}', '{pis_pasep}', '{numero_ctps}', '{serie_ctps}', '{uf_emissao_ctps}', '{end_logradouro}', '{end_numero}', '{end_bairro}', '{end_cidade}', '{end_uf}', '{end_cep}', '{email}', '{telefone_1}', '{telefone_2}', '{telefone_3}', '{telefone_4}', '{contato_1}', '{contato_2}', '{contato_3}', '{contato_4}', '{nome_contato_1}', '{nome_contato_2}', '{nome_contato_3}', '{nome_contato_4}', '{cargo_agente}', '{codigo}', '{qra}', '{tem_curso_vigilante}', '{local_curso_vigilante}', '{cidade_curso_vigilante}', '{uf_curso_vigilante}', '{data_validade_curso_vigilante}', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, NULL, NULL, 'S')";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
@@ -770,7 +815,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
                     {
                         #region Variáveis
                         string cargo, codigo, tipo_sanguineo, qra, cod_controle, nome_completo, cpf, rg, uf_exp_rg, data_exp_rg, data_nascimento, data_admissao, data_validade_cnh, cat_cnh_a, cat_cnh_b, cat_cnh_c, cat_cnh_d, cat_cnh_e, observacao, end_logradouro, end_numero, end_bairro,
-                            end_cidade, end_uf, end_cep, email, telefone_1, telefone_2, telefone_3, telefone_4, contato_1, contato_2, contato_3, contato_4, nome_contato_1, nome_contato_2, nome_contato_3, nome_contato_4, numero_registro_cnh, cargo_agente, pis_pasep, numero_ctps, serie_ctps, uf_emissao_ctps, nome_mae, nome_pai, tem_curso_vigilante, local_curso_vigilante, cidade_curso_vigilante, uf_curso_vigilante, data_validade_curso_vigilante;
+                            end_cidade, end_uf, end_cep, email, telefone_1, telefone_2, telefone_3, telefone_4, contato_1, contato_2, contato_3, contato_4, nome_contato_1, nome_contato_2, nome_contato_3, nome_contato_4, numero_registro_cnh, cargo_agente, pis_pasep, numero_ctps, serie_ctps,
+                            uf_emissao_ctps, nome_mae, nome_pai, tem_curso_vigilante, local_curso_vigilante, cidade_curso_vigilante, uf_curso_vigilante, data_validade_curso_vigilante, registro_ativo;
 
                         //Principal
                         cargo = cBoxCargo.SelectedValue.ToString();
@@ -792,6 +838,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
                         numero_registro_cnh = tBoxNumeroRegistroCNH.Text.ToUpper().Trim();
                         data_validade_cnh = tBoxDataValidadeCnh.Text.Replace("/", "-");
                         observacao = tBoxObs.Text.ToUpper().Trim();
+                        registro_ativo = chkBoxRegistroAtivo.Checked ? "S" : "N";
 
                         //Dados Profissionais
                         data_admissao = string.IsNullOrEmpty(tBoxDataAdmissao.Text) ? DateTime.Now.ToString("d") : tBoxDataAdmissao.Text.Replace("/", "-");
@@ -821,32 +868,42 @@ namespace Servipol.Forms.Cadastros.Funcionários
                         nome_contato_3 = tBoxNomeContato3.Text.ToUpper().Trim();
                         nome_contato_4 = tBoxNomeContato4.Text.ToUpper().Trim();
 
-                        //Dados Adicionais (Operacional Externo)
-                        codigo = cBoxCodigoASE.SelectedIndex == -1 ? "" : cBoxCodigoASE.SelectedValue.ToString();
-                        qra = string.IsNullOrEmpty(tBoxQraASE.Text) ? "" : tBoxQraASE.Text.ToUpper().Trim();
-                        cargo_agente = cBoxCargoASE.SelectedIndex == -1 ? "" : cBoxCargoASE.SelectedItem.ToString();
-                        tem_curso_vigilante = rBtnCursoVigilanteSim.Checked == true ? "S" : "N";
-                        local_curso_vigilante = tBoxLocalCursoVigilante.Text.ToUpper().Trim();
-                        cidade_curso_vigilante = tBoxCidadeCursoVigilante.Text.ToUpper().Trim();
-                        uf_curso_vigilante = cBoxUfCursoVigilante.SelectedIndex == -1 ? "" : cBoxUfCursoVigilante.SelectedItem.ToString();
-                        data_validade_curso_vigilante = string.IsNullOrEmpty(tBoxDataValidadeCursoVigilante.Text) ? "01-01-2100" : tBoxDataValidadeCursoVigilante.Text.Replace("/", "-");
+                        if (cBoxCargo.SelectedIndex == 0)
+                        {
+                            //Dados Adicionais (Operacional Externo)
+                            codigo = cBoxCodigoASE.SelectedValue.ToString();
+                            qra = string.IsNullOrEmpty(tBoxQraASE.Text) ? "" : tBoxQraASE.Text.ToUpper().Trim();
+                            cargo_agente = cBoxCargoASE.SelectedIndex == -1 ? "" : cBoxCargoASE.SelectedItem.ToString();
+                            tem_curso_vigilante = rBtnCursoVigilanteSim.Checked == true ? "S" : "N";
+                            local_curso_vigilante = tBoxLocalCursoVigilante.Text.ToUpper().Trim();
+                            cidade_curso_vigilante = tBoxCidadeCursoVigilante.Text.ToUpper().Trim();
+                            uf_curso_vigilante = cBoxUfCursoVigilante.SelectedIndex == -1 ? "" : cBoxUfCursoVigilante.SelectedItem.ToString();
+                            data_validade_curso_vigilante = string.IsNullOrEmpty(tBoxDataValidadeCursoVigilante.Text) ? "01-01-2100" : tBoxDataValidadeCursoVigilante.Text.Replace("/", "-");
+
+                            string sqlCommand5 = $"UPDATE funcionario SET cargo_ase = '{cargo_agente}', codigo_ase = '{codigo}', qra_ase = '{qra}', tem_curso_vigilante = '{tem_curso_vigilante}', curso_vigilante_local = '{local_curso_vigilante}', curso_vigilante_cidade = '{cidade_curso_vigilante}', curso_vigilante_uf = '{uf_curso_vigilante}', curso_vigilante_validade = '{data_validade_curso_vigilante}' WHERE id_funcionario = {IdFuncionario}";
+                            NpgsqlCommand command5 = new NpgsqlCommand(sqlCommand5, BD.ObjetoConexao);
+                            command5.ExecuteNonQuery();
+
+                            string sqlCommand3 = $"UPDATE codigoqra SET id_funcionario = {IdFuncionario} WHERE codigo = {codigo}";
+                            NpgsqlCommand command3 = new NpgsqlCommand(sqlCommand3, BD.ObjetoConexao);
+                            command3.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            string sqlCommand4 = $"UPDATE funcionario SET codigo_ase = NULL, cargo_ase = NULL, qra_ase = NULL, tem_curso_vigilante = 'N', curso_vigilante_local = NULL, curso_vigilante_cidade = NULL, curso_vigilante_uf = NULL, curso_vigilante_validade = '2100-01-01' WHERE id_funcionario = {IdFuncionario}";
+                            NpgsqlCommand command4 = new NpgsqlCommand(sqlCommand4, BD.ObjetoConexao);
+                            command4.ExecuteNonQuery();
+                        }
 
                         #endregion
-                        BD.Conectar();
-                        string sqlCommand = $"UPDATE funcionario SET id_funcionario_cargo = {cargo}, cod_controle = '{cod_controle}', tipo_sanguineo = '{tipo_sanguineo}', data_nascimento = '{data_nascimento}', nome = '{nome_completo}', nome_mae = '{nome_mae}', nome_pai = '{nome_pai}', cpf = '{cpf}', rg = '{rg}', uf_exp_rg = '{uf_exp_rg}', data_exp_rg = '{data_exp_rg}', cat_cnh_a = '{cat_cnh_a}', cat_cnh_b = '{cat_cnh_b}', cat_cnh_c = '{cat_cnh_c}', cat_cnh_d = '{cat_cnh_d}', cat_cnh_e = '{cat_cnh_e}', numero_registro_cnh = '{numero_registro_cnh}', data_validade_cnh = '{data_validade_cnh}', observacao = '{observacao}', data_admissao = '{data_admissao}', pis_pasep = '{pis_pasep}', numero_ctps = '{numero_ctps}', serie_ctps = '{serie_ctps}', uf_emissao_ctps = '{uf_emissao_ctps}', logradouro_endereco = '{end_logradouro}', numero_endereco = '{end_numero}', bairro_endereco = '{end_bairro}', cidade_endereco = '{end_cidade}', uf_endereco = '{end_uf}', cep_endereco = '{end_cep}', email = '{email}', telefone_1 = '{telefone_1}', telefone_2 = '{telefone_2}', telefone_3 = '{telefone_3}', telefone_4 = '{telefone_4}', tipo_contato_1 = '{contato_1}', tipo_contato_2 = '{contato_2}', tipo_contato_3 = '{contato_3}', tipo_contato_4 = '{contato_4}', nome_contato_1 = '{nome_contato_1}', nome_contato_2 = '{nome_contato_2}', nome_contato_3 = '{nome_contato_3}', nome_contato_4 = '{nome_contato_4}', cargo_ase = '{cargo_agente}', codigo_ase = '{codigo}', qra_ase = '{qra}', tem_curso_vigilante = '{tem_curso_vigilante}', curso_vigilante_local = '{local_curso_vigilante}', curso_vigilante_cidade = '{cidade_curso_vigilante}', curso_vigilante_uf = '{uf_curso_vigilante}', curso_vigilante_validade = '{data_validade_curso_vigilante}', id_usuario_alteracao = {SessaoSistema.UsuarioId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_funcionario = {IdFuncionario}";
+
+                        string sqlCommand = $"UPDATE funcionario SET id_funcionario_cargo = {cargo}, cod_controle = '{cod_controle}', tipo_sanguineo = '{tipo_sanguineo}', data_nascimento = '{data_nascimento}', nome = '{nome_completo}', nome_mae = '{nome_mae}', nome_pai = '{nome_pai}', cpf = '{cpf}', rg = '{rg}', uf_exp_rg = '{uf_exp_rg}', data_exp_rg = '{data_exp_rg}', cat_cnh_a = '{cat_cnh_a}', cat_cnh_b = '{cat_cnh_b}', cat_cnh_c = '{cat_cnh_c}', cat_cnh_d = '{cat_cnh_d}', cat_cnh_e = '{cat_cnh_e}', numero_registro_cnh = '{numero_registro_cnh}', data_validade_cnh = '{data_validade_cnh}', observacao = '{observacao}', data_admissao = '{data_admissao}', pis_pasep = '{pis_pasep}', numero_ctps = '{numero_ctps}', serie_ctps = '{serie_ctps}', uf_emissao_ctps = '{uf_emissao_ctps}', logradouro_endereco = '{end_logradouro}', numero_endereco = '{end_numero}', bairro_endereco = '{end_bairro}', cidade_endereco = '{end_cidade}', uf_endereco = '{end_uf}', cep_endereco = '{end_cep}', email = '{email}', telefone_1 = '{telefone_1}', telefone_2 = '{telefone_2}', telefone_3 = '{telefone_3}', telefone_4 = '{telefone_4}', tipo_contato_1 = '{contato_1}', tipo_contato_2 = '{contato_2}', tipo_contato_3 = '{contato_3}', tipo_contato_4 = '{contato_4}', nome_contato_1 = '{nome_contato_1}', nome_contato_2 = '{nome_contato_2}', nome_contato_3 = '{nome_contato_3}', nome_contato_4 = '{nome_contato_4}', ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UsuarioId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_funcionario = {IdFuncionario}";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 
                         string sqlCommand2 = $"UPDATE codigoqra SET id_funcionario = NULL WHERE id_funcionario = {IdFuncionario}";
                         NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
                         command2.ExecuteNonQuery();
-
-                        if (cBoxCargo.SelectedIndex == 0)
-                        {
-                            string sqlCommand3 = $"UPDATE codigoqra SET id_funcionario = {IdFuncionario} WHERE codigo = '{codigo}'";
-                            NpgsqlCommand command3 = new NpgsqlCommand(sqlCommand3, BD.ObjetoConexao);
-                            command3.ExecuteNonQuery();
-                        }
 
                         XtraMessageBox.Show("Cadastro Alterado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ((frmFuncionariosConsultar)this.Owner).AtualizaDG();
@@ -861,8 +918,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
         }
 
 
+
         #endregion
 
-        
     }
 }
