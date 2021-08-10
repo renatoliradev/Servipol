@@ -56,7 +56,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnVisualizar = new DevExpress.XtraEditors.SimpleButton();
             this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
-            this.btnExcluir = new DevExpress.XtraEditors.SimpleButton();
             this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
             this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -209,6 +208,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.dGridFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGridFuncionarios.Size = new System.Drawing.Size(1236, 353);
             this.dGridFuncionarios.TabIndex = 0;
+            this.dGridFuncionarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridFuncionarios_CellDoubleClick);
             // 
             // id_funcionario
             // 
@@ -323,7 +323,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.btnVisualizar);
             this.panel2.Controls.Add(this.btnImprimirConsulta);
-            this.panel2.Controls.Add(this.btnExcluir);
             this.panel2.Controls.Add(this.btnIncluir);
             this.panel2.Controls.Add(this.btnEditar);
             this.panel2.Location = new System.Drawing.Point(0, 452);
@@ -360,21 +359,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.btnImprimirConsulta.TabStop = false;
             this.btnImprimirConsulta.Text = "[CTRL + P] - Imprimir consulta";
             this.btnImprimirConsulta.Click += new System.EventHandler(this.btnImprimirConsulta_Click);
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluir.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Appearance.Options.UseFont = true;
-            this.btnExcluir.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnExcluir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExcluir.ImageOptions.SvgImage")));
-            this.btnExcluir.Location = new System.Drawing.Point(641, 9);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(144, 44);
-            this.btnExcluir.TabIndex = 186;
-            this.btnExcluir.TabStop = false;
-            this.btnExcluir.Text = "[Del] - Excluir";
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnIncluir
             // 
@@ -438,6 +422,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.Text = "Funcionários";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.frmFuncionariosConsultar_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmFuncionariosConsultar_FormClosing);
             this.Load += new System.EventHandler(this.frmFuncionariosConsultar_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFuncionariosConsultar_KeyDown);
             this.groupBox4.ResumeLayout(false);
@@ -464,7 +449,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
         private System.Windows.Forms.DataGridView dGridFuncionarios;
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.SimpleButton btnImprimirConsulta;
-        private DevExpress.XtraEditors.SimpleButton btnExcluir;
         private DevExpress.XtraEditors.SimpleButton btnIncluir;
         private DevExpress.XtraEditors.SimpleButton btnEditar;
         private DevExpress.XtraEditors.SimpleButton btnConsultar;

@@ -10,7 +10,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
     public partial class frmFuncionariosConsultar : DevExpress.XtraEditors.XtraForm
     {
         #region Instâncias
-        ConexaoBD BD = new ConexaoBD();
+        readonly ConexaoBD BD = new ConexaoBD();
         #endregion
 
         public frmFuncionariosConsultar()
@@ -86,9 +86,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
                 case Keys.F8:
                     btnVisualizar_Click(sender, e);
                     break;
-                case Keys.Delete:
-                    btnExcluir_Click(sender, e);
-                    break;
                 case Keys.F5:
                     btnConsultar_Click(sender, e);
                     break;
@@ -113,6 +110,22 @@ namespace Servipol.Forms.Cadastros.Funcionários
                 tBoxTextoConsulta.Clear();
                 btnConsultar_Click(sender, e);
             }
+        }
+
+        private void cBoxSituacao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnConsultar_Click(sender, e);
+        }
+
+        private void dGridFuncionarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnEditar_Click(sender, e);
+        }
+
+        private void frmFuncionariosConsultar_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            BD.Desconectar();
+            this.Dispose();
         }
 
         #endregion
@@ -201,11 +214,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             }
         }
 
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnImprimirConsulta_Click(object sender, EventArgs e)
         {
             XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -214,9 +222,5 @@ namespace Servipol.Forms.Cadastros.Funcionários
 
         #endregion
 
-        private void cBoxSituacao_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            btnConsultar_Click(sender, e);
-        }
     }
 }
