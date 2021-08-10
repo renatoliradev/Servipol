@@ -9,19 +9,19 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 {
     public partial class frmVeiculosCadastrar : DevExpress.XtraEditors.XtraForm
     {
-        #region Instâncias
-        ConexaoBD BD = new ConexaoBD();
+        #region Instâncias e Propriedades
+        readonly ConexaoBD BD = new ConexaoBD();
 
-        public static string auxTipoChamada = string.Empty;
-        public static int auxIDVeiculo = 0;
+        public string TipoChamada { get; set; }
+        public int IdVeiculo { get; set; }
         #endregion
 
         public frmVeiculosCadastrar(string tipoChamada, int idVeiculo)
         {
             InitializeComponent();
 
-            auxTipoChamada = tipoChamada;
-            auxIDVeiculo = idVeiculo;
+            TipoChamada = tipoChamada;
+            IdVeiculo = idVeiculo;
         }
 
         private void frmVeiculosCadastrar_Load(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             try
             {
                 BD.Conectar();
-                if (auxTipoChamada == "Incluir")
+                if (TipoChamada == "Incluir")
                 {
                     this.Text = "Incluir Veículo";
 
@@ -45,16 +45,18 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     tBoxDescricaoVeiculo.Clear();
                     tBoxPlacaVeiculo.Clear();
                     tBoxDescricaoVeiculo.Focus();
+                    chkBoxRegistroAtivo.Checked = true;
+                    chkBoxRegistroAtivo.Enabled = false;
                 }
-                else if (auxTipoChamada == "Editar")
+                else if (TipoChamada == "Editar")
                 {
                     this.Text = "Editar Veículo";
 
                     #region DECLARACAO DE VARIAVEIS
-                    string tipo_veiculo = string.Empty, codigo_veiculo = string.Empty, descricao_veiculo = string.Empty, placa = string.Empty, combustivel = string.Empty, faz_revisao = string.Empty;
+                    string tipo_veiculo = string.Empty, codigo_veiculo = string.Empty, descricao_veiculo = string.Empty, placa = string.Empty, combustivel = string.Empty, faz_revisao = string.Empty, registro_ativo = string.Empty;
                     #endregion
 
-                    NpgsqlCommand com = new NpgsqlCommand($"SELECT v.tipo_veiculo, v.codigo_veiculo, v.descricao_veiculo, v.placa, v.combustivel, v.faz_revisao FROM veiculos AS v WHERE v.id_veiculo = {auxIDVeiculo}", BD.ObjetoConexao);
+                    NpgsqlCommand com = new NpgsqlCommand($"SELECT v.tipo_veiculo, v.codigo_veiculo, v.descricao_veiculo, v.placa, v.combustivel, v.faz_revisao FROM veiculos AS v WHERE v.id_veiculo = {IdVeiculo}", BD.ObjetoConexao);
                     using (NpgsqlDataReader dr = com.ExecuteReader())
                     {
                         while (dr.Read())
@@ -65,6 +67,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                             placa = dr["placa"].ToString();
                             combustivel = dr["combustivel"].ToString();
                             faz_revisao = dr["faz_revisao"].ToString();
+                            registro_ativo = dr["ativo"].ToString();
                         }
 
                         cBoxTipoVeiculo.SelectedValue = tipo_veiculo;
@@ -81,7 +84,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                                 break;
                         }
 
-                        #region IDENTIFICA_TIPO_PLACA
+                        #region Identifica Tipo da Placa
                         if (placa.Contains("-"))
                         {
                             rBtnPlacaAntiga.Checked = true;
@@ -89,6 +92,17 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                         else
                         {
                             rBtnPlacaMercosul.Checked = true;
+                        }
+                        #endregion
+
+                        #region Conversão Situação
+                        if (registro_ativo == "S")
+                        {
+                            chkBoxRegistroAtivo.Checked = true;
+                        }
+                        else
+                        {
+                            chkBoxRegistroAtivo.Checked = false;
                         }
                         #endregion
 
@@ -105,7 +119,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             }
         }
 
-        public void carregaTipoVeiculo()
+        public void CarregaTipoVeiculo()
         {
             try
             {
@@ -123,11 +137,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
                 if (cBoxTipoVeiculo.SelectedValue.ToString() == "1")
                 {
-                    carregaCodigoCarro();
+                    CarregaCodigoCarro();
                 }
                 else if (cBoxTipoVeiculo.SelectedValue.ToString() == "2")
                 {
-                    carregaCodigoMoto();
+                    CarregaCodigoMoto();
                 }
             }
             catch (Exception e)
@@ -140,14 +154,14 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             }
         }
 
-        public void carregaCodigoCarro()
+        public void CarregaCodigoCarro()
         {
             try
             {
                 BD.Conectar();
                 NpgsqlCommand com = new NpgsqlCommand();
                 com.Connection = BD.ObjetoConexao;
-                com.CommandText = $"SELECT id FROM codigocarro WHERE id_veiculo = {auxIDVeiculo} OR id_veiculo IS NULL ORDER BY 1 ASC";
+                com.CommandText = $"SELECT id FROM codigocarro WHERE id_veiculo = {IdVeiculo} OR id_veiculo IS NULL ORDER BY 1 ASC";
                 NpgsqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
@@ -166,14 +180,14 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             }
         }
 
-        public void carregaCodigoMoto()
+        public void CarregaCodigoMoto()
         {
             try
             {
                 BD.Conectar();
                 NpgsqlCommand com = new NpgsqlCommand();
                 com.Connection = BD.ObjetoConexao;
-                com.CommandText = $"SELECT id FROM codigomoto WHERE id_veiculo = {auxIDVeiculo} OR  id_veiculo IS NULL ORDER BY 1 ASC";
+                com.CommandText = $"SELECT id FROM codigomoto WHERE id_veiculo = {IdVeiculo} OR  id_veiculo IS NULL ORDER BY 1 ASC";
                 NpgsqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);

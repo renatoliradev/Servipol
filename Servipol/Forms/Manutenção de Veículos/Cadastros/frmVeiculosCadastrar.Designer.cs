@@ -47,10 +47,12 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cBoxTipoVeiculo = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnConfirmar = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnConfirmar = new DevExpress.XtraEditors.SimpleButton();
+            this.gbSituacao = new System.Windows.Forms.GroupBox();
+            this.chkBoxRegistroAtivo = new System.Windows.Forms.CheckBox();
+            this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -59,6 +61,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.gbSituacao.SuspendLayout();
             this.SuspendLayout();
             // 
             // cBoxFazRevisao
@@ -102,10 +105,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // rBtnPlacaAntiga
             // 
             this.rBtnPlacaAntiga.AutoSize = true;
-            this.rBtnPlacaAntiga.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rBtnPlacaAntiga.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rBtnPlacaAntiga.Location = new System.Drawing.Point(6, 43);
             this.rBtnPlacaAntiga.Name = "rBtnPlacaAntiga";
-            this.rBtnPlacaAntiga.Size = new System.Drawing.Size(92, 17);
+            this.rBtnPlacaAntiga.Size = new System.Drawing.Size(104, 18);
             this.rBtnPlacaAntiga.TabIndex = 1;
             this.rBtnPlacaAntiga.Text = "Modelo Antigo";
             this.rBtnPlacaAntiga.UseVisualStyleBackColor = true;
@@ -114,10 +117,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // rBtnPlacaMercosul
             // 
             this.rBtnPlacaMercosul.AutoSize = true;
-            this.rBtnPlacaMercosul.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rBtnPlacaMercosul.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rBtnPlacaMercosul.Location = new System.Drawing.Point(6, 22);
             this.rBtnPlacaMercosul.Name = "rBtnPlacaMercosul";
-            this.rBtnPlacaMercosul.Size = new System.Drawing.Size(105, 17);
+            this.rBtnPlacaMercosul.Size = new System.Drawing.Size(116, 18);
             this.rBtnPlacaMercosul.TabIndex = 0;
             this.rBtnPlacaMercosul.Text = "Padrão Mercosul";
             this.rBtnPlacaMercosul.UseVisualStyleBackColor = true;
@@ -251,32 +254,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tipo*";
             // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Appearance.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Appearance.Options.UseFont = true;
-            this.btnCancelar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnCancelar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCancelar.ImageOptions.SvgImage")));
-            this.btnCancelar.Location = new System.Drawing.Point(18, 215);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(161, 38);
-            this.btnCancelar.TabIndex = 231;
-            this.btnCancelar.Text = "[Esc] - Cancelar";
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnConfirmar
-            // 
-            this.btnConfirmar.Appearance.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmar.Appearance.Options.UseFont = true;
-            this.btnConfirmar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConfirmar.ImageOptions.SvgImage")));
-            this.btnConfirmar.Location = new System.Drawing.Point(266, 215);
-            this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(161, 38);
-            this.btnConfirmar.TabIndex = 230;
-            this.btnConfirmar.Text = "[F12] - Confirmar";
-            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
-            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.comboBox1);
@@ -301,14 +278,63 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.comboBox1.Size = new System.Drawing.Size(186, 22);
             this.comboBox1.TabIndex = 2;
             // 
+            // btnConfirmar
+            // 
+            this.btnConfirmar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmar.Appearance.Options.UseFont = true;
+            this.btnConfirmar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
+            this.btnConfirmar.Location = new System.Drawing.Point(284, 281);
+            this.btnConfirmar.Name = "btnConfirmar";
+            this.btnConfirmar.Size = new System.Drawing.Size(143, 44);
+            this.btnConfirmar.TabIndex = 232;
+            this.btnConfirmar.Text = "[F12] - Confirmar";
+            // 
+            // gbSituacao
+            // 
+            this.gbSituacao.Controls.Add(this.chkBoxRegistroAtivo);
+            this.gbSituacao.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbSituacao.Location = new System.Drawing.Point(12, 215);
+            this.gbSituacao.Name = "gbSituacao";
+            this.gbSituacao.Size = new System.Drawing.Size(128, 48);
+            this.gbSituacao.TabIndex = 233;
+            this.gbSituacao.TabStop = false;
+            this.gbSituacao.Text = "Situação";
+            // 
+            // chkBoxRegistroAtivo
+            // 
+            this.chkBoxRegistroAtivo.AutoSize = true;
+            this.chkBoxRegistroAtivo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkBoxRegistroAtivo.Font = new System.Drawing.Font("Calibri", 9F);
+            this.chkBoxRegistroAtivo.Location = new System.Drawing.Point(6, 22);
+            this.chkBoxRegistroAtivo.Name = "chkBoxRegistroAtivo";
+            this.chkBoxRegistroAtivo.Size = new System.Drawing.Size(100, 18);
+            this.chkBoxRegistroAtivo.TabIndex = 1;
+            this.chkBoxRegistroAtivo.Text = "Registro Ativo";
+            this.chkBoxRegistroAtivo.UseVisualStyleBackColor = true;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Appearance.Options.UseFont = true;
+            this.btnCancelar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnCancelar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCancelar.ImageOptions.SvgImage")));
+            this.btnCancelar.Location = new System.Drawing.Point(12, 281);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(144, 44);
+            this.btnCancelar.TabIndex = 234;
+            this.btnCancelar.TabStop = false;
+            this.btnCancelar.Text = "[Esc] - Cancelar";
+            // 
             // frmVeiculosCadastrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 263);
-            this.Controls.Add(this.groupBox7);
+            this.ClientSize = new System.Drawing.Size(438, 335);
             this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.gbSituacao);
             this.Controls.Add(this.btnConfirmar);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox6);
@@ -339,6 +365,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
+            this.gbSituacao.ResumeLayout(false);
+            this.gbSituacao.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -362,10 +390,12 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cBoxTipoVeiculo;
         private System.Windows.Forms.GroupBox groupBox3;
-        private DevExpress.XtraEditors.SimpleButton btnCancelar;
-        private DevExpress.XtraEditors.SimpleButton btnConfirmar;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
+        private DevExpress.XtraEditors.SimpleButton btnConfirmar;
+        private System.Windows.Forms.GroupBox gbSituacao;
+        private System.Windows.Forms.CheckBox chkBoxRegistroAtivo;
+        private DevExpress.XtraEditors.SimpleButton btnCancelar;
     }
 }
