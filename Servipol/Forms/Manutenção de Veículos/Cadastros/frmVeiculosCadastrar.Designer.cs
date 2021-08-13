@@ -42,13 +42,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.gbPlaca = new System.Windows.Forms.GroupBox();
             this.tBoxPlacaVeiculo = new System.Windows.Forms.MaskedTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cBoxCodigoVeiculo = new System.Windows.Forms.ComboBox();
             this.tBoxDescricaoVeiculo = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cBoxTipoVeiculo = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cBoxRegistraKmDiario = new System.Windows.Forms.ComboBox();
             this.btnConfirmar = new DevExpress.XtraEditors.SimpleButton();
             this.gbSituacao = new System.Windows.Forms.GroupBox();
             this.chkBoxRegistroAtivo = new System.Windows.Forms.CheckBox();
@@ -191,7 +191,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.comboBox2);
+            this.groupBox4.Controls.Add(this.cBoxCodigoVeiculo);
             this.groupBox4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(142, 12);
             this.groupBox4.Name = "groupBox4";
@@ -200,16 +200,16 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Código*";
             // 
-            // comboBox2
+            // cBoxCodigoVeiculo
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Font = new System.Drawing.Font("Calibri", 9F);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(6, 22);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(52, 22);
-            this.comboBox2.TabIndex = 2;
+            this.cBoxCodigoVeiculo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cBoxCodigoVeiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxCodigoVeiculo.Font = new System.Drawing.Font("Calibri", 9F);
+            this.cBoxCodigoVeiculo.FormattingEnabled = true;
+            this.cBoxCodigoVeiculo.Location = new System.Drawing.Point(6, 22);
+            this.cBoxCodigoVeiculo.Name = "cBoxCodigoVeiculo";
+            this.cBoxCodigoVeiculo.Size = new System.Drawing.Size(52, 22);
+            this.cBoxCodigoVeiculo.TabIndex = 2;
             // 
             // tBoxDescricaoVeiculo
             // 
@@ -256,7 +256,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.comboBox1);
+            this.groupBox7.Controls.Add(this.cBoxRegistraKmDiario);
             this.groupBox7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(229, 152);
             this.groupBox7.Name = "groupBox7";
@@ -265,30 +265,31 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Obrigatório registrar Km Diário*";
             // 
-            // comboBox1
+            // cBoxRegistraKmDiario
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Calibri", 9F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cBoxRegistraKmDiario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxRegistraKmDiario.Font = new System.Drawing.Font("Calibri", 9F);
+            this.cBoxRegistraKmDiario.FormattingEnabled = true;
+            this.cBoxRegistraKmDiario.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.comboBox1.Location = new System.Drawing.Point(6, 22);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(186, 22);
-            this.comboBox1.TabIndex = 2;
+            this.cBoxRegistraKmDiario.Location = new System.Drawing.Point(6, 22);
+            this.cBoxRegistraKmDiario.Name = "cBoxRegistraKmDiario";
+            this.cBoxRegistraKmDiario.Size = new System.Drawing.Size(186, 22);
+            this.cBoxRegistraKmDiario.TabIndex = 2;
             // 
             // btnConfirmar
             // 
             this.btnConfirmar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmar.Appearance.Options.UseFont = true;
             this.btnConfirmar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
+            this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConfirmar.ImageOptions.SvgImage")));
             this.btnConfirmar.Location = new System.Drawing.Point(284, 281);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(143, 44);
             this.btnConfirmar.TabIndex = 232;
             this.btnConfirmar.Text = "[F12] - Confirmar";
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // gbSituacao
             // 
@@ -391,8 +392,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         private System.Windows.Forms.ComboBox cBoxTipoVeiculo;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cBoxRegistraKmDiario;
+        private System.Windows.Forms.ComboBox cBoxCodigoVeiculo;
         private DevExpress.XtraEditors.SimpleButton btnConfirmar;
         private System.Windows.Forms.GroupBox gbSituacao;
         private System.Windows.Forms.CheckBox chkBoxRegistroAtivo;
