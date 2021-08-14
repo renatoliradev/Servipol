@@ -47,6 +47,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     tBoxDescricaoVeiculo.Focus();
                     chkBoxRegistroAtivo.Checked = true;
                     chkBoxRegistroAtivo.Enabled = false;
+                    tabDadosRegistro.Parent = null;
                 }
                 else if (TipoChamada == "Editar")
                 {
@@ -242,18 +243,18 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 string tipo_veiculo = string.Empty, codigo = string.Empty, descricao = string.Empty, placa = string.Empty, combustivel = string.Empty, faz_revisao = string.Empty, registra_km_diario = string.Empty, usuario_cadastro = string.Empty, data_cadastro = string.Empty, usuario_desativacao = string.Empty, data_desativacao = string.Empty, usuario_reativacao = string.Empty, data_reativacao = string.Empty, usuario_alteracao = string.Empty, data_alteracao = string.Empty, registro_ativo = string.Empty;
                 #endregion
 
-                NpgsqlCommand com = new NpgsqlCommand($" FROM funcionario AS f INNER JOIN usuario AS uc ON(uc.id_usuario = f.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = f.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ur ON(ur.id_usuario = f.id_usuario_reativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = f.id_usuario_alteracao) WHERE f.id_funcionario = {IdVeiculo}", BD.ObjetoConexao);
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT v.id_veiculo, v.tipo, v.codigo, v.descricao, v.placa, v.combustivel, v.faz_revisao, v.registra_km_diario, uc.nome AS usuario_cadastro, v.data_cadastro, ud.nome AS usuario_desativacao, v.data_desativacao, ur.nome AS usuario_reativacao, v.data_reativacao, ua.nome AS usuario_alteracao, v.data_alteracao, v.ativo FROM veiculo AS v INNER JOIN usuario AS uc ON(uc.id_usuario = v.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = v.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ur ON(ur.id_usuario = v.id_usuario_reativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = v.id_usuario_alteracao) WHERE v.id_veiculo = {IdVeiculo}", BD.ObjetoConexao);
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     while (dr.Read())
                     {
-                        tipo_veiculo = dr["id_funcionario_cargo"].ToString();
-                        codigo = dr["cod_controle"].ToString();
-                        descricao = dr["tipo_sanguineo"].ToString().Trim();
-                        placa = dr["data_nascimento"].ToString();
-                        combustivel = dr["nome"].ToString();
-                        faz_revisao = dr["nome_mae"].ToString();
-                        registra_km_diario = dr["nome_pai"].ToString();
+                        tipo_veiculo = dr["tipo"].ToString();
+                        codigo = dr["codigo"].ToString();
+                        descricao = dr["descricao"].ToString().Trim();
+                        placa = dr["placa"].ToString();
+                        combustivel = dr["combustivel"].ToString();
+                        faz_revisao = dr["faz_revisao"].ToString();
+                        registra_km_diario = dr["registra_km_diario"].ToString();
                         registro_ativo = dr["ativo"].ToString();
 
                         //Dados do Registro
@@ -272,19 +273,18 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     cBoxCodigoVeiculo.Text = codigo;
                     cBoxCombustivel.SelectedItem = combustivel;
 
-
                     //Dados do Registro
-                    //tBoxUsuarioCadastro.Text = usuario_cadastro;
-                    //tBoxDataCadastro.Text = data_cadastro;
-                    //tBoxUsuarioDesativacao.Text = usuario_desativacao;
-                    //tBoxDataDesativacao.Text = data_desativacao;
-                    //tBoxUsuarioReativacao.Text = usuario_reativacao;
-                    //tBoxDataReativacao.Text = data_reativacao;
-                    //tBoxUsuarioAlteracao.Text = usuario_alteracao;
-                    //tBoxDataAlteracao.Text = data_alteracao;
+                    tBoxUsuarioCadastro.Text = usuario_cadastro;
+                    tBoxDataCadastro.Text = data_cadastro;
+                    tBoxUsuarioDesativacao.Text = usuario_desativacao;
+                    tBoxDataDesativacao.Text = data_desativacao;
+                    tBoxUsuarioReativacao.Text = usuario_reativacao;
+                    tBoxDataReativacao.Text = data_reativacao;
+                    tBoxUsuarioAlteracao.Text = usuario_alteracao;
+                    tBoxDataAlteracao.Text = data_alteracao;
 
                     #region Conversão Placa
-                    
+
                     #endregion
 
                     #region Conversão Faz Revisão

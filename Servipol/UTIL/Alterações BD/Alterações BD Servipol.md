@@ -324,5 +324,58 @@ ALTER TABLE public.funcionario ADD COLUMN data_alteracao timestamp without time 
 ALTER TABLE public.funcionario ADD COLUMN ativo character;
 UPDATE funcionario SET ativo = 'S';
 
+
+ALTER TABLE public.veiculo  DROP COLUMN id_veiculo;
+ALTER TABLE public.veiculo  DROP COLUMN tipo;
+ALTER TABLE public.veiculo  DROP COLUMN codigo;
+ALTER TABLE public.veiculo  DROP COLUMN descricao;
+ALTER TABLE public.veiculo  DROP COLUMN placa;
+ALTER TABLE public.veiculo  DROP COLUMN id_usuario_cadastro;
+ALTER TABLE public.veiculo  DROP COLUMN data_cadastro;
+ALTER TABLE public.veiculo  DROP COLUMN id_usuario_desativacao;
+ALTER TABLE public.veiculo  DROP COLUMN data_desativacao;
+ALTER TABLE public.veiculo  DROP COLUMN id_usuario_reativacao;
+ALTER TABLE public.veiculo  DROP COLUMN data_reativacao;
+ALTER TABLE public.veiculo  DROP COLUMN ativo;
+ALTER TABLE public.veiculo  DROP COLUMN combustivel;
+ALTER TABLE public.veiculo  DROP COLUMN faz_revisao;
+ALTER TABLE public.veiculo  DROP COLUMN registra_km_diario;
+
+ALTER TABLE public.veiculo  ADD COLUMN id_veiculo integer;
+ALTER TABLE public.veiculo  ADD COLUMN tipo integer;
+ALTER TABLE public.veiculo  ADD COLUMN codigo integer;
+ALTER TABLE public.veiculo  ADD COLUMN descricao character varying(255);
+ALTER TABLE public.veiculo  ADD COLUMN placa character varying(10);
+ALTER TABLE public.veiculo  ADD COLUMN combustivel character varying(20);
+ALTER TABLE public.veiculo  ADD COLUMN faz_revisao character(1);
+ALTER TABLE public.veiculo  ADD COLUMN registra_km_diario character(1);
+ALTER TABLE public.veiculo  ADD COLUMN id_usuario_cadastro integer;
+ALTER TABLE public.veiculo  ADD COLUMN data_cadastro timestamp without time zone;
+ALTER TABLE public.veiculo  ADD COLUMN id_usuario_desativacao integer;
+ALTER TABLE public.veiculo  ADD COLUMN data_desativacao timestamp without time zone;
+ALTER TABLE public.veiculo  ADD COLUMN id_usuario_reativacao integer;
+ALTER TABLE public.veiculo  ADD COLUMN data_reativacao timestamp without time zone;
+ALTER TABLE public.veiculo  ADD COLUMN id_usuario_alteracao integer;
+ALTER TABLE public.veiculo  ADD COLUMN data_alteracao timestamp without time zone;
+ALTER TABLE public.veiculo  ADD COLUMN ativo character(1);
+ALTER TABLE public.veiculo  ADD CONSTRAINT pk_veiculo PRIMARY KEY (id_veiculo);
+
+ALTER TABLE public.codigocarro SET (autovacuum_enabled = true);
+ALTER TABLE public.codigomoto SET (autovacuum_enabled = true);
+ALTER TABLE public.codigoqra SET (autovacuum_enabled = true);
+ALTER TABLE public.funcionario SET (autovacuum_enabled = true);
+ALTER TABLE public.funcionario_cargo SET (autovacuum_enabled = true);
+ALTER TABLE public.km_diario SET (autovacuum_enabled = true);
+ALTER TABLE public.manutencao SET (autovacuum_enabled = true);
+ALTER TABLE public.manutencao_local SET (autovacuum_enabled = true);
+ALTER TABLE public.manutencao_tipo SET (autovacuum_enabled = true);
+ALTER TABLE public.sis_bkp_bd SET (autovacuum_enabled = true);
+ALTER TABLE public.sis_configuracao SET (autovacuum_enabled = true);
+ALTER TABLE public.sis_controle_versao SET (autovacuum_enabled = true);
+ALTER TABLE public.sis_sessao_login SET (autovacuum_enabled = true);
+ALTER TABLE public.usuario SET (autovacuum_enabled = true);
+ALTER TABLE public.veiculo SET (autovacuum_enabled = true);
+ALTER TABLE public.veiculo_tipo SET (autovacuum_enabled = true);
+
 ```
 
