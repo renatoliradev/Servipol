@@ -26,6 +26,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         private void frmVeiculosCadastrar_Load(object sender, EventArgs e)
         {
+            CarregaTipoVeiculo();
             VerificaTipoChamada();
         }
 
@@ -52,92 +53,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 else if (TipoChamada == "Editar")
                 {
                     this.Text = "Editar Veículo";
-
-                    #region DECLARACAO DE VARIAVEIS
-                    string tipo_veiculo = string.Empty, codigo_veiculo = string.Empty, descricao_veiculo = string.Empty, placa = string.Empty, combustivel = string.Empty, faz_revisao = string.Empty, registra_km_diario = string.Empty, registro_ativo = string.Empty;
-                    #endregion
-
-                    NpgsqlCommand com = new NpgsqlCommand($"SELECT v.tipo, v.codigo, v.descricao, v.placa, v.combustivel, v.faz_revisao, v.registra_km_diario, v.ativo FROM veiculo AS v WHERE v.id_veiculo = {IdVeiculo}", BD.ObjetoConexao);
-                    using (NpgsqlDataReader dr = com.ExecuteReader())
-                    {
-                        while (dr.Read())
-                        {
-                            tipo_veiculo = dr["tipo"].ToString();
-                            codigo_veiculo = dr["codigo"].ToString();
-                            descricao_veiculo = dr["descricao"].ToString();
-                            placa = dr["placa"].ToString();
-                            combustivel = dr["combustivel"].ToString();
-                            faz_revisao = dr["faz_revisao"].ToString();
-                            registra_km_diario = dr["registra_km_diario"].ToString();
-                            registro_ativo = dr["ativo"].ToString();
-                        }
-
-                        cBoxTipoVeiculo.SelectedValue = tipo_veiculo;
-
-                        switch (tipo_veiculo)
-                        {
-                            case "1":
-                                CarregaCodigoCarro();
-                                cBoxCodigoVeiculo.SelectedValue = codigo_veiculo;
-                                break;
-                            case "2":
-                                CarregaCodigoMoto();
-                                cBoxCodigoVeiculo.SelectedValue = codigo_veiculo;
-                                break;
-                        }
-
-                        #region Identifica Tipo da Placa
-                        if (placa.Contains("-"))
-                        {
-                            rBtnPlacaAntiga.Checked = true;
-                        }
-                        else
-                        {
-                            rBtnPlacaMercosul.Checked = true;
-                        }
-                        #endregion
-
-                        #region Conversão Situação
-                        if (registro_ativo == "S")
-                        {
-                            chkBoxRegistroAtivo.Checked = true;
-                        }
-                        else
-                        {
-                            chkBoxRegistroAtivo.Checked = false;
-                        }
-                        #endregion
-
-                        #region Conversão Faz Revisão
-
-                        if (faz_revisao == "S")
-                        {
-                            cBoxFazRevisao.SelectedItem = "Sim";
-                        }
-                        else
-                        {
-                            cBoxFazRevisao.SelectedItem = "Não";
-                        }
-
-                        #endregion
-
-                        #region Conversão Registra Km Diário
-
-                        if (registra_km_diario == "S")
-                        {
-                            cBoxRegistraKmDiario.SelectedItem = "Sim";
-                        }
-                        else
-                        {
-                            cBoxRegistraKmDiario.SelectedItem = "Não";
-                        }
-
-                        #endregion
-
-                        tBoxDescricaoVeiculo.Text = descricao_veiculo;
-                        tBoxPlacaVeiculo.Text = placa;
-                        cBoxCombustivel.SelectedItem = combustivel;
-                    }
+                    CarregaRegistroParaEdicao();
                 }
             }
             finally
@@ -269,6 +185,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     }
 
                     //Principal
+                    tBoxDescricaoVeiculo.Text = descricao;
                     cBoxTipoVeiculo.SelectedValue = tipo_veiculo;
                     cBoxCodigoVeiculo.Text = codigo;
                     cBoxCombustivel.SelectedItem = combustivel;
@@ -283,8 +200,17 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     tBoxUsuarioAlteracao.Text = usuario_alteracao;
                     tBoxDataAlteracao.Text = data_alteracao;
 
-                    #region Conversão Placa
-
+                    #region Identifica Tipo da Placa
+                    if (placa.Contains("-"))
+                    {
+                        rBtnPlacaAntiga.Checked = true;
+                        tBoxPlacaVeiculo.Text = placa;
+                    }
+                    else
+                    {
+                        rBtnPlacaMercosul.Checked = true;
+                        tBoxPlacaVeiculo.Text = placa;
+                    }
                     #endregion
 
                     #region Conversão Faz Revisão
@@ -324,10 +250,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     #endregion
                 }
             }
-            //catch (Exception err)
-            //{
-            //    XtraMessageBox
-            //}
+            catch (Exception err)
+            {
+                XtraMessageBox.Show(err.Message);
+            }
             finally
             {
                 BD.Desconectar();
@@ -406,7 +332,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         #endregion
 
         #region Buttons
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
@@ -472,10 +397,36 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                             NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
                             command2.ExecuteNonQuery();
                         }
+                        XtraMessageBox.Show("Veículo cadastrado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (TipoChamada == "Editar")
                     {
+                        string sqlCommand = $"UPDATE veiculo SET tipo = {cBoxTipoVeiculo.SelectedValue}, codigo = {cBoxCodigoVeiculo.SelectedValue}, descricao = '{tBoxDescricaoVeiculo.Text.ToUpper().Trim()}', placa = '{tBoxPlacaVeiculo.Text.ToUpper()}', combustivel = '{cBoxCombustivel.SelectedItem}', faz_revisao = '{faz_revisao}', registra_km_diario = '{registra_km_diario}', id_usuario_alteracao = {SessaoSistema.UsuarioId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_veiculo = {IdVeiculo}";
+                        NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
+                        command.ExecuteNonQuery();
 
+                        if (cBoxTipoVeiculo.SelectedValue.ToString() == "1")
+                        {
+                            string sqlCommand3 = $"UPDATE codigocarro SET id_veiculo = NULL WHERE id_veiculo = {IdVeiculo}";
+                            NpgsqlCommand command3 = new NpgsqlCommand(sqlCommand3, BD.ObjetoConexao);
+                            command3.ExecuteNonQuery();
+
+                            string sqlCommand2 = $"UPDATE codigocarro SET id_veiculo = {IdVeiculo} WHERE id = {cBoxCodigoVeiculo.SelectedValue}";
+                            NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
+                            command2.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            string sqlCommand3 = $"UPDATE codigomoto SET id_veiculo = NULL WHERE id_veiculo = {IdVeiculo}";
+                            NpgsqlCommand command3 = new NpgsqlCommand(sqlCommand3, BD.ObjetoConexao);
+                            command3.ExecuteNonQuery();
+
+                            string sqlCommand2 = $"UPDATE codigomoto SET id_veiculo = {IdVeiculo} WHERE id = {cBoxCodigoVeiculo.SelectedValue}";
+                            NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
+                            command2.ExecuteNonQuery();
+                        }
+                       
+                        XtraMessageBox.Show("Veículo alterado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -486,11 +437,14 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             finally
             {
                 BD.Desconectar();
+                ((frmVeiculosConsultar)this.Owner).AtualizaDG();
+                this.Close();
             }
         }
 
+
         #endregion
 
-
+        
     }
 }

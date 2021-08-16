@@ -1,15 +1,9 @@
 ﻿using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Servipol.Entidades.Classes;
 using Npgsql;
+using Servipol.Entidades.Classes;
+using System;
+using System.Data;
+using System.Windows.Forms;
 
 namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 {
@@ -26,44 +20,14 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         private void frmVeiculosConsultar_Load(object sender, EventArgs e)
         {
-            carregaTipoVeiculo();
-            carregaTipoVeiculo();
+            CarregaTipoVeiculo();
 
             cBoxSituacao.SelectedIndex = 0;
             cBoxTipoBusca.SelectedIndex = 0;
         }
 
         #region Methods
-
-        public void CarregaTabelaVeiculos()
-        {
-            string situacao = string.Empty;
-            switch (cBoxSituacao.Text)
-            {
-                case "Ativos":
-                    situacao = "S";
-                    break;
-                case "Inativos":
-                    situacao = "N";
-                    break;
-            }
-
-            try
-            {
-                BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo AS id_veiculo, tv.descricao AS tipo, v.codigo, v.descricao, v.placa, v.combustivel, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculo AS v INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) WHERE v.ativo = '{situacao}' ORDER BY v.codigo", BD.ObjetoConexao);
-                DataTable dp = new DataTable();
-                retornoBD.Fill(dp);
-
-                dGridVeiculos.DataSource = dp;
-            }
-            finally
-            {
-                BD.Desconectar();
-            }
-        }
-
-        public void carregaTipoVeiculo()
+        public void CarregaTipoVeiculo()
         {
             try
             {
@@ -85,75 +49,87 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             }
         }
 
-        public void BuscaPorTipo()
+        private void cBoxTipoVeiculo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string situacao = string.Empty;
-            switch (cBoxSituacao.Text)
+            btnConsultar_Click(sender, e);
+        }
+
+        private void cBoxTipoBusca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cBoxTipoBusca.SelectedIndex == 0)
             {
-                case "Ativos":
-                    situacao = "S";
+                cBoxTipoVeiculo.Visible = false;
+                btnConsultar_Click(sender, e);
+            }
+            else
+            {
+                cBoxTipoVeiculo.Visible = true;
+            }
+        }
+
+        private void cBoxSituacao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnConsultar_Click(sender, e);
+        }
+
+        public void AtualizaDG()
+        {
+            cBoxSituacao.SelectedIndex = 0;
+            cBoxTipoBusca.SelectedIndex = 0;
+
+            cBoxTipoVeiculo.SelectedIndex = -1;
+        }
+
+        private void dGridVeiculos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnEditar_Click(sender, e);
+        }
+        #endregion
+
+        #region Buttons
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            string situacaoTraduzida = string.Empty;
+            string tipoBusca = string.Empty;
+
+            switch (cBoxSituacao.SelectedIndex)
+            {
+                case 0:
+                    situacaoTraduzida = "S";
                     break;
-                case "Inativos":
-                    situacao = "N";
+                case 1:
+                    situacaoTraduzida = "N";
+                    break;
+                default:
+                    situacaoTraduzida = "S";
+                    break;
+            }
+
+            switch (cBoxTipoBusca.SelectedIndex)
+            {
+                case 0:
+                    tipoBusca = "1=1";
+                    break;
+                case 1:
+                    tipoBusca = $"v.tipo = {cBoxTipoVeiculo.SelectedValue}";
+                    break;
+                default:
+                    tipoBusca = "1=1";
                     break;
             }
 
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo AS id_veiculo, tv.descricao AS tipo, v.codigo, v.descricao, v.placa, v.combustivel, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculo AS v INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) WHERE v.tipo = {cBoxTipoVeiculo.SelectedValue} AND v.ativo = '{situacao}' ORDER BY v.codigo", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo, vt.descricao AS tipo, v.codigo, v.descricao, v.placa, v.combustivel, CASE WHEN v.faz_revisao = 'S' THEN 'Sim' ELSE 'Não' END AS faz_revisao, CASE WHEN v.registra_km_diario = 'S' THEN 'Sim' ELSE 'Não' END AS registra_km_diario, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculo AS v INNER JOIN veiculo_tipo AS vt ON(v.tipo = vt.id_veiculo_tipo) WHERE v.ativo = '{situacaoTraduzida}' AND {tipoBusca} ORDER BY v.codigo", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
-
                 dGridVeiculos.DataSource = dp;
             }
-            catch { }
             finally
             {
                 BD.Desconectar();
-            }
-        }
-
-        private void cBoxTipoBusca_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //mostrar todos
-            if (cBoxTipoBusca.SelectedIndex == 0)
-            {
-                cBoxTipoVeiculo.SelectedIndex = -1;
-                gbTipoVeiculoBusca.Text = string.Empty;
-                cBoxTipoVeiculo.Visible = false;
-                CarregaTabelaVeiculos();
-            }
-            //busca por Tipo
-            else if (cBoxTipoBusca.SelectedIndex == 1)
-            {
-                cBoxTipoVeiculo.Visible = true;
-                cBoxTipoVeiculo.SelectedIndex = -1;
-                gbTipoVeiculoBusca.Text = "Tipo";
-                gbTipoVeiculoBusca.Focus();
-                cBoxTipoVeiculo.Select();
-                CarregaTabelaVeiculos();
-            }
-        }
-
-        private void cBoxTipoVeiculo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            BuscaPorTipo();
-        }
-
-        #endregion
-
-        #region Buttons
-
-        private void btnPesquisar_Click(object sender, EventArgs e)
-        {
-            if (cBoxTipoBusca.SelectedIndex == 0)
-            {
-                CarregaTabelaVeiculos();
-            }
-            else if (cBoxTipoBusca.SelectedIndex == 1)
-            {
-                BuscaPorTipo();
             }
         }
 
@@ -166,19 +142,75 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            string idVeiculoGrid = dGridVeiculos.SelectedRows[0].Cells[0].Value.ToString();
-            frmVeiculosCadastrar frmVeiculosCadastrar = new frmVeiculosCadastrar("Editar", int.Parse(idVeiculoGrid));
-            frmVeiculosCadastrar.Owner = this;
-            frmVeiculosCadastrar.ShowDialog();
+            try
+            {
+                string idVeiculoGrid = dGridVeiculos.SelectedRows[0].Cells[0].Value.ToString();
+                frmVeiculosCadastrar frmVeiculosCadastrar = new frmVeiculosCadastrar("Editar", int.Parse(idVeiculoGrid));
+                frmVeiculosCadastrar.Owner = this;
+                frmVeiculosCadastrar.ShowDialog();
+            }
+            catch
+            {
+                XtraMessageBox.Show("Primeiro selecione o registro que deseja editar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        private void btnExcluir_Click(object sender, EventArgs e)
+        private void btnInativar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                BD.Conectar();
+                string idVeiculoSelecionadoGrid = dGridVeiculos.SelectedRows[0].Cells[0].Value.ToString();
+                string tipoVeiculo = dGridVeiculos.SelectedRows[0].Cells[1].Value.ToString();
 
+                    if (XtraMessageBox.Show("Deseja inativar o veículo ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                    {
+                        string sqlCommand = "UPDATE veiculo SET ativo = 'N', id_usuario_desativacao = " + SessaoSistema.UsuarioId + ", data_desativacao = CURRENT_TIMESTAMP WHERE id_veiculo = " + idVeiculoSelecionadoGrid + "";
+                        NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
+                        command.ExecuteNonQuery();
+
+                        string sqlCommand4 = "DELETE FROM km_diario WHERE id_veiculo = " + idVeiculoSelecionadoGrid + "";
+                        NpgsqlCommand command4 = new NpgsqlCommand(sqlCommand4, BD.ObjetoConexao);
+                        command4.ExecuteNonQuery();
+
+                        if (tipoVeiculo == "CARRO")
+                        {
+                            string sqlCommand1 = "UPDATE codigocarro SET id_veiculo = NULL WHERE id_veiculo = " + idVeiculoSelecionadoGrid + "";
+                            NpgsqlCommand command1 = new NpgsqlCommand(sqlCommand1, BD.ObjetoConexao);
+                            command1.ExecuteNonQuery();
+                        }
+                        else if (tipoVeiculo == "MOTO")
+                        {
+                            string sqlCommand1 = "UPDATE codigomoto SET id_veiculo = NULL WHERE id_veiculo = " + idVeiculoSelecionadoGrid + "";
+                            NpgsqlCommand command1 = new NpgsqlCommand(sqlCommand1, BD.ObjetoConexao);
+                            command1.ExecuteNonQuery();
+                        }
+
+                        XtraMessageBox.Show("Veículo inativado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        AtualizaDG();
+                    }
+                
+            }
+            catch
+            {
+                XtraMessageBox.Show("Primeiro selecione o registro que deseja inativar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnImprimirConsulta_Click(object sender, EventArgs e)
+        {
+            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #endregion
 
-
+        private void frmVeiculosConsultar_Activated(object sender, EventArgs e)
+        {
+            //if (XtraMessageBox.Show("Deseja recarregar os dados ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            //{
+                
+            //}
+        }
     }
 }

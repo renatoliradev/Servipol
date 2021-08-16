@@ -356,6 +356,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.btnCancelar.TabIndex = 234;
             this.btnCancelar.TabStop = false;
             this.btnCancelar.Text = "[Esc] - Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // tabControlFuncionario
             // 
