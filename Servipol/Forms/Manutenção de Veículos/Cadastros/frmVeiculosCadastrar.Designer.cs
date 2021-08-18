@@ -46,7 +46,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.tBoxDescricaoVeiculo = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cBoxTipoVeiculo = new System.Windows.Forms.ComboBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gbTipoVeiculo = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.cBoxRegistraKmDiario = new System.Windows.Forms.ComboBox();
             this.btnConfirmar = new DevExpress.XtraEditors.SimpleButton();
@@ -82,7 +82,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.gbPlaca.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.gbTipoVeiculo.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.gbSituacao.SuspendLayout();
             this.tabControlFuncionario.SuspendLayout();
@@ -128,7 +128,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox1.Location = new System.Drawing.Point(246, 72);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(175, 68);
-            this.groupBox1.TabIndex = 228;
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Combustível preferencial*";
             // 
@@ -163,7 +163,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox5.Location = new System.Drawing.Point(6, 146);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(211, 57);
-            this.groupBox5.TabIndex = 229;
+            this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Fazendo revisão na concessionária*";
             // 
@@ -175,7 +175,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox6.Location = new System.Drawing.Point(6, 72);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(145, 68);
-            this.groupBox6.TabIndex = 221;
+            this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Modelo de Placa";
             // 
@@ -204,7 +204,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.gbPlaca.Location = new System.Drawing.Point(157, 72);
             this.gbPlaca.Name = "gbPlaca";
             this.gbPlaca.Size = new System.Drawing.Size(83, 68);
-            this.gbPlaca.TabIndex = 222;
+            this.gbPlaca.TabIndex = 4;
             this.gbPlaca.TabStop = false;
             this.gbPlaca.Text = "Placa*";
             // 
@@ -226,7 +226,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox4.Location = new System.Drawing.Point(136, 6);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(64, 60);
-            this.groupBox4.TabIndex = 219;
+            this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Código*";
             // 
@@ -258,7 +258,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox2.Location = new System.Drawing.Point(206, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(215, 60);
-            this.groupBox2.TabIndex = 220;
+            this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Descrição*";
             // 
@@ -272,17 +272,18 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.cBoxTipoVeiculo.Name = "cBoxTipoVeiculo";
             this.cBoxTipoVeiculo.Size = new System.Drawing.Size(112, 22);
             this.cBoxTipoVeiculo.TabIndex = 1;
+            this.cBoxTipoVeiculo.SelectedIndexChanged += new System.EventHandler(this.cBoxTipoVeiculo_SelectedIndexChanged);
             // 
-            // groupBox3
+            // gbTipoVeiculo
             // 
-            this.groupBox3.Controls.Add(this.cBoxTipoVeiculo);
-            this.groupBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(6, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(124, 60);
-            this.groupBox3.TabIndex = 218;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tipo*";
+            this.gbTipoVeiculo.Controls.Add(this.cBoxTipoVeiculo);
+            this.gbTipoVeiculo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbTipoVeiculo.Location = new System.Drawing.Point(6, 6);
+            this.gbTipoVeiculo.Name = "gbTipoVeiculo";
+            this.gbTipoVeiculo.Size = new System.Drawing.Size(124, 60);
+            this.gbTipoVeiculo.TabIndex = 0;
+            this.gbTipoVeiculo.TabStop = false;
+            this.gbTipoVeiculo.Text = "Tipo*";
             // 
             // groupBox7
             // 
@@ -291,7 +292,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox7.Location = new System.Drawing.Point(223, 146);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(198, 57);
-            this.groupBox7.TabIndex = 230;
+            this.groupBox7.TabIndex = 7;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Obrigatório registrar Km Diário*";
             // 
@@ -317,7 +318,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.btnConfirmar.Location = new System.Drawing.Point(285, 351);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(143, 44);
-            this.btnConfirmar.TabIndex = 232;
+            this.btnConfirmar.TabIndex = 10;
             this.btnConfirmar.Text = "[F12] - Confirmar";
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
@@ -328,7 +329,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.gbSituacao.Location = new System.Drawing.Point(6, 209);
             this.gbSituacao.Name = "gbSituacao";
             this.gbSituacao.Size = new System.Drawing.Size(128, 48);
-            this.gbSituacao.TabIndex = 233;
+            this.gbSituacao.TabIndex = 8;
             this.gbSituacao.TabStop = false;
             this.gbSituacao.Text = "Situação";
             // 
@@ -367,10 +368,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.tabControlFuncionario.SelectedIndex = 0;
             this.tabControlFuncionario.Size = new System.Drawing.Size(435, 333);
             this.tabControlFuncionario.TabIndex = 235;
+            this.tabControlFuncionario.TabStop = false;
             // 
             // tabPrincipal
             // 
-            this.tabPrincipal.Controls.Add(this.groupBox3);
+            this.tabPrincipal.Controls.Add(this.gbTipoVeiculo);
             this.tabPrincipal.Controls.Add(this.groupBox4);
             this.tabPrincipal.Controls.Add(this.gbSituacao);
             this.tabPrincipal.Controls.Add(this.groupBox2);
@@ -645,6 +647,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.Controls.Add(this.auxTipoVeiculo);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmVeiculosCadastrar";
@@ -653,6 +656,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Incluir Veículo";
             this.Load += new System.EventHandler(this.frmVeiculosCadastrar_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmVeiculosCadastrar_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -662,7 +666,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
+            this.gbTipoVeiculo.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.gbSituacao.ResumeLayout(false);
             this.gbSituacao.PerformLayout();
@@ -699,7 +703,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         private System.Windows.Forms.TextBox tBoxDescricaoVeiculo;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cBoxTipoVeiculo;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gbTipoVeiculo;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.ComboBox cBoxRegistraKmDiario;
         private System.Windows.Forms.ComboBox cBoxCodigoVeiculo;

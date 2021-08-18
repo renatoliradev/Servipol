@@ -28,6 +28,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         {
             CarregaTipoVeiculo();
             VerificaTipoChamada();
+
+            gbTipoVeiculo.Select();
+            cBoxTipoVeiculo.Select();
         }
 
         #region Methods
@@ -69,7 +72,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 BD.Conectar();
                 NpgsqlCommand com = new NpgsqlCommand();
                 com.Connection = BD.ObjetoConexao;
-                com.CommandText = $"SELECT id_veiculo_tipo, descricao FROM veiculo_tipo WHERE ativo = 'S' ORDER BY 2 ASC";
+                com.CommandText = $"SELECT id_veiculo_tipo, descricao FROM veiculo_tipo WHERE descricao != 'Outros' AND ativo = 'S' ORDER BY 2 ASC";
                 NpgsqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
@@ -238,7 +241,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     #endregion
 
                     #region Conversão Situação
-                    switch(registro_ativo)
+                    switch (registro_ativo)
                     {
                         case "S":
                             chkBoxRegistroAtivo.Checked = true;
@@ -329,6 +332,20 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 return true;
             }
         }
+
+        private void frmVeiculosCadastrar_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    btnCancelar_Click(sender, e);
+                    break;
+                case Keys.F12:
+                    btnConfirmar_Click(sender, e);
+                    break;
+            }
+        }
+
         #endregion
 
         #region Buttons
@@ -425,8 +442,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                             NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
                             command2.ExecuteNonQuery();
                         }
-                       
                         XtraMessageBox.Show("Veículo alterado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ((frmVeiculosConsultar)this.Owner).AtualizaDG();
+                        this.Close();
                     }
                 }
             }
@@ -437,14 +455,28 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             finally
             {
                 BD.Desconectar();
-                ((frmVeiculosConsultar)this.Owner).AtualizaDG();
-                this.Close();
             }
         }
 
-
         #endregion
 
-        
+        private void cBoxTipoVeiculo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cBoxTipoVeiculo.SelectedValue.ToString() == "1")
+                {
+                    CarregaCodigoCarro();
+                }
+                else if (cBoxTipoVeiculo.SelectedValue.ToString() == "2")
+                {
+                    CarregaCodigoMoto();
+                }
+            }
+            finally
+            {
+
+            }
+        }
     }
 }

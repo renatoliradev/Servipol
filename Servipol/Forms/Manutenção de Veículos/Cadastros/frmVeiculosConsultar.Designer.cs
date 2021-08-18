@@ -382,12 +382,14 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.Name = "frmVeiculosConsultar";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Veículos";
             this.Activated += new System.EventHandler(this.frmVeiculosConsultar_Activated);
             this.Load += new System.EventHandler(this.frmVeiculosConsultar_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmVeiculosConsultar_KeyDown);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGridVeiculos)).EndInit();
             this.panel2.ResumeLayout(false);
