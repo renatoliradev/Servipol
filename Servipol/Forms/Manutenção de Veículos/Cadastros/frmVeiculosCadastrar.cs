@@ -367,9 +367,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 else
                 {
                     #region Variáveis
-                    string faz_revisao = string.Empty, registra_km_diario = string.Empty;
-                    #endregion
-
+                    string faz_revisao = string.Empty, registra_km_diario = string.Empty, registro_ativo = string.Empty;
+                    
                     #region Conversão Faz Revisão
 
                     if (cBoxFazRevisao.SelectedIndex == 0)
@@ -396,6 +395,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
                     #endregion
 
+                    #region Conversão Situação
+                    registro_ativo = chkBoxRegistroAtivo.Checked ? "S" : "N";
+                    #endregion
+                    #endregion
+
                     if (TipoChamada == "Incluir")
                     {
                         string sqlCommand = $"INSERT INTO veiculo VALUES (nextval('seq_veiculo'), {cBoxTipoVeiculo.SelectedValue}, {cBoxCodigoVeiculo.SelectedValue}, '{tBoxDescricaoVeiculo.Text.ToUpper().Trim()}', '{tBoxPlacaVeiculo.Text.ToUpper()}', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S', '{cBoxCombustivel.SelectedItem}', '{faz_revisao}', '{registra_km_diario}')";
@@ -418,39 +422,52 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     }
                     else if (TipoChamada == "Editar")
                     {
-                        string sqlCommand = $"UPDATE veiculo SET tipo = {cBoxTipoVeiculo.SelectedValue}, codigo = {cBoxCodigoVeiculo.SelectedValue}, descricao = '{tBoxDescricaoVeiculo.Text.ToUpper().Trim()}', placa = '{tBoxPlacaVeiculo.Text.ToUpper()}', combustivel = '{cBoxCombustivel.SelectedItem}', faz_revisao = '{faz_revisao}', registra_km_diario = '{registra_km_diario}', id_usuario_alteracao = {SessaoSistema.UsuarioId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_veiculo = {IdVeiculo}";
+                        string sqlCommand = $"UPDATE veiculo SET tipo = {cBoxTipoVeiculo.SelectedValue}, codigo = {cBoxCodigoVeiculo.SelectedValue}, descricao = '{tBoxDescricaoVeiculo.Text.ToUpper().Trim()}', placa = '{tBoxPlacaVeiculo.Text.ToUpper()}', combustivel = '{cBoxCombustivel.SelectedItem}', faz_revisao = '{faz_revisao}', registra_km_diario = '{registra_km_diario}', ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UsuarioId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_veiculo = {IdVeiculo}";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 
                         if (cBoxTipoVeiculo.SelectedValue.ToString() == "1")
                         {
-                            string sqlCommand3 = $"UPDATE codigocarro SET id_veiculo = NULL WHERE id_veiculo = {IdVeiculo}";
-                            NpgsqlCommand command3 = new NpgsqlCommand(sqlCommand3, BD.ObjetoConexao);
-                            command3.ExecuteNonQuery();
+                            string sqlCommand4 = $"UPDATE codigocarro SET id_veiculo = NULL WHERE id_veiculo = {IdVeiculo}";
+                            NpgsqlCommand command4 = new NpgsqlCommand(sqlCommand4, BD.ObjetoConexao);
+                            command4.ExecuteNonQuery();
 
-                            string sqlCommand2 = $"UPDATE codigocarro SET id_veiculo = {IdVeiculo} WHERE id = {cBoxCodigoVeiculo.SelectedValue}";
-                            NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
-                            command2.ExecuteNonQuery();
+                            string sqlCommand5 = $"UPDATE codigocarro SET id_veiculo = {IdVeiculo} WHERE id = {cBoxCodigoVeiculo.SelectedValue}";
+                            NpgsqlCommand command5 = new NpgsqlCommand(sqlCommand5, BD.ObjetoConexao);
+                            command5.ExecuteNonQuery();
                         }
                         else
                         {
+                            string sqlCommand6 = $"UPDATE codigomoto SET id_veiculo = NULL WHERE id_veiculo = {IdVeiculo}";
+                            NpgsqlCommand command6 = new NpgsqlCommand(sqlCommand6, BD.ObjetoConexao);
+                            command6.ExecuteNonQuery();
+
+                            string sqlCommand7 = $"UPDATE codigomoto SET id_veiculo = {IdVeiculo} WHERE id = {cBoxCodigoVeiculo.SelectedValue}";
+                            NpgsqlCommand command7 = new NpgsqlCommand(sqlCommand7, BD.ObjetoConexao);
+                            command7.ExecuteNonQuery();
+                        }
+
+                        if (registro_ativo == "N")
+                        {
+                            string sqlCommand8 = $"UPDATE veiculo SET faz_revisao = 'N', registra_km_diario = 'N', ativo = 'N', id_usuario_desativacao = {SessaoSistema.UsuarioId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_veiculo = {IdVeiculo}";
+                            NpgsqlCommand command8 = new NpgsqlCommand(sqlCommand8, BD.ObjetoConexao);
+                            command8.ExecuteNonQuery();
+
+                            string sqlCommand2 = $"UPDATE codigocarro SET id_veiculo = NULL WHERE id_veiculo = {IdVeiculo}";
+                            NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
+                            command2.ExecuteNonQuery();
+
                             string sqlCommand3 = $"UPDATE codigomoto SET id_veiculo = NULL WHERE id_veiculo = {IdVeiculo}";
                             NpgsqlCommand command3 = new NpgsqlCommand(sqlCommand3, BD.ObjetoConexao);
                             command3.ExecuteNonQuery();
 
-                            string sqlCommand2 = $"UPDATE codigomoto SET id_veiculo = {IdVeiculo} WHERE id = {cBoxCodigoVeiculo.SelectedValue}";
-                            NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
-                            command2.ExecuteNonQuery();
                         }
+
                         XtraMessageBox.Show("Veículo alterado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ((frmVeiculosConsultar)this.Owner).AtualizaDG();
                         this.Close();
                     }
                 }
-            }
-            catch
-            {
-
             }
             finally
             {
@@ -473,10 +490,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     CarregaCodigoMoto();
                 }
             }
-            finally
-            {
-
-            }
+            catch { }
         }
     }
 }

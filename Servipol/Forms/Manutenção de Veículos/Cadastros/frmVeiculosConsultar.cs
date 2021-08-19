@@ -141,7 +141,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             {
                 btnImprimirConsulta_Click(sender, e);
             }
-            if (cBoxSituacao.SelectedIndex == 1)
+            if (cBoxSituacao.SelectedIndex == 0)
             {
                 btnInativar_Click(sender, e);
             }
@@ -185,7 +185,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo, vt.descricao AS tipo, v.codigo, CASE WHEN v.ativo = 'S' THEN v.descricao ELSE '[REGISTRO INATIVO] - ' || v.descricao END AS descricao, v.placa, v.combustivel, CASE WHEN v.faz_revisao = 'S' THEN 'Sim' ELSE 'Não' END AS faz_revisao, CASE WHEN v.registra_km_diario = 'S' THEN 'Sim' ELSE 'Não' END AS registra_km_diario, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculo AS v INNER JOIN veiculo_tipo AS vt ON(v.tipo = vt.id_veiculo_tipo) WHERE v.ativo = '{situacaoTraduzida}' AND {tipoBusca} ORDER BY v.codigo ASC", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo, vt.descricao AS tipo, v.codigo, CASE WHEN v.ativo = 'S' THEN v.descricao ELSE '[REGISTRO INATIVO] - ' || v.descricao END AS descricao, v.placa, v.combustivel, CASE WHEN v.faz_revisao = 'S' THEN 'Sim' ELSE 'Não' END AS faz_revisao, CASE WHEN v.registra_km_diario = 'S' THEN 'Sim' ELSE 'Não' END AS registra_km_diario, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculo AS v INNER JOIN veiculo_tipo AS vt ON(v.tipo = vt.id_veiculo_tipo) WHERE v.ativo = '{situacaoTraduzida}' AND {tipoBusca}", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridVeiculos.DataSource = dp;
@@ -224,36 +224,30 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             {
                 BD.Conectar();
                 string idVeiculoSelecionadoGrid = dGridVeiculos.SelectedRows[0].Cells[0].Value.ToString();
-                string tipoVeiculo = dGridVeiculos.SelectedRows[0].Cells[1].Value.ToString();
-
-                    if (XtraMessageBox.Show("Deseja inativar o veículo ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-                    {
-                        string sqlCommand = "UPDATE veiculo SET ativo = 'N', id_usuario_desativacao = " + SessaoSistema.UsuarioId + ", data_desativacao = CURRENT_TIMESTAMP WHERE id_veiculo = " + idVeiculoSelecionadoGrid + "";
-                        NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
-                        command.ExecuteNonQuery();
-
-                        string sqlCommand4 = "DELETE FROM km_diario WHERE id_veiculo = " + idVeiculoSelecionadoGrid + "";
-                        NpgsqlCommand command4 = new NpgsqlCommand(sqlCommand4, BD.ObjetoConexao);
-                        command4.ExecuteNonQuery();
-
-                        if (tipoVeiculo == "Carro")
-                        {
-                            string sqlCommand1 = "UPDATE codigocarro SET id_veiculo = NULL WHERE id_veiculo = " + idVeiculoSelecionadoGrid + "";
-                            NpgsqlCommand command1 = new NpgsqlCommand(sqlCommand1, BD.ObjetoConexao);
-                            command1.ExecuteNonQuery();
-                        }
-                        else if (tipoVeiculo == "Moto")
-                        {
-                            string sqlCommand1 = "UPDATE codigomoto SET id_veiculo = NULL WHERE id_veiculo = " + idVeiculoSelecionadoGrid + "";
-                            NpgsqlCommand command1 = new NpgsqlCommand(sqlCommand1, BD.ObjetoConexao);
-                            command1.ExecuteNonQuery();
-                        }
-
-                        XtraMessageBox.Show("Veículo inativado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        AtualizaDG();
-                    }
                 
+                if (XtraMessageBox.Show("Deseja inativar o veículo ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    string sqlCommand = $"UPDATE veiculo SET faz_revisao = 'N', registra_km_diario = 'N', ativo = 'N', id_usuario_desativacao = {SessaoSistema.UsuarioId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_veiculo = {idVeiculoSelecionadoGrid}";
+                    NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
+                    command.ExecuteNonQuery();
+
+                    string sqlCommand4 = $"DELETE FROM km_diario WHERE id_veiculo = {idVeiculoSelecionadoGrid}";
+                    NpgsqlCommand command4 = new NpgsqlCommand(sqlCommand4, BD.ObjetoConexao);
+                    command4.ExecuteNonQuery();
+
+                    string sqlCommand1 = $"UPDATE codigocarro SET id_veiculo = NULL WHERE id_veiculo = {idVeiculoSelecionadoGrid}";
+                    NpgsqlCommand command1 = new NpgsqlCommand(sqlCommand1, BD.ObjetoConexao);
+                    command1.ExecuteNonQuery();
+
+                    string sqlCommand2 = $"UPDATE codigomoto SET id_veiculo = NULL WHERE id_veiculo = {idVeiculoSelecionadoGrid}";
+                    NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
+                    command2.ExecuteNonQuery();
+
+                    XtraMessageBox.Show("Veículo inativado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    AtualizaDG();
+                }
+
             }
             catch
             {
