@@ -61,11 +61,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.tBoxDataAlteracao = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.tBoxUsuarioAlteracao = new System.Windows.Forms.TextBox();
-            this.groupBox36 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tBoxDataReativacao = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tBoxUsuarioReativacao = new System.Windows.Forms.TextBox();
             this.groupBox37 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tBoxDataCadastro = new System.Windows.Forms.TextBox();
@@ -89,7 +84,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.tabPrincipal.SuspendLayout();
             this.tabDadosRegistro.SuspendLayout();
             this.groupBox35.SuspendLayout();
-            this.groupBox36.SuspendLayout();
             this.groupBox37.SuspendLayout();
             this.groupBox38.SuspendLayout();
             this.SuspendLayout();
@@ -315,7 +309,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.btnConfirmar.Appearance.Options.UseFont = true;
             this.btnConfirmar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConfirmar.ImageOptions.SvgImage")));
-            this.btnConfirmar.Location = new System.Drawing.Point(285, 351);
+            this.btnConfirmar.Location = new System.Drawing.Point(295, 307);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(143, 44);
             this.btnConfirmar.TabIndex = 10;
@@ -351,7 +345,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.btnCancelar.Appearance.Options.UseFont = true;
             this.btnCancelar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnCancelar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCancelar.ImageOptions.SvgImage")));
-            this.btnCancelar.Location = new System.Drawing.Point(7, 351);
+            this.btnCancelar.Location = new System.Drawing.Point(3, 307);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(144, 44);
             this.btnCancelar.TabIndex = 234;
@@ -366,7 +360,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.tabControlFuncionario.Location = new System.Drawing.Point(3, 12);
             this.tabControlFuncionario.Name = "tabControlFuncionario";
             this.tabControlFuncionario.SelectedIndex = 0;
-            this.tabControlFuncionario.Size = new System.Drawing.Size(435, 333);
+            this.tabControlFuncionario.Size = new System.Drawing.Size(435, 289);
             this.tabControlFuncionario.TabIndex = 235;
             this.tabControlFuncionario.TabStop = false;
             // 
@@ -384,7 +378,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.tabPrincipal.Location = new System.Drawing.Point(4, 22);
             this.tabPrincipal.Name = "tabPrincipal";
             this.tabPrincipal.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPrincipal.Size = new System.Drawing.Size(427, 307);
+            this.tabPrincipal.Size = new System.Drawing.Size(427, 263);
             this.tabPrincipal.TabIndex = 0;
             this.tabPrincipal.Text = "Principal";
             this.tabPrincipal.UseVisualStyleBackColor = true;
@@ -392,13 +386,12 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // tabDadosRegistro
             // 
             this.tabDadosRegistro.Controls.Add(this.groupBox35);
-            this.tabDadosRegistro.Controls.Add(this.groupBox36);
             this.tabDadosRegistro.Controls.Add(this.groupBox37);
             this.tabDadosRegistro.Controls.Add(this.groupBox38);
             this.tabDadosRegistro.Location = new System.Drawing.Point(4, 22);
             this.tabDadosRegistro.Name = "tabDadosRegistro";
             this.tabDadosRegistro.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDadosRegistro.Size = new System.Drawing.Size(427, 307);
+            this.tabDadosRegistro.Size = new System.Drawing.Size(427, 263);
             this.tabDadosRegistro.TabIndex = 4;
             this.tabDadosRegistro.Text = "Dados do Registro";
             this.tabDadosRegistro.UseVisualStyleBackColor = true;
@@ -410,7 +403,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox35.Controls.Add(this.label14);
             this.groupBox35.Controls.Add(this.tBoxUsuarioAlteracao);
             this.groupBox35.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox35.Location = new System.Drawing.Point(3, 231);
+            this.groupBox35.Location = new System.Drawing.Point(3, 156);
             this.groupBox35.Name = "groupBox35";
             this.groupBox35.Size = new System.Drawing.Size(421, 69);
             this.groupBox35.TabIndex = 999;
@@ -460,64 +453,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.tBoxUsuarioAlteracao.ReadOnly = true;
             this.tBoxUsuarioAlteracao.Size = new System.Drawing.Size(350, 15);
             this.tBoxUsuarioAlteracao.TabIndex = 12;
-            // 
-            // groupBox36
-            // 
-            this.groupBox36.Controls.Add(this.label5);
-            this.groupBox36.Controls.Add(this.tBoxDataReativacao);
-            this.groupBox36.Controls.Add(this.label6);
-            this.groupBox36.Controls.Add(this.tBoxUsuarioReativacao);
-            this.groupBox36.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox36.Location = new System.Drawing.Point(3, 156);
-            this.groupBox36.Name = "groupBox36";
-            this.groupBox36.Size = new System.Drawing.Size(421, 69);
-            this.groupBox36.TabIndex = 950;
-            this.groupBox36.TabStop = false;
-            this.groupBox36.Text = "Dados da Última Reativação do Cadastro";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 9F);
-            this.label5.Location = new System.Drawing.Point(6, 45);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 14);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Data:";
-            // 
-            // tBoxDataReativacao
-            // 
-            this.tBoxDataReativacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxDataReativacao.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tBoxDataReativacao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxDataReativacao.Font = new System.Drawing.Font("Calibri", 9F);
-            this.tBoxDataReativacao.Location = new System.Drawing.Point(65, 45);
-            this.tBoxDataReativacao.Name = "tBoxDataReativacao";
-            this.tBoxDataReativacao.ReadOnly = true;
-            this.tBoxDataReativacao.Size = new System.Drawing.Size(351, 15);
-            this.tBoxDataReativacao.TabIndex = 14;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 9F);
-            this.label6.Location = new System.Drawing.Point(6, 25);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 14);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Usuário:";
-            // 
-            // tBoxUsuarioReativacao
-            // 
-            this.tBoxUsuarioReativacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxUsuarioReativacao.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tBoxUsuarioReativacao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxUsuarioReativacao.Font = new System.Drawing.Font("Calibri", 9F);
-            this.tBoxUsuarioReativacao.Location = new System.Drawing.Point(65, 25);
-            this.tBoxUsuarioReativacao.Name = "tBoxUsuarioReativacao";
-            this.tBoxUsuarioReativacao.ReadOnly = true;
-            this.tBoxUsuarioReativacao.Size = new System.Drawing.Size(350, 15);
-            this.tBoxUsuarioReativacao.TabIndex = 12;
             // 
             // groupBox37
             // 
@@ -639,7 +574,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 405);
+            this.ClientSize = new System.Drawing.Size(441, 355);
             this.Controls.Add(this.tabControlFuncionario);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnConfirmar);
@@ -675,8 +610,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.tabDadosRegistro.ResumeLayout(false);
             this.groupBox35.ResumeLayout(false);
             this.groupBox35.PerformLayout();
-            this.groupBox36.ResumeLayout(false);
-            this.groupBox36.PerformLayout();
             this.groupBox37.ResumeLayout(false);
             this.groupBox37.PerformLayout();
             this.groupBox38.ResumeLayout(false);
@@ -719,11 +652,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         private System.Windows.Forms.TextBox tBoxDataAlteracao;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox tBoxUsuarioAlteracao;
-        private System.Windows.Forms.GroupBox groupBox36;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tBoxDataReativacao;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tBoxUsuarioReativacao;
         private System.Windows.Forms.GroupBox groupBox37;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tBoxDataCadastro;

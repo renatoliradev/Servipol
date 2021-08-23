@@ -2,6 +2,7 @@
 using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
+using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 
@@ -33,7 +34,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo, vt.descricao AS tipo, v.codigo, CASE WHEN v.ativo = 'S' THEN v.descricao ELSE '[REGISTRO INATIVO] - ' || v.descricao END AS descricao, v.placa, v.combustivel, CASE WHEN v.faz_revisao = 'S' THEN 'Sim' ELSE 'Não' END AS faz_revisao, CASE WHEN v.registra_km_diario = 'S' THEN 'Sim' ELSE 'Não' END AS registra_km_diario, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculo AS v INNER JOIN veiculo_tipo AS vt ON(v.tipo = vt.id_veiculo_tipo) WHERE v.ativo = 'S' ORDER BY v.codigo ASC", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo, vt.descricao AS tipo, v.codigo, CASE WHEN v.ativo = 'S' THEN v.descricao ELSE '[REGISTRO INATIVO] - ' || v.descricao END AS descricao, v.placa, v.combustivel, CASE WHEN v.faz_revisao = 'S' THEN 'Sim' ELSE 'Não' END AS faz_revisao, CASE WHEN v.registra_km_diario = 'S' THEN 'Sim' ELSE 'Não' END AS registra_km_diario, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculo AS v INNER JOIN veiculo_tipo AS vt ON(v.tipo = vt.id_veiculo_tipo) WHERE vt.descricao != 'Outros' AND v.ativo = 'S' ORDER BY v.codigo ASC", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridVeiculos.DataSource = dp;
@@ -51,7 +52,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 BD.Conectar();
                 NpgsqlCommand com = new NpgsqlCommand();
                 com.Connection = BD.ObjetoConexao;
-                com.CommandText = $"SELECT id_veiculo_tipo, descricao FROM veiculo_tipo WHERE ativo = 'S' ORDER BY 1 ASC";
+                com.CommandText = $"SELECT id_veiculo_tipo, descricao FROM veiculo_tipo WHERE ativo = 'S' AND descricao != 'Outros' ORDER BY 1 ASC";
                 NpgsqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
@@ -117,6 +118,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         private void frmVeiculosConsultar_Activated(object sender, EventArgs e)
         {
+            dGridVeiculos.Sort(dGridVeiculos.Columns["codigo"], ListSortDirection.Ascending);
+
             //if (XtraMessageBox.Show("Deseja recarregar os dados ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
             //{
 
@@ -136,12 +139,15 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 case Keys.F5:
                     btnConsultar_Click(sender, e);
                     break;
+                case Keys.Escape:
+                    Close();
+                    break;
             }
             if (e.Control && e.KeyCode == Keys.P)
             {
                 btnImprimirConsulta_Click(sender, e);
             }
-            if (cBoxSituacao.SelectedIndex == 0)
+            if (cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.Delete)
             {
                 btnInativar_Click(sender, e);
             }
@@ -185,7 +191,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo, vt.descricao AS tipo, v.codigo, CASE WHEN v.ativo = 'S' THEN v.descricao ELSE '[REGISTRO INATIVO] - ' || v.descricao END AS descricao, v.placa, v.combustivel, CASE WHEN v.faz_revisao = 'S' THEN 'Sim' ELSE 'Não' END AS faz_revisao, CASE WHEN v.registra_km_diario = 'S' THEN 'Sim' ELSE 'Não' END AS registra_km_diario, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculo AS v INNER JOIN veiculo_tipo AS vt ON(v.tipo = vt.id_veiculo_tipo) WHERE v.ativo = '{situacaoTraduzida}' AND {tipoBusca}", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT v.id_veiculo, vt.descricao AS tipo, v.codigo, CASE WHEN v.ativo = 'S' THEN v.descricao ELSE '[REGISTRO INATIVO] - ' || v.descricao END AS descricao, v.placa, v.combustivel, CASE WHEN v.faz_revisao = 'S' THEN 'Sim' ELSE 'Não' END AS faz_revisao, CASE WHEN v.registra_km_diario = 'S' THEN 'Sim' ELSE 'Não' END AS registra_km_diario, CASE WHEN v.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM veiculo AS v INNER JOIN veiculo_tipo AS vt ON(v.tipo = vt.id_veiculo_tipo) WHERE vt.descricao != 'Outros' AND v.ativo = '{situacaoTraduzida}' AND {tipoBusca}", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridVeiculos.DataSource = dp;
@@ -225,7 +231,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 BD.Conectar();
                 string idVeiculoSelecionadoGrid = dGridVeiculos.SelectedRows[0].Cells[0].Value.ToString();
                 
-                if (XtraMessageBox.Show("Deseja inativar o veículo ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                if (XtraMessageBox.Show("Deseja inativar o veículo selecionado ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
                     string sqlCommand = $"UPDATE veiculo SET faz_revisao = 'N', registra_km_diario = 'N', ativo = 'N', id_usuario_desativacao = {SessaoSistema.UsuarioId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_veiculo = {idVeiculoSelecionadoGrid}";
                     NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);

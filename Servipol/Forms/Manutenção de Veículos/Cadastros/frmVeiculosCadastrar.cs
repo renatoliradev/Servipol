@@ -35,6 +35,22 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         #region Methods
 
+        private void cBoxTipoVeiculo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cBoxTipoVeiculo.SelectedValue.ToString() == "1")
+                {
+                    CarregaCodigoCarro();
+                }
+                else if (cBoxTipoVeiculo.SelectedValue.ToString() == "2")
+                {
+                    CarregaCodigoMoto();
+                }
+            }
+            catch { }
+        }
+
         public void VerificaTipoChamada()
         {
             try
@@ -198,8 +214,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     tBoxDataCadastro.Text = data_cadastro;
                     tBoxUsuarioDesativacao.Text = usuario_desativacao;
                     tBoxDataDesativacao.Text = data_desativacao;
-                    tBoxUsuarioReativacao.Text = usuario_reativacao;
-                    tBoxDataReativacao.Text = data_reativacao;
                     tBoxUsuarioAlteracao.Text = usuario_alteracao;
                     tBoxDataAlteracao.Text = data_alteracao;
 
@@ -460,7 +474,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                             string sqlCommand3 = $"UPDATE codigomoto SET id_veiculo = NULL WHERE id_veiculo = {IdVeiculo}";
                             NpgsqlCommand command3 = new NpgsqlCommand(sqlCommand3, BD.ObjetoConexao);
                             command3.ExecuteNonQuery();
-
                         }
 
                         XtraMessageBox.Show("Veículo alterado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -477,20 +490,5 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         #endregion
 
-        private void cBoxTipoVeiculo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (cBoxTipoVeiculo.SelectedValue.ToString() == "1")
-                {
-                    CarregaCodigoCarro();
-                }
-                else if (cBoxTipoVeiculo.SelectedValue.ToString() == "2")
-                {
-                    CarregaCodigoMoto();
-                }
-            }
-            catch { }
-        }
     }
 }
