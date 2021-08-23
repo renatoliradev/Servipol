@@ -35,6 +35,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             {
                 chkBoxRegistroAtivo.Checked = true;
                 chkBoxRegistroAtivo.Enabled = false;
+                tabDadosRegistro.Parent = null;
                 this.Text = "Cadastrar Tipo de Manutenção";
             }
             gbDescricao.Focus();
@@ -172,11 +173,22 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             }
         }
 
+        private void frmTipoManutencaoCadastrar_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    btnCancelar_Click(sender, e);
+                    break;
+                case Keys.F12:
+                    btnConfirmar_Click(sender, e);
+                    break;
+            }
+        }
+
         #endregion
 
         #region Buttons 
-
-        #endregion
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -234,8 +246,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     #endregion
 
                     #region Tipo Chamada: INCLUIR
-                else
-                {
+                    else
+                    {
                         string aplicacaoCarro = string.Empty, aplicacaoMoto = string.Empty, exigeKmValidadeOleo = string.Empty;
 
                         #region Converte Aplicação
@@ -274,6 +286,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             {
                 BD.Desconectar();
             }
-}
+        }
+
+        #endregion
     }
 }

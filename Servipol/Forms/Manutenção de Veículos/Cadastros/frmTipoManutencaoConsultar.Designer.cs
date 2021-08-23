@@ -30,8 +30,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTipoManutencaoConsultar));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cBoxTipoBusca = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cBoxSituacao = new System.Windows.Forms.ComboBox();
@@ -45,17 +45,16 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
             this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
             this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
-            this.registra_km_diario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.faz_revisao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.combustivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_veiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dGridTipoManutencao = new System.Windows.Forms.DataGridView();
-            this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.id_manutencao_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aplicacao_carro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aplicacao_moto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exige_km_validade_oleo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuario_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -73,7 +72,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.cBoxTipoBusca.FormattingEnabled = true;
             this.cBoxTipoBusca.Items.AddRange(new object[] {
             "Todos",
-            "Tipo"});
+            "Descrição"});
             this.cBoxTipoBusca.Location = new System.Drawing.Point(6, 22);
             this.cBoxTipoBusca.Name = "cBoxTipoBusca";
             this.cBoxTipoBusca.Size = new System.Drawing.Size(212, 22);
@@ -245,98 +244,25 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.btnEditar.Text = "[F3] - Editar";
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // registra_km_diario
-            // 
-            this.registra_km_diario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.registra_km_diario.DataPropertyName = "registra_km_diario";
-            this.registra_km_diario.HeaderText = "Obrigatório Registrar Km Diário";
-            this.registra_km_diario.Name = "registra_km_diario";
-            this.registra_km_diario.ReadOnly = true;
-            this.registra_km_diario.Width = 119;
-            // 
-            // faz_revisao
-            // 
-            this.faz_revisao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.faz_revisao.DataPropertyName = "faz_revisao";
-            this.faz_revisao.HeaderText = "Faz Revisão na Concessionária";
-            this.faz_revisao.Name = "faz_revisao";
-            this.faz_revisao.ReadOnly = true;
-            this.faz_revisao.Width = 171;
-            // 
-            // combustivel
-            // 
-            this.combustivel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.combustivel.DataPropertyName = "combustivel";
-            this.combustivel.HeaderText = "Combustível Preferencial";
-            this.combustivel.Name = "combustivel";
-            this.combustivel.ReadOnly = true;
-            this.combustivel.Width = 144;
-            // 
-            // placa
-            // 
-            this.placa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.placa.DataPropertyName = "placa";
-            this.placa.HeaderText = "Placa";
-            this.placa.Name = "placa";
-            this.placa.ReadOnly = true;
-            this.placa.Width = 58;
-            // 
-            // descricao
-            // 
-            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descricao.DataPropertyName = "descricao";
-            this.descricao.HeaderText = "Descrição";
-            this.descricao.Name = "descricao";
-            this.descricao.ReadOnly = true;
-            // 
-            // codigo
-            // 
-            this.codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.codigo.DataPropertyName = "codigo";
-            this.codigo.HeaderText = "Código";
-            this.codigo.Name = "codigo";
-            this.codigo.ReadOnly = true;
-            this.codigo.Width = 70;
-            // 
-            // tipo
-            // 
-            this.tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.tipo.DataPropertyName = "tipo";
-            this.tipo.HeaderText = "Tipo";
-            this.tipo.Name = "tipo";
-            this.tipo.ReadOnly = true;
-            this.tipo.Width = 55;
-            // 
-            // id_veiculo
-            // 
-            this.id_veiculo.DataPropertyName = "id_veiculo";
-            this.id_veiculo.FillWeight = 1F;
-            this.id_veiculo.HeaderText = "ID";
-            this.id_veiculo.MinimumWidth = 2;
-            this.id_veiculo.Name = "id_veiculo";
-            this.id_veiculo.ReadOnly = true;
-            this.id_veiculo.Visible = false;
-            // 
             // dGridTipoManutencao
             // 
             this.dGridTipoManutencao.AllowUserToAddRows = false;
             this.dGridTipoManutencao.AllowUserToDeleteRows = false;
             this.dGridTipoManutencao.AllowUserToResizeColumns = false;
             this.dGridTipoManutencao.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Lavender;
-            this.dGridTipoManutencao.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
+            this.dGridTipoManutencao.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dGridTipoManutencao.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dGridTipoManutencao.BackgroundColor = System.Drawing.Color.White;
             this.dGridTipoManutencao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGridTipoManutencao.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_veiculo,
-            this.tipo,
-            this.codigo,
+            this.id_manutencao_tipo,
             this.descricao,
-            this.placa,
-            this.combustivel,
-            this.faz_revisao,
-            this.registra_km_diario,
+            this.aplicacao_carro,
+            this.aplicacao_moto,
+            this.exige_km_validade_oleo,
+            this.usuario_cadastro,
+            this.data_cadastro,
             this.ativo});
             this.dGridTipoManutencao.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGridTipoManutencao.Location = new System.Drawing.Point(0, 0);
@@ -346,20 +272,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.dGridTipoManutencao.RowHeadersVisible = false;
             this.dGridTipoManutencao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dGridTipoManutencao.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGridTipoManutencao.Size = new System.Drawing.Size(1236, 353);
+            this.dGridTipoManutencao.Size = new System.Drawing.Size(1236, 365);
             this.dGridTipoManutencao.TabIndex = 0;
-            this.dGridTipoManutencao.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridTipoManutencao_CellDoubleClick);
-            // 
-            // ativo
-            // 
-            this.ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ativo.DataPropertyName = "ativo";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ativo.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ativo.HeaderText = "Ativo";
-            this.ativo.Name = "ativo";
-            this.ativo.ReadOnly = true;
-            this.ativo.Width = 58;
             // 
             // panel3
             // 
@@ -368,20 +282,95 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.dGridTipoManutencao);
-            this.panel3.Location = new System.Drawing.Point(0, 91);
+            this.panel3.Location = new System.Drawing.Point(0, 79);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1238, 355);
+            this.panel3.Size = new System.Drawing.Size(1238, 367);
             this.panel3.TabIndex = 144;
+            // 
+            // id_manutencao_tipo
+            // 
+            this.id_manutencao_tipo.DataPropertyName = "id_manutencao_tipo";
+            this.id_manutencao_tipo.HeaderText = "id";
+            this.id_manutencao_tipo.Name = "id_manutencao_tipo";
+            this.id_manutencao_tipo.ReadOnly = true;
+            this.id_manutencao_tipo.Visible = false;
+            // 
+            // descricao
+            // 
+            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descricao.DataPropertyName = "descricao";
+            this.descricao.HeaderText = "Descrição";
+            this.descricao.Name = "descricao";
+            this.descricao.ReadOnly = true;
+            // 
+            // aplicacao_carro
+            // 
+            this.aplicacao_carro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.aplicacao_carro.DataPropertyName = "aplicacao_carro";
+            this.aplicacao_carro.HeaderText = "Aplicação Carro";
+            this.aplicacao_carro.Name = "aplicacao_carro";
+            this.aplicacao_carro.ReadOnly = true;
+            this.aplicacao_carro.Width = 112;
+            // 
+            // aplicacao_moto
+            // 
+            this.aplicacao_moto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.aplicacao_moto.DataPropertyName = "aplicacao_moto";
+            this.aplicacao_moto.HeaderText = "Aplicação Moto";
+            this.aplicacao_moto.Name = "aplicacao_moto";
+            this.aplicacao_moto.ReadOnly = true;
+            this.aplicacao_moto.Width = 112;
+            // 
+            // exige_km_validade_oleo
+            // 
+            this.exige_km_validade_oleo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.exige_km_validade_oleo.DataPropertyName = "exige_km_validade_oleo";
+            this.exige_km_validade_oleo.HeaderText = "Exige Km Validade Óleo";
+            this.exige_km_validade_oleo.Name = "exige_km_validade_oleo";
+            this.exige_km_validade_oleo.ReadOnly = true;
+            this.exige_km_validade_oleo.Width = 152;
+            // 
+            // usuario_cadastro
+            // 
+            this.usuario_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.usuario_cadastro.DataPropertyName = "usuario_cadastro";
+            this.usuario_cadastro.HeaderText = "Usuário Cadastro";
+            this.usuario_cadastro.Name = "usuario_cadastro";
+            this.usuario_cadastro.ReadOnly = true;
+            this.usuario_cadastro.Width = 121;
+            // 
+            // data_cadastro
+            // 
+            this.data_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.data_cadastro.DataPropertyName = "data_cadastro";
+            this.data_cadastro.HeaderText = "Data Cadastro";
+            this.data_cadastro.Name = "data_cadastro";
+            this.data_cadastro.ReadOnly = true;
+            this.data_cadastro.Width = 105;
+            // 
+            // ativo
+            // 
+            this.ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ativo.DataPropertyName = "ativo";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ativo.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ativo.HeaderText = "Ativo";
+            this.ativo.Name = "ativo";
+            this.ativo.ReadOnly = true;
+            this.ativo.Width = 58;
             // 
             // frmTipoManutencaoConsultar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1238, 513);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel3);
+            this.KeyPreview = true;
             this.Name = "frmTipoManutencaoConsultar";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tipo de Manutenção";
             this.Load += new System.EventHandler(this.frmTipoManutencaoConsultar_Load);
@@ -411,17 +400,16 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         private DevExpress.XtraEditors.SimpleButton btnImprimirConsulta;
         private DevExpress.XtraEditors.SimpleButton btnIncluir;
         private DevExpress.XtraEditors.SimpleButton btnEditar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn registra_km_diario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn faz_revisao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn combustivel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn placa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_veiculo;
-        private System.Windows.Forms.DataGridView dGridTipoManutencao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ativo;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox tBoxTextoConsulta;
+        private System.Windows.Forms.DataGridView dGridTipoManutencao;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_manutencao_tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aplicacao_carro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aplicacao_moto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn exige_km_validade_oleo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usuario_cadastro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_cadastro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ativo;
     }
 }

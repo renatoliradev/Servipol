@@ -42,12 +42,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnConsultar = new DevExpress.XtraEditors.SimpleButton();
             this.dGridFuncionarios = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnVisualizar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
-            this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
-            this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.id_funcionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricao_funcionario_cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_admissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +53,12 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.telefone_funcionario_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefone_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnVisualizar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
+            this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
+            this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -210,92 +210,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.dGridFuncionarios.TabIndex = 0;
             this.dGridFuncionarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridFuncionarios_CellDoubleClick);
             // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.btnVisualizar);
-            this.panel2.Controls.Add(this.btnImprimirConsulta);
-            this.panel2.Controls.Add(this.btnIncluir);
-            this.panel2.Controls.Add(this.btnEditar);
-            this.panel2.Location = new System.Drawing.Point(0, 452);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1238, 61);
-            this.panel2.TabIndex = 137;
-            // 
-            // btnVisualizar
-            // 
-            this.btnVisualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVisualizar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVisualizar.Appearance.Options.UseFont = true;
-            this.btnVisualizar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnVisualizar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnVisualizar.ImageOptions.SvgImage")));
-            this.btnVisualizar.Location = new System.Drawing.Point(791, 9);
-            this.btnVisualizar.Name = "btnVisualizar";
-            this.btnVisualizar.Size = new System.Drawing.Size(144, 44);
-            this.btnVisualizar.TabIndex = 189;
-            this.btnVisualizar.TabStop = false;
-            this.btnVisualizar.Text = "[F8] - Visualizar";
-            this.btnVisualizar.Click += new System.EventHandler(this.btnVisualizar_Click);
-            // 
-            // btnImprimirConsulta
-            // 
-            this.btnImprimirConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnImprimirConsulta.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirConsulta.Appearance.Options.UseFont = true;
-            this.btnImprimirConsulta.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnImprimirConsulta.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnImprimirConsulta.ImageOptions.SvgImage")));
-            this.btnImprimirConsulta.Location = new System.Drawing.Point(3, 9);
-            this.btnImprimirConsulta.Name = "btnImprimirConsulta";
-            this.btnImprimirConsulta.Size = new System.Drawing.Size(233, 44);
-            this.btnImprimirConsulta.TabIndex = 188;
-            this.btnImprimirConsulta.TabStop = false;
-            this.btnImprimirConsulta.Text = "[CTRL + P] - Imprimir consulta";
-            this.btnImprimirConsulta.Click += new System.EventHandler(this.btnImprimirConsulta_Click);
-            // 
-            // btnIncluir
-            // 
-            this.btnIncluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnIncluir.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIncluir.Appearance.Options.UseFont = true;
-            this.btnIncluir.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnIncluir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIncluir.ImageOptions.SvgImage")));
-            this.btnIncluir.Location = new System.Drawing.Point(1091, 9);
-            this.btnIncluir.Name = "btnIncluir";
-            this.btnIncluir.Size = new System.Drawing.Size(144, 44);
-            this.btnIncluir.TabIndex = 185;
-            this.btnIncluir.TabStop = false;
-            this.btnIncluir.Text = "[F4] - Incluir";
-            this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Appearance.Options.UseFont = true;
-            this.btnEditar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnEditar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnEditar.ImageOptions.SvgImage")));
-            this.btnEditar.Location = new System.Drawing.Point(941, 9);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(144, 44);
-            this.btnEditar.TabIndex = 187;
-            this.btnEditar.TabStop = false;
-            this.btnEditar.Text = "[F3] - Editar";
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.dGridFuncionarios);
-            this.panel3.Location = new System.Drawing.Point(0, 91);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1238, 355);
-            this.panel3.TabIndex = 138;
-            // 
             // id_funcionario
             // 
             this.id_funcionario.DataPropertyName = "id_funcionario";
@@ -401,6 +315,92 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.ativo.Name = "ativo";
             this.ativo.ReadOnly = true;
             this.ativo.Width = 58;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.btnVisualizar);
+            this.panel2.Controls.Add(this.btnImprimirConsulta);
+            this.panel2.Controls.Add(this.btnIncluir);
+            this.panel2.Controls.Add(this.btnEditar);
+            this.panel2.Location = new System.Drawing.Point(0, 452);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1238, 61);
+            this.panel2.TabIndex = 137;
+            // 
+            // btnVisualizar
+            // 
+            this.btnVisualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVisualizar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVisualizar.Appearance.Options.UseFont = true;
+            this.btnVisualizar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnVisualizar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnVisualizar.ImageOptions.SvgImage")));
+            this.btnVisualizar.Location = new System.Drawing.Point(791, 9);
+            this.btnVisualizar.Name = "btnVisualizar";
+            this.btnVisualizar.Size = new System.Drawing.Size(144, 44);
+            this.btnVisualizar.TabIndex = 189;
+            this.btnVisualizar.TabStop = false;
+            this.btnVisualizar.Text = "[F8] - Visualizar";
+            this.btnVisualizar.Click += new System.EventHandler(this.btnVisualizar_Click);
+            // 
+            // btnImprimirConsulta
+            // 
+            this.btnImprimirConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnImprimirConsulta.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirConsulta.Appearance.Options.UseFont = true;
+            this.btnImprimirConsulta.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnImprimirConsulta.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnImprimirConsulta.ImageOptions.SvgImage")));
+            this.btnImprimirConsulta.Location = new System.Drawing.Point(3, 9);
+            this.btnImprimirConsulta.Name = "btnImprimirConsulta";
+            this.btnImprimirConsulta.Size = new System.Drawing.Size(233, 44);
+            this.btnImprimirConsulta.TabIndex = 188;
+            this.btnImprimirConsulta.TabStop = false;
+            this.btnImprimirConsulta.Text = "[CTRL + P] - Imprimir consulta";
+            this.btnImprimirConsulta.Click += new System.EventHandler(this.btnImprimirConsulta_Click);
+            // 
+            // btnIncluir
+            // 
+            this.btnIncluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnIncluir.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncluir.Appearance.Options.UseFont = true;
+            this.btnIncluir.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnIncluir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIncluir.ImageOptions.SvgImage")));
+            this.btnIncluir.Location = new System.Drawing.Point(1091, 9);
+            this.btnIncluir.Name = "btnIncluir";
+            this.btnIncluir.Size = new System.Drawing.Size(144, 44);
+            this.btnIncluir.TabIndex = 185;
+            this.btnIncluir.TabStop = false;
+            this.btnIncluir.Text = "[F4] - Incluir";
+            this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.Appearance.Options.UseFont = true;
+            this.btnEditar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnEditar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnEditar.ImageOptions.SvgImage")));
+            this.btnEditar.Location = new System.Drawing.Point(941, 9);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(144, 44);
+            this.btnEditar.TabIndex = 187;
+            this.btnEditar.TabStop = false;
+            this.btnEditar.Text = "[F3] - Editar";
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.dGridFuncionarios);
+            this.panel3.Location = new System.Drawing.Point(0, 91);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1238, 355);
+            this.panel3.TabIndex = 138;
             // 
             // frmFuncionariosConsultar
             // 
