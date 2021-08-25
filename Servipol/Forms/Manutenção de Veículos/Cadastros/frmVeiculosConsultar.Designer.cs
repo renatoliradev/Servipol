@@ -29,8 +29,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVeiculosConsultar));
             this.panel3 = new System.Windows.Forms.Panel();
             this.dGridVeiculos = new System.Windows.Forms.DataGridView();
@@ -83,8 +83,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.dGridVeiculos.AllowUserToDeleteRows = false;
             this.dGridVeiculos.AllowUserToResizeColumns = false;
             this.dGridVeiculos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Lavender;
-            this.dGridVeiculos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
+            this.dGridVeiculos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dGridVeiculos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dGridVeiculos.BackgroundColor = System.Drawing.Color.White;
             this.dGridVeiculos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -186,8 +186,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // 
             this.ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.ativo.DataPropertyName = "ativo";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ativo.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ativo.DefaultCellStyle = dataGridViewCellStyle2;
             this.ativo.HeaderText = "Ativo";
             this.ativo.Name = "ativo";
             this.ativo.ReadOnly = true;
@@ -373,6 +373,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.cBoxTipoVeiculo.Size = new System.Drawing.Size(710, 22);
             this.cBoxTipoVeiculo.TabIndex = 106;
             this.cBoxTipoVeiculo.TabStop = false;
+            this.cBoxTipoVeiculo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cBoxTipoVeiculo_KeyDown);
             // 
             // frmVeiculosConsultar
             // 

@@ -210,7 +210,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     #region Tipo Chamada: EDITAR
                     if (TipoChamada == "Editar")
                     {
-                        string aplicacaoCarro = string.Empty, aplicacaoMoto = string.Empty, exigeKmValidadeOleo = string.Empty;
+                        string aplicacaoCarro = string.Empty, aplicacaoMoto = string.Empty, exigeKmValidadeOleo = string.Empty, registro_ativo = string.Empty;
 
                         #region Converte Aplicação
                         if (chkBoxCarro.Checked)
@@ -231,11 +231,28 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                             exigeKmValidadeOleo = "N";
                         #endregion
 
+                        #region Conversão Situação
+                        registro_ativo = chkBoxRegistroAtivo.Checked ? "S" : "N";
+                        #endregion
+
                         if (XtraMessageBox.Show("Confirmar Alterações ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                         {
                             string sqlCommand = $"UPDATE manutencao_tipo SET descricao = '{tBoxDescricao.Text.ToUpper().Trim()}', aplicacao_carro = '{aplicacaoCarro}', aplicacao_moto = '{aplicacaoMoto}', exige_km_validade_oleo = '{exigeKmValidadeOleo}' WHERE id_manutencao_tipo = {IdTipoManutencao}";
                             NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                             command.ExecuteNonQuery();
+
+                            if (registro_ativo == "N")
+                            {
+                                string sqlCommand2 = $"UPDATE manutencao_tipo SET ativo = '{registro_ativo}', id_usuario_desativacao = {SessaoSistema.UsuarioId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_manutencao_tipo = {IdTipoManutencao}";
+                                NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
+                                command2.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                string sqlCommand3 = $"UPDATE manutencao_tipo SET ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UsuarioId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_manutencao_tipo = {IdTipoManutencao}";
+                                NpgsqlCommand command3 = new NpgsqlCommand(sqlCommand3, BD.ObjetoConexao);
+                                command3.ExecuteNonQuery();
+                            }
 
                             XtraMessageBox.Show("Registro Alterado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

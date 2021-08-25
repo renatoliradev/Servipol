@@ -153,6 +153,16 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             }
         }
 
+        private void cBoxTipoVeiculo_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    btnConsultar_Click(sender, e);
+                    break;
+            }
+        }
+
         #endregion
 
         #region Buttons

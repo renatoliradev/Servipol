@@ -46,7 +46,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
             this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
             this.dGridTipoManutencao = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.id_manutencao_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aplicacao_carro = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +54,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.usuario_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -169,6 +169,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.tBoxTextoConsulta.Size = new System.Drawing.Size(710, 22);
             this.tBoxTextoConsulta.TabIndex = 107;
             this.tBoxTextoConsulta.TabStop = false;
+            this.tBoxTextoConsulta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tBoxTextoConsulta_KeyDown);
             // 
             // btnInativar
             // 
@@ -274,18 +275,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.dGridTipoManutencao.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGridTipoManutencao.Size = new System.Drawing.Size(1236, 365);
             this.dGridTipoManutencao.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.dGridTipoManutencao);
-            this.panel3.Location = new System.Drawing.Point(0, 79);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1238, 367);
-            this.panel3.TabIndex = 144;
+            this.dGridTipoManutencao.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridTipoManutencao_CellDoubleClick);
             // 
             // id_manutencao_tipo
             // 
@@ -310,7 +300,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.aplicacao_carro.HeaderText = "Aplicação Carro";
             this.aplicacao_carro.Name = "aplicacao_carro";
             this.aplicacao_carro.ReadOnly = true;
-            this.aplicacao_carro.Width = 112;
+            this.aplicacao_carro.Width = 103;
             // 
             // aplicacao_moto
             // 
@@ -319,7 +309,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.aplicacao_moto.HeaderText = "Aplicação Moto";
             this.aplicacao_moto.Name = "aplicacao_moto";
             this.aplicacao_moto.ReadOnly = true;
-            this.aplicacao_moto.Width = 112;
+            this.aplicacao_moto.Width = 103;
             // 
             // exige_km_validade_oleo
             // 
@@ -328,7 +318,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.exige_km_validade_oleo.HeaderText = "Exige Km Validade Óleo";
             this.exige_km_validade_oleo.Name = "exige_km_validade_oleo";
             this.exige_km_validade_oleo.ReadOnly = true;
-            this.exige_km_validade_oleo.Width = 152;
+            this.exige_km_validade_oleo.Width = 96;
             // 
             // usuario_cadastro
             // 
@@ -337,7 +327,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.usuario_cadastro.HeaderText = "Usuário Cadastro";
             this.usuario_cadastro.Name = "usuario_cadastro";
             this.usuario_cadastro.ReadOnly = true;
-            this.usuario_cadastro.Width = 121;
+            this.usuario_cadastro.Width = 111;
             // 
             // data_cadastro
             // 
@@ -346,7 +336,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.data_cadastro.HeaderText = "Data Cadastro";
             this.data_cadastro.Name = "data_cadastro";
             this.data_cadastro.ReadOnly = true;
-            this.data_cadastro.Width = 105;
+            this.data_cadastro.Width = 96;
             // 
             // ativo
             // 
@@ -359,6 +349,19 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.ativo.ReadOnly = true;
             this.ativo.Width = 58;
             // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.dGridTipoManutencao);
+            this.panel3.Location = new System.Drawing.Point(0, 79);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1238, 367);
+            this.panel3.TabIndex = 144;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
             // frmTipoManutencaoConsultar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -368,6 +371,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmTipoManutencaoConsultar";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

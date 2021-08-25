@@ -8,19 +8,19 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 {
     public partial class frmLocalManutencaoCadastrar : DevExpress.XtraEditors.XtraForm
     {
-        #region Instâncias
+        #region Instâncias e Propriedades
         readonly ConexaoBD BD = new ConexaoBD();
 
-        private static string auxTipoChamada = string.Empty;
-        private static int auxidLocalManutencao = 0;
+        public string TipoChamada { get; set; }
+        public int IdLocalManutencao { get; set; }
         #endregion
 
         public frmLocalManutencaoCadastrar(string tipoChamada, int idLocalManutencao)
         {
-            InitializeComponent();
+            TipoChamada = tipoChamada;
+            IdLocalManutencao = idLocalManutencao;
 
-            auxTipoChamada = tipoChamada;
-            auxidLocalManutencao = idLocalManutencao;
+            InitializeComponent();
         }
 
         private void frmLocalManutencaoCadastrar_Load(object sender, EventArgs e)
@@ -28,13 +28,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             try
             {
                 BD.Conectar();
-                if (auxTipoChamada == "Editar")
+                if (TipoChamada == "Editar")
                 {
                     #region DECLARACAO DE VARIAVEIS
                     string descricao = string.Empty, postoCombustivel = string.Empty;
                     #endregion
 
-                    NpgsqlCommand com = new NpgsqlCommand($"SELECT descricao, posto_combustivel FROM manutencao_local WHERE id_manutencao_local = {auxidLocalManutencao}", BD.ObjetoConexao);
+                    NpgsqlCommand com = new NpgsqlCommand($"SELECT descricao, posto_combustivel FROM manutencao_local WHERE id_manutencao_local = {IdLocalManutencao}", BD.ObjetoConexao);
                     using (NpgsqlDataReader dr = com.ExecuteReader())
                     {
                         while (dr.Read())
@@ -87,7 +87,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             try
             {
                 BD.Conectar();
-                if (auxTipoChamada == "Editar")
+                if (TipoChamada == "Editar")
                 {
                     if (tBoxDenominacao.Text == string.Empty)
                     {
@@ -108,7 +108,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                                 postoCombustivel = "N";
                             }
 
-                            string sqlCommand = $"UPDATE manutencao_local SET descricao = '{tBoxDenominacao.Text.ToUpper().Trim()}', posto_combustivel = '{postoCombustivel}' WHERE id_manutencao_local = {auxidLocalManutencao}";
+                            string sqlCommand = $"UPDATE manutencao_local SET descricao = '{tBoxDenominacao.Text.ToUpper().Trim()}', posto_combustivel = '{postoCombustivel}' WHERE id_manutencao_local = {IdLocalManutencao}";
                             NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                             command.ExecuteNonQuery();
 
