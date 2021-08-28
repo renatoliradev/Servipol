@@ -158,6 +158,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.tBoxKmAtual.Size = new System.Drawing.Size(244, 23);
             this.tBoxKmAtual.TabIndex = 1;
             this.tBoxKmAtual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tBoxKmAtual.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tBoxKmAtual_KeyDown);
+            this.tBoxKmAtual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tBoxKmAtual_KeyPress);
             // 
             // groupBox2
             // 
@@ -184,12 +186,14 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.cBoxVeiculo.Name = "cBoxVeiculo";
             this.cBoxVeiculo.Size = new System.Drawing.Size(265, 23);
             this.cBoxVeiculo.TabIndex = 1;
+            this.cBoxVeiculo.SelectedIndexChanged += new System.EventHandler(this.cBoxVeiculo_SelectedIndexChanged);
+            this.cBoxVeiculo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cBoxVeiculo_KeyDown);
             // 
             // frmRegistrarKmDiario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(547, 325);
+            this.ClientSize = new System.Drawing.Size(549, 324);
             this.ControlBox = false;
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnConfirmar);
@@ -207,6 +211,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar Km Diário";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmRegistrarKmDiario_FormClosing);
             this.Load += new System.EventHandler(this.frmRegistrarKmDiario_Load);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();

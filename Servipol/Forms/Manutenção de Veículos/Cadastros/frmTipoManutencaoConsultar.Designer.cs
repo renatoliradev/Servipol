@@ -377,6 +377,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tipo de Manutenção";
+            this.Activated += new System.EventHandler(this.frmTipoManutencaoConsultar_Activated);
             this.Load += new System.EventHandler(this.frmTipoManutencaoConsultar_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmTipoManutencaoConsultar_KeyDown);
             this.groupBox2.ResumeLayout(false);

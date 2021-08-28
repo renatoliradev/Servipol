@@ -124,10 +124,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.gbAplicacao.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAplicacao.Location = new System.Drawing.Point(6, 72);
             this.gbAplicacao.Name = "gbAplicacao";
-            this.gbAplicacao.Size = new System.Drawing.Size(261, 58);
+            this.gbAplicacao.Size = new System.Drawing.Size(149, 58);
             this.gbAplicacao.TabIndex = 9;
             this.gbAplicacao.TabStop = false;
-            this.gbAplicacao.Text = "Aplicação do serviço";
             // 
             // chkBoxPostoCombustivel
             // 
@@ -146,7 +145,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.gbSituacao.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbSituacao.Location = new System.Drawing.Point(5, 136);
             this.gbSituacao.Name = "gbSituacao";
-            this.gbSituacao.Size = new System.Drawing.Size(139, 48);
+            this.gbSituacao.Size = new System.Drawing.Size(150, 48);
             this.gbSituacao.TabIndex = 8;
             this.gbSituacao.TabStop = false;
             this.gbSituacao.Text = "Situação";

@@ -382,6 +382,8 @@ ALTER TABLE public.manutencao_tipo ADD COLUMN exige_km_validade_oleo character(1
 ALTER TABLE public.manutencao_tipo RENAME descricao_manutencao  TO descricao;
 ALTER TABLE public.manutencao_tipo RENAME id_usuario_reativacao  TO id_usuario_alteracao;
 ALTER TABLE public.manutencao_tipo RENAME data_reativacao  TO data_alteracao;
+ALTER TABLE public.manutencao_local RENAME id_usuario_reativacao  TO id_usuario_alteracao;
+ALTER TABLE public.manutencao_local RENAME data_reativacao  TO data_alteracao;
 
 
 ```

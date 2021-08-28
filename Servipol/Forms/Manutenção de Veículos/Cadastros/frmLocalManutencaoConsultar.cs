@@ -2,6 +2,7 @@
 using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
+using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 
@@ -125,6 +126,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             {
                 btnInativar_Click(sender, e);
             }
+        }
+
+        private void frmLocalManutencaoConsultar_Activated(object sender, EventArgs e)
+        {
+            dGridLocalManutencao.Sort(dGridLocalManutencao.Columns["descricao"], ListSortDirection.Ascending);
         }
 
         #endregion

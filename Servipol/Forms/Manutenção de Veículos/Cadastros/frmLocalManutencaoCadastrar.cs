@@ -53,7 +53,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 string descricao = string.Empty, posto_combustivel = string.Empty, usuario_cadastro = string.Empty, data_cadastro = string.Empty, usuario_desativacao = string.Empty, data_desativacao = string.Empty, usuario_alteracao = string.Empty, data_alteracao = string.Empty, registro_ativo = string.Empty;
                 #endregion
 
-                NpgsqlCommand com = new NpgsqlCommand($"SELECT ml.id_manutencao_local, CASE WHEN ml.ativo = 'S' THEN ml.descricao ELSE '[REGISTRO INATIVO] - ' || ml.descricao END AS descricao, posto_combustivel, uc.nome AS usuario_cadastro, ml.data_cadastro, CASE WHEN ml.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM manutencao_local AS ml INNER JOIN usuario AS uc ON(uc.id_usuario = ml.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = ml.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = ml.id_usuario_alteracao) WHERE ml.id_manutencao_local = {IdLocalManutencao}", BD.ObjetoConexao);
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT ml.descricao, ml.posto_combustivel, uc.nome AS usuario_cadastro, ml.data_cadastro, ud.nome AS usuario_desativacao, ml.data_desativacao, ua.nome AS usuario_alteracao, ml.data_alteracao, ml.ativo FROM manutencao_local AS ml INNER JOIN usuario AS uc ON(uc.id_usuario = ml.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = ml.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = ml.id_usuario_alteracao) WHERE ml.id_manutencao_local = {IdLocalManutencao}", BD.ObjetoConexao);
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     while (dr.Read())
@@ -234,11 +234,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            Close();
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
             try
             {
                 if (!ValidaCampos())
@@ -321,6 +316,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             {
                 BD.Desconectar();
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

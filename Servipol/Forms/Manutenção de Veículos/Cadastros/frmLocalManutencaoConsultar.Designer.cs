@@ -33,6 +33,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLocalManutencaoConsultar));
             this.panel3 = new System.Windows.Forms.Panel();
             this.dGridLocalManutencao = new System.Windows.Forms.DataGridView();
+            this.id_manutencao_local = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuario_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnInativar = new DevExpress.XtraEditors.SimpleButton();
             this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
             this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
@@ -46,11 +51,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.cBoxSituacao = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cBoxTipoBusca = new System.Windows.Forms.ComboBox();
-            this.id_manutencao_local = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuario_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridLocalManutencao)).BeginInit();
             this.panel2.SuspendLayout();
@@ -100,6 +100,49 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.dGridLocalManutencao.Size = new System.Drawing.Size(1236, 365);
             this.dGridLocalManutencao.TabIndex = 0;
             this.dGridLocalManutencao.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridLocalManutencao_CellDoubleClick);
+            // 
+            // id_manutencao_local
+            // 
+            this.id_manutencao_local.DataPropertyName = "id_manutencao_local";
+            this.id_manutencao_local.HeaderText = "ID";
+            this.id_manutencao_local.Name = "id_manutencao_local";
+            this.id_manutencao_local.ReadOnly = true;
+            this.id_manutencao_local.Visible = false;
+            // 
+            // descricao
+            // 
+            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descricao.DataPropertyName = "descricao";
+            this.descricao.HeaderText = "Descrição";
+            this.descricao.Name = "descricao";
+            this.descricao.ReadOnly = true;
+            // 
+            // usuario_cadastro
+            // 
+            this.usuario_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.usuario_cadastro.DataPropertyName = "usuario_cadastro";
+            this.usuario_cadastro.HeaderText = "Usuário Cadastro";
+            this.usuario_cadastro.Name = "usuario_cadastro";
+            this.usuario_cadastro.ReadOnly = true;
+            this.usuario_cadastro.Width = 111;
+            // 
+            // data_cadastro
+            // 
+            this.data_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.data_cadastro.DataPropertyName = "data_cadastro";
+            this.data_cadastro.HeaderText = "Data Cadastro";
+            this.data_cadastro.Name = "data_cadastro";
+            this.data_cadastro.ReadOnly = true;
+            this.data_cadastro.Width = 96;
+            // 
+            // ativo
+            // 
+            this.ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ativo.DataPropertyName = "ativo";
+            this.ativo.HeaderText = "Ativo";
+            this.ativo.Name = "ativo";
+            this.ativo.ReadOnly = true;
+            this.ativo.Width = 58;
             // 
             // btnInativar
             // 
@@ -282,49 +325,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.cBoxTipoBusca.TabStop = false;
             this.cBoxTipoBusca.SelectedIndexChanged += new System.EventHandler(this.cBoxTipoBusca_SelectedIndexChanged);
             // 
-            // id_manutencao_local
-            // 
-            this.id_manutencao_local.DataPropertyName = "id_manutencao_local";
-            this.id_manutencao_local.HeaderText = "ID";
-            this.id_manutencao_local.Name = "id_manutencao_local";
-            this.id_manutencao_local.ReadOnly = true;
-            this.id_manutencao_local.Visible = false;
-            // 
-            // descricao
-            // 
-            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descricao.DataPropertyName = "descricao";
-            this.descricao.HeaderText = "Descrição";
-            this.descricao.Name = "descricao";
-            this.descricao.ReadOnly = true;
-            // 
-            // usuario_cadastro
-            // 
-            this.usuario_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.usuario_cadastro.DataPropertyName = "usuario_cadastro";
-            this.usuario_cadastro.HeaderText = "Usuário Cadastro";
-            this.usuario_cadastro.Name = "usuario_cadastro";
-            this.usuario_cadastro.ReadOnly = true;
-            this.usuario_cadastro.Width = 121;
-            // 
-            // data_cadastro
-            // 
-            this.data_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.data_cadastro.DataPropertyName = "data_cadastro";
-            this.data_cadastro.HeaderText = "Data Cadastro";
-            this.data_cadastro.Name = "data_cadastro";
-            this.data_cadastro.ReadOnly = true;
-            this.data_cadastro.Width = 105;
-            // 
-            // ativo
-            // 
-            this.ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ativo.DataPropertyName = "ativo";
-            this.ativo.HeaderText = "Ativo";
-            this.ativo.Name = "ativo";
-            this.ativo.ReadOnly = true;
-            this.ativo.Width = 58;
-            // 
             // frmLocalManutencaoConsultar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -341,6 +341,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Local de Manutenção";
+            this.Activated += new System.EventHandler(this.frmLocalManutencaoConsultar_Activated);
             this.Load += new System.EventHandler(this.frmLocalManutencaoConsultar_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLocalManutencaoConsultar_KeyDown);
             this.panel3.ResumeLayout(false);

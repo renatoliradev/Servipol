@@ -2,6 +2,7 @@
 using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
+using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 
@@ -38,7 +39,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
                 tBoxTextoConsulta.Clear();
 
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT f.id_funcionario, fc.descricao AS descricao_funcionario_cargo, f.tipo_sanguineo, f.codigo_ase, f.nome, f.data_admissao, f.telefone_1, f.telefone_2, f.telefone_3, telefone_4, CASE WHEN f.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM funcionario AS f INNER JOIN funcionario_cargo AS fc ON(f.id_funcionario_cargo = fc.id_funcionario_cargo) WHERE f.ativo = 'S' ORDER BY f.codigo_ase ASC", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT f.id_funcionario, fc.descricao AS descricao_funcionario_cargo, f.tipo_sanguineo, f.codigo_ase, f.nome, f.data_admissao, f.telefone_1, f.telefone_2, f.telefone_3, telefone_4, CASE WHEN f.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM funcionario AS f INNER JOIN funcionario_cargo AS fc ON(f.id_funcionario_cargo = fc.id_funcionario_cargo) WHERE f.ativo = 'S'", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
 
@@ -60,6 +61,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
 
         private void frmFuncionariosConsultar_Activated(object sender, EventArgs e)
         {
+            dGridFuncionarios.Sort(dGridFuncionarios.Columns["codigo_ase"], ListSortDirection.Ascending);
+
             //if (XtraMessageBox.Show("Deseja recarregar os dados ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
             //{
             //    CarregaTabelaFuncionarios();
@@ -169,7 +172,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT f.id_funcionario, fc.descricao AS descricao_funcionario_cargo, f.tipo_sanguineo, f.codigo_ase, f.nome, f.data_admissao, f.telefone_1, f.telefone_2, f.telefone_3, telefone_4, CASE WHEN f.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM funcionario AS f INNER JOIN funcionario_cargo AS fc ON(f.id_funcionario_cargo = fc.id_funcionario_cargo) WHERE f.ativo = '{situacaoTraduzida}' AND {tipoBusca} ORDER BY f.codigo_ase ASC", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT f.id_funcionario, fc.descricao AS descricao_funcionario_cargo, f.tipo_sanguineo, f.codigo_ase, f.nome, f.data_admissao, f.telefone_1, f.telefone_2, f.telefone_3, telefone_4, CASE WHEN f.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM funcionario AS f INNER JOIN funcionario_cargo AS fc ON(f.id_funcionario_cargo = fc.id_funcionario_cargo) WHERE f.ativo = '{situacaoTraduzida}' AND {tipoBusca}", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridFuncionarios.DataSource = dp;

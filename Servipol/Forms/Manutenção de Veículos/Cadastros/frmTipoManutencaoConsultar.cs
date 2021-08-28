@@ -2,6 +2,7 @@
 using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
+using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 
@@ -33,7 +34,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mt.id_manutencao_tipo, CASE WHEN mt.ativo = 'S' THEN mt.descricao ELSE '[REGISTRO INATIVO] - ' || mt.descricao END AS descricao, CASE WHEN mt.aplicacao_carro = 'S' THEN 'Sim' ELSE 'Não' END AS aplicacao_carro, CASE WHEN mt.aplicacao_moto = 'S' THEN 'Sim' ELSE 'Não' END AS aplicacao_moto, CASE WHEN mt.exige_km_validade_oleo = 'S' THEN 'Sim' ELSE 'Não' END AS exige_km_validade_oleo, uc.nome AS usuario_cadastro, mt.data_cadastro, CASE WHEN mt.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM manutencao_tipo AS mt INNER JOIN usuario AS uc ON(uc.id_usuario = mt.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = mt.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = mt.id_usuario_alteracao) WHERE mt.ativo = 'S' ORDER BY ordem ASC", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mt.id_manutencao_tipo, CASE WHEN mt.ativo = 'S' THEN mt.descricao ELSE '[REGISTRO INATIVO] - ' || mt.descricao END AS descricao, CASE WHEN mt.aplicacao_carro = 'S' THEN 'Sim' ELSE 'Não' END AS aplicacao_carro, CASE WHEN mt.aplicacao_moto = 'S' THEN 'Sim' ELSE 'Não' END AS aplicacao_moto, CASE WHEN mt.exige_km_validade_oleo = 'S' THEN 'Sim' ELSE 'Não' END AS exige_km_validade_oleo, uc.nome AS usuario_cadastro, mt.data_cadastro, CASE WHEN mt.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM manutencao_tipo AS mt INNER JOIN usuario AS uc ON(uc.id_usuario = mt.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = mt.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = mt.id_usuario_alteracao) WHERE mt.ativo = 'S'", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridTipoManutencao.DataSource = dp;
@@ -124,6 +125,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     btnConsultar_Click(sender, e);
                     break;
             }
+        }
+
+        private void frmTipoManutencaoConsultar_Activated(object sender, EventArgs e)
+        {
+            dGridTipoManutencao.Sort(dGridTipoManutencao.Columns["id_manutencao_tipo"], ListSortDirection.Ascending);
         }
 
         #endregion
@@ -220,7 +226,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mt.id_manutencao_tipo, CASE WHEN mt.ativo = 'S' THEN mt.descricao ELSE '[REGISTRO INATIVO] - ' || mt.descricao END AS descricao, CASE WHEN mt.aplicacao_carro = 'S' THEN 'Sim' ELSE 'Não' END AS aplicacao_carro, CASE WHEN mt.aplicacao_moto = 'S' THEN 'Sim' ELSE 'Não' END AS aplicacao_moto, CASE WHEN mt.exige_km_validade_oleo = 'S' THEN 'Sim' ELSE 'Não' END AS exige_km_validade_oleo, uc.nome AS usuario_cadastro, mt.data_cadastro, CASE WHEN mt.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM manutencao_tipo AS mt INNER JOIN usuario AS uc ON(uc.id_usuario = mt.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = mt.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = mt.id_usuario_alteracao) WHERE mt.ativo = '{situacaoTraduzida}' AND {tipoBusca} ORDER BY ordem ASC", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mt.id_manutencao_tipo, CASE WHEN mt.ativo = 'S' THEN mt.descricao ELSE '[REGISTRO INATIVO] - ' || mt.descricao END AS descricao, CASE WHEN mt.aplicacao_carro = 'S' THEN 'Sim' ELSE 'Não' END AS aplicacao_carro, CASE WHEN mt.aplicacao_moto = 'S' THEN 'Sim' ELSE 'Não' END AS aplicacao_moto, CASE WHEN mt.exige_km_validade_oleo = 'S' THEN 'Sim' ELSE 'Não' END AS exige_km_validade_oleo, uc.nome AS usuario_cadastro, mt.data_cadastro, CASE WHEN mt.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM manutencao_tipo AS mt INNER JOIN usuario AS uc ON(uc.id_usuario = mt.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = mt.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = mt.id_usuario_alteracao) WHERE mt.ativo = '{situacaoTraduzida}' AND {tipoBusca}", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridTipoManutencao.DataSource = dp;
@@ -231,8 +237,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             }
         }
 
+
         #endregion
 
-        
     }
 }
