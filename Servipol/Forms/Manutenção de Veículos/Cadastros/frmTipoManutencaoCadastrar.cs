@@ -167,6 +167,20 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 cBoxExigeKmValidadeOleo.Select();
                 return false;
             }
+            else if (chkBoxCarro.Checked == true && cBoxExigeKmValidadeOleo.SelectedIndex == 0 && cBoxKmValidadeOleoCarro.SelectedIndex == -1)
+            {
+                XtraMessageBox.Show("Obrigatório selecionar uma opção para [Km Validade Óleo Carro]", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                gbKmValidadeOleoCarro.Focus();
+                cBoxKmValidadeOleoCarro.Select();
+                return false;
+            }
+            else if (chkBoxMoto.Checked == true && cBoxExigeKmValidadeOleo.SelectedIndex == 0 && cBoxKmValidadeOleoMoto.SelectedIndex == -1)
+            {
+                XtraMessageBox.Show("Obrigatório selecionar uma opção para [Km Validade Óleo Moto]", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                gbKmValidadeOleoMoto.Focus();
+                cBoxKmValidadeOleoMoto.Select();
+                return false;
+            }
             else
             {
                 return true;
@@ -183,6 +197,68 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 case Keys.F12:
                     btnConfirmar_Click(sender, e);
                     break;
+            }
+        }
+
+        private void cBoxExigeKmValidadeOleo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cBoxExigeKmValidadeOleo.SelectedIndex == 0)
+                {
+                    if (chkBoxCarro.Checked == true)
+                    {
+                        gbKmValidadeOleoCarro.Visible = true;
+                    }
+                    else
+                    {
+                        gbKmValidadeOleoCarro.Visible = false;
+                    }
+
+                    if (chkBoxMoto.Checked == true)
+                    {
+                        gbKmValidadeOleoMoto.Visible = true;
+                    }
+                    else
+                    {
+                        gbKmValidadeOleoMoto.Visible = false;
+                    }
+                }
+                else
+                {
+                    gbKmValidadeOleoCarro.Visible = false;
+                    gbKmValidadeOleoMoto.Visible = false;
+                }
+            }
+            catch (Exception err)
+            {
+                XtraMessageBox.Show(err.Message);
+            }
+        }
+
+        private void chkBoxCarro_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkBoxCarro.Checked == true && cBoxExigeKmValidadeOleo.SelectedIndex == 0)
+            {
+                gbKmValidadeOleoCarro.Visible = true;
+            }
+            else
+            {
+                gbKmValidadeOleoCarro.Visible = false;
+                cBoxKmValidadeOleoCarro.SelectedIndex = -1;
+            }
+        }
+
+        private void chkBoxMoto_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkBoxMoto.Checked == true && cBoxExigeKmValidadeOleo.SelectedIndex == 0)
+            {
+                gbKmValidadeOleoMoto.Visible = true;
+            }
+            else
+            {
+                gbKmValidadeOleoMoto.Visible = false;
+                cBoxKmValidadeOleoMoto.SelectedIndex = -1;
             }
         }
 
@@ -304,6 +380,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 BD.Desconectar();
             }
         }
+
 
         #endregion
     }
