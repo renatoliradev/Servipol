@@ -2,7 +2,6 @@
 using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
-using System.Data;
 using System.Windows.Forms;
 
 namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
@@ -51,10 +50,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 BD.Conectar();
 
                 #region Variáveis
-                string descricao = string.Empty, aplicacao_carro = string.Empty, aplicacao_moto = string.Empty, exige_km_validade_oleo = string.Empty, usuario_cadastro = string.Empty, data_cadastro = string.Empty, usuario_desativacao = string.Empty, data_desativacao = string.Empty, usuario_alteracao = string.Empty, data_alteracao = string.Empty, registro_ativo = string.Empty;
+                string descricao = string.Empty, aplicacao_carro = string.Empty, aplicacao_moto = string.Empty, exige_km_validade_oleo = string.Empty, km_validade_oleo_carro = string.Empty, km_validade_oleo_moto = string.Empty, usuario_cadastro = string.Empty, data_cadastro = string.Empty, usuario_desativacao = string.Empty, data_desativacao = string.Empty, usuario_alteracao = string.Empty, data_alteracao = string.Empty, registro_ativo = string.Empty;
                 #endregion
 
-                NpgsqlCommand com = new NpgsqlCommand($"SELECT mt.descricao, mt.aplicacao_carro, mt.aplicacao_moto, mt.exige_km_validade_oleo, uc.nome AS usuario_cadastro, mt.data_cadastro, ud.nome AS usuario_desativacao, mt.data_desativacao, ua.nome AS usuario_alteracao, mt.data_alteracao, mt.ativo FROM manutencao_tipo AS mt INNER JOIN usuario AS uc ON(uc.id_usuario = mt.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = mt.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = mt.id_usuario_alteracao) WHERE mt.id_manutencao_tipo = {IdTipoManutencao}", BD.ObjetoConexao);
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT mt.descricao, mt.aplicacao_carro, mt.aplicacao_moto, mt.exige_km_validade_oleo, mt.km_validade_oleo_carro, mt.km_validade_oleo_moto, uc.nome AS usuario_cadastro, mt.data_cadastro, ud.nome AS usuario_desativacao, mt.data_desativacao, ua.nome AS usuario_alteracao, mt.data_alteracao, mt.ativo FROM manutencao_tipo AS mt INNER JOIN usuario AS uc ON(uc.id_usuario = mt.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = mt.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = mt.id_usuario_alteracao) WHERE mt.id_manutencao_tipo = {IdTipoManutencao}", BD.ObjetoConexao);
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     while (dr.Read())
@@ -63,6 +62,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                         aplicacao_carro = dr["aplicacao_carro"].ToString();
                         aplicacao_moto = dr["aplicacao_moto"].ToString();
                         exige_km_validade_oleo = dr["exige_km_validade_oleo"].ToString();
+                        km_validade_oleo_carro = dr["km_validade_oleo_carro"].ToString();
+                        km_validade_oleo_moto = dr["km_validade_oleo_moto"].ToString();
                         registro_ativo = dr["ativo"].ToString();
 
                         //Dados do Registro
@@ -131,6 +132,28 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                         case "N":
                             chkBoxRegistroAtivo.Checked = false;
                             break;
+                    }
+                    #endregion
+
+                    #region Converte Km Validade Oleo Carro
+                    if (km_validade_oleo_carro != "0")
+                    {
+                        cBoxKmValidadeOleoCarro.SelectedItem = km_validade_oleo_carro;
+                    }
+                    else
+                    {
+                        cBoxKmValidadeOleoCarro.SelectedIndex = -1;
+                    }
+                    #endregion
+
+                    #region Converte Km Validade Oleo Moto
+                    if (km_validade_oleo_moto != "0")
+                    {
+                        cBoxKmValidadeOleoMoto.SelectedItem = km_validade_oleo_moto;
+                    }
+                    else
+                    {
+                        cBoxKmValidadeOleoMoto.SelectedIndex = -1;
                     }
                     #endregion
                 }
@@ -213,6 +236,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     else
                     {
                         gbKmValidadeOleoCarro.Visible = false;
+                        cBoxKmValidadeOleoCarro.SelectedIndex = -1;
                     }
 
                     if (chkBoxMoto.Checked == true)
@@ -222,6 +246,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     else
                     {
                         gbKmValidadeOleoMoto.Visible = false;
+                        cBoxKmValidadeOleoMoto.SelectedIndex = -1;
                     }
                 }
                 else
@@ -286,7 +311,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     #region Tipo Chamada: EDITAR
                     if (TipoChamada == "Editar")
                     {
-                        string aplicacaoCarro = string.Empty, aplicacaoMoto = string.Empty, exigeKmValidadeOleo = string.Empty, registro_ativo = string.Empty;
+                        string aplicacaoCarro = string.Empty, aplicacaoMoto = string.Empty, exigeKmValidadeOleo = string.Empty, kmValidadeOleoCarro = string.Empty, kmValidadeOleoMoto = string.Empty, registro_ativo = string.Empty;
 
                         #region Converte Aplicação
                         if (chkBoxCarro.Checked)
@@ -311,9 +336,31 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                         registro_ativo = chkBoxRegistroAtivo.Checked ? "S" : "N";
                         #endregion
 
+                        #region Converte Km Validade Óleo Carro
+                        if (chkBoxCarro.Checked == true && cBoxExigeKmValidadeOleo.SelectedIndex == 0 && cBoxKmValidadeOleoCarro.SelectedIndex != -1)
+                        {
+                            kmValidadeOleoCarro = cBoxKmValidadeOleoCarro.Text;
+                        }
+                        else
+                        {
+                            kmValidadeOleoCarro = "0";
+                        }
+                        #endregion
+
+                        #region Converte Km Validade Óleo Moto
+                        if (chkBoxMoto.Checked == true && cBoxExigeKmValidadeOleo.SelectedIndex == 0 && cBoxKmValidadeOleoMoto.SelectedIndex != -1)
+                        {
+                            kmValidadeOleoMoto = cBoxKmValidadeOleoMoto.Text;
+                        }
+                        else
+                        {
+                            kmValidadeOleoMoto = "0";
+                        }
+                        #endregion
+
                         if (XtraMessageBox.Show("Confirmar Alterações ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                         {
-                            string sqlCommand = $"UPDATE manutencao_tipo SET descricao = '{tBoxDescricao.Text.ToUpper().Trim()}', aplicacao_carro = '{aplicacaoCarro}', aplicacao_moto = '{aplicacaoMoto}', exige_km_validade_oleo = '{exigeKmValidadeOleo}' WHERE id_manutencao_tipo = {IdTipoManutencao}";
+                            string sqlCommand = $"UPDATE manutencao_tipo SET descricao = '{tBoxDescricao.Text.ToUpper().Trim()}', aplicacao_carro = '{aplicacaoCarro}', aplicacao_moto = '{aplicacaoMoto}', exige_km_validade_oleo = '{exigeKmValidadeOleo}', km_validade_oleo_carro = {kmValidadeOleoCarro}, km_validade_oleo_moto = {kmValidadeOleoMoto} WHERE id_manutencao_tipo = {IdTipoManutencao}";
                             NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                             command.ExecuteNonQuery();
 
@@ -341,7 +388,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     #region Tipo Chamada: INCLUIR
                     else
                     {
-                        string aplicacaoCarro = string.Empty, aplicacaoMoto = string.Empty, exigeKmValidadeOleo = string.Empty;
+                        string aplicacaoCarro = string.Empty, aplicacaoMoto = string.Empty, exigeKmValidadeOleo = string.Empty, kmValidadeOleoCarro = string.Empty, kmValidadeOleoMoto = string.Empty;
 
                         #region Converte Aplicação
                         if (chkBoxCarro.Checked)
@@ -362,7 +409,29 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                             exigeKmValidadeOleo = "N";
                         #endregion
 
-                        string sqlCommand = $"INSERT INTO manutencao_tipo VALUES (nextval('seq_manutencao_tipo'), '{tBoxDescricao.Text.ToUpper().Trim()}', (SELECT MAX(ordem + 1) FROM manutencao_tipo), '{aplicacaoCarro}', '{aplicacaoMoto}', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S', '{exigeKmValidadeOleo}')";
+                        #region Converte Km Validade Óleo Carro
+                        if (chkBoxCarro.Checked == true && cBoxExigeKmValidadeOleo.SelectedIndex == 0 && cBoxKmValidadeOleoCarro.SelectedIndex != -1)
+                        {
+                            kmValidadeOleoCarro = cBoxKmValidadeOleoCarro.Text;
+                        }
+                        else
+                        {
+                            kmValidadeOleoCarro = "0";
+                        }
+                        #endregion
+
+                        #region Converte Km Validade Óleo Moto
+                        if (chkBoxMoto.Checked == true && cBoxExigeKmValidadeOleo.SelectedIndex == 0 && cBoxKmValidadeOleoMoto.SelectedIndex != -1)
+                        {
+                            kmValidadeOleoMoto = cBoxKmValidadeOleoMoto.Text;
+                        }
+                        else
+                        {
+                            kmValidadeOleoMoto = "0";
+                        }
+                        #endregion
+
+                        string sqlCommand = $"INSERT INTO manutencao_tipo VALUES (nextval('seq_manutencao_tipo'), '{tBoxDescricao.Text.ToUpper().Trim()}', (SELECT MAX(ordem + 1) FROM manutencao_tipo), '{aplicacaoCarro}', '{aplicacaoMoto}', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S', '{exigeKmValidadeOleo}', {kmValidadeOleoCarro}, {kmValidadeOleoMoto})";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 
@@ -375,13 +444,16 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
                 #endregion
             }
+            catch (Exception err)
+            {
+                XtraMessageBox.Show(err.Message);
+            }
             finally
             {
                 BD.Desconectar();
             }
         }
-
-
+        
         #endregion
     }
 }

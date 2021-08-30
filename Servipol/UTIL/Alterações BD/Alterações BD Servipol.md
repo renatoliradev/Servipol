@@ -384,6 +384,8 @@ ALTER TABLE public.manutencao_tipo RENAME id_usuario_reativacao  TO id_usuario_a
 ALTER TABLE public.manutencao_tipo RENAME data_reativacao  TO data_alteracao;
 ALTER TABLE public.manutencao_local RENAME id_usuario_reativacao  TO id_usuario_alteracao;
 ALTER TABLE public.manutencao_local RENAME data_reativacao  TO data_alteracao;
+ALTER TABLE public.manutencao_tipo ADD COLUMN km_validade_oleo_carro numeric(13,0);
+ALTER TABLE public.manutencao_tipo ADD COLUMN km_validade_oleo_moto numeric(13,0);
 
 
 ```

@@ -34,6 +34,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.auxChkBoxCarro = new System.Windows.Forms.Label();
             this.tabControlFuncionario = new System.Windows.Forms.TabControl();
             this.tabPrincipal = new System.Windows.Forms.TabPage();
+            this.gbKmValidadeOleoMoto = new System.Windows.Forms.GroupBox();
+            this.cBoxKmValidadeOleoMoto = new System.Windows.Forms.ComboBox();
+            this.gbKmValidadeOleoCarro = new System.Windows.Forms.GroupBox();
+            this.cBoxKmValidadeOleoCarro = new System.Windows.Forms.ComboBox();
             this.gbAplicacao = new System.Windows.Forms.GroupBox();
             this.chkBoxMoto = new System.Windows.Forms.CheckBox();
             this.chkBoxCarro = new System.Windows.Forms.CheckBox();
@@ -61,12 +65,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.tBoxUsuarioDesativacao = new System.Windows.Forms.TextBox();
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.btnConfirmar = new DevExpress.XtraEditors.SimpleButton();
-            this.gbKmValidadeOleoCarro = new System.Windows.Forms.GroupBox();
-            this.cBoxKmValidadeOleoCarro = new System.Windows.Forms.ComboBox();
-            this.gbKmValidadeOleoMoto = new System.Windows.Forms.GroupBox();
-            this.cBoxKmValidadeOleoMoto = new System.Windows.Forms.ComboBox();
             this.tabControlFuncionario.SuspendLayout();
             this.tabPrincipal.SuspendLayout();
+            this.gbKmValidadeOleoMoto.SuspendLayout();
+            this.gbKmValidadeOleoCarro.SuspendLayout();
             this.gbAplicacao.SuspendLayout();
             this.gbSituacao.SuspendLayout();
             this.gbDescricao.SuspendLayout();
@@ -75,8 +77,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox35.SuspendLayout();
             this.groupBox37.SuspendLayout();
             this.groupBox38.SuspendLayout();
-            this.gbKmValidadeOleoCarro.SuspendLayout();
-            this.gbKmValidadeOleoMoto.SuspendLayout();
             this.SuspendLayout();
             // 
             // auxChkBoxMoto
@@ -123,6 +123,102 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.tabPrincipal.TabIndex = 0;
             this.tabPrincipal.Text = "Principal";
             this.tabPrincipal.UseVisualStyleBackColor = true;
+            // 
+            // gbKmValidadeOleoMoto
+            // 
+            this.gbKmValidadeOleoMoto.Controls.Add(this.cBoxKmValidadeOleoMoto);
+            this.gbKmValidadeOleoMoto.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbKmValidadeOleoMoto.Location = new System.Drawing.Point(320, 153);
+            this.gbKmValidadeOleoMoto.Name = "gbKmValidadeOleoMoto";
+            this.gbKmValidadeOleoMoto.Size = new System.Drawing.Size(158, 48);
+            this.gbKmValidadeOleoMoto.TabIndex = 10;
+            this.gbKmValidadeOleoMoto.TabStop = false;
+            this.gbKmValidadeOleoMoto.Text = "Km Validade Óleo Moto";
+            // 
+            // cBoxKmValidadeOleoMoto
+            // 
+            this.cBoxKmValidadeOleoMoto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxKmValidadeOleoMoto.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxKmValidadeOleoMoto.FormattingEnabled = true;
+            this.cBoxKmValidadeOleoMoto.Items.AddRange(new object[] {
+            "500",
+            "600",
+            "700",
+            "800",
+            "900",
+            "1000",
+            "2000",
+            "3000",
+            "4000",
+            "5000",
+            "6000",
+            "7000",
+            "8000",
+            "9000",
+            "10000",
+            "11000",
+            "12000",
+            "13000",
+            "14000",
+            "15000",
+            "16000",
+            "17000",
+            "18000",
+            "19000",
+            "20000"});
+            this.cBoxKmValidadeOleoMoto.Location = new System.Drawing.Point(6, 18);
+            this.cBoxKmValidadeOleoMoto.Name = "cBoxKmValidadeOleoMoto";
+            this.cBoxKmValidadeOleoMoto.Size = new System.Drawing.Size(146, 22);
+            this.cBoxKmValidadeOleoMoto.TabIndex = 3;
+            this.cBoxKmValidadeOleoMoto.TabStop = false;
+            // 
+            // gbKmValidadeOleoCarro
+            // 
+            this.gbKmValidadeOleoCarro.Controls.Add(this.cBoxKmValidadeOleoCarro);
+            this.gbKmValidadeOleoCarro.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbKmValidadeOleoCarro.Location = new System.Drawing.Point(151, 153);
+            this.gbKmValidadeOleoCarro.Name = "gbKmValidadeOleoCarro";
+            this.gbKmValidadeOleoCarro.Size = new System.Drawing.Size(158, 48);
+            this.gbKmValidadeOleoCarro.TabIndex = 9;
+            this.gbKmValidadeOleoCarro.TabStop = false;
+            this.gbKmValidadeOleoCarro.Text = "Km Validade Óleo Carro";
+            // 
+            // cBoxKmValidadeOleoCarro
+            // 
+            this.cBoxKmValidadeOleoCarro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxKmValidadeOleoCarro.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxKmValidadeOleoCarro.FormattingEnabled = true;
+            this.cBoxKmValidadeOleoCarro.Items.AddRange(new object[] {
+            "500",
+            "600",
+            "700",
+            "800",
+            "900",
+            "1000",
+            "2000",
+            "3000",
+            "4000",
+            "5000",
+            "6000",
+            "7000",
+            "8000",
+            "9000",
+            "10000",
+            "11000",
+            "12000",
+            "13000",
+            "14000",
+            "15000",
+            "16000",
+            "17000",
+            "18000",
+            "19000",
+            "20000"});
+            this.cBoxKmValidadeOleoCarro.Location = new System.Drawing.Point(6, 18);
+            this.cBoxKmValidadeOleoCarro.Name = "cBoxKmValidadeOleoCarro";
+            this.cBoxKmValidadeOleoCarro.Size = new System.Drawing.Size(146, 22);
+            this.cBoxKmValidadeOleoCarro.TabIndex = 3;
+            this.cBoxKmValidadeOleoCarro.TabStop = false;
             // 
             // gbAplicacao
             // 
@@ -443,92 +539,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.btnConfirmar.Text = "[F12] - Confirmar";
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // gbKmValidadeOleoCarro
-            // 
-            this.gbKmValidadeOleoCarro.Controls.Add(this.cBoxKmValidadeOleoCarro);
-            this.gbKmValidadeOleoCarro.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbKmValidadeOleoCarro.Location = new System.Drawing.Point(151, 153);
-            this.gbKmValidadeOleoCarro.Name = "gbKmValidadeOleoCarro";
-            this.gbKmValidadeOleoCarro.Size = new System.Drawing.Size(158, 48);
-            this.gbKmValidadeOleoCarro.TabIndex = 9;
-            this.gbKmValidadeOleoCarro.TabStop = false;
-            this.gbKmValidadeOleoCarro.Text = "Km Validade Óleo Carro";
-            // 
-            // cBoxKmValidadeOleoCarro
-            // 
-            this.cBoxKmValidadeOleoCarro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxKmValidadeOleoCarro.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBoxKmValidadeOleoCarro.FormattingEnabled = true;
-            this.cBoxKmValidadeOleoCarro.Items.AddRange(new object[] {
-            "500",
-            "600",
-            "700",
-            "800",
-            "900",
-            "1000",
-            "2000",
-            "3000",
-            "4000",
-            "5000",
-            "6000",
-            "7000",
-            "8000",
-            "9000",
-            "10000",
-            "11000",
-            "12000",
-            "13000",
-            "14000",
-            "15000"});
-            this.cBoxKmValidadeOleoCarro.Location = new System.Drawing.Point(6, 18);
-            this.cBoxKmValidadeOleoCarro.Name = "cBoxKmValidadeOleoCarro";
-            this.cBoxKmValidadeOleoCarro.Size = new System.Drawing.Size(146, 22);
-            this.cBoxKmValidadeOleoCarro.TabIndex = 3;
-            this.cBoxKmValidadeOleoCarro.TabStop = false;
-            // 
-            // gbKmValidadeOleoMoto
-            // 
-            this.gbKmValidadeOleoMoto.Controls.Add(this.cBoxKmValidadeOleoMoto);
-            this.gbKmValidadeOleoMoto.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbKmValidadeOleoMoto.Location = new System.Drawing.Point(320, 153);
-            this.gbKmValidadeOleoMoto.Name = "gbKmValidadeOleoMoto";
-            this.gbKmValidadeOleoMoto.Size = new System.Drawing.Size(158, 48);
-            this.gbKmValidadeOleoMoto.TabIndex = 10;
-            this.gbKmValidadeOleoMoto.TabStop = false;
-            this.gbKmValidadeOleoMoto.Text = "Km Validade Óleo Moto";
-            // 
-            // cBoxKmValidadeOleoMoto
-            // 
-            this.cBoxKmValidadeOleoMoto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxKmValidadeOleoMoto.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBoxKmValidadeOleoMoto.FormattingEnabled = true;
-            this.cBoxKmValidadeOleoMoto.Items.AddRange(new object[] {
-            "500",
-            "600",
-            "700",
-            "800",
-            "900",
-            "1000",
-            "2000",
-            "3000",
-            "4000",
-            "5000",
-            "6000",
-            "7000",
-            "8000",
-            "9000",
-            "10000",
-            "11000",
-            "12000",
-            "13000",
-            "14000",
-            "15000"});
-            this.cBoxKmValidadeOleoMoto.Location = new System.Drawing.Point(6, 18);
-            this.cBoxKmValidadeOleoMoto.Name = "cBoxKmValidadeOleoMoto";
-            this.cBoxKmValidadeOleoMoto.Size = new System.Drawing.Size(146, 22);
-            this.cBoxKmValidadeOleoMoto.TabIndex = 3;
-            this.cBoxKmValidadeOleoMoto.TabStop = false;
-            // 
             // frmTipoManutencaoCadastrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -552,6 +562,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmTipoManutencaoCadastrar_KeyDown);
             this.tabControlFuncionario.ResumeLayout(false);
             this.tabPrincipal.ResumeLayout(false);
+            this.gbKmValidadeOleoMoto.ResumeLayout(false);
+            this.gbKmValidadeOleoCarro.ResumeLayout(false);
             this.gbAplicacao.ResumeLayout(false);
             this.gbAplicacao.PerformLayout();
             this.gbSituacao.ResumeLayout(false);
@@ -566,8 +578,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.groupBox37.PerformLayout();
             this.groupBox38.ResumeLayout(false);
             this.groupBox38.PerformLayout();
-            this.gbKmValidadeOleoCarro.ResumeLayout(false);
-            this.gbKmValidadeOleoMoto.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

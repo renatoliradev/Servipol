@@ -29,15 +29,15 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManutencaoRegistrar));
             this.auxTipoChamada = new System.Windows.Forms.Label();
             this.auxUltimaDataServico = new System.Windows.Forms.Label();
@@ -222,8 +222,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGridPreRegistroManutencao.AllowUserToAddRows = false;
             this.dGridPreRegistroManutencao.AllowUserToDeleteRows = false;
             this.dGridPreRegistroManutencao.AllowUserToResizeRows = false;
-            dataGridViewCellStyle28.BackColor = System.Drawing.Color.Lavender;
-            this.dGridPreRegistroManutencao.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Lavender;
+            this.dGridPreRegistroManutencao.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dGridPreRegistroManutencao.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dGridPreRegistroManutencao.BackgroundColor = System.Drawing.Color.White;
             this.dGridPreRegistroManutencao.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -258,9 +258,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // pre_id_manutencao_veiculo
             // 
             this.pre_id_manutencao_veiculo.DataPropertyName = "pre_id_manutencao_veiculo";
-            dataGridViewCellStyle29.Format = "G";
-            dataGridViewCellStyle29.NullValue = null;
-            this.pre_id_manutencao_veiculo.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle11.Format = "G";
+            dataGridViewCellStyle11.NullValue = null;
+            this.pre_id_manutencao_veiculo.DefaultCellStyle = dataGridViewCellStyle11;
             this.pre_id_manutencao_veiculo.FillWeight = 0.5094286F;
             this.pre_id_manutencao_veiculo.HeaderText = "id_manutencao_veiculo";
             this.pre_id_manutencao_veiculo.MinimumWidth = 2;
@@ -280,8 +280,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.pre_data_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.pre_data_manutencao.DataPropertyName = "pre_data_manutencao";
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.pre_data_manutencao.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.pre_data_manutencao.DefaultCellStyle = dataGridViewCellStyle12;
             this.pre_data_manutencao.FillWeight = 40.75429F;
             this.pre_data_manutencao.HeaderText = "Data";
             this.pre_data_manutencao.Name = "pre_data_manutencao";
@@ -311,10 +311,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.pre_km_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.pre_km_manutencao.DataPropertyName = "pre_km_manutencao";
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle31.Format = "N0";
-            dataGridViewCellStyle31.NullValue = null;
-            this.pre_km_manutencao.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "N0";
+            dataGridViewCellStyle13.NullValue = null;
+            this.pre_km_manutencao.DefaultCellStyle = dataGridViewCellStyle13;
             this.pre_km_manutencao.HeaderText = "Km";
             this.pre_km_manutencao.Name = "pre_km_manutencao";
             this.pre_km_manutencao.ReadOnly = true;
@@ -351,10 +351,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.pre_valor_produto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.pre_valor_produto.DataPropertyName = "pre_valor_produto";
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle32.Format = "C2";
-            dataGridViewCellStyle32.NullValue = null;
-            this.pre_valor_produto.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "C2";
+            dataGridViewCellStyle14.NullValue = null;
+            this.pre_valor_produto.DefaultCellStyle = dataGridViewCellStyle14;
             this.pre_valor_produto.HeaderText = "Valor do produto";
             this.pre_valor_produto.Name = "pre_valor_produto";
             this.pre_valor_produto.ReadOnly = true;
@@ -364,10 +364,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.pre_valor_servico.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.pre_valor_servico.DataPropertyName = "pre_valor_servico";
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle33.Format = "C2";
-            dataGridViewCellStyle33.NullValue = null;
-            this.pre_valor_servico.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "C2";
+            dataGridViewCellStyle15.NullValue = null;
+            this.pre_valor_servico.DefaultCellStyle = dataGridViewCellStyle15;
             this.pre_valor_servico.HeaderText = "Valor do serviço";
             this.pre_valor_servico.Name = "pre_valor_servico";
             this.pre_valor_servico.ReadOnly = true;
@@ -377,10 +377,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.pre_valor_desconto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.pre_valor_desconto.DataPropertyName = "pre_valor_desconto";
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle34.Format = "C2";
-            dataGridViewCellStyle34.NullValue = null;
-            this.pre_valor_desconto.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.Format = "C2";
+            dataGridViewCellStyle16.NullValue = null;
+            this.pre_valor_desconto.DefaultCellStyle = dataGridViewCellStyle16;
             this.pre_valor_desconto.HeaderText = "Desconto";
             this.pre_valor_desconto.Name = "pre_valor_desconto";
             this.pre_valor_desconto.ReadOnly = true;
@@ -390,9 +390,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.pre_valor_acrescimo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.pre_valor_acrescimo.DataPropertyName = "pre_valor_acrescimo";
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle35.Format = "C2";
-            this.pre_valor_acrescimo.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "C2";
+            this.pre_valor_acrescimo.DefaultCellStyle = dataGridViewCellStyle17;
             this.pre_valor_acrescimo.HeaderText = "Acréscimo";
             this.pre_valor_acrescimo.Name = "pre_valor_acrescimo";
             this.pre_valor_acrescimo.ReadOnly = true;
@@ -402,9 +402,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.pre_total_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.pre_total_manutencao.DataPropertyName = "pre_total_manutencao";
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle36.Format = "C2";
-            this.pre_total_manutencao.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "C2";
+            this.pre_total_manutencao.DefaultCellStyle = dataGridViewCellStyle18;
             this.pre_total_manutencao.HeaderText = "Total da manutenção";
             this.pre_total_manutencao.Name = "pre_total_manutencao";
             this.pre_total_manutencao.ReadOnly = true;
@@ -593,7 +593,12 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             "12000",
             "13000",
             "14000",
-            "15000"});
+            "15000",
+            "16000",
+            "17000",
+            "18000",
+            "19000",
+            "20000"});
             this.cBoxOleoParaXKm.Location = new System.Drawing.Point(6, 22);
             this.cBoxOleoParaXKm.Name = "cBoxOleoParaXKm";
             this.cBoxOleoParaXKm.Size = new System.Drawing.Size(107, 22);
@@ -788,6 +793,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "";
+            this.dateTimePicker1.Font = new System.Drawing.Font("Calibri", 9.75F);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(6, 21);
             this.dateTimePicker1.Name = "dateTimePicker1";

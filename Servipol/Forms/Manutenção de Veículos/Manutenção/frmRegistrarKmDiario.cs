@@ -30,7 +30,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         private void frmRegistrarKmDiario_Load(object sender, EventArgs e)
         {
             BD.Conectar();
-            carregaVeiculo();
+            CarregaVeiculo();
             tBoxKmAtual.Clear();
             cBoxVeiculo.SelectedIndex = -1;
             cBoxVeiculo.Select();
@@ -38,7 +38,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
         #region Methods
 
-        public void carregaVeiculo()
+        public void CarregaVeiculo()
         {
             try
             {
@@ -61,7 +61,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             }
         }
 
-        public void carregaDadosVeiculo()
+        public void CarregaDadosVeiculo()
         {
             try
             {
@@ -129,7 +129,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             labelDescricao.Text = string.Empty;
             labelPlaca.Text = string.Empty;
             labelUltimoKM.Text = string.Empty;
-            carregaDadosVeiculo();
+            CarregaDadosVeiculo();
         }
 
         private void tBoxKmAtual_KeyPress(object sender, KeyPressEventArgs e)
