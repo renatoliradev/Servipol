@@ -39,8 +39,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManutencaoRegistrar));
-            this.auxTipoChamada = new System.Windows.Forms.Label();
-            this.auxUltimaDataServico = new System.Windows.Forms.Label();
             this.tBoxValorTotal = new System.Windows.Forms.TextBox();
             this.tBoxAcrescimo = new System.Windows.Forms.TextBox();
             this.tBoxDesconto = new System.Windows.Forms.TextBox();
@@ -71,12 +69,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.btnConfirmar = new DevExpress.XtraEditors.SimpleButton();
-            this.auxObservacao = new System.Windows.Forms.Label();
-            this.auxLembrarObservacao = new System.Windows.Forms.Label();
-            this.auxIdUsuarioLogado = new System.Windows.Forms.Label();
             this.btnCancelarRegistro = new DevExpress.XtraEditors.SimpleButton();
-            this.auxUltimoKmServico = new System.Windows.Forms.Label();
-            this.cBoxOleoParaXKm = new System.Windows.Forms.ComboBox();
+            this.cBoxKmValidadeOleo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cBoxVeiculo = new System.Windows.Forms.ComboBox();
             this.tBoxKmAtual = new System.Windows.Forms.TextBox();
@@ -91,12 +85,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.cBoxLocalManutencao = new System.Windows.Forms.ComboBox();
-            this.auxTipoVeiculoSelecionado = new System.Windows.Forms.Label();
             this.gbKmAtual = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.auxDescricaoManutencaoSelecionada = new System.Windows.Forms.Label();
-            this.auxTipoManutencaoSelecionada = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -123,26 +114,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.gBoxTrocaOleo.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // auxTipoChamada
-            // 
-            this.auxTipoChamada.AutoSize = true;
-            this.auxTipoChamada.ForeColor = System.Drawing.Color.Black;
-            this.auxTipoChamada.Location = new System.Drawing.Point(379, 642);
-            this.auxTipoChamada.Name = "auxTipoChamada";
-            this.auxTipoChamada.Size = new System.Drawing.Size(96, 13);
-            this.auxTipoChamada.TabIndex = 252;
-            this.auxTipoChamada.Text = "auxTipoChamada";
-            // 
-            // auxUltimaDataServico
-            // 
-            this.auxUltimaDataServico.AutoSize = true;
-            this.auxUltimaDataServico.ForeColor = System.Drawing.Color.Black;
-            this.auxUltimaDataServico.Location = new System.Drawing.Point(78, 670);
-            this.auxUltimaDataServico.Name = "auxUltimaDataServico";
-            this.auxUltimaDataServico.Size = new System.Drawing.Size(118, 13);
-            this.auxUltimaDataServico.TabIndex = 250;
-            this.auxUltimaDataServico.Text = "auxUltimaDataServico";
             // 
             // tBoxValorTotal
             // 
@@ -214,7 +185,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.groupControl2.Controls.Add(this.groupBox12);
             this.groupControl2.Location = new System.Drawing.Point(12, 133);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1436, 346);
+            this.groupControl2.Size = new System.Drawing.Size(1268, 346);
             this.groupControl2.TabIndex = 255;
             // 
             // dGridPreRegistroManutencao
@@ -252,7 +223,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGridPreRegistroManutencao.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dGridPreRegistroManutencao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dGridPreRegistroManutencao.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGridPreRegistroManutencao.Size = new System.Drawing.Size(1436, 255);
+            this.dGridPreRegistroManutencao.Size = new System.Drawing.Size(1268, 255);
             this.dGridPreRegistroManutencao.TabIndex = 227;
             // 
             // pre_id_manutencao_veiculo
@@ -416,21 +387,24 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.gBoxTipoManutencao.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gBoxTipoManutencao.Location = new System.Drawing.Point(5, 25);
             this.gBoxTipoManutencao.Name = "gBoxTipoManutencao";
-            this.gBoxTipoManutencao.Size = new System.Drawing.Size(656, 60);
+            this.gBoxTipoManutencao.Size = new System.Drawing.Size(491, 60);
             this.gBoxTipoManutencao.TabIndex = 8;
             this.gBoxTipoManutencao.TabStop = false;
             this.gBoxTipoManutencao.Text = "Tipo da Manutenção*";
             // 
             // cBoxTipoManutencao
             // 
+            this.cBoxTipoManutencao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cBoxTipoManutencao.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cBoxTipoManutencao.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cBoxTipoManutencao.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cBoxTipoManutencao.FormattingEnabled = true;
             this.cBoxTipoManutencao.Location = new System.Drawing.Point(6, 26);
             this.cBoxTipoManutencao.Name = "cBoxTipoManutencao";
-            this.cBoxTipoManutencao.Size = new System.Drawing.Size(644, 22);
+            this.cBoxTipoManutencao.Size = new System.Drawing.Size(479, 22);
             this.cBoxTipoManutencao.TabIndex = 3;
+            this.cBoxTipoManutencao.SelectedIndexChanged += new System.EventHandler(this.cBoxTipoManutencao_SelectedIndexChanged);
             // 
             // btnIncluirPreRegistro
             // 
@@ -440,7 +414,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.btnIncluirPreRegistro.Appearance.Options.UseForeColor = true;
             this.btnIncluirPreRegistro.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnIncluirPreRegistro.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIncluirPreRegistro.ImageOptions.SvgImage")));
-            this.btnIncluirPreRegistro.Location = new System.Drawing.Point(1274, 25);
+            this.btnIncluirPreRegistro.Location = new System.Drawing.Point(1109, 25);
             this.btnIncluirPreRegistro.Name = "btnIncluirPreRegistro";
             this.btnIncluirPreRegistro.Size = new System.Drawing.Size(154, 60);
             this.btnIncluirPreRegistro.TabIndex = 14;
@@ -450,7 +424,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.groupBox1.Controls.Add(this.tBoxValorPeca);
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(667, 25);
+            this.groupBox1.Location = new System.Drawing.Point(502, 25);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(128, 60);
             this.groupBox1.TabIndex = 9;
@@ -461,7 +435,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.groupBox14.Controls.Add(this.tBoxValorTotal);
             this.groupBox14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox14.Location = new System.Drawing.Point(1129, 25);
+            this.groupBox14.Location = new System.Drawing.Point(964, 25);
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.Size = new System.Drawing.Size(139, 60);
             this.groupBox14.TabIndex = 13;
@@ -472,7 +446,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.groupBox8.Controls.Add(this.tBoxValorServico);
             this.groupBox8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox8.Location = new System.Drawing.Point(801, 25);
+            this.groupBox8.Location = new System.Drawing.Point(636, 25);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(128, 60);
             this.groupBox8.TabIndex = 10;
@@ -483,7 +457,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.groupBox13.Controls.Add(this.tBoxAcrescimo);
             this.groupBox13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox13.Location = new System.Drawing.Point(1032, 25);
+            this.groupBox13.Location = new System.Drawing.Point(867, 25);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(91, 60);
             this.groupBox13.TabIndex = 12;
@@ -494,7 +468,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.groupBox12.Controls.Add(this.tBoxDesconto);
             this.groupBox12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox12.Location = new System.Drawing.Point(935, 25);
+            this.groupBox12.Location = new System.Drawing.Point(770, 25);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(91, 60);
             this.groupBox12.TabIndex = 11;
@@ -507,42 +481,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.btnConfirmar.Appearance.Options.UseFont = true;
             this.btnConfirmar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConfirmar.ImageOptions.SvgImage")));
-            this.btnConfirmar.Location = new System.Drawing.Point(1157, 485);
+            this.btnConfirmar.Location = new System.Drawing.Point(989, 485);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(291, 53);
             this.btnConfirmar.TabIndex = 238;
             this.btnConfirmar.TabStop = false;
             this.btnConfirmar.Text = "[F12] - Confirmar manutenções";
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
-            // 
-            // auxObservacao
-            // 
-            this.auxObservacao.AutoSize = true;
-            this.auxObservacao.ForeColor = System.Drawing.Color.Black;
-            this.auxObservacao.Location = new System.Drawing.Point(407, 557);
-            this.auxObservacao.Name = "auxObservacao";
-            this.auxObservacao.Size = new System.Drawing.Size(85, 13);
-            this.auxObservacao.TabIndex = 254;
-            this.auxObservacao.Text = "auxObservacao";
-            // 
-            // auxLembrarObservacao
-            // 
-            this.auxLembrarObservacao.AutoSize = true;
-            this.auxLembrarObservacao.ForeColor = System.Drawing.Color.Black;
-            this.auxLembrarObservacao.Location = new System.Drawing.Point(407, 583);
-            this.auxLembrarObservacao.Name = "auxLembrarObservacao";
-            this.auxLembrarObservacao.Size = new System.Drawing.Size(126, 13);
-            this.auxLembrarObservacao.TabIndex = 253;
-            this.auxLembrarObservacao.Text = "auxLembrarObservacao";
-            // 
-            // auxIdUsuarioLogado
-            // 
-            this.auxIdUsuarioLogado.AutoSize = true;
-            this.auxIdUsuarioLogado.ForeColor = System.Drawing.Color.Black;
-            this.auxIdUsuarioLogado.Location = new System.Drawing.Point(379, 618);
-            this.auxIdUsuarioLogado.Name = "auxIdUsuarioLogado";
-            this.auxIdUsuarioLogado.Size = new System.Drawing.Size(0, 13);
-            this.auxIdUsuarioLogado.TabIndex = 251;
             // 
             // btnCancelarRegistro
             // 
@@ -558,22 +503,12 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.btnCancelarRegistro.Text = "Cancelar registro selecionado";
             this.btnCancelarRegistro.Click += new System.EventHandler(this.btnCancelarRegistro_Click);
             // 
-            // auxUltimoKmServico
+            // cBoxKmValidadeOleo
             // 
-            this.auxUltimoKmServico.AutoSize = true;
-            this.auxUltimoKmServico.ForeColor = System.Drawing.Color.Black;
-            this.auxUltimoKmServico.Location = new System.Drawing.Point(78, 657);
-            this.auxUltimoKmServico.Name = "auxUltimoKmServico";
-            this.auxUltimoKmServico.Size = new System.Drawing.Size(110, 13);
-            this.auxUltimoKmServico.TabIndex = 249;
-            this.auxUltimoKmServico.Text = "auxUltimoKmServico";
-            // 
-            // cBoxOleoParaXKm
-            // 
-            this.cBoxOleoParaXKm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxOleoParaXKm.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBoxOleoParaXKm.FormattingEnabled = true;
-            this.cBoxOleoParaXKm.Items.AddRange(new object[] {
+            this.cBoxKmValidadeOleo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxKmValidadeOleo.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxKmValidadeOleo.FormattingEnabled = true;
+            this.cBoxKmValidadeOleo.Items.AddRange(new object[] {
             "500",
             "600",
             "700",
@@ -599,11 +534,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             "18000",
             "19000",
             "20000"});
-            this.cBoxOleoParaXKm.Location = new System.Drawing.Point(6, 22);
-            this.cBoxOleoParaXKm.Name = "cBoxOleoParaXKm";
-            this.cBoxOleoParaXKm.Size = new System.Drawing.Size(107, 22);
-            this.cBoxOleoParaXKm.TabIndex = 2;
-            this.cBoxOleoParaXKm.TabStop = false;
+            this.cBoxKmValidadeOleo.Location = new System.Drawing.Point(6, 22);
+            this.cBoxKmValidadeOleo.Name = "cBoxKmValidadeOleo";
+            this.cBoxKmValidadeOleo.Size = new System.Drawing.Size(107, 22);
+            this.cBoxKmValidadeOleo.TabIndex = 2;
+            this.cBoxKmValidadeOleo.TabStop = false;
             // 
             // label2
             // 
@@ -628,6 +563,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.cBoxVeiculo.Name = "cBoxVeiculo";
             this.cBoxVeiculo.Size = new System.Drawing.Size(244, 22);
             this.cBoxVeiculo.TabIndex = 1;
+            this.cBoxVeiculo.SelectedIndexChanged += new System.EventHandler(this.cBoxVeiculo_SelectedIndexChanged);
             // 
             // tBoxKmAtual
             // 
@@ -707,7 +643,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.groupBox10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox10.Location = new System.Drawing.Point(974, 12);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(474, 115);
+            this.groupBox10.Size = new System.Drawing.Size(306, 115);
             this.groupBox10.TabIndex = 241;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Observação da Manutenção";
@@ -721,7 +657,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.tBoxObservacaoManutencao.Multiline = true;
             this.tBoxObservacaoManutencao.Name = "tBoxObservacaoManutencao";
             this.tBoxObservacaoManutencao.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tBoxObservacaoManutencao.Size = new System.Drawing.Size(462, 85);
+            this.tBoxObservacaoManutencao.Size = new System.Drawing.Size(294, 85);
             this.tBoxObservacaoManutencao.TabIndex = 3;
             // 
             // groupBox6
@@ -758,16 +694,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.cBoxLocalManutencao.Size = new System.Drawing.Size(297, 22);
             this.cBoxLocalManutencao.TabIndex = 5;
             // 
-            // auxTipoVeiculoSelecionado
-            // 
-            this.auxTipoVeiculoSelecionado.AutoSize = true;
-            this.auxTipoVeiculoSelecionado.ForeColor = System.Drawing.Color.Black;
-            this.auxTipoVeiculoSelecionado.Location = new System.Drawing.Point(76, 618);
-            this.auxTipoVeiculoSelecionado.Name = "auxTipoVeiculoSelecionado";
-            this.auxTipoVeiculoSelecionado.Size = new System.Drawing.Size(148, 13);
-            this.auxTipoVeiculoSelecionado.TabIndex = 246;
-            this.auxTipoVeiculoSelecionado.Text = "auxTipoVeiculoSelecionado";
-            // 
             // gbKmAtual
             // 
             this.gbKmAtual.Controls.Add(this.tBoxKmAtual);
@@ -800,26 +726,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dateTimePicker1.Size = new System.Drawing.Size(127, 23);
             this.dateTimePicker1.TabIndex = 0;
             this.dateTimePicker1.Value = new System.DateTime(2021, 7, 19, 0, 0, 0, 0);
-            // 
-            // auxDescricaoManutencaoSelecionada
-            // 
-            this.auxDescricaoManutencaoSelecionada.AutoSize = true;
-            this.auxDescricaoManutencaoSelecionada.ForeColor = System.Drawing.Color.Black;
-            this.auxDescricaoManutencaoSelecionada.Location = new System.Drawing.Point(78, 644);
-            this.auxDescricaoManutencaoSelecionada.Name = "auxDescricaoManutencaoSelecionada";
-            this.auxDescricaoManutencaoSelecionada.Size = new System.Drawing.Size(201, 13);
-            this.auxDescricaoManutencaoSelecionada.TabIndex = 248;
-            this.auxDescricaoManutencaoSelecionada.Text = "auxDescricaoManutencaoSelecionada";
-            // 
-            // auxTipoManutencaoSelecionada
-            // 
-            this.auxTipoManutencaoSelecionada.AutoSize = true;
-            this.auxTipoManutencaoSelecionada.ForeColor = System.Drawing.Color.Black;
-            this.auxTipoManutencaoSelecionada.Location = new System.Drawing.Point(77, 631);
-            this.auxTipoManutencaoSelecionada.Name = "auxTipoManutencaoSelecionada";
-            this.auxTipoManutencaoSelecionada.Size = new System.Drawing.Size(175, 13);
-            this.auxTipoManutencaoSelecionada.TabIndex = 247;
-            this.auxTipoManutencaoSelecionada.Text = "auxTipoManutencaoSelecionada";
             // 
             // groupBox5
             // 
@@ -856,7 +762,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             // gBoxTrocaOleo
             // 
-            this.gBoxTrocaOleo.Controls.Add(this.cBoxOleoParaXKm);
+            this.gBoxTrocaOleo.Controls.Add(this.cBoxKmValidadeOleo);
             this.gBoxTrocaOleo.Controls.Add(this.label2);
             this.gBoxTrocaOleo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gBoxTrocaOleo.Location = new System.Drawing.Point(813, 75);
@@ -881,30 +787,22 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1557, 758);
-            this.Controls.Add(this.auxTipoChamada);
-            this.Controls.Add(this.auxUltimaDataServico);
+            this.ClientSize = new System.Drawing.Size(1287, 542);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.btnConfirmar);
-            this.Controls.Add(this.auxObservacao);
-            this.Controls.Add(this.auxLembrarObservacao);
-            this.Controls.Add(this.auxIdUsuarioLogado);
             this.Controls.Add(this.btnCancelarRegistro);
-            this.Controls.Add(this.auxUltimoKmServico);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox9);
-            this.Controls.Add(this.auxTipoVeiculoSelecionado);
             this.Controls.Add(this.gbKmAtual);
             this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.auxDescricaoManutencaoSelecionada);
-            this.Controls.Add(this.auxTipoManutencaoSelecionada);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.gBoxTrocaOleo);
             this.Controls.Add(this.groupBox3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmManutencaoRegistrar";
@@ -946,14 +844,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label auxTipoChamada;
-        private System.Windows.Forms.Label auxUltimaDataServico;
         private System.Windows.Forms.TextBox tBoxValorTotal;
         private System.Windows.Forms.TextBox tBoxAcrescimo;
         private System.Windows.Forms.TextBox tBoxDesconto;
@@ -984,12 +878,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.GroupBox groupBox12;
         private DevExpress.XtraEditors.SimpleButton btnConfirmar;
-        private System.Windows.Forms.Label auxObservacao;
-        private System.Windows.Forms.Label auxLembrarObservacao;
-        private System.Windows.Forms.Label auxIdUsuarioLogado;
         private DevExpress.XtraEditors.SimpleButton btnCancelarRegistro;
-        private System.Windows.Forms.Label auxUltimoKmServico;
-        private System.Windows.Forms.ComboBox cBoxOleoParaXKm;
+        private System.Windows.Forms.ComboBox cBoxKmValidadeOleo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cBoxVeiculo;
         private System.Windows.Forms.TextBox tBoxKmAtual;
@@ -1004,12 +894,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.ComboBox cBoxLocalManutencao;
-        private System.Windows.Forms.Label auxTipoVeiculoSelecionado;
         private System.Windows.Forms.GroupBox gbKmAtual;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label auxDescricaoManutencaoSelecionada;
-        private System.Windows.Forms.Label auxTipoManutencaoSelecionada;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox2;

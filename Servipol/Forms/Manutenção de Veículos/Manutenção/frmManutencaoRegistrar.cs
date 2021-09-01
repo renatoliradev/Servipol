@@ -17,6 +17,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
     {
         #region Instâncias e Propriedades
         readonly ConexaoBD BD = new ConexaoBD();
+
+        public string TipoVeiculo { get; set; }
         #endregion
 
         public frmManutencaoRegistrar()
@@ -30,11 +32,14 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             {
                 BD.Conectar();
 
+                CarregaVeiculo();
+                CarregaFuncionario();
+                CarregaLocalManutencao();
 
             }
             finally
             {
-                BD.Desconectar();
+                
             }
         }
 
@@ -46,17 +51,18 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             {
                 NpgsqlCommand com = new NpgsqlCommand();
                 com.Connection = BD.ObjetoConexao;
-                com.CommandText = "SELECT id AS id_funcionario, CAST(CASE WHEN id_tipo_funcionario = 1 THEN codigo || ' - ' || qra ELSE nome END AS VARCHAR) AS qra FROM funcionarios WHERE ativo = 'S' ORDER BY id_tipo_funcionario, codigo ASC";
+                com.CommandText = "SELECT id_funcionario, CAST(CASE WHEN id_funcionario_cargo = 1 THEN codigo_ase || ' - ' || qra_ase ELSE nome END AS VARCHAR) AS nome FROM funcionario WHERE ativo = 'S' ORDER BY id_funcionario_cargo, codigo_ase ASC";
                 NpgsqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
 
                 cBoxFuncionario.ValueMember = "id_funcionario";
-                cBoxFuncionario.DisplayMember = "qra";
+                cBoxFuncionario.DisplayMember = "nome";
                 cBoxFuncionario.DataSource = dt;
             }
             finally
             {
+                cBoxFuncionario.SelectedIndex = -1;
             }
         }
 
@@ -77,6 +83,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             }
             finally
             {
+                cBoxVeiculo.SelectedIndex = -1;
             }
         }
 
@@ -87,22 +94,33 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 if (cBoxVeiculo.SelectedIndex != -1)
                 {
                     #region DECLARACAO DE VARIAVEIS
-                    string CDV_descricao_veiculo = string.Empty, CDV_placa = string.Empty, CDV_km_ultima_troca_oleo_motor = string.Empty, CDV_data_ultima_troca_oleo_motor = string.Empty, CDV_km_diario = string.Empty;
+                    string CDV_descricao_veiculo = string.Empty, CDV_placa = string.Empty, CDV_km_ultima_troca_oleo_motor = string.Empty, CDV_data_ultima_troca_oleo_motor = string.Empty, CDV_km_diario = string.Empty, CDV_veiculo_tipo = string.Empty;
                     #endregion
 
-                    NpgsqlCommand com = new NpgsqlCommand("SELECT v.descricao_veiculo, v.placa FROM veiculos AS v WHERE v.id = " + cBoxVeiculo.SelectedValue + "", BD.ObjetoConexao);
+                    NpgsqlCommand com = new NpgsqlCommand($"SELECT v.descricao, v.placa, v.tipo FROM veiculo AS v WHERE v.id_veiculo = {cBoxVeiculo.SelectedValue}", BD.ObjetoConexao);
                     using (NpgsqlDataReader dr = com.ExecuteReader())
                     {
                         while (dr.Read())
                         {
-                            CDV_descricao_veiculo = dr["descricao_veiculo"].ToString();
+                            CDV_descricao_veiculo = dr["descricao"].ToString();
                             CDV_placa = dr["placa"].ToString();
+                            CDV_veiculo_tipo = dr["tipo"].ToString();
                         }
                         labelDescricao.Text = CDV_descricao_veiculo;
                         labelPlaca.Text = CDV_placa;
+
+                        switch (CDV_veiculo_tipo)
+                        {
+                            case "1":
+                                TipoVeiculo = "CARRO";
+                                break;
+                            case "2":
+                                TipoVeiculo = "MOTO";
+                                break;
+                        }
                     }
 
-                    NpgsqlCommand com2 = new NpgsqlCommand("SELECT MAX(km_veiculo) AS ultimo_km_troca_oleo, MAX(TO_CHAR(data_manutencao, 'DD/MM/YYYY')) AS data_ultima_troca FROM manutencao_veiculo WHERE id_tipo_manutencao = 1 AND id_veiculo = " + cBoxVeiculo.SelectedValue + " AND registro_excluido = 'N'", BD.ObjetoConexao);
+                    NpgsqlCommand com2 = new NpgsqlCommand($"SELECT MAX(km_veiculo) AS ultimo_km_troca_oleo, MAX(TO_CHAR(data_manutencao, 'DD/MM/YYYY')) AS data_ultima_troca FROM manutencao WHERE id_tipo_manutencao = 1 AND id_veiculo = {cBoxVeiculo.SelectedValue} AND registro_excluido = 'N'", BD.ObjetoConexao);
                     using (NpgsqlDataReader dr2 = com2.ExecuteReader())
                     {
                         while (dr2.Read())
@@ -114,7 +132,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                         labelUltimoKM.Text = CDV_km_ultima_troca_oleo_motor;
                     }
 
-                    NpgsqlCommand com3 = new NpgsqlCommand("SELECT km_veiculo FROM km_diario WHERE id_veiculo = " + cBoxVeiculo.SelectedValue + " AND data_km_diario = 'today'", BD.ObjetoConexao);
+                    NpgsqlCommand com3 = new NpgsqlCommand($"SELECT km_veiculo FROM km_diario WHERE id_veiculo = {cBoxVeiculo.SelectedValue} AND data_km_diario = CURRENT_DATE", BD.ObjetoConexao);
                     using (NpgsqlDataReader dr3 = com3.ExecuteReader())
                     {
                         while (dr3.Read())
@@ -124,7 +142,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                         labelDataUltimaTrocaOleo.Text = CDV_data_ultima_troca_oleo_motor;
                     }
 
-                    if (CDV_km_diario != string.Empty)
+                    if (!string.IsNullOrEmpty(CDV_km_diario))
                     {
                         tBoxKmAtual.Text = CDV_km_diario;
                     }
@@ -142,36 +160,78 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         {
             try
             {
-                if (auxTipoVeiculoSelecionado.Text == "MOTO")
+                if (TipoVeiculo == "MOTO")
                 {
                     NpgsqlCommand com = new NpgsqlCommand();
                     com.Connection = BD.ObjetoConexao;
-                    com.CommandText = "SELECT id_tipo_manutencao, descricao_manutencao, ordem FROM tipo_manutencao WHERE ativo = 'S' AND aplicacao_moto = 'S' ORDER BY 3 ASC";
+                    com.CommandText = $"SELECT id_manutencao_tipo, descricao, ordem FROM manutencao_tipo WHERE ativo = 'S' AND aplicacao_moto = 'S' ORDER BY 3 ASC";
                     NpgsqlDataReader dr = com.ExecuteReader();
                     DataTable dt = new DataTable();
                     dt.Load(dr);
 
-                    cBoxTipoManutencao.ValueMember = "id_tipo_manutencao";
-                    cBoxTipoManutencao.DisplayMember = "descricao_manutencao";
+                    cBoxTipoManutencao.ValueMember = "id_manutencao_tipo";
+                    cBoxTipoManutencao.DisplayMember = "descricao";
                     cBoxTipoManutencao.DataSource = dt;
                 }
-                else if (auxTipoVeiculoSelecionado.Text == "CARRO")
+                else if (TipoVeiculo == "CARRO")
                 {
                     NpgsqlCommand com = new NpgsqlCommand();
                     com.Connection = BD.ObjetoConexao;
-                    com.CommandText = "SELECT id_tipo_manutencao, descricao_manutencao, ordem FROM tipo_manutencao WHERE ativo = 'S' AND aplicacao_carro = 'S' ORDER BY 3 ASC";
+                    com.CommandText = $"SELECT id_manutencao_tipo, descricao, ordem FROM manutencao_tipo WHERE ativo = 'S' AND aplicacao_carro = 'S' ORDER BY 3 ASC";
                     NpgsqlDataReader dr = com.ExecuteReader();
                     DataTable dt = new DataTable();
                     dt.Load(dr);
 
-                    cBoxTipoManutencao.ValueMember = "id_tipo_manutencao";
-                    cBoxTipoManutencao.DisplayMember = "descricao_manutencao";
+                    cBoxTipoManutencao.ValueMember = "id_manutencao_tipo";
+                    cBoxTipoManutencao.DisplayMember = "descricao";
                     cBoxTipoManutencao.DataSource = dt;
                 }
             }
             finally
             {
+                cBoxTipoManutencao.SelectedIndex = -1;
             }
+        }
+
+        public void VerificaTipoManutencao()
+        {
+            try
+            {
+                #region Variáveis
+                string exige_km_troca_oleo = string.Empty, validade_km_troca_oleo_carro = string.Empty, validade_km_troca_oleo_moto = string.Empty;
+                #endregion
+
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT mt.exige_km_validade_oleo, mt.km_validade_oleo_carro, mt.km_validade_oleo_moto FROM manutencao_tipo AS mt WHERE mt.id_manutencao_tipo = {cBoxTipoManutencao.SelectedValue}", BD.ObjetoConexao);
+                using (NpgsqlDataReader dr = com.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        exige_km_troca_oleo = dr["exige_km_validade_oleo"].ToString();
+                        validade_km_troca_oleo_carro = dr["km_validade_oleo_carro"].ToString();
+                        validade_km_troca_oleo_moto = dr["km_validade_oleo_moto"].ToString();
+                    }
+                    if (exige_km_troca_oleo == "S")
+                    {
+                        cBoxKmValidadeOleo.Enabled = true;
+
+                        if (TipoVeiculo == "CARRO")
+                        {
+                            cBoxKmValidadeOleo.SelectedItem = validade_km_troca_oleo_carro;
+                        }
+                        else if (TipoVeiculo == "MOTO")
+                        {
+                            cBoxKmValidadeOleo.SelectedItem = validade_km_troca_oleo_moto;
+                        }
+                    }
+                    else
+                    {
+                        cBoxKmValidadeOleo.SelectedIndex = -1;
+                        cBoxKmValidadeOleo.Enabled = false;
+                    }
+                }
+            }
+            finally
+            { }
         }
 
         public void CarregaLocalManutencao()
@@ -180,17 +240,18 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             {
                 NpgsqlCommand com = new NpgsqlCommand();
                 com.Connection = BD.ObjetoConexao;
-                com.CommandText = "SELECT id_local_manutencao, descricao FROM local_manutencao WHERE posto_combustivel = 'N' AND ativo = 'S' ORDER BY 2 ASC";
+                com.CommandText = $"SELECT id_manutencao_local, descricao FROM manutencao_local WHERE posto_combustivel = 'N' AND ativo = 'S' ORDER BY 2 ASC";
                 NpgsqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
 
-                cBoxLocalManutencao.ValueMember = "id_local_manutencao";
+                cBoxLocalManutencao.ValueMember = "id_manutencao_local";
                 cBoxLocalManutencao.DisplayMember = "descricao";
                 cBoxLocalManutencao.DataSource = dt;
             }
             finally
             {
+                cBoxLocalManutencao.SelectedIndex = -1;
             }
         }
 
@@ -210,5 +271,31 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         }
 
         #endregion
+
+        private void cBoxTipoManutencao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cBoxTipoManutencao.SelectedIndex != -1)
+            {
+                VerificaTipoManutencao();
+            }
+        }
+
+        private void cBoxVeiculo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cBoxVeiculo.SelectedIndex != -1)
+                {
+                    labelDataUltimaTrocaOleo.Text = null;
+                    labelUltimoKM.Text = null;
+                    CarregaDadosVeiculo();
+                    CarregaTipoManutencao();
+                }
+            }
+            finally
+            {
+                tBoxKmAtual.Focus();
+            }
+        }
     }
 }

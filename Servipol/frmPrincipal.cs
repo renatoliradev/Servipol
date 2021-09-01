@@ -196,7 +196,9 @@ namespace Servipol
 
         private void btnRegistrarManutencao_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            frmManutencaoRegistrar frmManutencaoRegistrar = new frmManutencaoRegistrar();
+            frmManutencaoRegistrar.Owner = this;
+            frmManutencaoRegistrar.ShowDialog();
         }
 
         private void btnRegistrarAbastecimento_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
