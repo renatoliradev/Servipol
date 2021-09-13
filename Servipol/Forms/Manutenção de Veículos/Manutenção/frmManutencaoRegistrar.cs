@@ -1,15 +1,10 @@
 ﻿using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Servipol.Entidades.Classes;
 using Npgsql;
+using Servipol.Entidades.Classes;
+using System;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 {
@@ -19,6 +14,12 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         readonly ConexaoBD BD = new ConexaoBD();
 
         public string TipoVeiculo { get; set; }
+        public int UltimoKmServico { get; set; }
+        public string UltimaDataServico { get; set; }
+        public string DescricaoManutencao { get; set; }
+        public string ExigeKmTrocaOleo { get; set; }
+        public string KmJaRegistrado { get; set; }
+        public int ExisteManutencaoNaoConfirmada { get; set; }
         #endregion
 
         public frmManutencaoRegistrar()
@@ -35,15 +36,37 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 CarregaVeiculo();
                 CarregaFuncionario();
                 CarregaLocalManutencao();
+                CarregaTabelaPreRegistroManutencao();
 
+                if (ExisteManutencaoNaoConfirmada > 0)
+                {
+                    XtraMessageBox.Show("Existem manutenções que foram incluídas porém não foram confirmadas. Os registros serão carregados novamente.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                tBoxDataManutencao.Value = DateTime.Now;
             }
             finally
             {
-                
+
             }
         }
 
         #region Methods
+
+        public void CarregaTabelaPreRegistroManutencao()
+        {
+            try
+            {
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mv.id_manutencao AS pre_id_manutencao_veiculo, mv.id_veiculo AS pre_id_veiculo, mv.data_manutencao AS pre_data_manutencao, v.placa AS pre_placa, mv.km_veiculo AS pre_km_manutencao, CAST(CASE WHEN tv.descricao = 'Carro' THEN v.descricao WHEN v.ativo = 'N' AND tv.descricao = 'Moto' THEN tv.descricao || ' ' || v.codigo || ' >>> REGISTRO INATIVO <<<' WHEN v.ativo = 'N' AND tv.descricao = 'Carro' THEN v.descricao || ' >>> REGISTRO INATIVO <<<'  ELSE tv.descricao || ' ' || v.codigo END AS VARCHAR) AS pre_veiculo, tm.descricao AS pre_tipo_manutencao, lm.descricao AS pre_local_manutencao, mv.valor_peca AS pre_valor_produto, mv.valor_servico AS pre_valor_servico, mv.valor_desconto AS pre_valor_desconto, mv.valor_acrescimo AS pre_valor_acrescimo, mv.valor_total AS pre_total_manutencao, CAST(CASE WHEN id_funcionario_cargo = 1 THEN codigo || ' - ' || qra_ase ELSE nome END AS VARCHAR) AS pre_funcionario_manutencao FROM manutencao AS mv INNER JOIN veiculo AS v ON(mv.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS tm ON(mv.id_manutencao_tipo = tm.id_manutencao_tipo) INNER JOIN manutencao_local AS lm ON(mv.id_manutencao_local = lm.id_manutencao_local) INNER JOIN funcionario AS f ON(mv.id_funcionario = f.id_funcionario) INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) WHERE mv.confirmada = 'N' GROUP BY mv.id_manutencao, tv.descricao, v.id_veiculo, v.descricao, v.placa, v.codigo, tm.descricao, lm.descricao, f.id_funcionario_cargo, f.codigo_ase, f.qra_ase, f.nome ORDER BY v.tipo DESC, v.codigo ASC, mv.id_manutencao ASC", BD.ObjetoConexao);
+                DataTable dp = new DataTable();
+                retornoBD.Fill(dp);
+                dGridPreRegistroManutencao.DataSource = dp;
+                dGridPreRegistroManutencao.ClearSelection();
+
+                ExisteManutencaoNaoConfirmada = Convert.ToInt32(dGridPreRegistroManutencao.RowCount.ToString());
+            }
+            catch { }
+        }
 
         public void CarregaFuncionario()
         {
@@ -198,19 +221,23 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             try
             {
                 #region Variáveis
-                string exige_km_troca_oleo = string.Empty, validade_km_troca_oleo_carro = string.Empty, validade_km_troca_oleo_moto = string.Empty;
+                string descricao_manutencao = string.Empty, exige_km_troca_oleo = string.Empty, validade_km_troca_oleo_carro = string.Empty, validade_km_troca_oleo_moto = string.Empty;
                 #endregion
 
-                NpgsqlCommand com = new NpgsqlCommand($"SELECT mt.exige_km_validade_oleo, mt.km_validade_oleo_carro, mt.km_validade_oleo_moto FROM manutencao_tipo AS mt WHERE mt.id_manutencao_tipo = {cBoxTipoManutencao.SelectedValue}", BD.ObjetoConexao);
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT mt.descricao, mt.exige_km_validade_oleo, mt.km_validade_oleo_carro, mt.km_validade_oleo_moto FROM manutencao_tipo AS mt WHERE mt.id_manutencao_tipo = {cBoxTipoManutencao.SelectedValue}", BD.ObjetoConexao);
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     while (dr.Read())
                     {
+                        descricao_manutencao = dr["descricao"].ToString();
                         exige_km_troca_oleo = dr["exige_km_validade_oleo"].ToString();
                         validade_km_troca_oleo_carro = dr["km_validade_oleo_carro"].ToString();
                         validade_km_troca_oleo_moto = dr["km_validade_oleo_moto"].ToString();
                     }
-                    if (exige_km_troca_oleo == "S")
+                    DescricaoManutencao = descricao_manutencao;
+                    ExigeKmTrocaOleo = exige_km_troca_oleo;
+
+                    if (ExigeKmTrocaOleo == "S")
                     {
                         cBoxKmValidadeOleo.Enabled = true;
 
@@ -255,22 +282,119 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             }
         }
 
-
-        #endregion
-
-        #region Buttons
-
-        private void btnCancelarRegistro_Click(object sender, EventArgs e)
+        public void VerificaUltimoKmServico()
         {
+            try
+            {
+                #region Variáveis
+                string ultimo_km_servico = string.Empty, ultima_data_servico = string.Empty;
+                #endregion
 
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT MAX(km_veiculo) AS ultimo_km_servico, MAX(TO_CHAR(data_manutencao, 'DD/MM/YYYY')) AS data_manutencao FROM manutencao WHERE id_manutencao_tipo = {cBoxTipoManutencao.SelectedValue} AND id_veiculo = {cBoxVeiculo.SelectedValue} AND registro_excluido = 'N'", BD.ObjetoConexao);
+                using (NpgsqlDataReader dr = com.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        ultimo_km_servico = dr["ultimo_km_servico"].ToString();
+                        ultima_data_servico = dr["data_manutencao"].ToString();
+                    }
+
+                    if (ultimo_km_servico != null)
+                    {
+                        UltimoKmServico = Convert.ToInt32(ultimo_km_servico);
+                    }
+                    else
+                    {
+                        UltimoKmServico = 0;
+                    }
+
+                    UltimaDataServico = ultima_data_servico;
+                }
+            }
+            catch { }
         }
 
-        private void btnConfirmar_Click(object sender, EventArgs e)
+        public void CalculaValorManutencao()
         {
+            try
+            {
+                double valorPeca = Convert.ToDouble(tBoxValorPeca.Text.Replace("R$", ""));
+                double valorServico = Convert.ToDouble(tBoxValorServico.Text.Replace("R$", ""));
+                double valorDesconto = Convert.ToDouble(tBoxDesconto.Text.Replace("R$", ""));
+                double valorAcrescimo = Convert.ToDouble(tBoxAcrescimo.Text.Replace("R$", ""));
+                double valorTotalManutencao = Convert.ToDouble(tBoxValorTotal.Text.Replace("R$", ""));
 
+                valorTotalManutencao = valorPeca + valorServico - valorDesconto + valorAcrescimo;
+
+                tBoxValorTotal.Text = valorTotalManutencao.ToString("C");
+
+            }
+            catch { }
         }
 
-        #endregion
+        private bool ValidaCampos()
+        {
+            if (cBoxVeiculo.SelectedIndex == -1)
+            {
+                XtraMessageBox.Show("Selecione o [Veículo].", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                cBoxVeiculo.Focus();
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tBoxKmAtual.Text))
+            {
+                XtraMessageBox.Show("Informe o [KM Atual] do veículo.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                tBoxKmAtual.Focus();
+                return false;
+            }
+            else if (cBoxFuncionario.SelectedIndex == -1)
+            {
+                XtraMessageBox.Show("Selecione o [funcionário que fez o serviço]", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                cBoxFuncionario.Focus();
+                return false;
+            }
+            else if (cBoxLocalManutencao.SelectedIndex == -1)
+            {
+                XtraMessageBox.Show("Selecione o [Local da Manutenção]", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                cBoxLocalManutencao.Focus();
+                return false;
+            }
+            else if (cBoxTipoManutencao.SelectedIndex == -1)
+            {
+                XtraMessageBox.Show("Selecione o [Tipo da Manutenção]", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                cBoxTipoManutencao.Focus();
+                return false;
+            }
+            else if (UltimoKmServico > Convert.ToInt32(tBoxKmAtual.Text))
+            {
+                XtraMessageBox.Show($"O Km Atual é menor que o último Km informado para este veículo e serviço!\n\nDescrição do serviço: {DescricaoManutencao}\nData do serviço: {UltimaDataServico}\nKm informado para o serviço: {UltimoKmServico}\n\nKm Atual informado: {tBoxKmAtual.Text}", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                tBoxKmAtual.Focus();
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void LimparCampos()
+        {
+            cBoxVeiculo.SelectedIndex = -1;
+            labelDescricao.Text = null;
+            labelPlaca.Text = null;
+            labelDataUltimaTrocaOleo.Text = null;
+            labelUltimoKM.Text = null;
+            tBoxObservacaoManutencao.Clear();
+            tBoxDataManutencao.Value = DateTime.Now;
+            tBoxKmAtual.Clear();
+            cBoxFuncionario.SelectedIndex = -1;
+            cBoxLocalManutencao.SelectedIndex = -1;
+            cBoxTipoManutencao.SelectedIndex = -1;
+            tBoxValorPeca.Clear();
+            tBoxValorServico.Clear();
+            tBoxDesconto.Clear();
+            tBoxAcrescimo.Clear();
+            tBoxValorTotal.Clear();
+        }
 
         private void cBoxTipoManutencao_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -296,6 +420,543 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             {
                 tBoxKmAtual.Focus();
             }
+        }
+
+        private void frmManutencaoRegistrar_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing && ExisteManutencaoNaoConfirmada > 0)
+            {
+                var result = XtraMessageBox.Show("Existem registros pendentes de confirmação!\nOs registros ficarão pendentes e serão carregados automaticamente quando essa tela for reaberta. \n\nDeseja fechar essa tela ? ", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (result != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    BD.Desconectar();
+                    //memoryManagement.FlushMemory();
+                    LimparCampos();
+                }
+            }
+            else if (e.CloseReason == CloseReason.UserClosing)
+            {
+                LimparCampos();
+            }
+        }
+
+        public void AproveitarDadosBasicos()
+        {
+            cBoxTipoManutencao.SelectedIndex = -1;
+            cBoxKmValidadeOleo.SelectedIndex = -1;
+            tBoxObservacaoManutencao.Clear();
+
+            tBoxValorPeca.Text = "R$ 0,00";
+            tBoxValorServico.Text = "R$ 0,00";
+            tBoxDesconto.Text = "R$ 0,00";
+            tBoxAcrescimo.Text = "R$ 0,00";
+            tBoxValorTotal.Text = "R$ 0,00";
+
+            gBoxTipoManutencao.Focus();
+            cBoxTipoManutencao.Select();
+        }
+
+        #endregion
+
+        #region Buttons
+
+        private void btnCancelarRegistro_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string idRegistroSelecionadoGrid = dGridPreRegistroManutencao.SelectedRows[0].Cells[0].Value.ToString();
+                
+                NpgsqlCommand update1 = new NpgsqlCommand($"DELETE FROM manutencao WHERE id_manutencao = {idRegistroSelecionadoGrid}", BD.ObjetoConexao);
+                update1.ExecuteNonQuery();
+
+                CarregaTabelaPreRegistroManutencao();
+            }
+            catch (Exception)
+            {
+                XtraMessageBox.Show("Primeiro selecione qual registro deseja cancelar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void btnIncluirPreRegistro_Click(object sender, EventArgs e)
+        {
+            if (!ValidaCampos())
+            {
+                return;
+            }
+            else
+            {
+                VerificaUltimoKmServico();
+                CalculaValorManutencao();
+
+                double valorPeca = Convert.ToDouble(tBoxValorPeca.Text.Replace("R$", ""));
+                double valorServico = Convert.ToDouble(tBoxValorServico.Text.Replace("R$", ""));
+                double valorDesconto = Convert.ToDouble(tBoxDesconto.Text.Replace("R$", ""));
+                double valorAcrescimo = Convert.ToDouble(tBoxAcrescimo.Text.Replace("R$", ""));
+                double valorTotalManutencao = Convert.ToDouble(tBoxValorTotal.Text.Replace("R$", ""));
+
+                int km_validade_oleo = 0;
+
+                if (ExigeKmTrocaOleo == "S")
+                {
+                    km_validade_oleo = Convert.ToInt32(cBoxKmValidadeOleo.Text);
+                }
+
+
+                if (valorTotalManutencao == 0)
+                {
+                    if (XtraMessageBox.Show("Não foi informado nenhum valor da manutenção.\n Deseja incluir assim mesmo ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                    {
+                        //VERIFICA SE O KM DO DIA JÁ FOI REGISTRADO
+                        NpgsqlCommand com4 = new NpgsqlCommand($"SELECT 1 AS km_ja_registrado FROM km_diario WHERE id_veiculo = {cBoxVeiculo.SelectedValue} AND data_km_diario = CURRENT_DATE", BD.ObjetoConexao);
+                        using (NpgsqlDataReader dr4 = com4.ExecuteReader())
+                        {
+                            while (dr4.Read())
+                            {
+                                KmJaRegistrado = dr4["km_ja_registrado"].ToString();
+                            }
+                        }
+
+                        if (KmJaRegistrado != "1")
+                        {
+                            string sqlCommand5 = $"INSERT INTO km_diario VALUES (nextval('seq_km_diario'), {cBoxVeiculo.SelectedValue}, {tBoxKmAtual.Text}, CURRENT_DATE, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP)";
+                            NpgsqlCommand command5 = new NpgsqlCommand(sqlCommand5, BD.ObjetoConexao);
+                            command5.ExecuteNonQuery();
+                        }
+
+                        string sqlCommand = $"INSERT INTO manutencao VALUES (nextval('seq_manutencao'), '{tBoxDataManutencao.Value}', '{tBoxObservacaoManutencao.Text.ToUpper().Trim()}', {km_validade_oleo}, {cBoxVeiculo.SelectedValue}, {cBoxTipoManutencao.SelectedValue},  {cBoxLocalManutencao.SelectedValue}, {cBoxFuncionario.SelectedValue}, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, {UltimoKmServico}, {tBoxKmAtual.Text}, {valorPeca.ToString().Replace(",", ".")}, {valorServico.ToString().Replace(",", ".")}, {valorDesconto.ToString().Replace(",", ".")}, {valorAcrescimo.ToString().Replace(",", ".")}, {valorTotalManutencao.ToString().Replace(",", ".")}, 'N', 'N')";
+                        NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
+                        command.ExecuteNonQuery();
+
+                        AproveitarDadosBasicos();
+                        CarregaTabelaPreRegistroManutencao();
+                    }
+                    else
+                    {
+                        tBoxValorPeca.Select();
+                    }
+                }
+                else
+                {
+                    //VERIFICA SE O KM DO DIA JÁ FOI REGISTRADO
+                    NpgsqlCommand com4 = new NpgsqlCommand($"SELECT 1 AS km_ja_registrado FROM km_diario WHERE id_veiculo = {cBoxVeiculo.SelectedValue} AND data_km_diario = CURRENT_DATE", BD.ObjetoConexao);
+                    using (NpgsqlDataReader dr4 = com4.ExecuteReader())
+                    {
+                        while (dr4.Read())
+                        {
+                            KmJaRegistrado = dr4["km_ja_registrado"].ToString();
+                        }
+                    }
+
+                    if (KmJaRegistrado != "1")
+                    {
+                        string sqlCommand5 = $"INSERT INTO km_diario VALUES (nextval('seq_km_diario'), {cBoxVeiculo.SelectedValue}, {tBoxKmAtual.Text}, CURRENT_DATE, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP)";
+                        NpgsqlCommand command5 = new NpgsqlCommand(sqlCommand5, BD.ObjetoConexao);
+                        command5.ExecuteNonQuery();
+                    }
+
+                    string sqlCommand = $"INSERT INTO manutencao VALUES (nextval('seq_manutencao'), '{tBoxDataManutencao.Value}', '{tBoxObservacaoManutencao.Text.ToUpper().Trim()}', {km_validade_oleo}, {cBoxVeiculo.SelectedValue}, {cBoxTipoManutencao.SelectedValue},  {cBoxLocalManutencao.SelectedValue}, {cBoxFuncionario.SelectedValue}, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, {UltimoKmServico}, {tBoxKmAtual.Text}, {valorPeca.ToString().Replace(",", ".")}, {valorServico.ToString().Replace(",", ".")}, {valorDesconto.ToString().Replace(",", ".")}, {valorAcrescimo.ToString().Replace(",", ".")}, {valorTotalManutencao.ToString().Replace(",", ".")}, 'N', 'N')";
+                    NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
+                    command.ExecuteNonQuery();
+
+                    AproveitarDadosBasicos();
+                    CarregaTabelaPreRegistroManutencao();
+                }
+            }
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int quantRegistros = Convert.ToInt32(dGridPreRegistroManutencao.RowCount.ToString());
+
+                if (quantRegistros > 0)
+                {
+                    string sqlCommand = $"UPDATE manutencao SET confirmada = 'S' WHERE confirmada = 'N'";
+                    NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
+                    command.ExecuteNonQuery();
+
+                    XtraMessageBox.Show("Manutenções confirmadas com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparCampos();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Não existem manutenções pendentes de confirmação.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (Exception err)
+            {
+                XtraMessageBox.Show("Erro ao confirmar manutenções! Tente novamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //XtraMessageBox.Show(err.Message, "Falha no botão 'btnConfirmar_Click'", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            finally
+            {
+                
+            }
+        }
+
+        #endregion
+
+        private void frmManutencaoRegistrar_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            BD.Desconectar();
+            //memoryManagement.FlushMemory();
+            LimparCampos();
+        }
+
+        private void tBoxValorPeca_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    tBoxValorServico.Select();
+                    break;
+            }
+        }
+
+        private void tBoxValorServico_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    tBoxDesconto.Select();
+                    break;
+            }
+        }
+
+        private void tBoxDesconto_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    tBoxAcrescimo.Select();
+                    break;
+            }
+        }
+
+        private void tBoxAcrescimo_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    btnIncluirPreRegistro_Click(sender, e);
+                    break;
+            }
+        }
+
+        private void frmManutencaoRegistrar_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F12:
+                    btnConfirmar_Click(sender, e);
+                    break;
+                case Keys.Escape:
+                    this.Close();
+                    break;
+            }
+        }
+
+        private void tBoxValorPeca_Enter(object sender, EventArgs e)
+        {
+            String x = "";
+            for (int i = 0; i <= tBoxValorPeca.Text.Length - 1; i++)
+            {
+                if ((tBoxValorPeca.Text[i] >= '0' &&
+                    tBoxValorPeca.Text[i] <= '9') ||
+                    tBoxValorPeca.Text[i] == ',')
+                {
+                    x += tBoxValorPeca.Text[i];
+                }
+            }
+            tBoxValorPeca.Text = x;
+            tBoxValorPeca.SelectAll();
+        }
+
+        private void tBoxValorPeca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || e.KeyChar > '9') &&
+               (e.KeyChar != ',' && e.KeyChar != '.' &&
+                e.KeyChar != (Char)13 && e.KeyChar != (Char)8))
+            {
+                e.KeyChar = (Char)0;
+            }
+            else
+            {
+                if (e.KeyChar == '.' || e.KeyChar == ',')
+                {
+                    if (!tBoxValorPeca.Text.Contains(','))
+                    {
+                        e.KeyChar = ',';
+                    }
+                    else
+                    {
+                        e.KeyChar = (Char)0;
+                    }
+                }
+            }
+        }
+
+        private void tBoxValorPeca_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                tBoxValorPeca.Text = Convert.ToDouble(tBoxValorPeca.Text).ToString("C");
+                CalculaValorManutencao();
+            }
+            catch
+            {
+                tBoxValorPeca.Text = "R$0,00";
+            }
+        }
+
+        private void tBoxValorPeca_MouseClick(object sender, MouseEventArgs e)
+        {
+            String x = "";
+            for (int i = 0; i <= tBoxValorPeca.Text.Length - 1; i++)
+            {
+                if ((tBoxValorPeca.Text[i] >= '0' &&
+                    tBoxValorPeca.Text[i] <= '9') ||
+                    tBoxValorPeca.Text[i] == ',')
+                {
+                    x += tBoxValorPeca.Text[i];
+                }
+            }
+            tBoxValorPeca.Text = x;
+            tBoxValorPeca.SelectAll();
+        }
+
+        private void tBoxValorServico_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                tBoxValorServico.Text = Convert.ToDouble(tBoxValorServico.Text).ToString("C");
+            }
+            catch
+            {
+                tBoxValorServico.Text = "R$0,00";
+            }
+        }
+
+        private void tBoxDesconto_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                tBoxDesconto.Text = Convert.ToDouble(tBoxDesconto.Text).ToString("C");
+            }
+            catch
+            {
+                tBoxDesconto.Text = "R$0,00";
+            }
+        }
+
+        private void tBoxAcrescimo_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                tBoxAcrescimo.Text = Convert.ToDouble(tBoxAcrescimo.Text).ToString("C");
+            }
+            catch
+            {
+                tBoxAcrescimo.Text = "R$0,00";
+            }
+        }
+
+        private void tBoxValorServico_Enter(object sender, EventArgs e)
+        {
+            String x = "";
+            for (int i = 0; i <= tBoxValorServico.Text.Length - 1; i++)
+            {
+                if ((tBoxValorServico.Text[i] >= '0' &&
+                    tBoxValorServico.Text[i] <= '9') ||
+                    tBoxValorServico.Text[i] == ',')
+                {
+                    x += tBoxValorServico.Text[i];
+                }
+            }
+            tBoxValorServico.Text = x;
+            tBoxValorServico.SelectAll();
+        }
+
+        private void tBoxDesconto_Enter(object sender, EventArgs e)
+        {
+            String x = "";
+            for (int i = 0; i <= tBoxDesconto.Text.Length - 1; i++)
+            {
+                if ((tBoxDesconto.Text[i] >= '0' &&
+                    tBoxDesconto.Text[i] <= '9') ||
+                    tBoxDesconto.Text[i] == ',')
+                {
+                    x += tBoxDesconto.Text[i];
+                }
+            }
+            tBoxDesconto.Text = x;
+            tBoxDesconto.SelectAll();
+        }
+
+        private void tBoxAcrescimo_Enter(object sender, EventArgs e)
+        {
+            String x = "";
+            for (int i = 0; i <= tBoxAcrescimo.Text.Length - 1; i++)
+            {
+                if ((tBoxAcrescimo.Text[i] >= '0' &&
+                    tBoxAcrescimo.Text[i] <= '9') ||
+                    tBoxAcrescimo.Text[i] == ',')
+                {
+                    x += tBoxAcrescimo.Text[i];
+                }
+            }
+            tBoxAcrescimo.Text = x;
+            tBoxAcrescimo.SelectAll();
+        }
+
+        private void tBoxValorServico_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || e.KeyChar > '9') &&
+               (e.KeyChar != ',' && e.KeyChar != '.' &&
+                e.KeyChar != (Char)13 && e.KeyChar != (Char)8))
+            {
+                e.KeyChar = (Char)0;
+            }
+            else
+            {
+                if (e.KeyChar == '.' || e.KeyChar == ',')
+                {
+                    if (!tBoxValorServico.Text.Contains(','))
+                    {
+                        e.KeyChar = ',';
+                    }
+                    else
+                    {
+                        e.KeyChar = (Char)0;
+                    }
+                }
+            }
+        }
+
+        private void tBoxDesconto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || e.KeyChar > '9') &&
+               (e.KeyChar != ',' && e.KeyChar != '.' &&
+                e.KeyChar != (Char)13 && e.KeyChar != (Char)8))
+            {
+                e.KeyChar = (Char)0;
+            }
+            else
+            {
+                if (e.KeyChar == '.' || e.KeyChar == ',')
+                {
+                    if (!tBoxDesconto.Text.Contains(','))
+                    {
+                        e.KeyChar = ',';
+                    }
+                    else
+                    {
+                        e.KeyChar = (Char)0;
+                    }
+                }
+            }
+        }
+
+        private void tBoxAcrescimo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || e.KeyChar > '9') &&
+               (e.KeyChar != ',' && e.KeyChar != '.' &&
+                e.KeyChar != (Char)13 && e.KeyChar != (Char)8))
+            {
+                e.KeyChar = (Char)0;
+            }
+            else
+            {
+                if (e.KeyChar == '.' || e.KeyChar == ',')
+                {
+                    if (!tBoxAcrescimo.Text.Contains(','))
+                    {
+                        e.KeyChar = ',';
+                    }
+                    else
+                    {
+                        e.KeyChar = (Char)0;
+                    }
+                }
+            }
+        }
+
+        private void tBoxValorPeca_KeyUp(object sender, KeyEventArgs e)
+        {
+            CalculaValorManutencao();
+        }
+
+        private void tBoxDesconto_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                double valorDesconto = Convert.ToDouble(tBoxDesconto.Text.Replace("R$", ""));
+            }
+            catch { }
+            CalculaValorManutencao();
+        }
+
+        private void tBoxAcrescimo_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                double valorAcrescimo = Convert.ToDouble(tBoxAcrescimo.Text.Replace("R$", ""));
+            }
+            catch { }
+            CalculaValorManutencao();
+        }
+
+        private void tBoxValorServico_MouseClick(object sender, MouseEventArgs e)
+        {
+            String x = "";
+            for (int i = 0; i <= tBoxValorServico.Text.Length - 1; i++)
+            {
+                if ((tBoxValorServico.Text[i] >= '0' &&
+                    tBoxValorServico.Text[i] <= '9') ||
+                    tBoxValorServico.Text[i] == ',')
+                {
+                    x += tBoxValorServico.Text[i];
+                }
+            }
+            tBoxValorServico.Text = x;
+            tBoxValorServico.SelectAll();
+        }
+
+        private void tBoxDesconto_MouseClick(object sender, MouseEventArgs e)
+        {
+            String x = "";
+            for (int i = 0; i <= tBoxDesconto.Text.Length - 1; i++)
+            {
+                if ((tBoxDesconto.Text[i] >= '0' &&
+                    tBoxDesconto.Text[i] <= '9') ||
+                    tBoxDesconto.Text[i] == ',')
+                {
+                    x += tBoxDesconto.Text[i];
+                }
+            }
+            tBoxDesconto.Text = x;
+            tBoxDesconto.SelectAll();
+        }
+
+        private void tBoxAcrescimo_MouseClick(object sender, MouseEventArgs e)
+        {
+            String x = "";
+            for (int i = 0; i <= tBoxAcrescimo.Text.Length - 1; i++)
+            {
+                if ((tBoxAcrescimo.Text[i] >= '0' &&
+                    tBoxAcrescimo.Text[i] <= '9') ||
+                    tBoxAcrescimo.Text[i] == ',')
+                {
+                    x += tBoxAcrescimo.Text[i];
+                }
+            }
+            tBoxAcrescimo.Text = x;
+            tBoxAcrescimo.SelectAll();
         }
     }
 }

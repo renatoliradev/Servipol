@@ -39,6 +39,8 @@ namespace Servipol
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            ribbonCategoriaInterno.Visible = false;
+
             statusBarVersaoSistema.Caption = VerificaVersao.VersaoSistema();
 
             EfetuaLogout();
