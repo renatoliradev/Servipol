@@ -37,6 +37,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 CarregaFuncionario();
                 CarregaLocalManutencao();
                 CarregaTabelaPreRegistroManutencao();
+                LimparCampos();
 
                 if (ExisteManutencaoNaoConfirmada > 0)
                 {
@@ -143,7 +144,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                         }
                     }
 
-                    NpgsqlCommand com2 = new NpgsqlCommand($"SELECT MAX(km_veiculo) AS ultimo_km_troca_oleo, MAX(TO_CHAR(data_manutencao, 'DD/MM/YYYY')) AS data_ultima_troca FROM manutencao WHERE id_tipo_manutencao = 1 AND id_veiculo = {cBoxVeiculo.SelectedValue} AND registro_excluido = 'N'", BD.ObjetoConexao);
+                    NpgsqlCommand com2 = new NpgsqlCommand($"SELECT MAX(km_veiculo) AS ultimo_km_troca_oleo, MAX(TO_CHAR(data_manutencao, 'DD/MM/YYYY')) AS data_ultima_troca FROM manutencao WHERE id_manutencao_tipo = 1 AND id_veiculo = {cBoxVeiculo.SelectedValue} AND registro_excluido = 'N'", BD.ObjetoConexao);
                     using (NpgsqlDataReader dr2 = com2.ExecuteReader())
                     {
                         while (dr2.Read())
@@ -162,21 +163,20 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                         {
                             CDV_km_diario = dr3["km_veiculo"].ToString();
                         }
-                        labelDataUltimaTrocaOleo.Text = CDV_data_ultima_troca_oleo_motor;
-                    }
 
-                    if (!string.IsNullOrEmpty(CDV_km_diario))
-                    {
-                        tBoxKmAtual.Text = CDV_km_diario;
+                        if (!string.IsNullOrEmpty(CDV_km_diario))
+                        {
+                            tBoxKmAtual.Text = CDV_km_diario;
+                        }
+                        else
+                        {
+                            tBoxKmAtual.Text = string.Empty;
+                        }
+                        tBoxKmAtual.SelectAll();
                     }
-                    else
-                    {
-                        tBoxKmAtual.Text = string.Empty;
-                    }
-                    tBoxKmAtual.SelectAll();
                 }
             }
-            catch { }
+            finally { }
         }
 
         public void CarregaTipoManutencao()
@@ -389,11 +389,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             cBoxFuncionario.SelectedIndex = -1;
             cBoxLocalManutencao.SelectedIndex = -1;
             cBoxTipoManutencao.SelectedIndex = -1;
-            tBoxValorPeca.Clear();
-            tBoxValorServico.Clear();
-            tBoxDesconto.Clear();
-            tBoxAcrescimo.Clear();
-            tBoxValorTotal.Clear();
+            tBoxValorPeca.Text = "R$ 0,00";
+            tBoxValorServico.Text = "R$ 0,00";
+            tBoxDesconto.Text = "R$ 0,00";
+            tBoxAcrescimo.Text = "R$ 0,00";
+            tBoxValorTotal.Text = "R$ 0,00";
         }
 
         private void cBoxTipoManutencao_SelectedIndexChanged(object sender, EventArgs e)
@@ -483,15 +483,15 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
         private void btnIncluirPreRegistro_Click(object sender, EventArgs e)
         {
+            VerificaUltimoKmServico();
+            CalculaValorManutencao();
+
             if (!ValidaCampos())
             {
                 return;
             }
             else
             {
-                VerificaUltimoKmServico();
-                CalculaValorManutencao();
-
                 double valorPeca = Convert.ToDouble(tBoxValorPeca.Text.Replace("R$", ""));
                 double valorServico = Convert.ToDouble(tBoxValorServico.Text.Replace("R$", ""));
                 double valorDesconto = Convert.ToDouble(tBoxDesconto.Text.Replace("R$", ""));
@@ -505,10 +505,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                     km_validade_oleo = Convert.ToInt32(cBoxKmValidadeOleo.Text);
                 }
 
-
                 if (valorTotalManutencao == 0)
                 {
-                    if (XtraMessageBox.Show("Não foi informado nenhum valor da manutenção.\n Deseja incluir assim mesmo ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                    if (XtraMessageBox.Show("Não foi informado nenhum valor da manutenção.\n Deseja incluir assim mesmo ?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                     {
                         //VERIFICA SE O KM DO DIA JÁ FOI REGISTRADO
                         NpgsqlCommand com4 = new NpgsqlCommand($"SELECT 1 AS km_ja_registrado FROM km_diario WHERE id_veiculo = {cBoxVeiculo.SelectedValue} AND data_km_diario = CURRENT_DATE", BD.ObjetoConexao);
@@ -582,6 +581,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
                     XtraMessageBox.Show("Manutenções confirmadas com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimparCampos();
+                    CarregaTabelaPreRegistroManutencao();
                 }
                 else
                 {
@@ -590,7 +590,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             }
             catch (Exception err)
             {
-                XtraMessageBox.Show("Erro ao confirmar manutenções! Tente novamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                XtraMessageBox.Show("Erro ao confirmar manutenções! Tente novamente.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 //XtraMessageBox.Show(err.Message, "Falha no botão 'btnConfirmar_Click'", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             finally
