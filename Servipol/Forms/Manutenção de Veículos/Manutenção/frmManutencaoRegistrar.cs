@@ -588,7 +588,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                     XtraMessageBox.Show("Não existem manutenções pendentes de confirmação.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            catch (Exception err)
+            catch
             {
                 XtraMessageBox.Show("Erro ao confirmar manutenções! Tente novamente.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 //XtraMessageBox.Show(err.Message, "Falha no botão 'btnConfirmar_Click'", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
