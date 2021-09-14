@@ -193,7 +193,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 324);
+            this.ClientSize = new System.Drawing.Size(547, 323);
             this.ControlBox = false;
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnConfirmar);
@@ -203,6 +203,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.Controls.Add(this.gbKmAtual);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MdiChildCaptionFormatString = "{0} - {1}";
             this.MinimizeBox = false;
@@ -213,6 +214,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.Text = "Registrar Km Diário";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmRegistrarKmDiario_FormClosing);
             this.Load += new System.EventHandler(this.frmRegistrarKmDiario_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmRegistrarKmDiario_KeyDown);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox4.ResumeLayout(false);

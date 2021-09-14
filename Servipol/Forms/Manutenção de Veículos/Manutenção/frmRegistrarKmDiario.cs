@@ -1,15 +1,9 @@
 ﻿using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Servipol.Entidades.Classes;
 using Npgsql;
+using Servipol.Entidades.Classes;
+using System;
+using System.Data;
+using System.Windows.Forms;
 
 namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 {
@@ -130,6 +124,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             labelPlaca.Text = string.Empty;
             labelUltimoKM.Text = string.Empty;
             CarregaDadosVeiculo();
+
+            tBoxKmAtual.Select();
         }
 
         private void tBoxKmAtual_KeyPress(object sender, KeyPressEventArgs e)
@@ -194,6 +190,16 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             BD.Desconectar();
         }
 
+        private void frmRegistrarKmDiario_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    btnFechar_Click(sender, e);
+                    break;
+            }
+        }
+
         #endregion
 
         #region Buttons
@@ -236,7 +242,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 XtraMessageBox.Show(err.Message, "Erro ao registrar Km Diário.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         #endregion
     }

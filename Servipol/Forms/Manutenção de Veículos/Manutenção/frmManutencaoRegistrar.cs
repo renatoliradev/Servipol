@@ -475,9 +475,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
                 CarregaTabelaPreRegistroManutencao();
             }
-            catch (Exception)
+            catch
             {
-                XtraMessageBox.Show("Primeiro selecione qual registro deseja cancelar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                XtraMessageBox.Show("Primeiro selecione qual registro deseja cancelar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
