@@ -460,147 +460,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             cBoxTipoManutencao.Select();
         }
 
-        #endregion
-
-        #region Buttons
-
-        private void btnCancelarRegistro_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string idRegistroSelecionadoGrid = dGridPreRegistroManutencao.SelectedRows[0].Cells[0].Value.ToString();
-                
-                NpgsqlCommand update1 = new NpgsqlCommand($"DELETE FROM manutencao WHERE id_manutencao = {idRegistroSelecionadoGrid}", BD.ObjetoConexao);
-                update1.ExecuteNonQuery();
-
-                CarregaTabelaPreRegistroManutencao();
-            }
-            catch
-            {
-                XtraMessageBox.Show("Primeiro selecione qual registro deseja cancelar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-        private void btnIncluirPreRegistro_Click(object sender, EventArgs e)
-        {
-            VerificaUltimoKmServico();
-            CalculaValorManutencao();
-
-            if (!ValidaCampos())
-            {
-                return;
-            }
-            else
-            {
-                double valorPeca = Convert.ToDouble(tBoxValorPeca.Text.Replace("R$", ""));
-                double valorServico = Convert.ToDouble(tBoxValorServico.Text.Replace("R$", ""));
-                double valorDesconto = Convert.ToDouble(tBoxDesconto.Text.Replace("R$", ""));
-                double valorAcrescimo = Convert.ToDouble(tBoxAcrescimo.Text.Replace("R$", ""));
-                double valorTotalManutencao = Convert.ToDouble(tBoxValorTotal.Text.Replace("R$", ""));
-
-                int km_validade_oleo = 0;
-
-                if (ExigeKmTrocaOleo == "S")
-                {
-                    km_validade_oleo = Convert.ToInt32(cBoxKmValidadeOleo.Text);
-                }
-
-                if (valorTotalManutencao == 0)
-                {
-                    if (XtraMessageBox.Show("Não foi informado nenhum valor da manutenção.\n Deseja incluir assim mesmo ?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                    {
-                        //VERIFICA SE O KM DO DIA JÁ FOI REGISTRADO
-                        NpgsqlCommand com4 = new NpgsqlCommand($"SELECT 1 AS km_ja_registrado FROM km_diario WHERE id_veiculo = {cBoxVeiculo.SelectedValue} AND data_km_diario = CURRENT_DATE", BD.ObjetoConexao);
-                        using (NpgsqlDataReader dr4 = com4.ExecuteReader())
-                        {
-                            while (dr4.Read())
-                            {
-                                KmJaRegistrado = dr4["km_ja_registrado"].ToString();
-                            }
-                        }
-
-                        if (KmJaRegistrado != "1")
-                        {
-                            string sqlCommand5 = $"INSERT INTO km_diario VALUES (nextval('seq_km_diario'), {cBoxVeiculo.SelectedValue}, {tBoxKmAtual.Text}, CURRENT_DATE, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP)";
-                            NpgsqlCommand command5 = new NpgsqlCommand(sqlCommand5, BD.ObjetoConexao);
-                            command5.ExecuteNonQuery();
-                        }
-
-                        string sqlCommand = $"INSERT INTO manutencao VALUES (nextval('seq_manutencao'), '{tBoxDataManutencao.Value}', '{tBoxObservacaoManutencao.Text.ToUpper().Trim()}', {km_validade_oleo}, {cBoxVeiculo.SelectedValue}, {cBoxTipoManutencao.SelectedValue},  {cBoxLocalManutencao.SelectedValue}, {cBoxFuncionario.SelectedValue}, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, {UltimoKmServico}, {tBoxKmAtual.Text}, {valorPeca.ToString().Replace(",", ".")}, {valorServico.ToString().Replace(",", ".")}, {valorDesconto.ToString().Replace(",", ".")}, {valorAcrescimo.ToString().Replace(",", ".")}, {valorTotalManutencao.ToString().Replace(",", ".")}, 'N', 'N')";
-                        NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
-                        command.ExecuteNonQuery();
-
-                        AproveitarDadosBasicos();
-                        CarregaTabelaPreRegistroManutencao();
-                    }
-                    else
-                    {
-                        tBoxValorPeca.Select();
-                    }
-                }
-                else
-                {
-                    //VERIFICA SE O KM DO DIA JÁ FOI REGISTRADO
-                    NpgsqlCommand com4 = new NpgsqlCommand($"SELECT 1 AS km_ja_registrado FROM km_diario WHERE id_veiculo = {cBoxVeiculo.SelectedValue} AND data_km_diario = CURRENT_DATE", BD.ObjetoConexao);
-                    using (NpgsqlDataReader dr4 = com4.ExecuteReader())
-                    {
-                        while (dr4.Read())
-                        {
-                            KmJaRegistrado = dr4["km_ja_registrado"].ToString();
-                        }
-                    }
-
-                    if (KmJaRegistrado != "1")
-                    {
-                        string sqlCommand5 = $"INSERT INTO km_diario VALUES (nextval('seq_km_diario'), {cBoxVeiculo.SelectedValue}, {tBoxKmAtual.Text}, CURRENT_DATE, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP)";
-                        NpgsqlCommand command5 = new NpgsqlCommand(sqlCommand5, BD.ObjetoConexao);
-                        command5.ExecuteNonQuery();
-                    }
-
-                    string sqlCommand = $"INSERT INTO manutencao VALUES (nextval('seq_manutencao'), '{tBoxDataManutencao.Value}', '{tBoxObservacaoManutencao.Text.ToUpper().Trim()}', {km_validade_oleo}, {cBoxVeiculo.SelectedValue}, {cBoxTipoManutencao.SelectedValue},  {cBoxLocalManutencao.SelectedValue}, {cBoxFuncionario.SelectedValue}, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, {UltimoKmServico}, {tBoxKmAtual.Text}, {valorPeca.ToString().Replace(",", ".")}, {valorServico.ToString().Replace(",", ".")}, {valorDesconto.ToString().Replace(",", ".")}, {valorAcrescimo.ToString().Replace(",", ".")}, {valorTotalManutencao.ToString().Replace(",", ".")}, 'N', 'N')";
-                    NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
-                    command.ExecuteNonQuery();
-
-                    AproveitarDadosBasicos();
-                    CarregaTabelaPreRegistroManutencao();
-                }
-            }
-        }
-
-        private void btnConfirmar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int quantRegistros = Convert.ToInt32(dGridPreRegistroManutencao.RowCount.ToString());
-
-                if (quantRegistros > 0)
-                {
-                    string sqlCommand = $"UPDATE manutencao SET confirmada = 'S' WHERE confirmada = 'N'";
-                    NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
-                    command.ExecuteNonQuery();
-
-                    XtraMessageBox.Show("Manutenções confirmadas com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparCampos();
-                    CarregaTabelaPreRegistroManutencao();
-                }
-                else
-                {
-                    XtraMessageBox.Show("Não existem manutenções pendentes de confirmação.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-            catch
-            {
-                XtraMessageBox.Show("Erro ao confirmar manutenções! Tente novamente.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                //XtraMessageBox.Show(err.Message, "Falha no botão 'btnConfirmar_Click'", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            finally
-            {
-                
-            }
-        }
-
-        #endregion
-
         private void frmManutencaoRegistrar_FormClosed(object sender, FormClosedEventArgs e)
         {
             BD.Desconectar();
@@ -958,5 +817,146 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             tBoxAcrescimo.Text = x;
             tBoxAcrescimo.SelectAll();
         }
+
+        #endregion
+
+        #region Buttons
+
+        private void btnCancelarRegistro_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string idRegistroSelecionadoGrid = dGridPreRegistroManutencao.SelectedRows[0].Cells[0].Value.ToString();
+                
+                NpgsqlCommand update1 = new NpgsqlCommand($"DELETE FROM manutencao WHERE id_manutencao = {idRegistroSelecionadoGrid}", BD.ObjetoConexao);
+                update1.ExecuteNonQuery();
+
+                CarregaTabelaPreRegistroManutencao();
+            }
+            catch
+            {
+                XtraMessageBox.Show("Primeiro selecione qual registro deseja cancelar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void btnIncluirPreRegistro_Click(object sender, EventArgs e)
+        {
+            VerificaUltimoKmServico();
+            CalculaValorManutencao();
+
+            if (!ValidaCampos())
+            {
+                return;
+            }
+            else
+            {
+                double valorPeca = Convert.ToDouble(tBoxValorPeca.Text.Replace("R$", ""));
+                double valorServico = Convert.ToDouble(tBoxValorServico.Text.Replace("R$", ""));
+                double valorDesconto = Convert.ToDouble(tBoxDesconto.Text.Replace("R$", ""));
+                double valorAcrescimo = Convert.ToDouble(tBoxAcrescimo.Text.Replace("R$", ""));
+                double valorTotalManutencao = Convert.ToDouble(tBoxValorTotal.Text.Replace("R$", ""));
+
+                int km_validade_oleo = 0;
+
+                if (ExigeKmTrocaOleo == "S")
+                {
+                    km_validade_oleo = Convert.ToInt32(cBoxKmValidadeOleo.Text);
+                }
+
+                if (valorTotalManutencao == 0)
+                {
+                    if (XtraMessageBox.Show("Não foi informado nenhum valor da manutenção.\n Deseja incluir assim mesmo ?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                    {
+                        //VERIFICA SE O KM DO DIA JÁ FOI REGISTRADO
+                        NpgsqlCommand com4 = new NpgsqlCommand($"SELECT 1 AS km_ja_registrado FROM km_diario WHERE id_veiculo = {cBoxVeiculo.SelectedValue} AND data_km_diario = CURRENT_DATE", BD.ObjetoConexao);
+                        using (NpgsqlDataReader dr4 = com4.ExecuteReader())
+                        {
+                            while (dr4.Read())
+                            {
+                                KmJaRegistrado = dr4["km_ja_registrado"].ToString();
+                            }
+                        }
+
+                        if (KmJaRegistrado != "1")
+                        {
+                            string sqlCommand5 = $"INSERT INTO km_diario VALUES (nextval('seq_km_diario'), {cBoxVeiculo.SelectedValue}, {tBoxKmAtual.Text}, CURRENT_DATE, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP)";
+                            NpgsqlCommand command5 = new NpgsqlCommand(sqlCommand5, BD.ObjetoConexao);
+                            command5.ExecuteNonQuery();
+                        }
+
+                        string sqlCommand = $"INSERT INTO manutencao VALUES (nextval('seq_manutencao'), '{tBoxDataManutencao.Value}', '{tBoxObservacaoManutencao.Text.ToUpper().Trim()}', {km_validade_oleo}, {cBoxVeiculo.SelectedValue}, {cBoxTipoManutencao.SelectedValue},  {cBoxLocalManutencao.SelectedValue}, {cBoxFuncionario.SelectedValue}, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, {UltimoKmServico}, {tBoxKmAtual.Text}, {valorPeca.ToString().Replace(",", ".")}, {valorServico.ToString().Replace(",", ".")}, {valorDesconto.ToString().Replace(",", ".")}, {valorAcrescimo.ToString().Replace(",", ".")}, {valorTotalManutencao.ToString().Replace(",", ".")}, 'N', 'N')";
+                        NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
+                        command.ExecuteNonQuery();
+
+                        AproveitarDadosBasicos();
+                        CarregaTabelaPreRegistroManutencao();
+                    }
+                    else
+                    {
+                        tBoxValorPeca.Select();
+                    }
+                }
+                else
+                {
+                    //VERIFICA SE O KM DO DIA JÁ FOI REGISTRADO
+                    NpgsqlCommand com4 = new NpgsqlCommand($"SELECT 1 AS km_ja_registrado FROM km_diario WHERE id_veiculo = {cBoxVeiculo.SelectedValue} AND data_km_diario = CURRENT_DATE", BD.ObjetoConexao);
+                    using (NpgsqlDataReader dr4 = com4.ExecuteReader())
+                    {
+                        while (dr4.Read())
+                        {
+                            KmJaRegistrado = dr4["km_ja_registrado"].ToString();
+                        }
+                    }
+
+                    if (KmJaRegistrado != "1")
+                    {
+                        string sqlCommand5 = $"INSERT INTO km_diario VALUES (nextval('seq_km_diario'), {cBoxVeiculo.SelectedValue}, {tBoxKmAtual.Text}, CURRENT_DATE, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP)";
+                        NpgsqlCommand command5 = new NpgsqlCommand(sqlCommand5, BD.ObjetoConexao);
+                        command5.ExecuteNonQuery();
+                    }
+
+                    string sqlCommand = $"INSERT INTO manutencao VALUES (nextval('seq_manutencao'), '{tBoxDataManutencao.Value}', '{tBoxObservacaoManutencao.Text.ToUpper().Trim()}', {km_validade_oleo}, {cBoxVeiculo.SelectedValue}, {cBoxTipoManutencao.SelectedValue},  {cBoxLocalManutencao.SelectedValue}, {cBoxFuncionario.SelectedValue}, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, {UltimoKmServico}, {tBoxKmAtual.Text}, {valorPeca.ToString().Replace(",", ".")}, {valorServico.ToString().Replace(",", ".")}, {valorDesconto.ToString().Replace(",", ".")}, {valorAcrescimo.ToString().Replace(",", ".")}, {valorTotalManutencao.ToString().Replace(",", ".")}, 'N', 'N')";
+                    NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
+                    command.ExecuteNonQuery();
+
+                    AproveitarDadosBasicos();
+                    CarregaTabelaPreRegistroManutencao();
+                }
+            }
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int quantRegistros = Convert.ToInt32(dGridPreRegistroManutencao.RowCount.ToString());
+
+                if (quantRegistros > 0)
+                {
+                    string sqlCommand = $"UPDATE manutencao SET confirmada = 'S' WHERE confirmada = 'N'";
+                    NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
+                    command.ExecuteNonQuery();
+
+                    XtraMessageBox.Show("Manutenções confirmadas com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparCampos();
+                    CarregaTabelaPreRegistroManutencao();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Não existem manutenções pendentes de confirmação.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch
+            {
+                XtraMessageBox.Show("Erro ao confirmar manutenções! Tente novamente.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //XtraMessageBox.Show(err.Message, "Falha no botão 'btnConfirmar_Click'", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            finally
+            {
+                
+            }
+        }
+
+        #endregion
     }
 }

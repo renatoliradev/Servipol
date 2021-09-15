@@ -29,22 +29,22 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tBoxInfo = new System.Windows.Forms.TextBox();
             this.data_km_diario1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.km_falta_prox_revisao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,12 +111,12 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.km_falta_prox_revisao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.km_falta_prox_revisao.DataPropertyName = "km_falta_revisao";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle17.Format = "N0";
-            dataGridViewCellStyle17.NullValue = null;
-            this.km_falta_prox_revisao.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.km_falta_prox_revisao.DefaultCellStyle = dataGridViewCellStyle1;
             this.km_falta_prox_revisao.HeaderText = "Km Falta Próxima Revisão";
             this.km_falta_prox_revisao.Name = "km_falta_prox_revisao";
             this.km_falta_prox_revisao.ReadOnly = true;
@@ -126,10 +126,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dataGridViewTextBoxColumn8.DataPropertyName = "km_atual";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "N0";
-            dataGridViewCellStyle18.NullValue = null;
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn8.HeaderText = "Km Atual";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
@@ -139,10 +139,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dataGridViewTextBoxColumn6.DataPropertyName = "km_prox_revisao";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.Format = "N0";
-            dataGridViewCellStyle19.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn6.HeaderText = "Km Próxima Revisão";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -171,8 +171,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dataGridViewTextBoxColumn3.DataPropertyName = "data_ultima_revisao";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewTextBoxColumn3.FillWeight = 40.75429F;
             this.dataGridViewTextBoxColumn3.HeaderText = "Data Última Revisão";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -183,8 +183,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn2.DataPropertyName = "veiculo";
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn2.FillWeight = 66.22572F;
             this.dataGridViewTextBoxColumn2.HeaderText = "Veículo";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
@@ -194,8 +194,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.placa_veiculo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.placa_veiculo.DataPropertyName = "placa";
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placa_veiculo.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.placa_veiculo.DefaultCellStyle = dataGridViewCellStyle6;
             this.placa_veiculo.HeaderText = "Placa";
             this.placa_veiculo.Name = "placa_veiculo";
             this.placa_veiculo.ReadOnly = true;
@@ -204,9 +204,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "id_manutencao_veiculo";
-            dataGridViewCellStyle23.Format = "G";
-            dataGridViewCellStyle23.NullValue = null;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle7.Format = "G";
+            dataGridViewCellStyle7.NullValue = null;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewTextBoxColumn1.FillWeight = 0.5094286F;
             this.dataGridViewTextBoxColumn1.HeaderText = "";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 2;
@@ -219,8 +219,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGridRevisao.AllowUserToAddRows = false;
             this.dGridRevisao.AllowUserToDeleteRows = false;
             this.dGridRevisao.AllowUserToResizeRows = false;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.Lavender;
-            this.dGridRevisao.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Lavender;
+            this.dGridRevisao.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dGridRevisao.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dGridRevisao.BackgroundColor = System.Drawing.Color.White;
             this.dGridRevisao.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -272,9 +272,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // data_km_diario
             // 
             this.data_km_diario.DataPropertyName = "data_km_diario";
-            dataGridViewCellStyle25.Format = "G";
-            dataGridViewCellStyle25.NullValue = null;
-            this.data_km_diario.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle9.Format = "G";
+            dataGridViewCellStyle9.NullValue = null;
+            this.data_km_diario.DefaultCellStyle = dataGridViewCellStyle9;
             this.data_km_diario.HeaderText = "data_km_diario";
             this.data_km_diario.Name = "data_km_diario";
             this.data_km_diario.ReadOnly = true;
@@ -284,11 +284,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.km_falta_troca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.km_falta_troca.DataPropertyName = "km_falta_troca";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle26.Format = "N0";
-            this.km_falta_troca.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle10.Format = "N0";
+            this.km_falta_troca.DefaultCellStyle = dataGridViewCellStyle10;
             this.km_falta_troca.HeaderText = "Km Falta Próxima Troca de Óleo";
             this.km_falta_troca.Name = "km_falta_troca";
             this.km_falta_troca.ReadOnly = true;
@@ -298,10 +298,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.km_atual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.km_atual.DataPropertyName = "km_atual";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle27.Format = "N0";
-            dataGridViewCellStyle27.NullValue = null;
-            this.km_atual.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N0";
+            dataGridViewCellStyle11.NullValue = null;
+            this.km_atual.DefaultCellStyle = dataGridViewCellStyle11;
             this.km_atual.HeaderText = "Km Atual";
             this.km_atual.Name = "km_atual";
             this.km_atual.ReadOnly = true;
@@ -311,10 +311,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.km_prox_troca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.km_prox_troca.DataPropertyName = "km_prox_troca";
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle28.Format = "N0";
-            dataGridViewCellStyle28.NullValue = null;
-            this.km_prox_troca.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N0";
+            dataGridViewCellStyle12.NullValue = null;
+            this.km_prox_troca.DefaultCellStyle = dataGridViewCellStyle12;
             this.km_prox_troca.FillWeight = 91.69715F;
             this.km_prox_troca.HeaderText = "Km Próxima Troca de Óleo";
             this.km_prox_troca.Name = "km_prox_troca";
@@ -344,8 +344,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.data_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.data_manutencao.DataPropertyName = "data_manutencao";
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.data_manutencao.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.data_manutencao.DefaultCellStyle = dataGridViewCellStyle13;
             this.data_manutencao.FillWeight = 40.75429F;
             this.data_manutencao.HeaderText = "Data Última Troca de Óleo";
             this.data_manutencao.Name = "data_manutencao";
@@ -356,8 +356,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.veiculo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.veiculo.DataPropertyName = "veiculo";
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.veiculo.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.veiculo.DefaultCellStyle = dataGridViewCellStyle14;
             this.veiculo.FillWeight = 66.22572F;
             this.veiculo.HeaderText = "Veículo";
             this.veiculo.Name = "veiculo";
@@ -367,8 +367,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.placa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.placa.DataPropertyName = "placa";
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placa.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.placa.DefaultCellStyle = dataGridViewCellStyle15;
             this.placa.HeaderText = "Placa";
             this.placa.Name = "placa";
             this.placa.ReadOnly = true;
@@ -399,8 +399,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGrid.AllowUserToAddRows = false;
             this.dGrid.AllowUserToDeleteRows = false;
             this.dGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle32.BackColor = System.Drawing.Color.Lavender;
-            this.dGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.Lavender;
+            this.dGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -430,6 +430,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGrid.Size = new System.Drawing.Size(1196, 278);
             this.dGrid.TabIndex = 226;
+            this.dGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGrid_CellDoubleClick);
+            this.dGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dGrid_CellFormatting);
             // 
             // frmProxTrocaOleoRevisao
             // 
@@ -441,12 +443,14 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.Controls.Add(this.groupControl1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmProxTrocaOleoRevisao";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmProxTrocaOleoRevisao_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dGridRevisao)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
