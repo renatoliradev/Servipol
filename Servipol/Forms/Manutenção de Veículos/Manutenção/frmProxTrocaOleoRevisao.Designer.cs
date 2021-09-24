@@ -451,6 +451,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmProxTrocaOleoRevisao_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmProxTrocaOleoRevisao_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dGridRevisao)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

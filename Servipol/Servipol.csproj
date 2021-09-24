@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Entidades\Classes\ConexaoBD.cs" />
     <Compile Include="Entidades\Classes\Criptografia.cs" />
+    <Compile Include="Entidades\Classes\MemoryManagement.cs" />
     <Compile Include="Entidades\Classes\SessaoSistema.cs" />
     <Compile Include="Entidades\Classes\Util.cs" />
     <Compile Include="Entidades\Classes\VersaoSistema.cs" />
@@ -324,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Manutenção de Veículos\Cadastros\frmVeiculosConsultar.resx">
       <DependentUpon>frmVeiculosConsultar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoConsultar.resx">
+      <DependentUpon>frmManutencaoConsultar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoDetalhadaVeiculo.resx">
       <DependentUpon>frmManutencaoDetalhadaVeiculo.cs</DependentUpon>

@@ -1,15 +1,10 @@
 ﻿using DevExpress.XtraEditors;
+using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Npgsql;
 
 namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 {
@@ -33,12 +28,12 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mv.id_veiculo, mv.id_manutencao_tipo, mv.data_manutencao, mv.km_veiculo, CAST(CASE WHEN mv.km_validade_oleo > 0 THEN mv.km_validade_oleo ELSE NULL END AS VARCHAR) AS km_validade_oleo, CAST(CASE WHEN mv.km_validade_oleo > 0 THEN mv.km_veiculo + mv.km_validade_oleo ELSE NULL END AS VARCHAR) AS prox_troca_oleo, CAST(tv.descricao || ' 0' || v.codigo AS VARCHAR) AS veiculo, v.descricao, v.placa, tm.descricao AS tipo_manutencao, lm.descricao AS local_manutencao, mv.observacao, CAST(CASE WHEN f.id_funcionario_cargo = 1 THEN f.codigo_ase || ' - ' || f.qra_ase ELSE f.nome END AS VARCHAR) AS funcionario, uc.nome AS usuario_cadastro, mv.data_cadastro, ue.nome AS usuario_exclusao, mv.data_exclusao, mv.motivo_exclusao, mv.valor_peca, mv.valor_servico, mv.valor_desconto, mv.valor_acrescimo, mv.valor_total, mv.registro_excluido FROM manutencao AS mv INNER JOIN veiculo AS v ON(mv.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS tm ON(mv.id_manutencao_tipo = tm.id_manutencao_tipo) INNER JOIN manutencao_local AS lm ON(mv.id_manutencao_local = lm.id_manutencao_local) INNER JOIN funcionario AS f ON(mv.id_funcionario = f.id_funcionario) LEFT OUTER JOIN usuario AS uc ON(mv.id_usuario_cadastro = uc.id_usuario) LEFT OUTER JOIN usuario AS ue ON(mv.id_usuario_exclusao = ue.id_usuario) INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo)  WHERE mv.id_manutencao = {IdManutencao}", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mv.id_veiculo, mv.id_manutencao_tipo, TO_CHAR(mv.data_manutencao, 'DD/MM/YYYY') AS data_manutencao, mv.km_veiculo, CAST(CASE WHEN mv.km_validade_oleo > 0 THEN mv.km_validade_oleo ELSE NULL END AS VARCHAR) AS km_validade_oleo, CAST(CASE WHEN mv.km_validade_oleo > 0 THEN mv.km_veiculo + mv.km_validade_oleo ELSE NULL END AS VARCHAR) AS prox_troca_oleo, CAST(tv.descricao || ' 0' || v.codigo AS VARCHAR) AS veiculo, v.descricao, v.placa, tm.descricao AS tipo_manutencao, lm.descricao AS local_manutencao, mv.observacao, CAST(CASE WHEN f.id_funcionario_cargo = 1 THEN f.codigo_ase || ' - ' || f.qra_ase ELSE f.nome END AS VARCHAR) AS funcionario, uc.nome AS usuario_cadastro, mv.data_cadastro, ue.nome AS usuario_exclusao, mv.data_exclusao, mv.motivo_exclusao, mv.valor_peca, mv.valor_servico, mv.valor_desconto, mv.valor_acrescimo, mv.valor_total, mv.registro_excluido FROM manutencao AS mv INNER JOIN veiculo AS v ON(mv.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS tm ON(mv.id_manutencao_tipo = tm.id_manutencao_tipo) INNER JOIN manutencao_local AS lm ON(mv.id_manutencao_local = lm.id_manutencao_local) INNER JOIN funcionario AS f ON(mv.id_funcionario = f.id_funcionario) LEFT OUTER JOIN usuario AS uc ON(mv.id_usuario_cadastro = uc.id_usuario) LEFT OUTER JOIN usuario AS ue ON(mv.id_usuario_exclusao = ue.id_usuario) INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo)  WHERE mv.id_manutencao = {IdManutencao}", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
 
-                //auxIdVeiculo.DataBindings.Clear();
-                //auxIdTipoManutencao.DataBindings.Clear();
+                auxIdVeiculo.DataBindings.Clear();
+                auxIdTipoManutencao.DataBindings.Clear();
                 tBoxDataManutencao.DataBindings.Clear();
                 tBoxFuncionario.DataBindings.Clear();
                 tBoxVeiculo.DataBindings.Clear();
@@ -60,10 +55,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 tBoxDesconto.DataBindings.Clear();
                 tBoxAcrescimo.DataBindings.Clear();
                 tBoxValorTotal.DataBindings.Clear();
-                //auxSituacao.DataBindings.Clear();
+                auxSituacao.DataBindings.Clear();
 
-                //auxIdVeiculo.DataBindings.Add(new Binding("Text", dp, "id_veiculo"));
-                //auxIdTipoManutencao.DataBindings.Add(new Binding("Text", dp, "id_tipo_manutencao"));
+                auxIdVeiculo.DataBindings.Add(new Binding("Text", dp, "id_veiculo"));
+                auxIdTipoManutencao.DataBindings.Add(new Binding("Text", dp, "id_manutencao_tipo"));
                 tBoxDataManutencao.DataBindings.Add(new Binding("Text", dp, "data_manutencao"));
                 tBoxFuncionario.DataBindings.Add(new Binding("Text", dp, "funcionario"));
                 tBoxVeiculo.DataBindings.Add(new Binding("Text", dp, "veiculo"));
@@ -85,27 +80,27 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 tBoxDesconto.DataBindings.Add(new Binding("Text", dp, "valor_desconto"));
                 tBoxAcrescimo.DataBindings.Add(new Binding("Text", dp, "valor_acrescimo"));
                 tBoxValorTotal.DataBindings.Add(new Binding("Text", dp, "valor_total"));
-                //auxSituacao.DataBindings.Add(new Binding("Text", dp, "registro_excluido"));
+                auxSituacao.DataBindings.Add(new Binding("Text", dp, "registro_excluido"));
 
-                //NpgsqlDataAdapter retornoBD2 = new NpgsqlDataAdapter("SELECT km_anterior, km_veiculo, CAST(km_veiculo - km_anterior AS VARCHAR) AS km_rodados FROM manutencao_veiculo where id = " + auxIdManutencao + "", bd.ObjetoConexao);
-                //DataTable dp2 = new DataTable();
-                //retornoBD2.Fill(dp2);
+                NpgsqlDataAdapter retornoBD2 = new NpgsqlDataAdapter($"SELECT km_anterior, km_veiculo, CAST(km_veiculo - km_anterior AS VARCHAR) AS km_rodados FROM manutencao where id_manutencao = {IdManutencao}", BD.ObjetoConexao);
+                DataTable dp2 = new DataTable();
+                retornoBD2.Fill(dp2);
 
-                //tBoxUltimoKmServico.DataBindings.Clear();
-                //tBoxKmManutencao.DataBindings.Clear();
-                //tBoxKmRodadoDesdeUltimaManutencao.DataBindings.Clear();
-                //tBoxUltimoKmServico.DataBindings.Add(new Binding("Text", dp2, "km_anterior"));
-                //tBoxKmManutencao.DataBindings.Add(new Binding("Text", dp2, "km_veiculo"));
-                //tBoxKmRodadoDesdeUltimaManutencao.DataBindings.Add(new Binding("Text", dp2, "km_rodados"));
+                tBoxUltimoKmServico.DataBindings.Clear();
+                tBoxKmManutencao.DataBindings.Clear();
+                tBoxKmRodadoDesdeUltimaManutencao.DataBindings.Clear();
+                tBoxUltimoKmServico.DataBindings.Add(new Binding("Text", dp2, "km_anterior"));
+                tBoxKmManutencao.DataBindings.Add(new Binding("Text", dp2, "km_veiculo"));
+                tBoxKmRodadoDesdeUltimaManutencao.DataBindings.Add(new Binding("Text", dp2, "km_rodados"));
 
 
-                //if (auxSituacao.Text == "S")
-                //{
-                //    tBoxDescricao.DataBindings.Clear();
-                //    tBoxDescricao.Text = "*** REGISTRO EXCLUÍDO ***";
-                //    tBoxDescricao.TextAlign = HorizontalAlignment.Center;
-                //    tBoxDescricao.ForeColor = Color.Red;
-                //}
+                if (auxSituacao.Text == "S")
+                {
+                    tBoxDescricao.DataBindings.Clear();
+                    tBoxDescricao.Text = "*** REGISTRO EXCLUÍDO ***";
+                    tBoxDescricao.TextAlign = HorizontalAlignment.Center;
+                    tBoxDescricao.ForeColor = Color.Red;
+                }
 
                 if (string.IsNullOrEmpty(tBoxValidadeOleo.Text))
                 {
@@ -129,6 +124,16 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 BD.Desconectar();
 
             }
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnFechar2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

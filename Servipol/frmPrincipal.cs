@@ -1,33 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Servipol.Forms.ATA;
-using Servipol.Forms.Cadastros;
+﻿using DevExpress.XtraEditors;
+using Npgsql;
+using Servipol.Entidades.Classes;
 using Servipol.Forms.Cadastros.Clientes;
-using Servipol.Forms.Cadastros.Funcionários;
 using Servipol.Forms.Cadastros.Equipamentos;
-using Servipol.Forms.Configuração;
-using Servipol.Forms.Manutenção_de_Veículos;
+using Servipol.Forms.Cadastros.Funcionários;
+using Servipol.Forms.Configuração.Controle_de_Acesso;
 using Servipol.Forms.Manutenção_de_Veículos.Cadastros;
 using Servipol.Forms.Manutenção_de_Veículos.Manutenção;
-using Servipol.Forms.Configuração.Controle_de_Acesso;
-using Servipol.Entidades.Classes;
-using Npgsql;
-using DevExpress.XtraEditors;
+using System;
+using System.Windows.Forms;
 
 namespace Servipol
 {
     public partial class frmPrincipal : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         #region Instâncias
-        ConexaoBD BD = new ConexaoBD();
+        readonly ConexaoBD BD = new ConexaoBD();
         VerificaVersaoSistema VerificaVersao = new VerificaVersaoSistema();
-        Util util = new Util();
+        MemoryManagement MemoryManagement = new MemoryManagement();
         #endregion
 
         private static string _usuarioId, _usuarioNome;
@@ -45,10 +35,9 @@ namespace Servipol
 
             EfetuaLogout();
 
-            frmLogin login = new frmLogin();
-            login.Owner = this;
-            login.ShowDialog();
-
+            frmLogin Login = new frmLogin();
+            Login.Owner = this;
+            Login.ShowDialog();
         }
 
         #region Methods
@@ -106,7 +95,7 @@ namespace Servipol
             {
                 childForm.Close();
             }
-            util.LimpaMemoria();
+            MemoryManagement.FlushMemory();
         }
 
         private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -191,6 +180,8 @@ namespace Servipol
 
         private void btnRegistrarKmDiario_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            FechaForms();
+
             frmRegistrarKmDiario frmRegistrarKmDiario = new frmRegistrarKmDiario();
             frmRegistrarKmDiario.Owner = this;
             frmRegistrarKmDiario.ShowDialog();

@@ -71,6 +71,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.tBoxObsManutencao = new System.Windows.Forms.TextBox();
             this.log_registro = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnFechar2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.tBoxMotivoExclusao = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -82,7 +83,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.tBoxDataCadastro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tBoxUsuarioCadastro = new System.Windows.Forms.TextBox();
-            this.btnFechar2 = new System.Windows.Forms.Button();
+            this.auxSituacao = new System.Windows.Forms.Label();
+            this.auxIdTipoManutencao = new System.Windows.Forms.Label();
+            this.auxIdVeiculo = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Detalhes.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -149,6 +152,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.btnFechar.TabIndex = 202;
             this.btnFechar.Text = "[Esc] - Fechar";
             this.btnFechar.UseVisualStyleBackColor = false;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // groupBox2
             // 
@@ -614,6 +618,19 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Dados da Exclusão do Registro";
             // 
+            // btnFechar2
+            // 
+            this.btnFechar2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFechar2.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFechar2.Location = new System.Drawing.Point(443, 293);
+            this.btnFechar2.Name = "btnFechar2";
+            this.btnFechar2.Size = new System.Drawing.Size(103, 73);
+            this.btnFechar2.TabIndex = 204;
+            this.btnFechar2.Text = "[Esc] - Fechar";
+            this.btnFechar2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnFechar2.UseVisualStyleBackColor = false;
+            this.btnFechar2.Click += new System.EventHandler(this.btnFechar2_Click);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -734,23 +751,41 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.tBoxUsuarioCadastro.Size = new System.Drawing.Size(471, 20);
             this.tBoxUsuarioCadastro.TabIndex = 12;
             // 
-            // btnFechar2
+            // auxSituacao
             // 
-            this.btnFechar2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnFechar2.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFechar2.Location = new System.Drawing.Point(443, 293);
-            this.btnFechar2.Name = "btnFechar2";
-            this.btnFechar2.Size = new System.Drawing.Size(103, 73);
-            this.btnFechar2.TabIndex = 204;
-            this.btnFechar2.Text = "[Esc] - Fechar";
-            this.btnFechar2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnFechar2.UseVisualStyleBackColor = false;
+            this.auxSituacao.AutoSize = true;
+            this.auxSituacao.Location = new System.Drawing.Point(775, 175);
+            this.auxSituacao.Name = "auxSituacao";
+            this.auxSituacao.Size = new System.Drawing.Size(69, 13);
+            this.auxSituacao.TabIndex = 203;
+            this.auxSituacao.Text = "auxSituacao";
+            // 
+            // auxIdTipoManutencao
+            // 
+            this.auxIdTipoManutencao.AutoSize = true;
+            this.auxIdTipoManutencao.Location = new System.Drawing.Point(775, 255);
+            this.auxIdTipoManutencao.Name = "auxIdTipoManutencao";
+            this.auxIdTipoManutencao.Size = new System.Drawing.Size(123, 13);
+            this.auxIdTipoManutencao.TabIndex = 202;
+            this.auxIdTipoManutencao.Text = "auxIdTipoManutencao";
+            // 
+            // auxIdVeiculo
+            // 
+            this.auxIdVeiculo.AutoSize = true;
+            this.auxIdVeiculo.Location = new System.Drawing.Point(775, 222);
+            this.auxIdVeiculo.Name = "auxIdVeiculo";
+            this.auxIdVeiculo.Size = new System.Drawing.Size(72, 13);
+            this.auxIdVeiculo.TabIndex = 201;
+            this.auxIdVeiculo.Text = "auxIdVeiculo";
             // 
             // frmManutencaoDetalhadaVeiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 517);
+            this.ClientSize = new System.Drawing.Size(574, 517);
+            this.Controls.Add(this.auxSituacao);
+            this.Controls.Add(this.auxIdTipoManutencao);
+            this.Controls.Add(this.auxIdVeiculo);
             this.Controls.Add(this.tabControl1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -798,6 +833,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.groupBox21.ResumeLayout(false);
             this.groupBox21.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -857,5 +893,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         private System.Windows.Forms.TextBox tBoxDataCadastro;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tBoxUsuarioCadastro;
+        private System.Windows.Forms.Label auxSituacao;
+        private System.Windows.Forms.Label auxIdTipoManutencao;
+        private System.Windows.Forms.Label auxIdVeiculo;
     }
 }
