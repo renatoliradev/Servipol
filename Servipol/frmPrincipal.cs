@@ -159,6 +159,8 @@ namespace Servipol
 
         private void btnVeiculos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            MemoryManagement.FlushMemory();
+
             frmVeiculosConsultar frmVeiculos = new frmVeiculosConsultar();
             frmVeiculos.MdiParent = this;
             frmVeiculos.Show();
@@ -166,6 +168,8 @@ namespace Servipol
 
         private void btnTipoManutencao_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            MemoryManagement.FlushMemory();
+
             frmTipoManutencaoConsultar frmTipoManutencao = new frmTipoManutencaoConsultar();
             frmTipoManutencao.MdiParent = this;
             frmTipoManutencao.Show();
@@ -173,6 +177,8 @@ namespace Servipol
 
         private void btnLocalManutencao_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            MemoryManagement.FlushMemory();
+
             frmLocalManutencaoConsultar frmLocalManutencao = new frmLocalManutencaoConsultar();
             frmLocalManutencao.MdiParent = this;
             frmLocalManutencao.Show();
@@ -189,6 +195,8 @@ namespace Servipol
 
         private void btnRegistrarManutencao_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            FechaForms();
+
             frmManutencaoRegistrar frmManutencaoRegistrar = new frmManutencaoRegistrar();
             frmManutencaoRegistrar.Owner = this;
             frmManutencaoRegistrar.ShowDialog();
@@ -201,12 +209,18 @@ namespace Servipol
 
         private void btnPainelBI_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            MemoryManagement.FlushMemory();
 
+            XtraMessageBox.Show("Em Desenvolvimento!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btnManutencoesRealizadas_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            MemoryManagement.FlushMemory();
 
+            frmManutencaoConsultar frmManutencaoConsultar = new frmManutencaoConsultar();
+            frmManutencaoConsultar.MdiParent = this;
+            frmManutencaoConsultar.Show();
         }
 
         private void btnAbastecimentosRealizados_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -214,9 +228,33 @@ namespace Servipol
 
         }
 
+        private void btnRegistrarAtaAgente_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraMessageBox.Show("Em Desenvolvimento!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void btnVerAtasFechadasAgente_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraMessageBox.Show("Em Desenvolvimento!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void btnRegistrarAtaOperador_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraMessageBox.Show("Em Desenvolvimento!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void btnVerAtasFechadasOperador_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraMessageBox.Show("Em Desenvolvimento!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
         private void btnProxTrocaOleoRevisao_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            MemoryManagement.FlushMemory();
 
+            frmProxTrocaOleoRevisao frmProxTrocaOleoRevisao = new frmProxTrocaOleoRevisao();
+            frmProxTrocaOleoRevisao.Owner = this;
+            frmProxTrocaOleoRevisao.ShowDialog();
         }
         #endregion
 

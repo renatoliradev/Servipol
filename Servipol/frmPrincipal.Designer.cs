@@ -524,6 +524,7 @@ namespace Servipol
             this.btnRegistrarAtaAgente.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRegistrarAtaAgente.ImageOptions.Image")));
             this.btnRegistrarAtaAgente.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRegistrarAtaAgente.ImageOptions.LargeImage")));
             this.btnRegistrarAtaAgente.Name = "btnRegistrarAtaAgente";
+            this.btnRegistrarAtaAgente.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRegistrarAtaAgente_ItemClick);
             // 
             // btnVerAtasFechadasAgente
             // 
@@ -532,6 +533,7 @@ namespace Servipol
             this.btnVerAtasFechadasAgente.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnVerAtasFechadasAgente.ImageOptions.Image")));
             this.btnVerAtasFechadasAgente.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnVerAtasFechadasAgente.ImageOptions.LargeImage")));
             this.btnVerAtasFechadasAgente.Name = "btnVerAtasFechadasAgente";
+            this.btnVerAtasFechadasAgente.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVerAtasFechadasAgente_ItemClick);
             // 
             // btnRegistrarAtaOperador
             // 
@@ -540,6 +542,7 @@ namespace Servipol
             this.btnRegistrarAtaOperador.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRegistrarAtaOperador.ImageOptions.Image")));
             this.btnRegistrarAtaOperador.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRegistrarAtaOperador.ImageOptions.LargeImage")));
             this.btnRegistrarAtaOperador.Name = "btnRegistrarAtaOperador";
+            this.btnRegistrarAtaOperador.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRegistrarAtaOperador_ItemClick);
             // 
             // btnVerAtasFechadasOperador
             // 
@@ -548,6 +551,7 @@ namespace Servipol
             this.btnVerAtasFechadasOperador.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnVerAtasFechadasOperador.ImageOptions.Image")));
             this.btnVerAtasFechadasOperador.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnVerAtasFechadasOperador.ImageOptions.LargeImage")));
             this.btnVerAtasFechadasOperador.Name = "btnVerAtasFechadasOperador";
+            this.btnVerAtasFechadasOperador.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVerAtasFechadasOperador_ItemClick);
             // 
             // btnVeiculos
             // 

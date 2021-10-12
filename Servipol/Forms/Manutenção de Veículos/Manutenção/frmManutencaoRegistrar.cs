@@ -12,7 +12,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
     {
         #region Instâncias e Propriedades
         readonly ConexaoBD BD = new ConexaoBD();
-
+        MemoryManagement MemoryManagement = new MemoryManagement();
         public string TipoVeiculo { get; set; }
         public int UltimoKmServico { get; set; }
         public string UltimaDataServico { get; set; }
@@ -434,7 +434,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 else
                 {
                     BD.Desconectar();
-                    //memoryManagement.FlushMemory();
+                    MemoryManagement.FlushMemory();
                     LimparCampos();
                 }
             }
@@ -865,7 +865,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
                 if (valorTotalManutencao == 0)
                 {
-                    if (XtraMessageBox.Show("Não foi informado nenhum valor da manutenção.\n Deseja incluir assim mesmo ?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                    if (XtraMessageBox.Show("Não foi informado nenhum valor da manutenção.\n\n Deseja incluir assim mesmo ?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                     {
                         //VERIFICA SE O KM DO DIA JÁ FOI REGISTRADO
                         NpgsqlCommand com4 = new NpgsqlCommand($"SELECT 1 AS km_ja_registrado FROM km_diario WHERE id_veiculo = {cBoxVeiculo.SelectedValue} AND data_km_diario = CURRENT_DATE", BD.ObjetoConexao);

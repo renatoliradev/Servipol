@@ -29,22 +29,29 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManutencaoConsultar));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gBoxUsuario = new System.Windows.Forms.GroupBox();
             this.cBoxUsuario = new System.Windows.Forms.ComboBox();
+            this.gBoxLocalManutencao = new System.Windows.Forms.GroupBox();
+            this.cBoxLocalManutencao = new System.Windows.Forms.ComboBox();
             this.gBoxDataManutencao = new System.Windows.Forms.GroupBox();
+            this.tBoxDataFinal = new System.Windows.Forms.DateTimePicker();
+            this.tBoxDataInicial = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cBoxSituacao = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
+            this.btnVisualizar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnExcluir = new DevExpress.XtraEditors.SimpleButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tBoxQtdRegistros = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -69,20 +76,14 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.cBoxVeiculo = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.gBoxVeiculo = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.gBoxLocalManutencao = new System.Windows.Forms.GroupBox();
-            this.cBoxLocalManutencao = new System.Windows.Forms.ComboBox();
-            this.gBoxFuncionario = new System.Windows.Forms.GroupBox();
-            this.cBoxFuncionario = new System.Windows.Forms.ComboBox();
             this.gBoxTipoManutencao = new System.Windows.Forms.GroupBox();
             this.cBoxTipoManutencao = new System.Windows.Forms.ComboBox();
-            this.tBoxDataInicial = new System.Windows.Forms.DateTimePicker();
-            this.tBoxDataFinal = new System.Windows.Forms.DateTimePicker();
-            this.btnVisualizar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnExcluir = new DevExpress.XtraEditors.SimpleButton();
-            this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
+            this.gBoxFuncionario = new System.Windows.Forms.GroupBox();
+            this.cBoxFuncionario = new System.Windows.Forms.ComboBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.btnBuscar = new DevExpress.XtraEditors.SimpleButton();
             this.gBoxUsuario.SuspendLayout();
+            this.gBoxLocalManutencao.SuspendLayout();
             this.gBoxDataManutencao.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -91,10 +92,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             ((System.ComponentModel.ISupportInitialize)(this.dGridManutencoes)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.gBoxVeiculo.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.gBoxLocalManutencao.SuspendLayout();
-            this.gBoxFuncionario.SuspendLayout();
             this.gBoxTipoManutencao.SuspendLayout();
+            this.gBoxFuncionario.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // gBoxUsuario
@@ -123,6 +123,31 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.cBoxUsuario.Size = new System.Drawing.Size(651, 22);
             this.cBoxUsuario.TabIndex = 185;
             // 
+            // gBoxLocalManutencao
+            // 
+            this.gBoxLocalManutencao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.gBoxLocalManutencao.Controls.Add(this.cBoxLocalManutencao);
+            this.gBoxLocalManutencao.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gBoxLocalManutencao.Location = new System.Drawing.Point(0, 0);
+            this.gBoxLocalManutencao.Name = "gBoxLocalManutencao";
+            this.gBoxLocalManutencao.Size = new System.Drawing.Size(663, 46);
+            this.gBoxLocalManutencao.TabIndex = 193;
+            this.gBoxLocalManutencao.TabStop = false;
+            this.gBoxLocalManutencao.Text = "Local da Manutenção";
+            // 
+            // cBoxLocalManutencao
+            // 
+            this.cBoxLocalManutencao.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cBoxLocalManutencao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxLocalManutencao.Font = new System.Drawing.Font("Calibri", 9F);
+            this.cBoxLocalManutencao.FormattingEnabled = true;
+            this.cBoxLocalManutencao.Location = new System.Drawing.Point(6, 16);
+            this.cBoxLocalManutencao.Name = "cBoxLocalManutencao";
+            this.cBoxLocalManutencao.Size = new System.Drawing.Size(651, 22);
+            this.cBoxLocalManutencao.TabIndex = 185;
+            // 
             // gBoxDataManutencao
             // 
             this.gBoxDataManutencao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -137,6 +162,28 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.gBoxDataManutencao.TabIndex = 195;
             this.gBoxDataManutencao.TabStop = false;
             this.gBoxDataManutencao.Text = "Período";
+            // 
+            // tBoxDataFinal
+            // 
+            this.tBoxDataFinal.CalendarFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxDataFinal.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxDataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.tBoxDataFinal.Location = new System.Drawing.Point(232, 16);
+            this.tBoxDataFinal.Name = "tBoxDataFinal";
+            this.tBoxDataFinal.Size = new System.Drawing.Size(137, 22);
+            this.tBoxDataFinal.TabIndex = 191;
+            this.tBoxDataFinal.Value = new System.DateTime(2021, 7, 24, 0, 0, 0, 0);
+            // 
+            // tBoxDataInicial
+            // 
+            this.tBoxDataInicial.CalendarFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxDataInicial.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxDataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.tBoxDataInicial.Location = new System.Drawing.Point(38, 16);
+            this.tBoxDataInicial.Name = "tBoxDataInicial";
+            this.tBoxDataInicial.Size = new System.Drawing.Size(137, 22);
+            this.tBoxDataInicial.TabIndex = 190;
+            this.tBoxDataInicial.Value = new System.DateTime(2021, 7, 24, 0, 0, 0, 0);
             // 
             // label1
             // 
@@ -196,6 +243,48 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1166, 92);
             this.panel1.TabIndex = 202;
+            // 
+            // btnImprimirConsulta
+            // 
+            this.btnImprimirConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnImprimirConsulta.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirConsulta.Appearance.Options.UseFont = true;
+            this.btnImprimirConsulta.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnImprimirConsulta.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnImprimirConsulta.ImageOptions.SvgImage")));
+            this.btnImprimirConsulta.Location = new System.Drawing.Point(3, 40);
+            this.btnImprimirConsulta.Name = "btnImprimirConsulta";
+            this.btnImprimirConsulta.Size = new System.Drawing.Size(233, 44);
+            this.btnImprimirConsulta.TabIndex = 208;
+            this.btnImprimirConsulta.TabStop = false;
+            this.btnImprimirConsulta.Text = "[CTRL + P] - Imprimir consulta";
+            // 
+            // btnVisualizar
+            // 
+            this.btnVisualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVisualizar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVisualizar.Appearance.Options.UseFont = true;
+            this.btnVisualizar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnVisualizar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnVisualizar.ImageOptions.SvgImage")));
+            this.btnVisualizar.Location = new System.Drawing.Point(868, 40);
+            this.btnVisualizar.Name = "btnVisualizar";
+            this.btnVisualizar.Size = new System.Drawing.Size(144, 44);
+            this.btnVisualizar.TabIndex = 207;
+            this.btnVisualizar.TabStop = false;
+            this.btnVisualizar.Text = "[F8] - Visualizar";
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluir.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.Appearance.Options.UseFont = true;
+            this.btnExcluir.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnExcluir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExcluir.ImageOptions.SvgImage")));
+            this.btnExcluir.Location = new System.Drawing.Point(1018, 40);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(144, 44);
+            this.btnExcluir.TabIndex = 206;
+            this.btnExcluir.TabStop = false;
+            this.btnExcluir.Text = "[Del] - Excluir";
             // 
             // panel4
             // 
@@ -303,8 +392,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGridManutencoes.AllowUserToAddRows = false;
             this.dGridManutencoes.AllowUserToDeleteRows = false;
             this.dGridManutencoes.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
-            this.dGridManutencoes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Lavender;
+            this.dGridManutencoes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dGridManutencoes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -353,8 +442,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.data_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.data_manutencao.DataPropertyName = "data_manutencao";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.data_manutencao.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.data_manutencao.DefaultCellStyle = dataGridViewCellStyle9;
             this.data_manutencao.FillWeight = 40.75429F;
             this.data_manutencao.HeaderText = "Data da Manutenção";
             this.data_manutencao.Name = "data_manutencao";
@@ -392,8 +481,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.km_veiculo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.km_veiculo.DataPropertyName = "km_veiculo";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.km_veiculo.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.km_veiculo.DefaultCellStyle = dataGridViewCellStyle10;
             this.km_veiculo.FillWeight = 50F;
             this.km_veiculo.HeaderText = "Km da Manutenção";
             this.km_veiculo.Name = "km_veiculo";
@@ -404,8 +493,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.km_atual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.km_atual.DataPropertyName = "km_atual";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.km_atual.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.km_atual.DefaultCellStyle = dataGridViewCellStyle11;
             this.km_atual.HeaderText = "Km Atual";
             this.km_atual.Name = "km_atual";
             this.km_atual.ReadOnly = true;
@@ -415,8 +504,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.km_rodado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.km_rodado.DataPropertyName = "km_rodado";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.km_rodado.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.km_rodado.DefaultCellStyle = dataGridViewCellStyle12;
             this.km_rodado.HeaderText = "Km Rodado";
             this.km_rodado.Name = "km_rodado";
             this.km_rodado.ReadOnly = true;
@@ -455,8 +544,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.situacao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.situacao.DataPropertyName = "situacao";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.situacao.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.situacao.DefaultCellStyle = dataGridViewCellStyle13;
             this.situacao.HeaderText = "Situação";
             this.situacao.Name = "situacao";
             this.situacao.ReadOnly = true;
@@ -466,10 +555,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.valor_total_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.valor_total_manutencao.DataPropertyName = "valor_total_manutencao";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "C2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.valor_total_manutencao.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "C2";
+            dataGridViewCellStyle14.NullValue = null;
+            this.valor_total_manutencao.DefaultCellStyle = dataGridViewCellStyle14;
             this.valor_total_manutencao.HeaderText = "Valor da Manutenção";
             this.valor_total_manutencao.Name = "valor_total_manutencao";
             this.valor_total_manutencao.ReadOnly = true;
@@ -513,70 +602,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.gBoxVeiculo.TabStop = false;
             this.gBoxVeiculo.Text = "Veículo";
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnBuscar);
-            this.panel3.Controls.Add(this.groupBox3);
-            this.panel3.Controls.Add(this.groupBox2);
-            this.panel3.Controls.Add(this.gBoxDataManutencao);
-            this.panel3.Controls.Add(this.gBoxVeiculo);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1166, 119);
-            this.panel3.TabIndex = 201;
-            // 
-            // gBoxLocalManutencao
-            // 
-            this.gBoxLocalManutencao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.gBoxLocalManutencao.Controls.Add(this.cBoxLocalManutencao);
-            this.gBoxLocalManutencao.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gBoxLocalManutencao.Location = new System.Drawing.Point(0, 0);
-            this.gBoxLocalManutencao.Name = "gBoxLocalManutencao";
-            this.gBoxLocalManutencao.Size = new System.Drawing.Size(663, 46);
-            this.gBoxLocalManutencao.TabIndex = 193;
-            this.gBoxLocalManutencao.TabStop = false;
-            this.gBoxLocalManutencao.Text = "Local da Manutenção";
-            // 
-            // cBoxLocalManutencao
-            // 
-            this.cBoxLocalManutencao.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cBoxLocalManutencao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxLocalManutencao.Font = new System.Drawing.Font("Calibri", 9F);
-            this.cBoxLocalManutencao.FormattingEnabled = true;
-            this.cBoxLocalManutencao.Location = new System.Drawing.Point(6, 16);
-            this.cBoxLocalManutencao.Name = "cBoxLocalManutencao";
-            this.cBoxLocalManutencao.Size = new System.Drawing.Size(651, 22);
-            this.cBoxLocalManutencao.TabIndex = 185;
-            // 
-            // gBoxFuncionario
-            // 
-            this.gBoxFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.gBoxFuncionario.Controls.Add(this.cBoxFuncionario);
-            this.gBoxFuncionario.Controls.Add(this.gBoxUsuario);
-            this.gBoxFuncionario.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gBoxFuncionario.Location = new System.Drawing.Point(0, 0);
-            this.gBoxFuncionario.Name = "gBoxFuncionario";
-            this.gBoxFuncionario.Size = new System.Drawing.Size(663, 46);
-            this.gBoxFuncionario.TabIndex = 193;
-            this.gBoxFuncionario.TabStop = false;
-            this.gBoxFuncionario.Text = "Funcionário que fez o serviço";
-            // 
-            // cBoxFuncionario
-            // 
-            this.cBoxFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cBoxFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxFuncionario.Font = new System.Drawing.Font("Calibri", 9F);
-            this.cBoxFuncionario.FormattingEnabled = true;
-            this.cBoxFuncionario.Location = new System.Drawing.Point(6, 16);
-            this.cBoxFuncionario.Name = "cBoxFuncionario";
-            this.cBoxFuncionario.Size = new System.Drawing.Size(651, 22);
-            this.cBoxFuncionario.TabIndex = 185;
-            // 
             // gBoxTipoManutencao
             // 
             this.gBoxTipoManutencao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -604,69 +629,44 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.cBoxTipoManutencao.Size = new System.Drawing.Size(629, 22);
             this.cBoxTipoManutencao.TabIndex = 185;
             // 
-            // tBoxDataInicial
+            // gBoxFuncionario
             // 
-            this.tBoxDataInicial.CalendarFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxDataInicial.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxDataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.tBoxDataInicial.Location = new System.Drawing.Point(38, 16);
-            this.tBoxDataInicial.Name = "tBoxDataInicial";
-            this.tBoxDataInicial.Size = new System.Drawing.Size(137, 22);
-            this.tBoxDataInicial.TabIndex = 190;
-            this.tBoxDataInicial.Value = new System.DateTime(2021, 7, 24, 0, 0, 0, 0);
+            this.gBoxFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.gBoxFuncionario.Controls.Add(this.cBoxFuncionario);
+            this.gBoxFuncionario.Controls.Add(this.gBoxUsuario);
+            this.gBoxFuncionario.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gBoxFuncionario.Location = new System.Drawing.Point(0, 0);
+            this.gBoxFuncionario.Name = "gBoxFuncionario";
+            this.gBoxFuncionario.Size = new System.Drawing.Size(663, 46);
+            this.gBoxFuncionario.TabIndex = 193;
+            this.gBoxFuncionario.TabStop = false;
+            this.gBoxFuncionario.Text = "Funcionário que fez o serviço";
             // 
-            // tBoxDataFinal
+            // cBoxFuncionario
             // 
-            this.tBoxDataFinal.CalendarFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxDataFinal.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxDataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.tBoxDataFinal.Location = new System.Drawing.Point(232, 16);
-            this.tBoxDataFinal.Name = "tBoxDataFinal";
-            this.tBoxDataFinal.Size = new System.Drawing.Size(137, 22);
-            this.tBoxDataFinal.TabIndex = 191;
-            this.tBoxDataFinal.Value = new System.DateTime(2021, 7, 24, 0, 0, 0, 0);
+            this.cBoxFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cBoxFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxFuncionario.Font = new System.Drawing.Font("Calibri", 9F);
+            this.cBoxFuncionario.FormattingEnabled = true;
+            this.cBoxFuncionario.Location = new System.Drawing.Point(6, 16);
+            this.cBoxFuncionario.Name = "cBoxFuncionario";
+            this.cBoxFuncionario.Size = new System.Drawing.Size(651, 22);
+            this.cBoxFuncionario.TabIndex = 185;
             // 
-            // btnVisualizar
+            // panel3
             // 
-            this.btnVisualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVisualizar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVisualizar.Appearance.Options.UseFont = true;
-            this.btnVisualizar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnVisualizar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-            this.btnVisualizar.Location = new System.Drawing.Point(868, 40);
-            this.btnVisualizar.Name = "btnVisualizar";
-            this.btnVisualizar.Size = new System.Drawing.Size(144, 44);
-            this.btnVisualizar.TabIndex = 207;
-            this.btnVisualizar.TabStop = false;
-            this.btnVisualizar.Text = "[F8] - Visualizar";
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluir.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Appearance.Options.UseFont = true;
-            this.btnExcluir.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnExcluir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnEditar.ImageOptions.SvgImage")));
-            this.btnExcluir.Location = new System.Drawing.Point(1018, 40);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(144, 44);
-            this.btnExcluir.TabIndex = 206;
-            this.btnExcluir.TabStop = false;
-            this.btnExcluir.Text = "[Del] - Excluir";
-            // 
-            // btnImprimirConsulta
-            // 
-            this.btnImprimirConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnImprimirConsulta.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirConsulta.Appearance.Options.UseFont = true;
-            this.btnImprimirConsulta.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnImprimirConsulta.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnImprimirConsulta.ImageOptions.SvgImage")));
-            this.btnImprimirConsulta.Location = new System.Drawing.Point(3, 40);
-            this.btnImprimirConsulta.Name = "btnImprimirConsulta";
-            this.btnImprimirConsulta.Size = new System.Drawing.Size(233, 44);
-            this.btnImprimirConsulta.TabIndex = 208;
-            this.btnImprimirConsulta.TabStop = false;
-            this.btnImprimirConsulta.Text = "[CTRL + P] - Imprimir consulta";
+            this.panel3.Controls.Add(this.btnBuscar);
+            this.panel3.Controls.Add(this.groupBox3);
+            this.panel3.Controls.Add(this.groupBox2);
+            this.panel3.Controls.Add(this.gBoxDataManutencao);
+            this.panel3.Controls.Add(this.gBoxVeiculo);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1166, 119);
+            this.panel3.TabIndex = 201;
             // 
             // btnBuscar
             // 
@@ -674,7 +674,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.btnBuscar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.Appearance.Options.UseFont = true;
             this.btnBuscar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnBuscar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConsultar.ImageOptions.SvgImage")));
+            this.btnBuscar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBuscar.ImageOptions.SvgImage")));
             this.btnBuscar.Location = new System.Drawing.Point(1018, 18);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(144, 98);
@@ -697,7 +697,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manutenções Realizadas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmManutencaoConsultar_FormClosing);
+            this.Load += new System.EventHandler(this.frmManutencaoConsultar_Load);
             this.gBoxUsuario.ResumeLayout(false);
+            this.gBoxLocalManutencao.ResumeLayout(false);
             this.gBoxDataManutencao.ResumeLayout(false);
             this.gBoxDataManutencao.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -708,10 +711,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             ((System.ComponentModel.ISupportInitialize)(this.dGridManutencoes)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.gBoxVeiculo.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.gBoxLocalManutencao.ResumeLayout(false);
-            this.gBoxFuncionario.ResumeLayout(false);
             this.gBoxTipoManutencao.ResumeLayout(false);
+            this.gBoxFuncionario.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

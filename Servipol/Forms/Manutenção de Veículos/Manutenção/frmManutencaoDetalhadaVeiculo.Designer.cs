@@ -789,6 +789,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.Controls.Add(this.tabControl1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmManutencaoDetalhadaVeiculo";
@@ -797,6 +798,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalhes da Manutenção";
             this.Load += new System.EventHandler(this.frmManutencaoDetalhadaVeiculo_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmManutencaoDetalhadaVeiculo_KeyDown);
             this.tabControl1.ResumeLayout(false);
             this.Detalhes.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

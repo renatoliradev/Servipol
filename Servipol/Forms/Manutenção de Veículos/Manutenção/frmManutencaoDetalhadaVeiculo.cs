@@ -135,5 +135,15 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         {
             this.Close();
         }
+
+        private void frmManutencaoDetalhadaVeiculo_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
+            }
+        }
     }
 }
