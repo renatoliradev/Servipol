@@ -30,13 +30,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManutencaoConsultar));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gBoxUsuario = new System.Windows.Forms.GroupBox();
             this.cBoxUsuario = new System.Windows.Forms.ComboBox();
             this.gBoxLocalManutencao = new System.Windows.Forms.GroupBox();
@@ -230,6 +230,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.cBoxSituacao.Name = "cBoxSituacao";
             this.cBoxSituacao.Size = new System.Drawing.Size(328, 22);
             this.cBoxSituacao.TabIndex = 184;
+            this.cBoxSituacao.SelectedIndexChanged += new System.EventHandler(this.cBoxSituacao_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -257,6 +258,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.btnImprimirConsulta.TabIndex = 208;
             this.btnImprimirConsulta.TabStop = false;
             this.btnImprimirConsulta.Text = "[CTRL + P] - Imprimir consulta";
+            this.btnImprimirConsulta.Click += new System.EventHandler(this.btnImprimirConsulta_Click);
             // 
             // btnVisualizar
             // 
@@ -271,6 +273,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.btnVisualizar.TabIndex = 207;
             this.btnVisualizar.TabStop = false;
             this.btnVisualizar.Text = "[F8] - Visualizar";
+            this.btnVisualizar.Click += new System.EventHandler(this.btnVisualizar_Click);
             // 
             // btnExcluir
             // 
@@ -285,6 +288,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.btnExcluir.TabIndex = 206;
             this.btnExcluir.TabStop = false;
             this.btnExcluir.Text = "[Del] - Excluir";
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // panel4
             // 
@@ -392,8 +396,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGridManutencoes.AllowUserToAddRows = false;
             this.dGridManutencoes.AllowUserToDeleteRows = false;
             this.dGridManutencoes.AllowUserToResizeRows = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Lavender;
-            this.dGridManutencoes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
+            this.dGridManutencoes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dGridManutencoes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -427,6 +431,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGridManutencoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGridManutencoes.Size = new System.Drawing.Size(1160, 206);
             this.dGridManutencoes.TabIndex = 181;
+            this.dGridManutencoes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridManutencoes_CellDoubleClick);
             // 
             // id
             // 
@@ -442,8 +447,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.data_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.data_manutencao.DataPropertyName = "data_manutencao";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.data_manutencao.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.data_manutencao.DefaultCellStyle = dataGridViewCellStyle2;
             this.data_manutencao.FillWeight = 40.75429F;
             this.data_manutencao.HeaderText = "Data da Manutenção";
             this.data_manutencao.Name = "data_manutencao";
@@ -481,8 +486,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.km_veiculo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.km_veiculo.DataPropertyName = "km_veiculo";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.km_veiculo.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.km_veiculo.DefaultCellStyle = dataGridViewCellStyle3;
             this.km_veiculo.FillWeight = 50F;
             this.km_veiculo.HeaderText = "Km da Manutenção";
             this.km_veiculo.Name = "km_veiculo";
@@ -493,8 +498,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.km_atual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.km_atual.DataPropertyName = "km_atual";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.km_atual.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.km_atual.DefaultCellStyle = dataGridViewCellStyle4;
             this.km_atual.HeaderText = "Km Atual";
             this.km_atual.Name = "km_atual";
             this.km_atual.ReadOnly = true;
@@ -504,8 +509,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.km_rodado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.km_rodado.DataPropertyName = "km_rodado";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.km_rodado.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.km_rodado.DefaultCellStyle = dataGridViewCellStyle5;
             this.km_rodado.HeaderText = "Km Rodado";
             this.km_rodado.Name = "km_rodado";
             this.km_rodado.ReadOnly = true;
@@ -544,8 +549,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.situacao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.situacao.DataPropertyName = "situacao";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.situacao.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.situacao.DefaultCellStyle = dataGridViewCellStyle6;
             this.situacao.HeaderText = "Situação";
             this.situacao.Name = "situacao";
             this.situacao.ReadOnly = true;
@@ -555,10 +560,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.valor_total_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.valor_total_manutencao.DataPropertyName = "valor_total_manutencao";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Format = "C2";
-            dataGridViewCellStyle14.NullValue = null;
-            this.valor_total_manutencao.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "C2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.valor_total_manutencao.DefaultCellStyle = dataGridViewCellStyle7;
             this.valor_total_manutencao.HeaderText = "Valor da Manutenção";
             this.valor_total_manutencao.Name = "valor_total_manutencao";
             this.valor_total_manutencao.ReadOnly = true;
@@ -680,6 +685,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.btnBuscar.Size = new System.Drawing.Size(144, 98);
             this.btnBuscar.TabIndex = 209;
             this.btnBuscar.Text = "[F5] - Consultar";
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // frmManutencaoConsultar
             // 
@@ -699,6 +705,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmManutencaoConsultar_FormClosing);
             this.Load += new System.EventHandler(this.frmManutencaoConsultar_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmManutencaoConsultar_KeyDown);
             this.gBoxUsuario.ResumeLayout(false);
             this.gBoxLocalManutencao.ResumeLayout(false);
             this.gBoxDataManutencao.ResumeLayout(false);
