@@ -41,8 +41,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             }
             finally
             {
-                CarregaTabelaManutencoes();
-                //btnBuscar_Click(sender, e);
+                btnBuscar_Click(sender, e);
                 dGridManutencoes.Focus();
                 dGridManutencoes.Select();
             }
@@ -67,13 +66,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mv.id_manutencao, mv.data_manutencao, mv.km_veiculo, MAX(kmd.km_veiculo) AS km_atual, CAST(MAX(kmd.km_veiculo) - mv.km_veiculo AS numeric) AS km_rodado, v.id_veiculo AS id_veiculo, v.placa, CAST(CASE WHEN tv.descricao = 'CARRO' THEN v.descricao WHEN v.ativo = 'N' AND tv.descricao = 'MOTO' THEN tv.descricao || ' ' || v.codigo || ' >>> REGISTRO INATIVO <<<' WHEN v.ativo = 'N' AND tv.descricao = 'CARRO' THEN v.descricao || ' >>> REGISTRO INATIVO <<<'  ELSE tv.descricao || ' ' || v.codigo END AS VARCHAR) AS veiculo, tm.descricao, lm.descricao, mv.valor_total, CAST(CASE WHEN id_funcionario_cargo = 1 THEN codigo || ' - ' || qra_ase ELSE nome END AS VARCHAR) AS qra, CAST(CASE WHEN mv.registro_excluido = 'N' THEN 'Confirmada' ELSE 'Excluída' END AS VARCHAR) AS situacao FROM manutencao AS mv INNER JOIN veiculo AS v ON(mv.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS tm ON(mv.id_manutencao_tipo = tm.id_manutencao_tipo) INNER JOIN manutencao_local AS lm ON(mv.id_manutencao_local = lm.id_manutencao_local) INNER JOIN funcionario AS f ON(mv.id_funcionario = f.id_funcionario) INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) INNER JOIN km_diario AS kmd ON(kmd.id_veiculo = v.id_veiculo) WHERE mv.confirmada = '{registroExcluido}' AND mv.registro_excluido = 'N' GROUP BY mv.id_manutencao, tv.descricao, v.id_veiculo, v.descricao, v.placa, v.codigo, tm.descricao, lm.descricao, f.id_funcionario_cargo, f.codigo_ase, f.qra_ase, f.nome ORDER BY 1 DESC LIMIT 20", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mv.id_manutencao, mv.data_manutencao, mv.km_veiculo, MAX(kmd.km_veiculo) AS km_atual, CAST(MAX(kmd.km_veiculo) - mv.km_veiculo AS numeric) AS km_rodado, v.id_veiculo AS id_veiculo, v.placa, CAST(CASE WHEN tv.descricao = 'CARRO' THEN v.descricao WHEN v.ativo = 'N' AND tv.descricao = 'MOTO' THEN tv.descricao || ' ' || v.codigo || ' >>> REGISTRO INATIVO <<<' WHEN v.ativo = 'N' AND tv.descricao = 'CARRO' THEN v.descricao || ' >>> REGISTRO INATIVO <<<'  ELSE tv.descricao || ' ' || v.codigo END AS VARCHAR) AS veiculo, tm.descricao AS descricao_tipo_manutencao, lm.descricao AS descricao_local_manutencao, mv.valor_total, CAST(CASE WHEN id_funcionario_cargo = 1 THEN codigo || ' - ' || qra_ase ELSE nome END AS VARCHAR) AS qra, CAST(CASE WHEN mv.registro_excluido = 'N' THEN 'Confirmada' ELSE 'Excluída' END AS VARCHAR) AS situacao FROM manutencao AS mv INNER JOIN veiculo AS v ON(mv.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS tm ON(mv.id_manutencao_tipo = tm.id_manutencao_tipo) INNER JOIN manutencao_local AS lm ON(mv.id_manutencao_local = lm.id_manutencao_local) INNER JOIN funcionario AS f ON(mv.id_funcionario = f.id_funcionario) INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) INNER JOIN km_diario AS kmd ON(kmd.id_veiculo = v.id_veiculo) WHERE mv.confirmada = 'S' AND mv.registro_excluido = '{registroExcluido}' GROUP BY mv.id_manutencao, tv.descricao, v.id_veiculo, v.descricao, v.placa, v.codigo, tm.descricao, lm.descricao, f.id_funcionario_cargo, f.codigo_ase, f.qra_ase, f.nome ORDER BY mv.data_manutencao DESC LIMIT 20", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridManutencoes.DataSource = dp;
 
                 string valor_total = string.Empty;
-                NpgsqlCommand com = new NpgsqlCommand($"SELECT SUM(mv.valor_total) AS valor_total FROM manutencao AS mv WHERE mv.confirmada = '{registroExcluido}' AND mv.id_manutencao IN (SELECT id_manutencao FROM manutencao WHERE registro_excluido = '{registroExcluido}' ORDER BY 1 DESC LIMIT 20)", BD.ObjetoConexao);
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT SUM(mv.valor_total) AS valor_total FROM manutencao AS mv WHERE mv.confirmada = 'S' AND mv.id_manutencao IN (SELECT id_manutencao FROM manutencao WHERE registro_excluido = '{registroExcluido}' ORDER BY mv.data_manutencao DESC LIMIT 20)", BD.ObjetoConexao);
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     while (dr.Read())
@@ -279,6 +278,102 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 btnExcluir_Click(sender, e);
             }
         }
+
+        private void cBoxTipoBusca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cBoxTipoBusca.SelectedIndex == 0)
+            {
+                CarregaTabelaManutencoes();
+
+                gBoxVeiculo.Visible = false;
+                gBoxFuncionario.Visible = false;
+                gBoxLocalManutencao.Visible = false;
+                gBoxTipoManutencao.Visible = false;
+                gBoxUsuario.Visible = false;
+                gBoxDataManutencao.Visible = false;
+            }
+            //busca por Data da Manutenção
+            else if (cBoxTipoBusca.SelectedIndex == 1)
+            {
+                gBoxVeiculo.Visible = false;
+                gBoxFuncionario.Visible = false;
+                gBoxLocalManutencao.Visible = false;
+                gBoxTipoManutencao.Visible = false;
+                gBoxUsuario.Visible = false;
+
+                gBoxDataManutencao.Visible = true;
+
+                dGridManutencoes.DataSource = null;
+            }
+            //busca por Veículo
+            else if (cBoxTipoBusca.SelectedIndex == 2)
+            {
+                gBoxFuncionario.Visible = false;
+                gBoxLocalManutencao.Visible = false;
+                gBoxTipoManutencao.Visible = false;
+                gBoxUsuario.Visible = false;
+
+                gBoxVeiculo.Visible = true;
+                gBoxDataManutencao.Visible = true;
+
+                dGridManutencoes.DataSource = null;
+            }
+            //busca por Tipo da Manutenção
+            else if (cBoxTipoBusca.SelectedIndex == 3)
+            {
+                gBoxVeiculo.Visible = false;
+                gBoxFuncionario.Visible = false;
+                gBoxLocalManutencao.Visible = false;
+                gBoxUsuario.Visible = false;
+
+                gBoxTipoManutencao.Visible = true;
+                gBoxDataManutencao.Visible = true;
+
+                cBoxTipoManutencao.Select();
+
+                dGridManutencoes.DataSource = null;
+            }
+            //busca por Local da Manutenção
+            else if (cBoxTipoBusca.SelectedIndex == 4)
+            {
+                gBoxVeiculo.Visible = false;
+                gBoxFuncionario.Visible = false;
+                gBoxTipoManutencao.Visible = false;
+                gBoxUsuario.Visible = false;
+
+                gBoxLocalManutencao.Visible = true;
+                gBoxDataManutencao.Visible = true;
+
+                dGridManutencoes.DataSource = null;
+            }
+            //busca por Funcionário
+            else if (cBoxTipoBusca.SelectedIndex == 5)
+            {
+                gBoxVeiculo.Visible = false;
+                gBoxLocalManutencao.Visible = false;
+                gBoxTipoManutencao.Visible = false;
+                gBoxUsuario.Visible = false;
+
+                gBoxFuncionario.Visible = true;
+                gBoxDataManutencao.Visible = true;
+
+                dGridManutencoes.DataSource = null;
+            }
+            //busca por usuário
+            else if (cBoxTipoBusca.SelectedIndex == 6)
+            {
+                gBoxVeiculo.Visible = false;
+                gBoxLocalManutencao.Visible = false;
+                gBoxTipoManutencao.Visible = false;
+                gBoxFuncionario.Visible = false;
+
+                gBoxUsuario.Visible = true;
+                gBoxDataManutencao.Visible = true;
+
+                dGridManutencoes.DataSource = null;
+            }
+        }
+
         #endregion
 
         #region Buttons
@@ -306,43 +401,43 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 //busca por Data da Manutenção
                 if (cBoxTipoBusca.SelectedIndex == 1)
                 {
-                    tipoBusca = "data_manutencao BETWEEN '" + tBoxDataInicial.Text + "' AND '" + tBoxDataFinal.Text + "'";
+                    tipoBusca = $"data_manutencao BETWEEN '{tBoxDataInicial.Text}' AND '{tBoxDataFinal.Text}'";
                 }
                 //busca por Veículo
                 else if (cBoxTipoBusca.SelectedIndex == 2)
                 {
-                    tipoBusca = "mv.id_veiculo = " + cBoxVeiculo.SelectedValue + " AND data_manutencao BETWEEN '" + tBoxDataInicial.Text + "' AND '" + tBoxDataFinal.Text + "'";
+                    tipoBusca = $"mv.id_veiculo = {cBoxVeiculo.SelectedValue} AND data_manutencao BETWEEN '{tBoxDataInicial.Text}' AND '{tBoxDataFinal.Text}'";
                 }
                 //busca por Tipo da Manutenção
                 else if (cBoxTipoBusca.SelectedIndex == 3)
                 {
-                    tipoBusca = "mv.id_tipo_manutencao = " + cBoxTipoManutencao.SelectedValue + " AND data_manutencao BETWEEN '" + tBoxDataInicial.Text + "' AND '" + tBoxDataFinal.Text + "'";
+                    tipoBusca = $"mv.id_manutencao_tipo = {cBoxTipoManutencao.SelectedValue} AND data_manutencao BETWEEN '{tBoxDataInicial.Text}' AND '{tBoxDataFinal.Text}'";
                 }
                 //busca por Local da Manutenção
                 else if (cBoxTipoBusca.SelectedIndex == 4)
                 {
-                    tipoBusca = "mv.local_manutencao = " + cBoxLocalManutencao.SelectedValue + " AND data_manutencao BETWEEN '" + tBoxDataInicial.Text + "' AND '" + tBoxDataFinal.Text + "'";
+                    tipoBusca = $"mv.id_manutencao_local = {cBoxLocalManutencao.SelectedValue} AND data_manutencao BETWEEN '{tBoxDataInicial.Text}' AND '{tBoxDataFinal.Text}'";
                 }
                 //busca por Funcionário
                 else if (cBoxTipoBusca.SelectedIndex == 5)
                 {
-                    tipoBusca = "mv.id_funcionario = " + cBoxFuncionario.SelectedValue + " AND data_manutencao BETWEEN '" + tBoxDataInicial.Text + "' AND '" + tBoxDataFinal.Text + "'";
+                    tipoBusca = $"mv.id_funcionario = {cBoxFuncionario.SelectedValue} AND data_manutencao BETWEEN '{tBoxDataInicial.Text}' AND '{tBoxDataFinal.Text}'";
                 }
                 //busca por usuário
                 else if (cBoxTipoBusca.SelectedIndex == 6)
                 {
-                    tipoBusca = "mv.id_usuario_cadastro = " + cBoxUsuario.SelectedValue + " AND data_manutencao BETWEEN '" + tBoxDataInicial.Text + "' AND '" + tBoxDataFinal.Text + "'";
+                    tipoBusca = $"mv.id_usuario_cadastro = {cBoxUsuario.SelectedValue} AND data_manutencao BETWEEN '{tBoxDataInicial.Text}' AND '{tBoxDataFinal.Text}'";
                 }
 
                 if (cBoxTipoBusca.SelectedIndex != 0)
                 {
-                    NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter("SELECT mv.id, mv.data_manutencao, mv.km_veiculo, MAX(kmd.km_veiculo) AS km_atual, CAST(MAX(kmd.km_veiculo) - mv.km_veiculo AS numeric) AS km_rodado, v.id AS id_veiculo, v.placa, CAST(CASE WHEN tv.descricao = 'CARRO' THEN v.descricao_veiculo WHEN v.ativo = 'N' AND tv.descricao = 'MOTO' THEN tv.descricao || ' ' || v.codigo_veiculo || ' >>> REGISTRO INATIVO <<<' WHEN v.ativo = 'N' AND tv.descricao = 'CARRO' THEN v.descricao_veiculo || ' >>> REGISTRO INATIVO <<<'  ELSE tv.descricao || ' ' || v.codigo_veiculo END AS VARCHAR) AS veiculo, tm.descricao_manutencao, lm.descricao, mv.valor_total_manutencao, CAST(CASE WHEN id_tipo_funcionario = 1 THEN codigo || ' - ' || qra ELSE nome END AS VARCHAR) AS qra, CAST(CASE WHEN mv.registro_excluido = 'N' THEN 'Confirmada' ELSE 'Excluída' END AS VARCHAR) AS situacao FROM manutencao_veiculo AS mv INNER JOIN veiculos AS v ON(mv.id_veiculo = v.id) INNER JOIN tipo_manutencao AS tm ON(mv.id_tipo_manutencao = tm.id_tipo_manutencao) INNER JOIN local_manutencao AS lm ON(mv.local_manutencao = lm.id_local_manutencao) INNER JOIN funcionarios AS f ON(mv.id_funcionario = f.id) INNER JOIN tipo_veiculo AS tv ON(v.tipo_veiculo = tv.id) INNER JOIN km_diario AS kmd ON(kmd.id_veiculo = v.id) WHERE " + tipoBusca + " AND mv.confirmada = 'S' AND mv.registro_excluido = '" + registroExcluido + "' GROUP BY mv.id, tv.descricao, v.id, v.descricao_veiculo, v.placa, v.codigo_veiculo, tm.descricao_manutencao, lm.descricao, f.id_tipo_funcionario, f.codigo, f.qra, f.nome ORDER BY v.tipo_veiculo DESC, v.codigo_veiculo ASC, mv.data_manutencao DESC", BD.ObjetoConexao);
+                    NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mv.id_manutencao, mv.data_manutencao, mv.km_veiculo, MAX(kmd.km_veiculo) AS km_atual, CAST(MAX(kmd.km_veiculo) - mv.km_veiculo AS numeric) AS km_rodado, v.id_veiculo AS id_veiculo, v.placa, CAST(CASE WHEN tv.descricao = 'CARRO' THEN v.descricao WHEN v.ativo = 'N' AND tv.descricao = 'MOTO' THEN tv.descricao || ' ' || v.codigo || ' >>> REGISTRO INATIVO <<<' WHEN v.ativo = 'N' AND tv.descricao = 'CARRO' THEN v.descricao || ' >>> REGISTRO INATIVO <<<'  ELSE tv.descricao || ' ' || v.codigo END AS VARCHAR) AS veiculo, tm.descricao AS descricao_tipo_manutencao, lm.descricao AS descricao_local_manutencao, mv.valor_total, CAST(CASE WHEN id_funcionario_cargo = 1 THEN codigo || ' - ' || qra_ase ELSE nome END AS VARCHAR) AS qra, CAST(CASE WHEN mv.registro_excluido = 'N' THEN 'Confirmada' ELSE 'Excluída' END AS VARCHAR) AS situacao FROM manutencao AS mv INNER JOIN veiculo AS v ON(mv.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS tm ON(mv.id_manutencao_tipo = tm.id_manutencao_tipo) INNER JOIN manutencao_local AS lm ON(mv.id_manutencao_local = lm.id_manutencao_local) INNER JOIN funcionario AS f ON(mv.id_funcionario = f.id_funcionario) INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) INNER JOIN km_diario AS kmd ON(kmd.id_veiculo = v.id_veiculo) WHERE {tipoBusca} AND mv.confirmada = 'S' AND mv.registro_excluido = '{registroExcluido}' GROUP BY mv.id_manutencao, tv.descricao, v.id_veiculo, v.descricao, v.placa, v.codigo, tm.descricao, lm.descricao, f.id_funcionario_cargo, f.codigo_ase, f.qra_ase, f.nome ORDER BY mv.data_manutencao DESC", BD.ObjetoConexao);
                     DataTable dp = new DataTable();
                     retornoBD.Fill(dp);
                     dGridManutencoes.DataSource = dp;
 
                     string valor_total = string.Empty;
-                    NpgsqlCommand com = new NpgsqlCommand("SELECT SUM(mv.valor_total_manutencao) AS valor_total FROM manutencao_veiculo AS mv WHERE " + tipoBusca + " AND mv.confirmada = 'S' AND mv.registro_excluido = '" + registroExcluido + "'", BD.ObjetoConexao);
+                    NpgsqlCommand com = new NpgsqlCommand($"SELECT SUM(mv.valor_total) AS valor_total FROM manutencao AS mv WHERE {tipoBusca} AND mv.confirmada = 'S' AND mv.id_manutencao IN (SELECT id_manutencao FROM manutencao WHERE registro_excluido = '{registroExcluido}' ORDER BY mv.data_manutencao DESC", BD.ObjetoConexao);
                     using (NpgsqlDataReader dr = com.ExecuteReader())
                     {
                         while (dr.Read())
@@ -383,5 +478,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
+
+        
     }
 }

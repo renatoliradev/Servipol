@@ -60,19 +60,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.cBoxTipoBusca = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dGridManutencoes = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_veiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.veiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.km_veiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.km_atual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.km_rodado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricao_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.situacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valor_total_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cBoxVeiculo = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.gBoxVeiculo = new System.Windows.Forms.GroupBox();
@@ -82,6 +69,19 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.cBoxFuncionario = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnBuscar = new DevExpress.XtraEditors.SimpleButton();
+            this.id_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_veiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.veiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.km_veiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.km_atual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.km_rodado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao_tipo_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao_local_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.situacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valor_total_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gBoxUsuario.SuspendLayout();
             this.gBoxLocalManutencao.SuspendLayout();
             this.gBoxDataManutencao.SuspendLayout();
@@ -101,7 +101,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.gBoxUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.gBoxUsuario.Controls.Add(this.cBoxUsuario);
-            this.gBoxUsuario.Controls.Add(this.gBoxLocalManutencao);
             this.gBoxUsuario.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.gBoxUsuario.Location = new System.Drawing.Point(0, 0);
             this.gBoxUsuario.Name = "gBoxUsuario";
@@ -128,7 +127,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.gBoxLocalManutencao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.gBoxLocalManutencao.Controls.Add(this.cBoxLocalManutencao);
             this.gBoxLocalManutencao.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gBoxLocalManutencao.Location = new System.Drawing.Point(0, 0);
+            this.gBoxLocalManutencao.Location = new System.Drawing.Point(349, 70);
             this.gBoxLocalManutencao.Name = "gBoxLocalManutencao";
             this.gBoxLocalManutencao.Size = new System.Drawing.Size(663, 46);
             this.gBoxLocalManutencao.TabIndex = 193;
@@ -373,12 +372,12 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             "Veículo",
             "Tipo da manutenção",
             "Local da manutenção",
-            "Funcionário que fez o serviço",
-            "Usuário que incluiu a manutenção no sistema"});
+            "Funcionário que fez o serviço"});
             this.cBoxTipoBusca.Location = new System.Drawing.Point(6, 16);
             this.cBoxTipoBusca.Name = "cBoxTipoBusca";
             this.cBoxTipoBusca.Size = new System.Drawing.Size(328, 22);
             this.cBoxTipoBusca.TabIndex = 184;
+            this.cBoxTipoBusca.SelectedIndexChanged += new System.EventHandler(this.cBoxTipoBusca_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -407,7 +406,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGridManutencoes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dGridManutencoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGridManutencoes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
+            this.id_manutencao,
             this.data_manutencao,
             this.id_veiculo,
             this.placa,
@@ -415,8 +414,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.km_veiculo,
             this.km_atual,
             this.km_rodado,
-            this.descricao_manutencao,
-            this.descricao,
+            this.descricao_tipo_manutencao,
+            this.descricao_local_manutencao,
             this.qra,
             this.situacao,
             this.valor_total_manutencao});
@@ -433,15 +432,134 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGridManutencoes.TabIndex = 181;
             this.dGridManutencoes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridManutencoes_CellDoubleClick);
             // 
-            // id
+            // cBoxVeiculo
             // 
-            this.id.DataPropertyName = "id";
-            this.id.FillWeight = 0.5094286F;
-            this.id.HeaderText = "";
-            this.id.MinimumWidth = 2;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
+            this.cBoxVeiculo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cBoxVeiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxVeiculo.Font = new System.Drawing.Font("Calibri", 9F);
+            this.cBoxVeiculo.FormattingEnabled = true;
+            this.cBoxVeiculo.Location = new System.Drawing.Point(6, 16);
+            this.cBoxVeiculo.Name = "cBoxVeiculo";
+            this.cBoxVeiculo.Size = new System.Drawing.Size(651, 22);
+            this.cBoxVeiculo.TabIndex = 185;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.groupBox2.Controls.Add(this.cBoxTipoBusca);
+            this.groupBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.groupBox2.Location = new System.Drawing.Point(3, 70);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(340, 46);
+            this.groupBox2.TabIndex = 201;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Consultar Por";
+            // 
+            // gBoxVeiculo
+            // 
+            this.gBoxVeiculo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.gBoxVeiculo.Controls.Add(this.cBoxVeiculo);
+            this.gBoxVeiculo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gBoxVeiculo.Location = new System.Drawing.Point(349, 70);
+            this.gBoxVeiculo.Name = "gBoxVeiculo";
+            this.gBoxVeiculo.Size = new System.Drawing.Size(663, 46);
+            this.gBoxVeiculo.TabIndex = 194;
+            this.gBoxVeiculo.TabStop = false;
+            this.gBoxVeiculo.Text = "Veículo";
+            // 
+            // gBoxTipoManutencao
+            // 
+            this.gBoxTipoManutencao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.gBoxTipoManutencao.Controls.Add(this.cBoxTipoManutencao);
+            this.gBoxTipoManutencao.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gBoxTipoManutencao.Location = new System.Drawing.Point(349, 70);
+            this.gBoxTipoManutencao.Name = "gBoxTipoManutencao";
+            this.gBoxTipoManutencao.Size = new System.Drawing.Size(663, 46);
+            this.gBoxTipoManutencao.TabIndex = 192;
+            this.gBoxTipoManutencao.TabStop = false;
+            this.gBoxTipoManutencao.Text = "Tipo da Manutenção";
+            // 
+            // cBoxTipoManutencao
+            // 
+            this.cBoxTipoManutencao.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cBoxTipoManutencao.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cBoxTipoManutencao.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cBoxTipoManutencao.Font = new System.Drawing.Font("Calibri", 9F);
+            this.cBoxTipoManutencao.FormattingEnabled = true;
+            this.cBoxTipoManutencao.Location = new System.Drawing.Point(6, 16);
+            this.cBoxTipoManutencao.Name = "cBoxTipoManutencao";
+            this.cBoxTipoManutencao.Size = new System.Drawing.Size(651, 22);
+            this.cBoxTipoManutencao.TabIndex = 185;
+            // 
+            // gBoxFuncionario
+            // 
+            this.gBoxFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.gBoxFuncionario.Controls.Add(this.cBoxFuncionario);
+            this.gBoxFuncionario.Controls.Add(this.gBoxUsuario);
+            this.gBoxFuncionario.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gBoxFuncionario.Location = new System.Drawing.Point(349, 70);
+            this.gBoxFuncionario.Name = "gBoxFuncionario";
+            this.gBoxFuncionario.Size = new System.Drawing.Size(663, 46);
+            this.gBoxFuncionario.TabIndex = 193;
+            this.gBoxFuncionario.TabStop = false;
+            this.gBoxFuncionario.Text = "Funcionário que fez o serviço";
+            // 
+            // cBoxFuncionario
+            // 
+            this.cBoxFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cBoxFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxFuncionario.Font = new System.Drawing.Font("Calibri", 9F);
+            this.cBoxFuncionario.FormattingEnabled = true;
+            this.cBoxFuncionario.Location = new System.Drawing.Point(6, 16);
+            this.cBoxFuncionario.Name = "cBoxFuncionario";
+            this.cBoxFuncionario.Size = new System.Drawing.Size(651, 22);
+            this.cBoxFuncionario.TabIndex = 185;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnBuscar);
+            this.panel3.Controls.Add(this.gBoxLocalManutencao);
+            this.panel3.Controls.Add(this.gBoxFuncionario);
+            this.panel3.Controls.Add(this.gBoxTipoManutencao);
+            this.panel3.Controls.Add(this.groupBox3);
+            this.panel3.Controls.Add(this.groupBox2);
+            this.panel3.Controls.Add(this.gBoxDataManutencao);
+            this.panel3.Controls.Add(this.gBoxVeiculo);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1166, 119);
+            this.panel3.TabIndex = 201;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnBuscar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Appearance.Options.UseFont = true;
+            this.btnBuscar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnBuscar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBuscar.ImageOptions.SvgImage")));
+            this.btnBuscar.Location = new System.Drawing.Point(1018, 18);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(144, 98);
+            this.btnBuscar.TabIndex = 209;
+            this.btnBuscar.Text = "[F5] - Consultar";
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // id_manutencao
+            // 
+            this.id_manutencao.DataPropertyName = "id_manutencao";
+            this.id_manutencao.FillWeight = 0.5094286F;
+            this.id_manutencao.HeaderText = "";
+            this.id_manutencao.MinimumWidth = 2;
+            this.id_manutencao.Name = "id_manutencao";
+            this.id_manutencao.ReadOnly = true;
+            this.id_manutencao.Visible = false;
             // 
             // data_manutencao
             // 
@@ -516,24 +634,24 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.km_rodado.ReadOnly = true;
             this.km_rodado.Width = 84;
             // 
-            // descricao_manutencao
+            // descricao_tipo_manutencao
             // 
-            this.descricao_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descricao_manutencao.DataPropertyName = "descricao_manutencao";
-            this.descricao_manutencao.FillWeight = 127.3572F;
-            this.descricao_manutencao.HeaderText = "Tipo da Manutenção";
-            this.descricao_manutencao.Name = "descricao_manutencao";
-            this.descricao_manutencao.ReadOnly = true;
+            this.descricao_tipo_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descricao_tipo_manutencao.DataPropertyName = "descricao_tipo_manutencao";
+            this.descricao_tipo_manutencao.FillWeight = 127.3572F;
+            this.descricao_tipo_manutencao.HeaderText = "Tipo da Manutenção";
+            this.descricao_tipo_manutencao.Name = "descricao_tipo_manutencao";
+            this.descricao_tipo_manutencao.ReadOnly = true;
             // 
-            // descricao
+            // descricao_local_manutencao
             // 
-            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.descricao.DataPropertyName = "descricao";
-            this.descricao.FillWeight = 91.69715F;
-            this.descricao.HeaderText = "Local da Manutenção";
-            this.descricao.Name = "descricao";
-            this.descricao.ReadOnly = true;
-            this.descricao.Width = 130;
+            this.descricao_local_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descricao_local_manutencao.DataPropertyName = "descricao_local_manutencao";
+            this.descricao_local_manutencao.FillWeight = 91.69715F;
+            this.descricao_local_manutencao.HeaderText = "Local da Manutenção";
+            this.descricao_local_manutencao.Name = "descricao_local_manutencao";
+            this.descricao_local_manutencao.ReadOnly = true;
+            this.descricao_local_manutencao.Width = 130;
             // 
             // qra
             // 
@@ -559,7 +677,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // valor_total_manutencao
             // 
             this.valor_total_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.valor_total_manutencao.DataPropertyName = "valor_total_manutencao";
+            this.valor_total_manutencao.DataPropertyName = "valor_total";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle7.Format = "C2";
             dataGridViewCellStyle7.NullValue = null;
@@ -568,124 +686,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.valor_total_manutencao.Name = "valor_total_manutencao";
             this.valor_total_manutencao.ReadOnly = true;
             this.valor_total_manutencao.Width = 130;
-            // 
-            // cBoxVeiculo
-            // 
-            this.cBoxVeiculo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cBoxVeiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxVeiculo.Font = new System.Drawing.Font("Calibri", 9F);
-            this.cBoxVeiculo.FormattingEnabled = true;
-            this.cBoxVeiculo.Location = new System.Drawing.Point(6, 16);
-            this.cBoxVeiculo.Name = "cBoxVeiculo";
-            this.cBoxVeiculo.Size = new System.Drawing.Size(651, 22);
-            this.cBoxVeiculo.TabIndex = 185;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.groupBox2.Controls.Add(this.cBoxTipoBusca);
-            this.groupBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.groupBox2.Location = new System.Drawing.Point(3, 70);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(340, 46);
-            this.groupBox2.TabIndex = 201;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Consultar Por";
-            // 
-            // gBoxVeiculo
-            // 
-            this.gBoxVeiculo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.gBoxVeiculo.Controls.Add(this.cBoxVeiculo);
-            this.gBoxVeiculo.Controls.Add(this.gBoxTipoManutencao);
-            this.gBoxVeiculo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gBoxVeiculo.Location = new System.Drawing.Point(349, 70);
-            this.gBoxVeiculo.Name = "gBoxVeiculo";
-            this.gBoxVeiculo.Size = new System.Drawing.Size(663, 46);
-            this.gBoxVeiculo.TabIndex = 194;
-            this.gBoxVeiculo.TabStop = false;
-            this.gBoxVeiculo.Text = "Veículo";
-            // 
-            // gBoxTipoManutencao
-            // 
-            this.gBoxTipoManutencao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.gBoxTipoManutencao.Controls.Add(this.cBoxTipoManutencao);
-            this.gBoxTipoManutencao.Controls.Add(this.gBoxFuncionario);
-            this.gBoxTipoManutencao.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gBoxTipoManutencao.Location = new System.Drawing.Point(0, 0);
-            this.gBoxTipoManutencao.Name = "gBoxTipoManutencao";
-            this.gBoxTipoManutencao.Size = new System.Drawing.Size(641, 46);
-            this.gBoxTipoManutencao.TabIndex = 192;
-            this.gBoxTipoManutencao.TabStop = false;
-            this.gBoxTipoManutencao.Text = "Tipo da Manutenção";
-            // 
-            // cBoxTipoManutencao
-            // 
-            this.cBoxTipoManutencao.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cBoxTipoManutencao.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cBoxTipoManutencao.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cBoxTipoManutencao.Font = new System.Drawing.Font("Calibri", 9F);
-            this.cBoxTipoManutencao.FormattingEnabled = true;
-            this.cBoxTipoManutencao.Location = new System.Drawing.Point(6, 16);
-            this.cBoxTipoManutencao.Name = "cBoxTipoManutencao";
-            this.cBoxTipoManutencao.Size = new System.Drawing.Size(629, 22);
-            this.cBoxTipoManutencao.TabIndex = 185;
-            // 
-            // gBoxFuncionario
-            // 
-            this.gBoxFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.gBoxFuncionario.Controls.Add(this.cBoxFuncionario);
-            this.gBoxFuncionario.Controls.Add(this.gBoxUsuario);
-            this.gBoxFuncionario.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gBoxFuncionario.Location = new System.Drawing.Point(0, 0);
-            this.gBoxFuncionario.Name = "gBoxFuncionario";
-            this.gBoxFuncionario.Size = new System.Drawing.Size(663, 46);
-            this.gBoxFuncionario.TabIndex = 193;
-            this.gBoxFuncionario.TabStop = false;
-            this.gBoxFuncionario.Text = "Funcionário que fez o serviço";
-            // 
-            // cBoxFuncionario
-            // 
-            this.cBoxFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cBoxFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxFuncionario.Font = new System.Drawing.Font("Calibri", 9F);
-            this.cBoxFuncionario.FormattingEnabled = true;
-            this.cBoxFuncionario.Location = new System.Drawing.Point(6, 16);
-            this.cBoxFuncionario.Name = "cBoxFuncionario";
-            this.cBoxFuncionario.Size = new System.Drawing.Size(651, 22);
-            this.cBoxFuncionario.TabIndex = 185;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnBuscar);
-            this.panel3.Controls.Add(this.groupBox3);
-            this.panel3.Controls.Add(this.groupBox2);
-            this.panel3.Controls.Add(this.gBoxDataManutencao);
-            this.panel3.Controls.Add(this.gBoxVeiculo);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1166, 119);
-            this.panel3.TabIndex = 201;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnBuscar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Appearance.Options.UseFont = true;
-            this.btnBuscar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnBuscar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBuscar.ImageOptions.SvgImage")));
-            this.btnBuscar.Location = new System.Drawing.Point(1018, 18);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(144, 98);
-            this.btnBuscar.TabIndex = 209;
-            this.btnBuscar.Text = "[F5] - Consultar";
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // frmManutencaoConsultar
             // 
@@ -743,19 +743,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         private System.Windows.Forms.ComboBox cBoxTipoBusca;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dGridManutencoes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data_manutencao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_veiculo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn placa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn veiculo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn km_veiculo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn km_atual;
-        private System.Windows.Forms.DataGridViewTextBoxColumn km_rodado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descricao_manutencao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn situacao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valor_total_manutencao;
         private System.Windows.Forms.ComboBox cBoxVeiculo;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox gBoxVeiculo;
@@ -772,5 +759,18 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         private DevExpress.XtraEditors.SimpleButton btnExcluir;
         private DevExpress.XtraEditors.SimpleButton btnImprimirConsulta;
         private DevExpress.XtraEditors.SimpleButton btnBuscar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_manutencao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_manutencao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_veiculo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn placa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn veiculo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn km_veiculo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn km_atual;
+        private System.Windows.Forms.DataGridViewTextBoxColumn km_rodado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricao_tipo_manutencao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricao_local_manutencao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn situacao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valor_total_manutencao;
     }
 }

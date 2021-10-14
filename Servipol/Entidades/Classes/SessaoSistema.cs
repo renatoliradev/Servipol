@@ -2,19 +2,19 @@
 {
     class SessaoSistema
     {
-        private static string _usuarioId;
-        private static string _usuarioNome;
+        private static string _userId;
+        private static string _userName;
 
         public static string UsuarioId
         {
-            get { return SessaoSistema._usuarioId; }
-            set { SessaoSistema._usuarioId = value; }
+            get { return SessaoSistema._userId; }
+            set { SessaoSistema._userId = value; }
         }
 
         public static string UsuarioNome
         {
-            get { return SessaoSistema._usuarioNome; }
-            set { SessaoSistema._usuarioNome = value; }
+            get { return SessaoSistema._userName; }
+            set { SessaoSistema._userName = value; }
         }
     }
 }

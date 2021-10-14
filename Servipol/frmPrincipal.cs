@@ -20,7 +20,7 @@ namespace Servipol
         MemoryManagement MemoryManagement = new MemoryManagement();
         #endregion
 
-        private static string _usuarioId, _usuarioNome;
+        private static string _userId, _userName;
 
         public frmPrincipal()
         {
@@ -53,13 +53,13 @@ namespace Servipol
                 {
                     while (dr.Read())
                     {
-                        _usuarioId = dr["id_usuario"].ToString();
-                        _usuarioNome = dr["login"].ToString();
+                        _userId = dr["id_usuario"].ToString();
+                        _userName = dr["login"].ToString();
                     }
-                    statusBarUsuario.Caption = _usuarioNome;
+                    statusBarUsuario.Caption = _userName;
 
-                    SessaoSistema.UsuarioId = _usuarioId;
-                    SessaoSistema.UsuarioNome = _usuarioNome;
+                    SessaoSistema.UsuarioId = _userId;
+                    SessaoSistema.UsuarioNome = _userName;
                 }
             }
             finally
@@ -211,7 +211,7 @@ namespace Servipol
         {
             MemoryManagement.FlushMemory();
 
-            XtraMessageBox.Show("Em Desenvolvimento!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnManutencoesRealizadas_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -230,22 +230,22 @@ namespace Servipol
 
         private void btnRegistrarAtaAgente_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            XtraMessageBox.Show("Em Desenvolvimento!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnVerAtasFechadasAgente_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            XtraMessageBox.Show("Em Desenvolvimento!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnRegistrarAtaOperador_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            XtraMessageBox.Show("Em Desenvolvimento!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnVerAtasFechadasOperador_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            XtraMessageBox.Show("Em Desenvolvimento!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnProxTrocaOleoRevisao_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
