@@ -13,7 +13,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         #region Instâncias e Propriedades
         readonly ConexaoBD BD = new ConexaoBD();
 
-
         #endregion
 
         public frmProxTrocaOleoRevisao()
@@ -26,7 +25,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             BD.Conectar();
 
             CarregaTabelaProxTrocaOleo();
-            //CarregaTabelaProxRevisao();
         }
 
         #region Methods
@@ -46,22 +44,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             }
         }
 
-        public void CarregaTabelaProxRevisao()
-        {
-            try
-            {
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter("SELECT mv.id AS id_manutencao_veiculo, v.placa, CAST(CASE WHEN tv.descricao = 'CARRO' THEN v.descricao_veiculo ELSE tv.descricao || ' ' || v.codigo_veiculo END AS VARCHAR) AS veiculo, mv.data_manutencao AS data_ultima_revisao, CAST(CASE WHEN f.id_tipo_funcionario = 1 THEN f.codigo || ' - ' || f.qra ELSE f.nome END AS VARCHAR) AS funcionario_ultima_revisao, lm.descricao AS local_revisao, MIN(scr.km_limite_revisao) AS km_prox_revisao, MAX(kmd.km_veiculo) AS km_atual, CAST(MIN(scr.km_limite_revisao) AS NUMERIC) - CAST(MAX(kmd.km_veiculo) AS numeric) AS km_falta_revisao, kmd.data_km_diario FROM manutencao_veiculo AS mv INNER JOIN veiculos AS v ON(mv.id_veiculo = v.id) INNER JOIN tipo_veiculo AS tv ON(v.tipo_veiculo = tv.id) INNER JOIN funcionarios AS f ON(mv.id_funcionario = f.id) INNER JOIN local_manutencao AS lm ON(mv.local_manutencao = lm.id_local_manutencao) INNER JOIN km_diario AS kmd ON(kmd.id_veiculo = v.id) INNER JOIN sis_configuracao_revisao AS scr ON(scr.id_veiculo = v.id) WHERE mv.id IN(SELECT MAX(id) FROM manutencao_veiculo WHERE id_tipo_manutencao = (SELECT id_tipo_manutencao FROM tipo_manutencao WHERE descricao_manutencao = 'REVISÃO') AND registro_excluido = 'N' GROUP BY id_veiculo) AND kmd.id_km_diario IN(SELECT MAX(id_km_diario) FROM km_diario GROUP BY id_veiculo) AND scr.concluida = 'N' AND v.faz_revisao = 'Sim' AND v.ativo = 'S' GROUP BY mv.id, tv.descricao, v.descricao_veiculo, v.placa, v.codigo_veiculo, f.id_tipo_funcionario, f.codigo, f.qra, f.nome, lm.descricao, kmd.data_km_diario ORDER BY tv.descricao DESC, v.codigo_veiculo", BD.ObjetoConexao);
-                DataTable dp = new DataTable();
-                retornoBD.Fill(dp);
-                dGridRevisao.DataSource = dp;
-                dGridRevisao.ClearSelection();
-            }
-            catch (Exception err)
-            {
-                XtraMessageBox.Show(err.Message, "Erro ao carregar Próxima Revisão.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        
         private void dGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string data_km_diario = dGrid.SelectedRows[0].Cells["data_km_diario"].Value.ToString();
@@ -102,8 +84,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             }
         }
 
-        #endregion
-
         private void frmProxTrocaOleoRevisao_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -113,5 +93,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                     break;
             }
         }
+
+        #endregion
+
     }
 }

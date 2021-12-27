@@ -458,6 +458,21 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             }
             finally
             {
+                dGridManutencoes.Columns["id_manutencao"].Visible = false;
+                dGridManutencoes.Columns["id_veiculo"].Visible = false;
+
+                dGridManutencoes.Columns["data_manutencao"].HeaderText = "Data da Manutenção";
+                dGridManutencoes.Columns["placa"].HeaderText = "Placa";
+                dGridManutencoes.Columns["veiculo"].HeaderText = "Veículo";
+                dGridManutencoes.Columns["km_veiculo"].HeaderText = "Km da Manutenção";
+                dGridManutencoes.Columns["km_atual"].HeaderText = "Km Atual";
+                dGridManutencoes.Columns["km_rodado"].HeaderText = "Km Rodado";
+                dGridManutencoes.Columns["descricao_tipo_manutencao"].HeaderText = "Tipo da Manutenção";
+                dGridManutencoes.Columns["descricao_local_manutencao"].HeaderText = "Local da Manutenção";
+                dGridManutencoes.Columns["qra"].HeaderText = "Funcionário";
+                dGridManutencoes.Columns["situacao"].HeaderText = "Situação";
+                //dGridManutencoes.Columns["valor_total_manutencao_grid"].HeaderText = "Valor da Manutenção";
+
                 tBoxQtdRegistros.Text = dGridManutencoes.RowCount.ToString();
                 BD.Desconectar();
             }

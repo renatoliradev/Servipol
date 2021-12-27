@@ -492,7 +492,7 @@ namespace Servipol
             // 
             // btnProxTrocaOleoRevisao
             // 
-            this.btnProxTrocaOleoRevisao.Caption = "Próxima Troca de Óleo e Revisão";
+            this.btnProxTrocaOleoRevisao.Caption = "Próxima Troca de Óleo";
             this.btnProxTrocaOleoRevisao.Id = 42;
             this.btnProxTrocaOleoRevisao.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnProxTrocaOleoRevisao.ImageOptions.Image")));
             this.btnProxTrocaOleoRevisao.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnProxTrocaOleoRevisao.ImageOptions.LargeImage")));

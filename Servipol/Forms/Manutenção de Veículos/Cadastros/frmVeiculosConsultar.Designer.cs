@@ -343,7 +343,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.cBoxTipoBusca.FormattingEnabled = true;
             this.cBoxTipoBusca.Items.AddRange(new object[] {
             "Todos",
-            "Descrição"});
+            "Tipo"});
             this.cBoxTipoBusca.Location = new System.Drawing.Point(6, 22);
             this.cBoxTipoBusca.Name = "cBoxTipoBusca";
             this.cBoxTipoBusca.Size = new System.Drawing.Size(212, 22);
@@ -373,6 +373,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.cBoxTipoVeiculo.Size = new System.Drawing.Size(710, 22);
             this.cBoxTipoVeiculo.TabIndex = 106;
             this.cBoxTipoVeiculo.TabStop = false;
+            this.cBoxTipoVeiculo.SelectedIndexChanged += new System.EventHandler(this.cBoxTipoVeiculo_SelectedIndexChanged_1);
             this.cBoxTipoVeiculo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cBoxTipoVeiculo_KeyDown);
             // 
             // frmVeiculosConsultar

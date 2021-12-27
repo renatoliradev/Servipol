@@ -72,6 +72,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             btnConsultar_Click(sender, e);
         }
 
+        private void cBoxTipoVeiculo_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            btnConsultar_Click(sender, e);
+        }
+
         private void cBoxTipoBusca_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cBoxTipoBusca.SelectedIndex == 0)
@@ -282,5 +287,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         #endregion
 
+        
     }
 }

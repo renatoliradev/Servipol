@@ -61,6 +61,9 @@ namespace Servipol
                     SessaoSistema.UsuarioId = _userId;
                     SessaoSistema.UsuarioNome = _userName;
                 }
+
+                CallRegistrarKmDiario();
+
             }
             finally
             {
@@ -96,6 +99,37 @@ namespace Servipol
                 childForm.Close();
             }
             MemoryManagement.FlushMemory();
+        }
+
+        public void CallRegistrarKmDiario()
+        {
+            try
+            {
+                string registrou_km_diario = string.Empty;
+                BD.Conectar();
+                NpgsqlCommand com2 = new NpgsqlCommand("SELECT v.id_veiculo AS id_veiculo FROM km_diario AS kmd INNER JOIN veiculo AS v ON(kmd.id_veiculo = v.id_veiculo) WHERE v.ativo = 'S' AND v.registra_km_diario = 'S' AND v.id_veiculo NOT IN(SELECT id_veiculo FROM km_diario WHERE data_km_diario = current_date) GROUP BY 1", BD.ObjetoConexao);
+                using (NpgsqlDataReader dr2 = com2.ExecuteReader())
+                {
+                    while (dr2.Read())
+                    {
+                        registrou_km_diario = dr2[0].ToString();
+                    }
+                    if (registrou_km_diario != string.Empty)
+                    {
+                        frmRegistrarKmDiario frmRegistrarKmDiario = new frmRegistrarKmDiario();
+                        frmRegistrarKmDiario.ShowInTaskbar = false;
+                        frmRegistrarKmDiario.ShowDialog();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                XtraMessageBox.Show(e.Message, "Erro na função CallRegistrarKmDiario", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                BD.Desconectar();
+            }
         }
 
         private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
