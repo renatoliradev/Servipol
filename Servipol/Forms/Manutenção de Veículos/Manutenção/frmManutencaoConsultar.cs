@@ -3,6 +3,7 @@ using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
@@ -41,7 +42,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             }
             finally
             {
-                btnBuscar_Click(sender, e);
+                //btnBuscar_Click(sender, e);
                 dGridManutencoes.Focus();
                 dGridManutencoes.Select();
             }
@@ -66,21 +67,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mv.id_manutencao, mv.data_manutencao, mv.km_veiculo, MAX(kmd.km_veiculo) AS km_atual, CAST(MAX(kmd.km_veiculo) - mv.km_veiculo AS numeric) AS km_rodado, v.id_veiculo AS id_veiculo, v.placa, CAST(CASE WHEN tv.descricao = 'CARRO' THEN v.descricao WHEN v.ativo = 'N' AND tv.descricao = 'MOTO' THEN tv.descricao || ' ' || v.codigo || ' >>> REGISTRO INATIVO <<<' WHEN v.ativo = 'N' AND tv.descricao = 'CARRO' THEN v.descricao || ' >>> REGISTRO INATIVO <<<'  ELSE tv.descricao || ' ' || v.codigo END AS VARCHAR) AS veiculo, tm.descricao AS descricao_tipo_manutencao, lm.descricao AS descricao_local_manutencao, mv.valor_total, CAST(CASE WHEN id_funcionario_cargo = 1 THEN codigo || ' - ' || qra_ase ELSE nome END AS VARCHAR) AS qra, CAST(CASE WHEN mv.registro_excluido = 'N' THEN 'Confirmada' ELSE 'Excluída' END AS VARCHAR) AS situacao FROM manutencao AS mv INNER JOIN veiculo AS v ON(mv.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS tm ON(mv.id_manutencao_tipo = tm.id_manutencao_tipo) INNER JOIN manutencao_local AS lm ON(mv.id_manutencao_local = lm.id_manutencao_local) INNER JOIN funcionario AS f ON(mv.id_funcionario = f.id_funcionario) INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) INNER JOIN km_diario AS kmd ON(kmd.id_veiculo = v.id_veiculo) WHERE mv.confirmada = 'S' AND mv.registro_excluido = '{registroExcluido}' GROUP BY mv.id_manutencao, tv.descricao, v.id_veiculo, v.descricao, v.placa, v.codigo, tm.descricao, lm.descricao, f.id_funcionario_cargo, f.codigo_ase, f.qra_ase, f.nome ORDER BY mv.data_manutencao DESC LIMIT 20", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mv.id_manutencao, v.id_veiculo AS id_veiculo, mv.data_manutencao, v.placa, CAST(CASE WHEN tv.descricao = 'CARRO' THEN v.descricao WHEN v.ativo = 'N' AND tv.descricao = 'MOTO' THEN tv.descricao || ' ' || v.codigo || ' >>> REGISTRO INATIVO <<<' WHEN v.ativo = 'N' AND tv.descricao = 'CARRO' THEN v.descricao || ' >>> REGISTRO INATIVO <<<'  ELSE tv.descricao || ' ' || v.codigo END AS VARCHAR) AS veiculo, mv.km_veiculo, MAX(kmd.km_veiculo) AS km_atual, CAST(MAX(kmd.km_veiculo) - mv.km_veiculo AS numeric) AS km_rodado, tm.descricao AS descricao_tipo_manutencao, lm.descricao AS descricao_local_manutencao, CAST(CASE WHEN id_funcionario_cargo = 1 THEN codigo || ' - ' || qra_ase ELSE nome END AS VARCHAR) AS qra, CAST(CASE WHEN mv.registro_excluido = 'N' THEN 'Confirmada' ELSE 'Excluída' END AS VARCHAR) AS situacao, mv.valor_total AS valor_total_manutencao FROM manutencao AS mv INNER JOIN veiculo AS v ON(mv.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS tm ON(mv.id_manutencao_tipo = tm.id_manutencao_tipo) INNER JOIN manutencao_local AS lm ON(mv.id_manutencao_local = lm.id_manutencao_local) INNER JOIN funcionario AS f ON(mv.id_funcionario = f.id_funcionario) INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) INNER JOIN km_diario AS kmd ON(kmd.id_veiculo = v.id_veiculo) WHERE mv.confirmada = 'S' AND mv.registro_excluido = '{registroExcluido}' GROUP BY mv.id_manutencao, tv.descricao, v.id_veiculo, v.descricao, v.placa, v.codigo, tm.descricao, lm.descricao, f.id_funcionario_cargo, f.codigo_ase, f.qra_ase, f.nome ORDER BY mv.data_manutencao DESC LIMIT 20", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridManutencoes.DataSource = dp;
 
-                string valor_total = string.Empty;
-                NpgsqlCommand com = new NpgsqlCommand($"SELECT SUM(mv.valor_total) AS valor_total FROM manutencao AS mv WHERE mv.confirmada = 'S' AND mv.id_manutencao IN (SELECT id_manutencao FROM manutencao WHERE registro_excluido = '{registroExcluido}' ORDER BY mv.data_manutencao DESC LIMIT 20)", BD.ObjetoConexao);
-                using (NpgsqlDataReader dr = com.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        valor_total = dr["valor_total"].ToString();
-                    }
-                    tBoxValorTotal.Text = Convert.ToDouble(valor_total).ToString("C");
-                }
+                tBoxValorTotal.Text = dGridManutencoes.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_total_manutencao.Name].Value ?? 0)).ToString("C");
+
             }
             catch
             {
@@ -88,6 +81,29 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             }
             finally
             {
+                dGridManutencoes.Columns["id_manutencao"].Visible = false;
+                dGridManutencoes.Columns["id_veiculo"].Visible = false;
+
+                dGridManutencoes.Columns["data_manutencao"].HeaderText = "Data da Manutenção";
+                dGridManutencoes.Columns["placa"].HeaderText = "Placa";
+                dGridManutencoes.Columns["veiculo"].HeaderText = "Veículo";
+                dGridManutencoes.Columns["km_veiculo"].HeaderText = "Km da Manutenção";
+                dGridManutencoes.Columns["km_atual"].HeaderText = "Km Atual";
+                dGridManutencoes.Columns["km_rodado"].HeaderText = "Km Rodado";
+                dGridManutencoes.Columns["descricao_tipo_manutencao"].HeaderText = "Tipo da Manutenção";
+                dGridManutencoes.Columns["descricao_local_manutencao"].HeaderText = "Local da Manutenção";
+                dGridManutencoes.Columns["qra"].HeaderText = "Funcionário";
+                dGridManutencoes.Columns["situacao"].HeaderText = "Situação";
+                dGridManutencoes.Columns["valor_total_manutencao"].HeaderText = "Valor da Manutenção";
+
+                dGridManutencoes.Columns["data_manutencao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dGridManutencoes.Columns["km_veiculo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dGridManutencoes.Columns["km_atual"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dGridManutencoes.Columns["km_rodado"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dGridManutencoes.Columns["situacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dGridManutencoes.Columns["valor_total_manutencao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dGridManutencoes.Columns["valor_total_manutencao"].DefaultCellStyle.Format = "C2";
+
                 tBoxQtdRegistros.Text = dGridManutencoes.RowCount.ToString();
                 BD.Desconectar();
             }
@@ -431,30 +447,21 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
                 if (cBoxTipoBusca.SelectedIndex != 0)
                 {
-                    NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mv.id_manutencao, mv.data_manutencao, mv.km_veiculo, MAX(kmd.km_veiculo) AS km_atual, CAST(MAX(kmd.km_veiculo) - mv.km_veiculo AS numeric) AS km_rodado, v.id_veiculo AS id_veiculo, v.placa, CAST(CASE WHEN tv.descricao = 'CARRO' THEN v.descricao WHEN v.ativo = 'N' AND tv.descricao = 'MOTO' THEN tv.descricao || ' ' || v.codigo || ' >>> REGISTRO INATIVO <<<' WHEN v.ativo = 'N' AND tv.descricao = 'CARRO' THEN v.descricao || ' >>> REGISTRO INATIVO <<<'  ELSE tv.descricao || ' ' || v.codigo END AS VARCHAR) AS veiculo, tm.descricao AS descricao_tipo_manutencao, lm.descricao AS descricao_local_manutencao, mv.valor_total, CAST(CASE WHEN id_funcionario_cargo = 1 THEN codigo || ' - ' || qra_ase ELSE nome END AS VARCHAR) AS qra, CAST(CASE WHEN mv.registro_excluido = 'N' THEN 'Confirmada' ELSE 'Excluída' END AS VARCHAR) AS situacao FROM manutencao AS mv INNER JOIN veiculo AS v ON(mv.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS tm ON(mv.id_manutencao_tipo = tm.id_manutencao_tipo) INNER JOIN manutencao_local AS lm ON(mv.id_manutencao_local = lm.id_manutencao_local) INNER JOIN funcionario AS f ON(mv.id_funcionario = f.id_funcionario) INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) INNER JOIN km_diario AS kmd ON(kmd.id_veiculo = v.id_veiculo) WHERE {tipoBusca} AND mv.confirmada = 'S' AND mv.registro_excluido = '{registroExcluido}' GROUP BY mv.id_manutencao, tv.descricao, v.id_veiculo, v.descricao, v.placa, v.codigo, tm.descricao, lm.descricao, f.id_funcionario_cargo, f.codigo_ase, f.qra_ase, f.nome ORDER BY mv.data_manutencao DESC", BD.ObjetoConexao);
+                    NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mv.id_manutencao, v.id_veiculo, mv.data_manutencao, v.placa, CAST(CASE WHEN tv.descricao = 'CARRO' THEN v.descricao WHEN v.ativo = 'N' AND tv.descricao = 'MOTO' THEN tv.descricao || ' ' || v.codigo || ' >>> REGISTRO INATIVO <<<' WHEN v.ativo = 'N' AND tv.descricao = 'CARRO' THEN v.descricao || ' >>> REGISTRO INATIVO <<<'  ELSE tv.descricao || ' ' || v.codigo END AS VARCHAR) AS veiculo, mv.km_veiculo, MAX(kmd.km_veiculo) AS km_atual, CAST(MAX(kmd.km_veiculo) - mv.km_veiculo AS numeric) AS km_rodado, tm.descricao AS descricao_tipo_manutencao, lm.descricao AS descricao_local_manutencao, CAST(CASE WHEN id_funcionario_cargo = 1 THEN codigo || ' - ' || qra_ase ELSE nome END AS VARCHAR) AS qra, CAST(CASE WHEN mv.registro_excluido = 'N' THEN 'Confirmada' ELSE 'Excluída' END AS VARCHAR) AS situacao, mv.valor_total AS valor_total_manutencao FROM manutencao AS mv INNER JOIN veiculo AS v ON(mv.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS tm ON(mv.id_manutencao_tipo = tm.id_manutencao_tipo) INNER JOIN manutencao_local AS lm ON(mv.id_manutencao_local = lm.id_manutencao_local) INNER JOIN funcionario AS f ON(mv.id_funcionario = f.id_funcionario) INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) INNER JOIN km_diario AS kmd ON(kmd.id_veiculo = v.id_veiculo) WHERE {tipoBusca} AND mv.confirmada = 'S' AND mv.registro_excluido = '{registroExcluido}' GROUP BY mv.id_manutencao, tv.descricao, v.id_veiculo, v.descricao, v.placa, v.codigo, tm.descricao, lm.descricao, f.id_funcionario_cargo, f.codigo_ase, f.qra_ase, f.nome ORDER BY mv.data_manutencao DESC", BD.ObjetoConexao);
                     DataTable dp = new DataTable();
                     retornoBD.Fill(dp);
                     dGridManutencoes.DataSource = dp;
 
-                    string valor_total = string.Empty;
-                    NpgsqlCommand com = new NpgsqlCommand($"SELECT SUM(mv.valor_total) AS valor_total FROM manutencao AS mv WHERE {tipoBusca} AND mv.confirmada = 'S' AND mv.id_manutencao IN (SELECT id_manutencao FROM manutencao WHERE registro_excluido = '{registroExcluido}' ORDER BY mv.data_manutencao DESC", BD.ObjetoConexao);
-                    using (NpgsqlDataReader dr = com.ExecuteReader())
-                    {
-                        while (dr.Read())
-                        {
-                            valor_total = dr["valor_total"].ToString();
-                        }
-                        tBoxValorTotal.Text = Convert.ToDouble(valor_total).ToString("C");
-                    }
+                    tBoxValorTotal.Text = dGridManutencoes.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_total_manutencao.Name].Value ?? 0)).ToString("C");
                 }
                 else
                 {
                     CarregaTabelaManutencoes();
                 }
-            }
+        }
             catch
             {
-                tBoxValorTotal.Text = "R$ 0,00";
+                tBoxValorTotal.Text = "R$0,00";
             }
             finally
             {
@@ -471,7 +478,15 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 dGridManutencoes.Columns["descricao_local_manutencao"].HeaderText = "Local da Manutenção";
                 dGridManutencoes.Columns["qra"].HeaderText = "Funcionário";
                 dGridManutencoes.Columns["situacao"].HeaderText = "Situação";
-                //dGridManutencoes.Columns["valor_total_manutencao_grid"].HeaderText = "Valor da Manutenção";
+                dGridManutencoes.Columns["valor_total_manutencao"].HeaderText = "Valor da Manutenção";
+
+                dGridManutencoes.Columns["data_manutencao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dGridManutencoes.Columns["km_veiculo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dGridManutencoes.Columns["km_atual"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dGridManutencoes.Columns["km_rodado"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dGridManutencoes.Columns["situacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dGridManutencoes.Columns["valor_total_manutencao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dGridManutencoes.Columns["valor_total_manutencao"].DefaultCellStyle.Format = "C2";
 
                 tBoxQtdRegistros.Text = dGridManutencoes.RowCount.ToString();
                 BD.Desconectar();
