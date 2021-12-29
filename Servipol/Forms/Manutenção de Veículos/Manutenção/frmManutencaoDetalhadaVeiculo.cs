@@ -13,12 +13,12 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         #region Instâncias e Propriedades
         readonly ConexaoBD BD = new ConexaoBD();
 
-        public int IdManutencao { get; set; }
+        public int IdRegistroSelecionado { get; set; }
         #endregion
 
-        public frmManutencaoDetalhadaVeiculo(int idManutencao)
+        public frmManutencaoDetalhadaVeiculo(int _idRegistroSelecionado)
         {
-            IdManutencao = idManutencao;
+            IdRegistroSelecionado = _idRegistroSelecionado;
 
             InitializeComponent();
         }
@@ -28,7 +28,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mv.id_veiculo, mv.id_manutencao_tipo, TO_CHAR(mv.data_manutencao, 'DD/MM/YYYY') AS data_manutencao, mv.km_veiculo, CAST(CASE WHEN mv.km_validade_oleo > 0 THEN mv.km_validade_oleo ELSE NULL END AS VARCHAR) AS km_validade_oleo, CAST(CASE WHEN mv.km_validade_oleo > 0 THEN mv.km_veiculo + mv.km_validade_oleo ELSE NULL END AS VARCHAR) AS prox_troca_oleo, CAST(tv.descricao || ' 0' || v.codigo AS VARCHAR) AS veiculo, v.descricao, v.placa, tm.descricao AS tipo_manutencao, lm.descricao AS local_manutencao, mv.observacao, CAST(CASE WHEN f.id_funcionario_cargo = 1 THEN f.codigo_ase || ' - ' || f.qra_ase ELSE f.nome END AS VARCHAR) AS funcionario, uc.nome AS usuario_cadastro, mv.data_cadastro, ue.nome AS usuario_exclusao, mv.data_exclusao, mv.motivo_exclusao, mv.valor_peca, mv.valor_servico, mv.valor_desconto, mv.valor_acrescimo, mv.valor_total, mv.registro_excluido FROM manutencao AS mv INNER JOIN veiculo AS v ON(mv.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS tm ON(mv.id_manutencao_tipo = tm.id_manutencao_tipo) INNER JOIN manutencao_local AS lm ON(mv.id_manutencao_local = lm.id_manutencao_local) INNER JOIN funcionario AS f ON(mv.id_funcionario = f.id_funcionario) LEFT OUTER JOIN usuario AS uc ON(mv.id_usuario_cadastro = uc.id_usuario) LEFT OUTER JOIN usuario AS ue ON(mv.id_usuario_exclusao = ue.id_usuario) INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo)  WHERE mv.id_manutencao = {IdManutencao}", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mv.id_veiculo, mv.id_manutencao_tipo, TO_CHAR(mv.data_manutencao, 'DD/MM/YYYY') AS data_manutencao, mv.km_veiculo, CAST(CASE WHEN mv.km_validade_oleo > 0 THEN mv.km_validade_oleo ELSE NULL END AS VARCHAR) AS km_validade_oleo, CAST(CASE WHEN mv.km_validade_oleo > 0 THEN mv.km_veiculo + mv.km_validade_oleo ELSE NULL END AS VARCHAR) AS prox_troca_oleo, CAST(tv.descricao || ' 0' || v.codigo AS VARCHAR) AS veiculo, v.descricao, v.placa, tm.descricao AS tipo_manutencao, lm.descricao AS local_manutencao, mv.observacao, CAST(CASE WHEN f.id_funcionario_cargo = 1 THEN f.codigo_ase || ' - ' || f.qra_ase ELSE f.nome END AS VARCHAR) AS funcionario, uc.nome AS usuario_cadastro, mv.data_cadastro, ue.nome AS usuario_exclusao, mv.data_exclusao, mv.motivo_exclusao, mv.valor_peca, mv.valor_servico, mv.valor_desconto, mv.valor_acrescimo, mv.valor_total, mv.registro_excluido FROM manutencao AS mv INNER JOIN veiculo AS v ON(mv.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS tm ON(mv.id_manutencao_tipo = tm.id_manutencao_tipo) INNER JOIN manutencao_local AS lm ON(mv.id_manutencao_local = lm.id_manutencao_local) INNER JOIN funcionario AS f ON(mv.id_funcionario = f.id_funcionario) LEFT OUTER JOIN usuario AS uc ON(mv.id_usuario_cadastro = uc.id_usuario) LEFT OUTER JOIN usuario AS ue ON(mv.id_usuario_exclusao = ue.id_usuario) INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo)  WHERE mv.id_manutencao = {IdRegistroSelecionado}", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
 
@@ -96,10 +96,17 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
                 if (auxSituacao.Text == "S")
                 {
-                    tBoxDescricao.DataBindings.Clear();
-                    tBoxDescricao.Text = "*** REGISTRO EXCLUÍDO ***";
-                    tBoxDescricao.TextAlign = HorizontalAlignment.Center;
-                    tBoxDescricao.ForeColor = Color.Red;
+                    tBoxSituacao.Clear();
+                    tBoxSituacao.Text = "Excluída";
+                    tBoxSituacao.TextAlign = HorizontalAlignment.Center;
+                    tBoxSituacao.ForeColor = Color.Red;
+                }
+                else
+                {
+                    tBoxSituacao.Clear();
+                    tBoxSituacao.Text = "Confirmada";
+                    tBoxSituacao.TextAlign = HorizontalAlignment.Center;
+                    tBoxSituacao.ForeColor = Color.Blue;
                 }
 
                 if (string.IsNullOrEmpty(tBoxValidadeOleo.Text))
@@ -128,12 +135,12 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnFechar2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void frmManutencaoDetalhadaVeiculo_KeyDown(object sender, KeyEventArgs e)
@@ -141,7 +148,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             switch (e.KeyCode)
             {
                 case Keys.Escape:
-                    this.Close();
+                    Close();
                     break;
             }
         }

@@ -42,7 +42,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             }
             finally
             {
-                //btnBuscar_Click(sender, e);
                 dGridManutencoes.Focus();
                 dGridManutencoes.Select();
             }
@@ -119,6 +118,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             gBoxUsuario.Visible = false;
             gBoxVeiculo.Visible = false;
             CarregaTabelaManutencoes();
+        }
+
+        public void AtualizaDGDepoisDeExcluir(object sender, EventArgs e)
+        {
+            btnBuscar_Click(sender, e);
         }
 
         private void frmManutencaoConsultar_FormClosing(object sender, FormClosingEventArgs e)
@@ -495,12 +499,36 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string _idRegistroSelecionado = dGridManutencoes.SelectedRows[0].Cells[0].Value.ToString();
+                string tipoManutencaoSelecionada = dGridManutencoes.SelectedRows[0].Cells["descricao_tipo_manutencao"].Value.ToString();
+                string kmVeiculo = dGridManutencoes.SelectedRows[0].Cells["km_veiculo"].Value.ToString();
+                string idVeiculo = dGridManutencoes.SelectedRows[0].Cells["id_veiculo"].Value.ToString();
 
+                frmManutencaoMotivoExcluir frmManutencaoMotivoExcluir = new frmManutencaoMotivoExcluir(Convert.ToInt32(_idRegistroSelecionado), tipoManutencaoSelecionada, Convert.ToInt32(kmVeiculo), Convert.ToInt32(idVeiculo));
+                frmManutencaoMotivoExcluir.Owner = this;
+                frmManutencaoMotivoExcluir.ShowInTaskbar = false;
+                frmManutencaoMotivoExcluir.ShowDialog();
+            }
+            catch (Exception err)
+            {
+                XtraMessageBox.Show(err.Message, "Erro ao excluir registro.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                string _idRegistroSelecionado = dGridManutencoes.SelectedRows[0].Cells[0].Value.ToString();
+                frmManutencaoDetalhadaVeiculo frmManutencaoDetalhadaVeiculo = new frmManutencaoDetalhadaVeiculo(_idRegistroSelecionado);
+                frmManutencaoDetalhadaVeiculo.ShowInTaskbar = false;
+                frmManutencaoDetalhadaVeiculo.ShowDialog();
+            }
+            catch
+            {
+            }
         }
 
         private void btnImprimirConsulta_Click(object sender, EventArgs e)

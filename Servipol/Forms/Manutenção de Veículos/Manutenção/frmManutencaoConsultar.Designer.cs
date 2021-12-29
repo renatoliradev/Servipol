@@ -30,13 +30,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManutencaoConsultar));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gBoxUsuario = new System.Windows.Forms.GroupBox();
             this.cBoxUsuario = new System.Windows.Forms.ComboBox();
             this.gBoxLocalManutencao = new System.Windows.Forms.GroupBox();
@@ -60,15 +60,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.cBoxTipoBusca = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dGridManutencoes = new System.Windows.Forms.DataGridView();
-            this.cBoxVeiculo = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.gBoxVeiculo = new System.Windows.Forms.GroupBox();
-            this.gBoxTipoManutencao = new System.Windows.Forms.GroupBox();
-            this.cBoxTipoManutencao = new System.Windows.Forms.ComboBox();
-            this.gBoxFuncionario = new System.Windows.Forms.GroupBox();
-            this.cBoxFuncionario = new System.Windows.Forms.ComboBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnBuscar = new DevExpress.XtraEditors.SimpleButton();
             this.id_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_veiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,6 +73,15 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.qra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.situacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valor_total_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cBoxVeiculo = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gBoxVeiculo = new System.Windows.Forms.GroupBox();
+            this.gBoxTipoManutencao = new System.Windows.Forms.GroupBox();
+            this.cBoxTipoManutencao = new System.Windows.Forms.ComboBox();
+            this.gBoxFuncionario = new System.Windows.Forms.GroupBox();
+            this.cBoxFuncionario = new System.Windows.Forms.ComboBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnBuscar = new DevExpress.XtraEditors.SimpleButton();
             this.gBoxUsuario.SuspendLayout();
             this.gBoxLocalManutencao.SuspendLayout();
             this.gBoxDataManutencao.SuspendLayout();
@@ -395,8 +395,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGridManutencoes.AllowUserToAddRows = false;
             this.dGridManutencoes.AllowUserToDeleteRows = false;
             this.dGridManutencoes.AllowUserToResizeRows = false;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.Lavender;
-            this.dGridManutencoes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
+            this.dGridManutencoes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dGridManutencoes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -431,6 +431,142 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGridManutencoes.Size = new System.Drawing.Size(1160, 206);
             this.dGridManutencoes.TabIndex = 181;
             this.dGridManutencoes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridManutencoes_CellDoubleClick);
+            // 
+            // id_manutencao
+            // 
+            this.id_manutencao.DataPropertyName = "id_manutencao";
+            this.id_manutencao.FillWeight = 0.5094286F;
+            this.id_manutencao.HeaderText = "";
+            this.id_manutencao.MinimumWidth = 2;
+            this.id_manutencao.Name = "id_manutencao";
+            this.id_manutencao.ReadOnly = true;
+            this.id_manutencao.Visible = false;
+            // 
+            // data_manutencao
+            // 
+            this.data_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.data_manutencao.DataPropertyName = "data_manutencao";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.data_manutencao.DefaultCellStyle = dataGridViewCellStyle2;
+            this.data_manutencao.FillWeight = 40.75429F;
+            this.data_manutencao.HeaderText = "Data da Manutenção";
+            this.data_manutencao.Name = "data_manutencao";
+            this.data_manutencao.ReadOnly = true;
+            this.data_manutencao.Width = 128;
+            // 
+            // id_veiculo
+            // 
+            this.id_veiculo.DataPropertyName = "id_veiculo";
+            this.id_veiculo.HeaderText = "id_veiculo";
+            this.id_veiculo.Name = "id_veiculo";
+            this.id_veiculo.ReadOnly = true;
+            this.id_veiculo.Visible = false;
+            // 
+            // placa
+            // 
+            this.placa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.placa.DataPropertyName = "placa";
+            this.placa.HeaderText = "Placa";
+            this.placa.Name = "placa";
+            this.placa.ReadOnly = true;
+            this.placa.Width = 58;
+            // 
+            // veiculo
+            // 
+            this.veiculo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.veiculo.DataPropertyName = "veiculo";
+            this.veiculo.FillWeight = 66.22572F;
+            this.veiculo.HeaderText = "Veículo";
+            this.veiculo.Name = "veiculo";
+            this.veiculo.ReadOnly = true;
+            this.veiculo.Width = 69;
+            // 
+            // km_veiculo
+            // 
+            this.km_veiculo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.km_veiculo.DataPropertyName = "km_veiculo";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.km_veiculo.DefaultCellStyle = dataGridViewCellStyle3;
+            this.km_veiculo.FillWeight = 50F;
+            this.km_veiculo.HeaderText = "Km da Manutenção";
+            this.km_veiculo.Name = "km_veiculo";
+            this.km_veiculo.ReadOnly = true;
+            this.km_veiculo.Width = 120;
+            // 
+            // km_atual
+            // 
+            this.km_atual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.km_atual.DataPropertyName = "km_atual";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.km_atual.DefaultCellStyle = dataGridViewCellStyle4;
+            this.km_atual.HeaderText = "Km Atual";
+            this.km_atual.Name = "km_atual";
+            this.km_atual.ReadOnly = true;
+            this.km_atual.Width = 71;
+            // 
+            // km_rodado
+            // 
+            this.km_rodado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.km_rodado.DataPropertyName = "km_rodado";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.km_rodado.DefaultCellStyle = dataGridViewCellStyle5;
+            this.km_rodado.HeaderText = "Km Rodado";
+            this.km_rodado.Name = "km_rodado";
+            this.km_rodado.ReadOnly = true;
+            this.km_rodado.Width = 84;
+            // 
+            // descricao_tipo_manutencao
+            // 
+            this.descricao_tipo_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descricao_tipo_manutencao.DataPropertyName = "descricao_tipo_manutencao";
+            this.descricao_tipo_manutencao.FillWeight = 127.3572F;
+            this.descricao_tipo_manutencao.HeaderText = "Tipo da Manutenção";
+            this.descricao_tipo_manutencao.Name = "descricao_tipo_manutencao";
+            this.descricao_tipo_manutencao.ReadOnly = true;
+            // 
+            // descricao_local_manutencao
+            // 
+            this.descricao_local_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descricao_local_manutencao.DataPropertyName = "descricao_local_manutencao";
+            this.descricao_local_manutencao.FillWeight = 91.69715F;
+            this.descricao_local_manutencao.HeaderText = "Local da Manutenção";
+            this.descricao_local_manutencao.Name = "descricao_local_manutencao";
+            this.descricao_local_manutencao.ReadOnly = true;
+            this.descricao_local_manutencao.Width = 130;
+            // 
+            // qra
+            // 
+            this.qra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.qra.DataPropertyName = "qra";
+            this.qra.FillWeight = 76.41429F;
+            this.qra.HeaderText = "Funcionário";
+            this.qra.Name = "qra";
+            this.qra.ReadOnly = true;
+            this.qra.Width = 94;
+            // 
+            // situacao
+            // 
+            this.situacao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.situacao.DataPropertyName = "situacao";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.situacao.DefaultCellStyle = dataGridViewCellStyle6;
+            this.situacao.HeaderText = "Situação";
+            this.situacao.Name = "situacao";
+            this.situacao.ReadOnly = true;
+            this.situacao.Width = 76;
+            // 
+            // valor_total_manutencao
+            // 
+            this.valor_total_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.valor_total_manutencao.DataPropertyName = "valor_total_manutencao";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "C2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.valor_total_manutencao.DefaultCellStyle = dataGridViewCellStyle7;
+            this.valor_total_manutencao.HeaderText = "Valor da Manutenção";
+            this.valor_total_manutencao.Name = "valor_total_manutencao";
+            this.valor_total_manutencao.ReadOnly = true;
+            this.valor_total_manutencao.Width = 130;
             // 
             // cBoxVeiculo
             // 
@@ -550,142 +686,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.btnBuscar.TabIndex = 209;
             this.btnBuscar.Text = "[F5] - Consultar";
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // id_manutencao
-            // 
-            this.id_manutencao.DataPropertyName = "id_manutencao";
-            this.id_manutencao.FillWeight = 0.5094286F;
-            this.id_manutencao.HeaderText = "";
-            this.id_manutencao.MinimumWidth = 2;
-            this.id_manutencao.Name = "id_manutencao";
-            this.id_manutencao.ReadOnly = true;
-            this.id_manutencao.Visible = false;
-            // 
-            // data_manutencao
-            // 
-            this.data_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.data_manutencao.DataPropertyName = "data_manutencao";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.data_manutencao.DefaultCellStyle = dataGridViewCellStyle23;
-            this.data_manutencao.FillWeight = 40.75429F;
-            this.data_manutencao.HeaderText = "Data da Manutenção";
-            this.data_manutencao.Name = "data_manutencao";
-            this.data_manutencao.ReadOnly = true;
-            this.data_manutencao.Width = 128;
-            // 
-            // id_veiculo
-            // 
-            this.id_veiculo.DataPropertyName = "id_veiculo";
-            this.id_veiculo.HeaderText = "id_veiculo";
-            this.id_veiculo.Name = "id_veiculo";
-            this.id_veiculo.ReadOnly = true;
-            this.id_veiculo.Visible = false;
-            // 
-            // placa
-            // 
-            this.placa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.placa.DataPropertyName = "placa";
-            this.placa.HeaderText = "Placa";
-            this.placa.Name = "placa";
-            this.placa.ReadOnly = true;
-            this.placa.Width = 58;
-            // 
-            // veiculo
-            // 
-            this.veiculo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.veiculo.DataPropertyName = "veiculo";
-            this.veiculo.FillWeight = 66.22572F;
-            this.veiculo.HeaderText = "Veículo";
-            this.veiculo.Name = "veiculo";
-            this.veiculo.ReadOnly = true;
-            this.veiculo.Width = 69;
-            // 
-            // km_veiculo
-            // 
-            this.km_veiculo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.km_veiculo.DataPropertyName = "km_veiculo";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.km_veiculo.DefaultCellStyle = dataGridViewCellStyle24;
-            this.km_veiculo.FillWeight = 50F;
-            this.km_veiculo.HeaderText = "Km da Manutenção";
-            this.km_veiculo.Name = "km_veiculo";
-            this.km_veiculo.ReadOnly = true;
-            this.km_veiculo.Width = 120;
-            // 
-            // km_atual
-            // 
-            this.km_atual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.km_atual.DataPropertyName = "km_atual";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.km_atual.DefaultCellStyle = dataGridViewCellStyle25;
-            this.km_atual.HeaderText = "Km Atual";
-            this.km_atual.Name = "km_atual";
-            this.km_atual.ReadOnly = true;
-            this.km_atual.Width = 71;
-            // 
-            // km_rodado
-            // 
-            this.km_rodado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.km_rodado.DataPropertyName = "km_rodado";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.km_rodado.DefaultCellStyle = dataGridViewCellStyle26;
-            this.km_rodado.HeaderText = "Km Rodado";
-            this.km_rodado.Name = "km_rodado";
-            this.km_rodado.ReadOnly = true;
-            this.km_rodado.Width = 84;
-            // 
-            // descricao_tipo_manutencao
-            // 
-            this.descricao_tipo_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descricao_tipo_manutencao.DataPropertyName = "descricao_tipo_manutencao";
-            this.descricao_tipo_manutencao.FillWeight = 127.3572F;
-            this.descricao_tipo_manutencao.HeaderText = "Tipo da Manutenção";
-            this.descricao_tipo_manutencao.Name = "descricao_tipo_manutencao";
-            this.descricao_tipo_manutencao.ReadOnly = true;
-            // 
-            // descricao_local_manutencao
-            // 
-            this.descricao_local_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.descricao_local_manutencao.DataPropertyName = "descricao_local_manutencao";
-            this.descricao_local_manutencao.FillWeight = 91.69715F;
-            this.descricao_local_manutencao.HeaderText = "Local da Manutenção";
-            this.descricao_local_manutencao.Name = "descricao_local_manutencao";
-            this.descricao_local_manutencao.ReadOnly = true;
-            this.descricao_local_manutencao.Width = 130;
-            // 
-            // qra
-            // 
-            this.qra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.qra.DataPropertyName = "qra";
-            this.qra.FillWeight = 76.41429F;
-            this.qra.HeaderText = "Funcionário";
-            this.qra.Name = "qra";
-            this.qra.ReadOnly = true;
-            this.qra.Width = 94;
-            // 
-            // situacao
-            // 
-            this.situacao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.situacao.DataPropertyName = "situacao";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.situacao.DefaultCellStyle = dataGridViewCellStyle27;
-            this.situacao.HeaderText = "Situação";
-            this.situacao.Name = "situacao";
-            this.situacao.ReadOnly = true;
-            this.situacao.Width = 76;
-            // 
-            // valor_total_manutencao
-            // 
-            this.valor_total_manutencao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.valor_total_manutencao.DataPropertyName = "valor_total_manutencao";
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle28.Format = "C2";
-            dataGridViewCellStyle28.NullValue = null;
-            this.valor_total_manutencao.DefaultCellStyle = dataGridViewCellStyle28;
-            this.valor_total_manutencao.HeaderText = "Valor da Manutenção";
-            this.valor_total_manutencao.Name = "valor_total_manutencao";
-            this.valor_total_manutencao.ReadOnly = true;
-            this.valor_total_manutencao.Width = 130;
             // 
             // frmManutencaoConsultar
             // 

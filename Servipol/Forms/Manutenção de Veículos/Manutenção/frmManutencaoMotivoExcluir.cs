@@ -1,37 +1,25 @@
 ﻿using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Servipol.Entidades.Classes;
 using Npgsql;
+using Servipol.Entidades.Classes;
+using System;
+using System.Windows.Forms;
 
 namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 {
     public partial class frmManutencaoMotivoExcluir : DevExpress.XtraEditors.XtraForm
     {
-        #region Instâncias
-        ConexaoBD BD = new ConexaoBD();
+        #region Instâncias e Propriedades
+        readonly ConexaoBD BD = new ConexaoBD();
 
-        public static int auxIdRegistroSelecionado = 0;
-        public static string tipo_manutencao = string.Empty;
-        public static int km_veiculo = 0;
-        public static int id_veiculo = 0;
+        public int IdRegistroSelecionado { get; set; }
+
         #endregion
 
-        public frmManutencaoMotivoExcluir(int idRegistroSelecionado, string tipoManutencaoSelecionada, int kmVeiculo, int idVeiculo)
+        public frmManutencaoMotivoExcluir(int idRegistroSelecionado)
         {
             InitializeComponent();
 
-            auxIdRegistroSelecionado = idRegistroSelecionado;
-            tipo_manutencao = tipoManutencaoSelecionada;
-            km_veiculo = kmVeiculo;
-            id_veiculo = idVeiculo;
+            IdRegistroSelecionado = idRegistroSelecionado;
         }
 
         private void frmManutencaoMotivoExcluir_Load(object sender, EventArgs e)
@@ -58,10 +46,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
         #region Buttons
 
-
-
-        #endregion
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
@@ -72,32 +56,26 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             try
             {
                 BD.Conectar();
-                if (tBoxMotivoExcluirManutencao.Text == string.Empty)
+                if (string.IsNullOrEmpty(tBoxMotivoExcluirManutencao.Text))
                 {
-                    XtraMessageBox.Show("Informe o motivo da exclusão da manutenção selecionada!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    XtraMessageBox.Show("Informe o motivo da exclusão da manutenção selecionada!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     tBoxMotivoExcluirManutencao.Focus();
                 }
                 else if (tBoxMotivoExcluirManutencao.Text.Length < 10)
                 {
-                    XtraMessageBox.Show("O motivo da exclusão deve ter no mínimo 10 caracteres.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    XtraMessageBox.Show("O motivo da exclusão deve ter no mínimo 10 caracteres.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     tBoxMotivoExcluirManutencao.Focus();
                 }
                 else
                 {
-                    if (XtraMessageBox.Show("***** OPERAÇÃO IRREVERSÍVEL *****\n\nConfirma exclusão da manutenção selecionada ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                    if (XtraMessageBox.Show("********** OPERAÇÃO IRREVERSÍVEL **********\n\nConfirma exclusão da manutenção selecionada ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
-                        //if (tipo_manutencao == "REVISÃO")
-                        //{
-                        //    NpgsqlCommand update2 = new NpgsqlCommand($"UPDATE sis_configuracao_revisao SET concluida = 'N' WHERE id_veiculo = {id_veiculo} AND km_limite_revisao BETWEEN ({km_veiculo} - 999) AND ({km_veiculo} + 999) AND concluida = 'S'", BD.ObjetoConexao);
-                        //    update2.ExecuteNonQuery();
-                        //}
-
-                        NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE manutencao SET registro_excluido = 'S', id_usuario_exclusao = {SessaoSistema.UsuarioId}, data_exclusao = CURRENT_TIMESTAMP, motivo_exclusao = '{tBoxMotivoExcluirManutencao.Text.Trim().ToUpper()}' WHERE id_manutencao = {auxIdRegistroSelecionado}", BD.ObjetoConexao);
+                        NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE manutencao SET registro_excluido = 'S', id_usuario_exclusao = {SessaoSistema.UsuarioId}, data_exclusao = CURRENT_TIMESTAMP, motivo_exclusao = '{tBoxMotivoExcluirManutencao.Text.Trim().ToUpper()}' WHERE id_manutencao = {IdRegistroSelecionado}", BD.ObjetoConexao);
                         update1.ExecuteNonQuery();
 
-                        XtraMessageBox.Show("Manutenção Excluída com Sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        XtraMessageBox.Show("Manutenção Excluída com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        //((frmManutencoesRealizadas)this.Owner).atualizaCamposDepoisDeExcluir();
+                        ((frmManutencaoConsultar)this.Owner).AtualizaDGDepoisDeExcluir(sender, e);
 
                         Close();
                     }
@@ -109,5 +87,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             }
         }
 
+        #endregion
     }
 }

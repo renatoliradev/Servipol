@@ -86,6 +86,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.auxSituacao = new System.Windows.Forms.Label();
             this.auxIdTipoManutencao = new System.Windows.Forms.Label();
             this.auxIdVeiculo = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tBoxSituacao = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.Detalhes.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -105,6 +107,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.log_registro.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox21.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -119,6 +122,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             // Detalhes
             // 
+            this.Detalhes.Controls.Add(this.groupBox1);
             this.Detalhes.Controls.Add(this.btnFechar);
             this.Detalhes.Controls.Add(this.groupBox2);
             this.Detalhes.Controls.Add(this.groupBox20);
@@ -454,9 +458,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.groupBox4.Controls.Add(this.tBoxPlaca);
             this.groupBox4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(460, 61);
+            this.groupBox4.Location = new System.Drawing.Point(449, 61);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(97, 49);
+            this.groupBox4.Size = new System.Drawing.Size(108, 49);
             this.groupBox4.TabIndex = 194;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Placa";
@@ -469,7 +473,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.tBoxPlaca.Location = new System.Drawing.Point(6, 19);
             this.tBoxPlaca.Name = "tBoxPlaca";
             this.tBoxPlaca.ReadOnly = true;
-            this.tBoxPlaca.Size = new System.Drawing.Size(85, 24);
+            this.tBoxPlaca.Size = new System.Drawing.Size(96, 24);
             this.tBoxPlaca.TabIndex = 169;
             this.tBoxPlaca.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -479,7 +483,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.groupBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(115, 61);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(339, 49);
+            this.groupBox3.Size = new System.Drawing.Size(328, 49);
             this.groupBox3.TabIndex = 193;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Descrição";
@@ -492,7 +496,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.tBoxDescricao.Location = new System.Drawing.Point(6, 19);
             this.tBoxDescricao.Name = "tBoxDescricao";
             this.tBoxDescricao.ReadOnly = true;
-            this.tBoxDescricao.Size = new System.Drawing.Size(327, 24);
+            this.tBoxDescricao.Size = new System.Drawing.Size(316, 24);
             this.tBoxDescricao.TabIndex = 166;
             // 
             // groupBox5
@@ -547,20 +551,21 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.groupBox11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox11.Location = new System.Drawing.Point(7, 171);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(550, 48);
+            this.groupBox11.Size = new System.Drawing.Size(436, 48);
             this.groupBox11.TabIndex = 193;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Local";
             // 
             // tBoxLocalManutencao
             // 
+            this.tBoxLocalManutencao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tBoxLocalManutencao.BackColor = System.Drawing.Color.White;
             this.tBoxLocalManutencao.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tBoxLocalManutencao.Font = new System.Drawing.Font("Calibri", 12F);
             this.tBoxLocalManutencao.Location = new System.Drawing.Point(6, 22);
             this.tBoxLocalManutencao.Name = "tBoxLocalManutencao";
             this.tBoxLocalManutencao.ReadOnly = true;
-            this.tBoxLocalManutencao.Size = new System.Drawing.Size(538, 20);
+            this.tBoxLocalManutencao.Size = new System.Drawing.Size(424, 20);
             this.tBoxLocalManutencao.TabIndex = 164;
             // 
             // groupBox9
@@ -778,6 +783,29 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.auxIdVeiculo.TabIndex = 201;
             this.auxIdVeiculo.Text = "auxIdVeiculo";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tBoxSituacao);
+            this.groupBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(449, 171);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(108, 49);
+            this.groupBox1.TabIndex = 195;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Situação";
+            // 
+            // tBoxSituacao
+            // 
+            this.tBoxSituacao.BackColor = System.Drawing.Color.White;
+            this.tBoxSituacao.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tBoxSituacao.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.tBoxSituacao.Location = new System.Drawing.Point(6, 19);
+            this.tBoxSituacao.Name = "tBoxSituacao";
+            this.tBoxSituacao.ReadOnly = true;
+            this.tBoxSituacao.Size = new System.Drawing.Size(96, 24);
+            this.tBoxSituacao.TabIndex = 169;
+            this.tBoxSituacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmManutencaoDetalhadaVeiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -834,6 +862,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.groupBox7.PerformLayout();
             this.groupBox21.ResumeLayout(false);
             this.groupBox21.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -898,5 +928,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         private System.Windows.Forms.Label auxSituacao;
         private System.Windows.Forms.Label auxIdTipoManutencao;
         private System.Windows.Forms.Label auxIdVeiculo;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox tBoxSituacao;
     }
 }

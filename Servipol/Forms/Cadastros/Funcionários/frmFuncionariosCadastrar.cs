@@ -10,7 +10,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
     public partial class frmFuncionariosCadastrar : DevExpress.XtraEditors.XtraForm
     {
         #region Instâncias e Propriedades
-        ConexaoBD BD = new ConexaoBD();
+        readonly ConexaoBD BD = new ConexaoBD();
 
         public string TipoChamada { get; set; }
         public int IdFuncionario { get; set; }
