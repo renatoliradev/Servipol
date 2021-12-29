@@ -393,5 +393,6 @@ ALTER TABLE public.manutencao RENAME local_manutencao  TO id_manutencao_local;
 ALTER TABLE public.manutencao RENAME valor_total_manutencao  TO valor_total;
 
 
+
 ```
 
