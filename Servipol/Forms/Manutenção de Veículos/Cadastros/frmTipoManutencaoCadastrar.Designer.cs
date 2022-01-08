@@ -110,8 +110,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // 
             // tabPrincipal
             // 
-            this.tabPrincipal.Controls.Add(this.gbKmValidadeOleoMoto);
-            this.tabPrincipal.Controls.Add(this.gbKmValidadeOleoCarro);
             this.tabPrincipal.Controls.Add(this.gbAplicacao);
             this.tabPrincipal.Controls.Add(this.gbSituacao);
             this.tabPrincipal.Controls.Add(this.gbDescricao);
@@ -127,8 +125,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // gbKmValidadeOleoMoto
             // 
             this.gbKmValidadeOleoMoto.Controls.Add(this.cBoxKmValidadeOleoMoto);
+            this.gbKmValidadeOleoMoto.Enabled = false;
             this.gbKmValidadeOleoMoto.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbKmValidadeOleoMoto.Location = new System.Drawing.Point(320, 153);
+            this.gbKmValidadeOleoMoto.Location = new System.Drawing.Point(683, 119);
             this.gbKmValidadeOleoMoto.Name = "gbKmValidadeOleoMoto";
             this.gbKmValidadeOleoMoto.Size = new System.Drawing.Size(158, 48);
             this.gbKmValidadeOleoMoto.TabIndex = 10;
@@ -175,8 +174,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // gbKmValidadeOleoCarro
             // 
             this.gbKmValidadeOleoCarro.Controls.Add(this.cBoxKmValidadeOleoCarro);
+            this.gbKmValidadeOleoCarro.Enabled = false;
             this.gbKmValidadeOleoCarro.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbKmValidadeOleoCarro.Location = new System.Drawing.Point(151, 153);
+            this.gbKmValidadeOleoCarro.Location = new System.Drawing.Point(514, 119);
             this.gbKmValidadeOleoCarro.Name = "gbKmValidadeOleoCarro";
             this.gbKmValidadeOleoCarro.Size = new System.Drawing.Size(158, 48);
             this.gbKmValidadeOleoCarro.TabIndex = 9;
@@ -242,7 +242,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.chkBoxMoto.TabIndex = 2;
             this.chkBoxMoto.Text = "Moto";
             this.chkBoxMoto.UseVisualStyleBackColor = true;
-            this.chkBoxMoto.CheckedChanged += new System.EventHandler(this.chkBoxMoto_CheckedChanged);
             // 
             // chkBoxCarro
             // 
@@ -254,7 +253,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.chkBoxCarro.TabIndex = 1;
             this.chkBoxCarro.Text = "Carro";
             this.chkBoxCarro.UseVisualStyleBackColor = true;
-            this.chkBoxCarro.CheckedChanged += new System.EventHandler(this.chkBoxCarro_CheckedChanged);
             // 
             // gbSituacao
             // 
@@ -319,11 +317,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.cBoxExigeKmValidadeOleo.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.cBoxExigeKmValidadeOleo.Location = new System.Drawing.Point(6, 22);
+            this.cBoxExigeKmValidadeOleo.Location = new System.Drawing.Point(6, 34);
             this.cBoxExigeKmValidadeOleo.Name = "cBoxExigeKmValidadeOleo";
             this.cBoxExigeKmValidadeOleo.Size = new System.Drawing.Size(315, 22);
             this.cBoxExigeKmValidadeOleo.TabIndex = 2;
-            this.cBoxExigeKmValidadeOleo.SelectedIndexChanged += new System.EventHandler(this.cBoxExigeKmValidadeOleo_SelectedIndexChanged);
             // 
             // tabDadosRegistro
             // 
@@ -544,7 +541,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(494, 326);
+            this.Controls.Add(this.gbKmValidadeOleoMoto);
             this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.gbKmValidadeOleoCarro);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.tabControlFuncionario);
             this.Controls.Add(this.auxChkBoxMoto);

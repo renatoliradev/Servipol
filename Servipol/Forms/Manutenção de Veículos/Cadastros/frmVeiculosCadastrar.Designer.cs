@@ -55,6 +55,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.tabControlFuncionario = new System.Windows.Forms.TabControl();
             this.tabPrincipal = new System.Windows.Forms.TabPage();
+            this.gbKmValidadeOleo = new System.Windows.Forms.GroupBox();
+            this.cBoxKmValidadeOleo = new System.Windows.Forms.ComboBox();
             this.tabDadosRegistro = new System.Windows.Forms.TabPage();
             this.groupBox35 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -82,6 +84,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.gbSituacao.SuspendLayout();
             this.tabControlFuncionario.SuspendLayout();
             this.tabPrincipal.SuspendLayout();
+            this.gbKmValidadeOleo.SuspendLayout();
             this.tabDadosRegistro.SuspendLayout();
             this.groupBox35.SuspendLayout();
             this.groupBox37.SuspendLayout();
@@ -154,7 +157,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // 
             this.groupBox5.Controls.Add(this.cBoxFazRevisao);
             this.groupBox5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(6, 146);
+            this.groupBox5.Location = new System.Drawing.Point(589, 106);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(211, 57);
             this.groupBox5.TabIndex = 6;
@@ -283,9 +286,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // 
             this.groupBox7.Controls.Add(this.cBoxRegistraKmDiario);
             this.groupBox7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(223, 146);
+            this.groupBox7.Location = new System.Drawing.Point(6, 146);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(198, 57);
+            this.groupBox7.Size = new System.Drawing.Size(234, 57);
             this.groupBox7.TabIndex = 7;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Obrigatório registrar Km Diário*";
@@ -300,7 +303,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             "Não"});
             this.cBoxRegistraKmDiario.Location = new System.Drawing.Point(6, 22);
             this.cBoxRegistraKmDiario.Name = "cBoxRegistraKmDiario";
-            this.cBoxRegistraKmDiario.Size = new System.Drawing.Size(186, 22);
+            this.cBoxRegistraKmDiario.Size = new System.Drawing.Size(221, 22);
             this.cBoxRegistraKmDiario.TabIndex = 2;
             // 
             // btnConfirmar
@@ -309,7 +312,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.btnConfirmar.Appearance.Options.UseFont = true;
             this.btnConfirmar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConfirmar.ImageOptions.SvgImage")));
-            this.btnConfirmar.Location = new System.Drawing.Point(295, 307);
+            this.btnConfirmar.Location = new System.Drawing.Point(291, 307);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(143, 44);
             this.btnConfirmar.TabIndex = 10;
@@ -345,9 +348,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.btnCancelar.Appearance.Options.UseFont = true;
             this.btnCancelar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnCancelar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCancelar.ImageOptions.SvgImage")));
-            this.btnCancelar.Location = new System.Drawing.Point(3, 307);
+            this.btnCancelar.Location = new System.Drawing.Point(7, 307);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(144, 44);
+            this.btnCancelar.Size = new System.Drawing.Size(143, 44);
             this.btnCancelar.TabIndex = 234;
             this.btnCancelar.TabStop = false;
             this.btnCancelar.Text = "[Esc] - Cancelar";
@@ -366,6 +369,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // 
             // tabPrincipal
             // 
+            this.tabPrincipal.Controls.Add(this.gbKmValidadeOleo);
             this.tabPrincipal.Controls.Add(this.gbTipoVeiculo);
             this.tabPrincipal.Controls.Add(this.groupBox4);
             this.tabPrincipal.Controls.Add(this.gbSituacao);
@@ -374,7 +378,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.tabPrincipal.Controls.Add(this.groupBox7);
             this.tabPrincipal.Controls.Add(this.gbPlaca);
             this.tabPrincipal.Controls.Add(this.groupBox1);
-            this.tabPrincipal.Controls.Add(this.groupBox5);
             this.tabPrincipal.Location = new System.Drawing.Point(4, 22);
             this.tabPrincipal.Name = "tabPrincipal";
             this.tabPrincipal.Padding = new System.Windows.Forms.Padding(3);
@@ -382,6 +385,63 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.tabPrincipal.TabIndex = 0;
             this.tabPrincipal.Text = "Principal";
             this.tabPrincipal.UseVisualStyleBackColor = true;
+            // 
+            // gbKmValidadeOleo
+            // 
+            this.gbKmValidadeOleo.Controls.Add(this.cBoxKmValidadeOleo);
+            this.gbKmValidadeOleo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbKmValidadeOleo.Location = new System.Drawing.Point(246, 146);
+            this.gbKmValidadeOleo.Name = "gbKmValidadeOleo";
+            this.gbKmValidadeOleo.Size = new System.Drawing.Size(175, 57);
+            this.gbKmValidadeOleo.TabIndex = 11;
+            this.gbKmValidadeOleo.TabStop = false;
+            this.gbKmValidadeOleo.Text = "Km Validade Óleo*";
+            // 
+            // cBoxKmValidadeOleo
+            // 
+            this.cBoxKmValidadeOleo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxKmValidadeOleo.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxKmValidadeOleo.FormattingEnabled = true;
+            this.cBoxKmValidadeOleo.Items.AddRange(new object[] {
+            "500",
+            "600",
+            "700",
+            "800",
+            "900",
+            "1000",
+            "1500",
+            "2000",
+            "2500",
+            "3000",
+            "3500",
+            "4000",
+            "4500",
+            "5000",
+            "5500",
+            "6000",
+            "6500",
+            "7000",
+            "7500",
+            "8000",
+            "8500",
+            "9000",
+            "9500",
+            "10000",
+            "11000",
+            "12000",
+            "13000",
+            "14000",
+            "15000",
+            "16000",
+            "17000",
+            "18000",
+            "19000",
+            "20000"});
+            this.cBoxKmValidadeOleo.Location = new System.Drawing.Point(6, 22);
+            this.cBoxKmValidadeOleo.Name = "cBoxKmValidadeOleo";
+            this.cBoxKmValidadeOleo.Size = new System.Drawing.Size(163, 22);
+            this.cBoxKmValidadeOleo.TabIndex = 3;
+            this.cBoxKmValidadeOleo.TabStop = false;
             // 
             // tabDadosRegistro
             // 
@@ -580,6 +640,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.auxCodVeiculo);
             this.Controls.Add(this.auxTipoVeiculo);
+            this.Controls.Add(this.groupBox5);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
@@ -607,6 +668,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.gbSituacao.PerformLayout();
             this.tabControlFuncionario.ResumeLayout(false);
             this.tabPrincipal.ResumeLayout(false);
+            this.gbKmValidadeOleo.ResumeLayout(false);
             this.tabDadosRegistro.ResumeLayout(false);
             this.groupBox35.ResumeLayout(false);
             this.groupBox35.PerformLayout();
@@ -662,5 +724,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         private System.Windows.Forms.TextBox tBoxDataDesativacao;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox tBoxUsuarioDesativacao;
+        private System.Windows.Forms.GroupBox gbKmValidadeOleo;
+        private System.Windows.Forms.ComboBox cBoxKmValidadeOleo;
     }
 }

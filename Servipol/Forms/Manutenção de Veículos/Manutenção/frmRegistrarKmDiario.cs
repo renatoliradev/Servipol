@@ -12,7 +12,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         #region Instâncias e Propriedades
         readonly ConexaoBD BD = new ConexaoBD();
 
-        private static string km_ja_registrado = "0";
         private static string CDV_km_ultimo_registrado = string.Empty;
         #endregion
 
@@ -24,6 +23,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         private void frmRegistrarKmDiario_Load(object sender, EventArgs e)
         {
             BD.Conectar();
+
             CarregaVeiculo();
             tBoxKmAtual.Clear();
             cBoxVeiculo.SelectedIndex = -1;
@@ -36,11 +36,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         {
             try
             {
-                BD.Conectar();
-
                 NpgsqlCommand com = new NpgsqlCommand();
                 com.Connection = BD.ObjetoConexao;
-                com.CommandText = $"SELECT v.id_veiculo, CAST(CASE WHEN vt.descricao = 'CARRO' THEN v.descricao || ' ' || v.placa ELSE vt.descricao || ' ' || v.codigo END AS VARCHAR) AS veiculo FROM veiculo AS v JOIN veiculo_tipo AS vt ON(vt.id_veiculo_tipo = v.tipo) WHERE v.ativo = 'S' AND tipo != 3 ORDER BY  v.tipo DESC, v.codigo ASC";
+                com.CommandText = $"SELECT v.id_veiculo, CAST(CASE WHEN vt.descricao = 'CARRO' THEN v.descricao || ' ' || v.placa ELSE vt.descricao || ' ' || v.codigo END AS VARCHAR) AS veiculo FROM veiculo AS v JOIN veiculo_tipo AS vt ON(vt.id_veiculo_tipo = v.id_veiculo_tipo) WHERE v.ativo = 'S' AND v.id_veiculo_tipo != 3 ORDER BY  v.id_veiculo_tipo DESC, v.codigo ASC";
                 NpgsqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
@@ -49,10 +47,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 cBoxVeiculo.DisplayMember = "veiculo";
                 cBoxVeiculo.DataSource = dt;
             }
-            finally
-            {
-               
-            }
+            finally { }
         }
 
         public void CarregaDadosVeiculo()
@@ -101,15 +96,15 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                         }
                     }
 
-                    //VERIFICA SE O KM DO DIA JÁ FOI REGISTRADO
-                    NpgsqlCommand com4 = new NpgsqlCommand($"SELECT 1 AS km_ja_registrado FROM km_diario WHERE id_veiculo = {cBoxVeiculo.SelectedValue} AND data_km_diario = CURRENT_DATE", BD.ObjetoConexao);
-                    using (NpgsqlDataReader dr4 = com4.ExecuteReader())
-                    {
-                        while (dr4.Read())
-                        {
-                            km_ja_registrado = dr4["km_ja_registrado"].ToString();
-                        }
-                    }
+                    ////VERIFICA SE O KM DO DIA JÁ FOI REGISTRADO
+                    //NpgsqlCommand com4 = new NpgsqlCommand($"SELECT 1 AS km_ja_registrado FROM km_diario WHERE id_veiculo = {cBoxVeiculo.SelectedValue} AND data_km_diario = CURRENT_DATE", BD.ObjetoConexao);
+                    //using (NpgsqlDataReader dr4 = com4.ExecuteReader())
+                    //{
+                    //    while (dr4.Read())
+                    //    {
+                    //        km_ja_registrado = dr4["km_ja_registrado"].ToString();
+                    //    }
+                    //}
                 }
             }
             catch (Exception err)
@@ -209,7 +204,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             frmProxTrocaOleoRevisao frmProxTrocaOleoRevisao = new frmProxTrocaOleoRevisao();
             frmProxTrocaOleoRevisao.Owner = this.Owner;
             frmProxTrocaOleoRevisao.ShowDialog();
-            this.Close();
+            Close();
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
@@ -222,18 +217,15 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 }
                 else
                 {
-                    if (km_ja_registrado == "1")
-                    {
-                        string sqlCommand1 = $"DELETE FROM km_diario WHERE id_veiculo = {cBoxVeiculo.SelectedValue} AND data_km_diario = CURRENT_DATE";
-                        NpgsqlCommand command1 = new NpgsqlCommand(sqlCommand1, BD.ObjetoConexao);
-                        command1.ExecuteNonQuery();
-                    }
+                    string sqlCommand1 = $"DELETE FROM km_diario WHERE id_veiculo = {cBoxVeiculo.SelectedValue}";
+                    NpgsqlCommand command1 = new NpgsqlCommand(sqlCommand1, BD.ObjetoConexao);
+                    command1.ExecuteNonQuery();
 
                     string sqlCommand = $"INSERT INTO km_diario VALUES (nextval('seq_km_diario'), {cBoxVeiculo.SelectedValue}, {tBoxKmAtual.Text}, CURRENT_DATE, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP)";
                     NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                     command.ExecuteNonQuery();
 
-                    XtraMessageBox.Show("Registro Efetuado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Km Diário registrado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimparCampos();
                 }
             }

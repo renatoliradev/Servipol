@@ -118,20 +118,22 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 if (cBoxVeiculo.SelectedIndex != -1)
                 {
                     #region DECLARACAO DE VARIAVEIS
-                    string CDV_descricao_veiculo = string.Empty, CDV_placa = string.Empty, CDV_km_ultima_troca_oleo_motor = string.Empty, CDV_data_ultima_troca_oleo_motor = string.Empty, CDV_km_diario = string.Empty, CDV_veiculo_tipo = string.Empty;
+                    string CDV_descricao_veiculo = string.Empty, CDV_placa = string.Empty, CDV_km_ultima_troca_oleo_motor = string.Empty, CDV_data_ultima_troca_oleo_motor = string.Empty, CDV_km_diario = string.Empty, CDV_km_validade_oleo = string.Empty, CDV_veiculo_tipo = string.Empty;
                     #endregion
 
-                    NpgsqlCommand com = new NpgsqlCommand($"SELECT v.descricao, v.placa, v.tipo FROM veiculo AS v WHERE v.id_veiculo = {cBoxVeiculo.SelectedValue}", BD.ObjetoConexao);
+                    NpgsqlCommand com = new NpgsqlCommand($"SELECT v.descricao, v.placa, v.id_veiculo_tipo, v.km_validade_oleo FROM veiculo AS v WHERE v.id_veiculo = {cBoxVeiculo.SelectedValue}", BD.ObjetoConexao);
                     using (NpgsqlDataReader dr = com.ExecuteReader())
                     {
                         while (dr.Read())
                         {
                             CDV_descricao_veiculo = dr["descricao"].ToString();
                             CDV_placa = dr["placa"].ToString();
-                            CDV_veiculo_tipo = dr["tipo"].ToString();
+                            CDV_veiculo_tipo = dr["id_veiculo_tipo"].ToString();
+                            CDV_km_validade_oleo = dr["km_validade_oleo"].ToString();
                         }
                         labelDescricao.Text = CDV_descricao_veiculo;
                         labelPlaca.Text = CDV_placa;
+                        cBoxKmValidadeOleo.SelectedItem = CDV_km_validade_oleo;
 
                         switch (CDV_veiculo_tipo)
                         {
@@ -221,18 +223,16 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             try
             {
                 #region Variáveis
-                string descricao_manutencao = string.Empty, exige_km_troca_oleo = string.Empty, validade_km_troca_oleo_carro = string.Empty, validade_km_troca_oleo_moto = string.Empty;
+                string descricao_manutencao = string.Empty, exige_km_troca_oleo = string.Empty;
                 #endregion
 
-                NpgsqlCommand com = new NpgsqlCommand($"SELECT mt.descricao, mt.exige_km_validade_oleo, mt.km_validade_oleo_carro, mt.km_validade_oleo_moto FROM manutencao_tipo AS mt WHERE mt.id_manutencao_tipo = {cBoxTipoManutencao.SelectedValue}", BD.ObjetoConexao);
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT mt.descricao, mt.exige_km_validade_oleo FROM manutencao_tipo AS mt WHERE mt.id_manutencao_tipo = {cBoxTipoManutencao.SelectedValue}", BD.ObjetoConexao);
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     while (dr.Read())
                     {
                         descricao_manutencao = dr["descricao"].ToString();
                         exige_km_troca_oleo = dr["exige_km_validade_oleo"].ToString();
-                        validade_km_troca_oleo_carro = dr["km_validade_oleo_carro"].ToString();
-                        validade_km_troca_oleo_moto = dr["km_validade_oleo_moto"].ToString();
                     }
                     DescricaoManutencao = descricao_manutencao;
                     ExigeKmTrocaOleo = exige_km_troca_oleo;
@@ -240,15 +240,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                     if (ExigeKmTrocaOleo == "S")
                     {
                         cBoxKmValidadeOleo.Enabled = true;
-
-                        if (TipoVeiculo == "CARRO")
-                        {
-                            cBoxKmValidadeOleo.SelectedItem = validade_km_troca_oleo_carro;
-                        }
-                        else if (TipoVeiculo == "MOTO")
-                        {
-                            cBoxKmValidadeOleo.SelectedItem = validade_km_troca_oleo_moto;
-                        }
                     }
                     else
                     {
@@ -389,6 +380,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             cBoxFuncionario.SelectedIndex = -1;
             cBoxLocalManutencao.SelectedIndex = -1;
             cBoxTipoManutencao.SelectedIndex = -1;
+            cBoxKmValidadeOleo.SelectedIndex = -1;
             tBoxValorPeca.Text = "R$ 0,00";
             tBoxValorServico.Text = "R$ 0,00";
             tBoxDesconto.Text = "R$ 0,00";

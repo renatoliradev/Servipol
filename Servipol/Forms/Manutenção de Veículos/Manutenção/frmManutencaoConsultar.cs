@@ -506,7 +506,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 string kmVeiculo = dGridManutencoes.SelectedRows[0].Cells["km_veiculo"].Value.ToString();
                 string idVeiculo = dGridManutencoes.SelectedRows[0].Cells["id_veiculo"].Value.ToString();
 
-                frmManutencaoMotivoExcluir frmManutencaoMotivoExcluir = new frmManutencaoMotivoExcluir(Convert.ToInt32(_idRegistroSelecionado), tipoManutencaoSelecionada, Convert.ToInt32(kmVeiculo), Convert.ToInt32(idVeiculo));
+                frmManutencaoMotivoExcluir frmManutencaoMotivoExcluir = new frmManutencaoMotivoExcluir(Convert.ToInt32(_idRegistroSelecionado));
                 frmManutencaoMotivoExcluir.Owner = this;
                 frmManutencaoMotivoExcluir.ShowInTaskbar = false;
                 frmManutencaoMotivoExcluir.ShowDialog();
@@ -522,7 +522,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             try
             {
                 string _idRegistroSelecionado = dGridManutencoes.SelectedRows[0].Cells[0].Value.ToString();
-                frmManutencaoDetalhadaVeiculo frmManutencaoDetalhadaVeiculo = new frmManutencaoDetalhadaVeiculo(_idRegistroSelecionado);
+                frmManutencaoDetalhadaVeiculo frmManutencaoDetalhadaVeiculo = new frmManutencaoDetalhadaVeiculo(Convert.ToInt32(_idRegistroSelecionado));
                 frmManutencaoDetalhadaVeiculo.ShowInTaskbar = false;
                 frmManutencaoDetalhadaVeiculo.ShowDialog();
             }

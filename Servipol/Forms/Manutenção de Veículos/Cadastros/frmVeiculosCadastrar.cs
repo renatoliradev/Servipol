@@ -62,6 +62,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
                     cBoxTipoVeiculo.SelectedIndex = -1;
                     cBoxCombustivel.SelectedIndex = -1;
+                    cBoxRegistraKmDiario.SelectedIndex = -1;
+                    cBoxKmValidadeOleo.SelectedIndex = -1;
                     tBoxDescricaoVeiculo.Clear();
                     tBoxPlacaVeiculo.Clear();
                     tBoxDescricaoVeiculo.Focus();
@@ -175,10 +177,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 BD.Conectar();
 
                 #region Variáveis
-                string tipo_veiculo = string.Empty, codigo = string.Empty, descricao = string.Empty, placa = string.Empty, combustivel = string.Empty, faz_revisao = string.Empty, registra_km_diario = string.Empty, usuario_cadastro = string.Empty, data_cadastro = string.Empty, usuario_desativacao = string.Empty, data_desativacao = string.Empty, usuario_reativacao = string.Empty, data_reativacao = string.Empty, usuario_alteracao = string.Empty, data_alteracao = string.Empty, registro_ativo = string.Empty;
+                string tipo_veiculo = string.Empty, codigo = string.Empty, descricao = string.Empty, placa = string.Empty, combustivel = string.Empty, faz_revisao = string.Empty, registra_km_diario = string.Empty, km_validade_oleo = string.Empty, usuario_cadastro = string.Empty, data_cadastro = string.Empty, usuario_desativacao = string.Empty, data_desativacao = string.Empty, usuario_reativacao = string.Empty, data_reativacao = string.Empty, usuario_alteracao = string.Empty, data_alteracao = string.Empty, registro_ativo = string.Empty;
                 #endregion
 
-                NpgsqlCommand com = new NpgsqlCommand($"SELECT v.id_veiculo, v.tipo, v.codigo, v.descricao, v.placa, v.combustivel, v.faz_revisao, v.registra_km_diario, uc.nome AS usuario_cadastro, v.data_cadastro, ud.nome AS usuario_desativacao, v.data_desativacao, ur.nome AS usuario_reativacao, v.data_reativacao, ua.nome AS usuario_alteracao, v.data_alteracao, v.ativo FROM veiculo AS v INNER JOIN usuario AS uc ON(uc.id_usuario = v.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = v.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ur ON(ur.id_usuario = v.id_usuario_reativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = v.id_usuario_alteracao) WHERE v.id_veiculo = {IdVeiculo}", BD.ObjetoConexao);
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT v.id_veiculo, v.tipo, v.codigo, v.descricao, v.placa, v.combustivel, v.registra_km_diario, v.km_validade_oleo, uc.nome AS usuario_cadastro, v.data_cadastro, ud.nome AS usuario_desativacao, v.data_desativacao, ur.nome AS usuario_reativacao, v.data_reativacao, ua.nome AS usuario_alteracao, v.data_alteracao, v.ativo FROM veiculo AS v INNER JOIN usuario AS uc ON(uc.id_usuario = v.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = v.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ur ON(ur.id_usuario = v.id_usuario_reativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = v.id_usuario_alteracao) WHERE v.id_veiculo = {IdVeiculo}", BD.ObjetoConexao);
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     while (dr.Read())
@@ -188,8 +190,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                         descricao = dr["descricao"].ToString().Trim();
                         placa = dr["placa"].ToString();
                         combustivel = dr["combustivel"].ToString();
-                        faz_revisao = dr["faz_revisao"].ToString();
                         registra_km_diario = dr["registra_km_diario"].ToString();
+                        km_validade_oleo = dr["km_validade_oleo"].ToString();
                         registro_ativo = dr["ativo"].ToString();
 
                         //Dados do Registro
@@ -230,18 +232,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     }
                     #endregion
 
-                    #region Conversão Faz Revisão
-                    switch (faz_revisao)
-                    {
-                        case "S":
-                            cBoxFazRevisao.SelectedIndex = 0;
-                            break;
-                        default:
-                            cBoxFazRevisao.SelectedIndex = 1;
-                            break;
-                    }
-                    #endregion
-
                     #region Conversão Registra Km Diário
                     switch (registra_km_diario)
                     {
@@ -251,6 +241,17 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                         default:
                             cBoxRegistraKmDiario.SelectedIndex = 1;
                             break;
+                    }
+                    #endregion
+
+                    #region Converte Km Validade Oleo
+                    if (km_validade_oleo != "0")
+                    {
+                        cBoxKmValidadeOleo.SelectedItem = km_validade_oleo;
+                    }
+                    else
+                    {
+                        cBoxKmValidadeOleo.SelectedIndex = -1;
                     }
                     #endregion
 
@@ -328,19 +329,18 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 cBoxCombustivel.Focus();
                 return false;
             }
-            else if (cBoxFazRevisao.SelectedIndex < 0)
-            {
-                XtraMessageBox.Show("Informe se o veículo está [Fazendo revisão na concessionária].", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                cBoxFazRevisao.Focus();
-                return false;
-            }
             else if (cBoxRegistraKmDiario.SelectedIndex < 0)
             {
                 XtraMessageBox.Show("Informe se é [Obrigatório registrar Km Diário] do veículo.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 cBoxRegistraKmDiario.Focus();
                 return false;
             }
-
+            else if (cBoxKmValidadeOleo.SelectedIndex < 0)
+            {
+                XtraMessageBox.Show("Informe o [Km Validade Óleo] do veículo.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                cBoxKmValidadeOleo.Focus();
+                return false;
+            }
             else
             {
                 return true;
@@ -381,19 +381,17 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 else
                 {
                     #region Variáveis
-                    string faz_revisao = string.Empty, registra_km_diario = string.Empty, registro_ativo = string.Empty;
+                    string km_validade_oleo = string.Empty, registra_km_diario = string.Empty, registro_ativo = string.Empty;
                     
-                    #region Conversão Faz Revisão
-
-                    if (cBoxFazRevisao.SelectedIndex == 0)
+                    #region Conversão Km Validade Oleo
+                    if (cBoxKmValidadeOleo.SelectedIndex < 0)
                     {
-                        faz_revisao = "S";
+                        km_validade_oleo = "0";
                     }
                     else
                     {
-                        faz_revisao = "N";
+                        km_validade_oleo = cBoxKmValidadeOleo.SelectedItem.ToString();
                     }
-
                     #endregion
 
                     #region Conversão Registra Km Diário
@@ -416,7 +414,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
                     if (TipoChamada == "Incluir")
                     {
-                        string sqlCommand = $"INSERT INTO veiculo VALUES (nextval('seq_veiculo'), {cBoxTipoVeiculo.SelectedValue}, {cBoxCodigoVeiculo.SelectedValue}, '{tBoxDescricaoVeiculo.Text.ToUpper().Trim()}', '{tBoxPlacaVeiculo.Text.ToUpper()}', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S', '{cBoxCombustivel.SelectedItem}', '{faz_revisao}', '{registra_km_diario}')";
+                        string sqlCommand = $"INSERT INTO veiculo VALUES (nextval('seq_veiculo'), {cBoxTipoVeiculo.SelectedValue}, {cBoxCodigoVeiculo.SelectedValue}, '{tBoxDescricaoVeiculo.Text.ToUpper().Trim()}', '{tBoxPlacaVeiculo.Text.ToUpper()}', '{cBoxCombustivel.SelectedItem}', '{registra_km_diario}', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, NULL, NULL, {km_validade_oleo}, 'S')";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 
@@ -436,7 +434,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     }
                     else if (TipoChamada == "Editar")
                     {
-                        string sqlCommand = $"UPDATE veiculo SET tipo = {cBoxTipoVeiculo.SelectedValue}, codigo = {cBoxCodigoVeiculo.SelectedValue}, descricao = '{tBoxDescricaoVeiculo.Text.ToUpper().Trim()}', placa = '{tBoxPlacaVeiculo.Text.ToUpper()}', combustivel = '{cBoxCombustivel.SelectedItem}', faz_revisao = '{faz_revisao}', registra_km_diario = '{registra_km_diario}', ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UsuarioId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_veiculo = {IdVeiculo}";
+                        string sqlCommand = $"UPDATE veiculo SET tipo = {cBoxTipoVeiculo.SelectedValue}, codigo = {cBoxCodigoVeiculo.SelectedValue}, descricao = '{tBoxDescricaoVeiculo.Text.ToUpper().Trim()}', placa = '{tBoxPlacaVeiculo.Text.ToUpper()}', combustivel = '{cBoxCombustivel.SelectedItem}', km_validade_oleo = '{km_validade_oleo}', registra_km_diario = '{registra_km_diario}', ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UsuarioId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_veiculo = {IdVeiculo}";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 
