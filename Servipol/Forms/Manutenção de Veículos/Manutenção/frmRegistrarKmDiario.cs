@@ -38,7 +38,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             {
                 NpgsqlCommand com = new NpgsqlCommand();
                 com.Connection = BD.ObjetoConexao;
-                com.CommandText = $"SELECT v.id_veiculo, CAST(CASE WHEN vt.descricao = 'CARRO' THEN v.descricao || ' ' || v.placa ELSE vt.descricao || ' ' || v.codigo END AS VARCHAR) AS veiculo FROM veiculo AS v JOIN veiculo_tipo AS vt ON(vt.id_veiculo_tipo = v.id_veiculo_tipo) WHERE v.ativo = 'S' AND v.id_veiculo_tipo != 3 ORDER BY  v.id_veiculo_tipo DESC, v.codigo ASC";
+                com.CommandText = $"SELECT v.id_veiculo, CAST(CASE WHEN vt.descricao = 'Carro' THEN v.descricao || ' - [' || v.placa || ']'  ELSE vt.descricao || ' 0' || v.codigo || ' - [' || v.placa || ']'  END AS VARCHAR) AS veiculo FROM veiculo AS v JOIN veiculo_tipo AS vt ON(vt.id_veiculo_tipo = v.id_veiculo_tipo) WHERE v.ativo = 'S' AND v.id_veiculo_tipo != 3 ORDER BY v.id_veiculo_tipo DESC, v.codigo ASC";
                 NpgsqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);

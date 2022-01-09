@@ -35,7 +35,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT ml.id_manutencao_local, CASE WHEN ml.ativo = 'S' THEN ml.descricao ELSE '[REGISTRO INATIVO] - ' || ml.descricao END AS descricao, uc.nome AS usuario_cadastro, ml.data_cadastro, CASE WHEN ml.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM manutencao_local AS ml INNER JOIN usuario AS uc ON(uc.id_usuario = ml.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = ml.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = ml.id_usuario_alteracao) WHERE ml.ativo = 'S' ORDER BY 1 ASC", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT ml.id_manutencao_local, CASE WHEN ml.ativo = 'S' THEN ml.descricao ELSE '>>>>> [REGISTRO INATIVO] <<<<< | ' || ml.descricao END AS descricao, uc.nome AS usuario_cadastro, ml.data_cadastro, CASE WHEN ml.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM manutencao_local AS ml INNER JOIN usuario AS uc ON(uc.id_usuario = ml.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = ml.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = ml.id_usuario_alteracao) WHERE ml.ativo = 'S' ORDER BY 1 ASC", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridLocalManutencao.DataSource = dp;
@@ -227,7 +227,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT ml.id_manutencao_local, CASE WHEN ml.ativo = 'S' THEN ml.descricao ELSE '[REGISTRO INATIVO] - ' || ml.descricao END AS descricao, uc.nome AS usuario_cadastro, ml.data_cadastro, CASE WHEN ml.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM manutencao_local AS ml INNER JOIN usuario AS uc ON(uc.id_usuario = ml.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = ml.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = ml.id_usuario_alteracao) WHERE ml.ativo = '{situacaoTraduzida}' AND {tipoBusca} ORDER BY 1 ASC", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT ml.id_manutencao_local, CASE WHEN ml.ativo = 'S' THEN ml.descricao ELSE '>>>>> [REGISTRO INATIVO] <<<<< | ' || ml.descricao END AS descricao, uc.nome AS usuario_cadastro, ml.data_cadastro, CASE WHEN ml.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM manutencao_local AS ml INNER JOIN usuario AS uc ON(uc.id_usuario = ml.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = ml.id_usuario_desativacao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = ml.id_usuario_alteracao) WHERE ml.ativo = '{situacaoTraduzida}' AND {tipoBusca} ORDER BY 1 ASC", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridLocalManutencao.DataSource = dp;

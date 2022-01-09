@@ -262,7 +262,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
                         if (XtraMessageBox.Show("Confirmar Alterações ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                         {
-                            string sqlCommand = $"UPDATE manutencao_local SET descricao = '{tBoxDescricao.Text.ToUpper().Trim()}', posto_combustivel = '{posto_combustivel}', WHERE id_manutencao_local = {IdLocalManutencao}";
+                            string sqlCommand = $"UPDATE manutencao_local SET descricao = '{tBoxDescricao.Text.ToUpper().Trim()}', posto_combustivel = '{posto_combustivel}' WHERE id_manutencao_local = {IdLocalManutencao}";
                             NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                             command.ExecuteNonQuery();
 

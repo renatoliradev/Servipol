@@ -58,7 +58,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         {
             try
             {
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mv.id_manutencao AS pre_id_manutencao_veiculo, mv.id_veiculo AS pre_id_veiculo, mv.data_manutencao AS pre_data_manutencao, v.placa AS pre_placa, mv.km_veiculo AS pre_km_manutencao, CAST(CASE WHEN tv.descricao = 'Carro' THEN v.descricao WHEN v.ativo = 'N' AND tv.descricao = 'Moto' THEN tv.descricao || ' ' || v.codigo || ' >>> REGISTRO INATIVO <<<' WHEN v.ativo = 'N' AND tv.descricao = 'Carro' THEN v.descricao || ' >>> REGISTRO INATIVO <<<'  ELSE tv.descricao || ' ' || v.codigo END AS VARCHAR) AS pre_veiculo, tm.descricao AS pre_tipo_manutencao, lm.descricao AS pre_local_manutencao, mv.valor_peca AS pre_valor_produto, mv.valor_servico AS pre_valor_servico, mv.valor_desconto AS pre_valor_desconto, mv.valor_acrescimo AS pre_valor_acrescimo, mv.valor_total AS pre_total_manutencao, CAST(CASE WHEN id_funcionario_cargo = 1 THEN codigo || ' - ' || qra_ase ELSE nome END AS VARCHAR) AS pre_funcionario_manutencao FROM manutencao AS mv INNER JOIN veiculo AS v ON(mv.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS tm ON(mv.id_manutencao_tipo = tm.id_manutencao_tipo) INNER JOIN manutencao_local AS lm ON(mv.id_manutencao_local = lm.id_manutencao_local) INNER JOIN funcionario AS f ON(mv.id_funcionario = f.id_funcionario) INNER JOIN veiculo_tipo AS tv ON(v.tipo = tv.id_veiculo_tipo) WHERE mv.confirmada = 'N' GROUP BY mv.id_manutencao, tv.descricao, v.id_veiculo, v.descricao, v.placa, v.codigo, tm.descricao, lm.descricao, f.id_funcionario_cargo, f.codigo_ase, f.qra_ase, f.nome ORDER BY v.tipo DESC, v.codigo ASC, mv.id_manutencao ASC", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mv.id_manutencao AS pre_id_manutencao_veiculo, mv.id_veiculo AS pre_id_veiculo, mv.data_manutencao AS pre_data_manutencao, v.placa AS pre_placa, mv.km_veiculo AS pre_km_manutencao, CAST(CASE WHEN tv.descricao = 'Carro' THEN v.descricao WHEN v.ativo = 'N' AND tv.descricao = 'Moto' THEN tv.descricao || ' ' || v.codigo || ' >>> REGISTRO INATIVO <<<' WHEN v.ativo = 'N' AND tv.descricao = 'Carro' THEN v.descricao || ' >>> REGISTRO INATIVO <<<'  ELSE tv.descricao || ' ' || v.codigo END AS VARCHAR) AS pre_veiculo, tm.descricao AS pre_tipo_manutencao, lm.descricao AS pre_local_manutencao, mv.valor_peca AS pre_valor_produto, mv.valor_servico AS pre_valor_servico, mv.valor_desconto AS pre_valor_desconto, mv.valor_acrescimo AS pre_valor_acrescimo, mv.valor_total AS pre_total_manutencao, CAST(CASE WHEN id_funcionario_cargo = 1 THEN codigo_ase || ' - ' || qra_ase ELSE nome END AS VARCHAR) AS pre_funcionario_manutencao FROM manutencao AS mv INNER JOIN veiculo AS v ON(mv.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS tm ON(mv.id_manutencao_tipo = tm.id_manutencao_tipo) INNER JOIN manutencao_local AS lm ON(mv.id_manutencao_local = lm.id_manutencao_local) INNER JOIN funcionario AS f ON(mv.id_funcionario = f.id_funcionario) INNER JOIN veiculo_tipo AS tv ON(v.id_veiculo_tipo = tv.id_veiculo_tipo) WHERE mv.confirmada = 'N' GROUP BY mv.id_manutencao, tv.descricao, v.id_veiculo, v.descricao, v.placa, v.codigo, tm.descricao, lm.descricao, f.id_funcionario_cargo, f.codigo_ase, f.qra_ase, f.nome ORDER BY v.id_veiculo_tipo DESC, v.codigo ASC, mv.id_manutencao ASC", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridPreRegistroManutencao.DataSource = dp;
@@ -96,7 +96,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             {
                 NpgsqlCommand com = new NpgsqlCommand();
                 com.Connection = BD.ObjetoConexao;
-                com.CommandText = $"SELECT v.id_veiculo, CAST(CASE WHEN vt.descricao = 'CARRO' THEN v.descricao || ' ' || v.placa ELSE vt.descricao || ' ' || v.codigo END AS VARCHAR) AS veiculo FROM veiculo AS v JOIN veiculo_tipo AS vt ON(vt.id_veiculo_tipo = v.tipo) WHERE v.ativo = 'S' AND tipo != 3 ORDER BY  v.tipo DESC, v.codigo ASC";
+                com.CommandText = $"SELECT v.id_veiculo, CAST(CASE WHEN vt.descricao = 'Carro' THEN v.descricao || ' - [' || v.placa || ']'  ELSE vt.descricao || ' 0' || v.codigo || ' - [' || v.placa || ']'  END AS VARCHAR) AS veiculo FROM veiculo AS v JOIN veiculo_tipo AS vt ON(vt.id_veiculo_tipo = v.id_veiculo_tipo) WHERE v.ativo = 'S' AND v.id_veiculo_tipo != 3 ORDER BY v.id_veiculo_tipo DESC, v.codigo ASC";
                 NpgsqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
@@ -355,6 +355,12 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 cBoxTipoManutencao.Focus();
                 return false;
             }
+            else if (cBoxTipoManutencao.SelectedIndex == 0 && cBoxKmValidadeOleo.SelectedIndex == -1)
+            {
+                XtraMessageBox.Show("Informe o [Km Validade do Óleo]", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                cBoxKmValidadeOleo.Focus();
+                return false;
+            }
             else if (UltimoKmServico > Convert.ToInt32(tBoxKmAtual.Text))
             {
                 XtraMessageBox.Show($"O Km Atual é menor que o último Km informado para este veículo e serviço!\n\nDescrição do serviço: {DescricaoManutencao}\nData do serviço: {UltimaDataServico}\nKm informado para o serviço: {UltimoKmServico}\n\nKm Atual informado: {tBoxKmAtual.Text}", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -392,6 +398,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         {
             if (cBoxTipoManutencao.SelectedIndex != -1)
             {
+                CarregaDadosVeiculo();
                 VerificaTipoManutencao();
             }
         }

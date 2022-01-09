@@ -804,7 +804,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.gBoxTrocaOleo.Size = new System.Drawing.Size(155, 52);
             this.gBoxTrocaOleo.TabIndex = 240;
             this.gBoxTrocaOleo.TabStop = false;
-            this.gBoxTrocaOleo.Text = "Validade do Óleo*";
+            this.gBoxTrocaOleo.Text = "Km Validade do Óleo*";
             // 
             // groupBox3
             // 

@@ -209,10 +209,12 @@ namespace Servipol
             // btnClientes
             // 
             this.btnClientes.Caption = "Clientes";
+            this.btnClientes.Enabled = false;
             this.btnClientes.Id = 3;
             this.btnClientes.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.ImageOptions.Image")));
             this.btnClientes.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnClientes.ImageOptions.LargeImage")));
             this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.btnClientes.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnClientes_ItemClick);
             // 
             // barButtonItem4
@@ -255,10 +257,12 @@ namespace Servipol
             // btnEquipamentos
             // 
             this.btnEquipamentos.Caption = "Equipamentos";
+            this.btnEquipamentos.Enabled = false;
             this.btnEquipamentos.Id = 10;
             this.btnEquipamentos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEquipamentos.ImageOptions.Image")));
             this.btnEquipamentos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnEquipamentos.ImageOptions.LargeImage")));
             this.btnEquipamentos.Name = "btnEquipamentos";
+            this.btnEquipamentos.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.btnEquipamentos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEquipamentos_ItemClick);
             // 
             // barButtonItem10
@@ -633,6 +637,7 @@ namespace Servipol
             this.ribbonPageGroup9});
             this.ribbonPage2.Name = "ribbonPage2";
             this.ribbonPage2.Text = "Relatórios";
+            this.ribbonPage2.Visible = false;
             // 
             // ribbonPageGroup3
             // 
@@ -758,6 +763,7 @@ namespace Servipol
             this.ribbonPageGroup18});
             this.ribbonPage5.Name = "ribbonPage5";
             this.ribbonPage5.Text = "ATA Agente";
+            this.ribbonPage5.Visible = false;
             // 
             // ribbonPageGroup11
             // 
@@ -790,6 +796,7 @@ namespace Servipol
             this.ribbonPageGroup19});
             this.ribbonPage6.Name = "ribbonPage6";
             this.ribbonPage6.Text = "ATA Operador";
+            this.ribbonPage6.Visible = false;
             // 
             // ribbonPageGroup12
             // 
@@ -863,6 +870,7 @@ namespace Servipol
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
+            this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.KeyPreview = true;
