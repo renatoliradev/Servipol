@@ -10,7 +10,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 {
     public partial class frmLocalManutencaoConsultar : DevExpress.XtraEditors.XtraForm
     {
-        #region Instâncias
+        #region Instâncias e Propriedades
         readonly ConexaoBD BD = new ConexaoBD();
         #endregion
 
@@ -21,8 +21,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         private void frmLocalManutencaoConsultar_Load(object sender, EventArgs e)
         {
-            CarregaTabelaLocalManutencao();
-
             cBoxSituacao.SelectedIndex = 0;
             cBoxTipoBusca.SelectedIndex = 0;
             tBoxTextoConsulta.Clear();

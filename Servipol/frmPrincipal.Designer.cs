@@ -236,6 +236,7 @@ namespace Servipol
             this.btnPerfilUsuario.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPerfilUsuario.ImageOptions.Image")));
             this.btnPerfilUsuario.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPerfilUsuario.ImageOptions.LargeImage")));
             this.btnPerfilUsuario.Name = "btnPerfilUsuario";
+            this.btnPerfilUsuario.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPerfilUsuario_ItemClick);
             // 
             // btnUsuarios
             // 
@@ -244,6 +245,7 @@ namespace Servipol
             this.btnUsuarios.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUsuarios.ImageOptions.Image")));
             this.btnUsuarios.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnUsuarios.ImageOptions.LargeImage")));
             this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUsuarios_ItemClick);
             // 
             // btnFuncionarios
             // 
@@ -459,6 +461,7 @@ namespace Servipol
             // btnRegistrarAbastecimento
             // 
             this.btnRegistrarAbastecimento.Caption = "Registrar Abastecimento";
+            this.btnRegistrarAbastecimento.Enabled = false;
             this.btnRegistrarAbastecimento.Id = 38;
             this.btnRegistrarAbastecimento.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRegistrarAbastecimento.ImageOptions.Image")));
             this.btnRegistrarAbastecimento.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRegistrarAbastecimento.ImageOptions.LargeImage")));
@@ -487,6 +490,7 @@ namespace Servipol
             // btnAbastecimentosRealizados
             // 
             this.btnAbastecimentosRealizados.Caption = "Abastecimentos Realizados";
+            this.btnAbastecimentosRealizados.Enabled = false;
             this.btnAbastecimentosRealizados.Id = 41;
             this.btnAbastecimentosRealizados.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAbastecimentosRealizados.ImageOptions.Image")));
             this.btnAbastecimentosRealizados.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAbastecimentosRealizados.ImageOptions.LargeImage")));

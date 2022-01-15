@@ -280,6 +280,20 @@ namespace Servipol
             XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void btnPerfilUsuario_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MemoryManagement.FlushMemory();
+
+            frmUsuarioPerfilConsultar frmUsuarioPerfilConsultar = new frmUsuarioPerfilConsultar();
+            frmUsuarioPerfilConsultar.MdiParent = this;
+            frmUsuarioPerfilConsultar.Show();
+        }
+
+        private void btnUsuarios_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
         private void btnProxTrocaOleoRevisao_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MemoryManagement.FlushMemory();

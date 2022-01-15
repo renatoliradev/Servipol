@@ -177,6 +177,12 @@
     <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioConsultar.Designer.cs">
       <DependentUpon>frmUsuarioConsultar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioPerfilConsultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioPerfilConsultar.Designer.cs">
+      <DependentUpon>frmUsuarioPerfilConsultar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Configuração\frmEmpresaSistema.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +310,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configuração\Controle de Acesso\frmUsuarioAlterarSenha.resx">
       <DependentUpon>frmUsuarioAlterarSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configuração\Controle de Acesso\frmUsuarioPerfil.resx">
+      <DependentUpon>frmUsuarioPerfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configuração\Controle de Acesso\frmUsuarioPerfilConsultar.resx">
+      <DependentUpon>frmUsuarioPerfilConsultar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configuração\frmParametrosSistema.resx">
       <DependentUpon>frmParametrosSistema.cs</DependentUpon>

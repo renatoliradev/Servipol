@@ -290,6 +290,12 @@ ALTER TABLE public.manutencao
       REFERENCES public.manutencao_local (id_manutencao_local) MATCH SIMPLE
       ON UPDATE RESTRICT ON DELETE RESTRICT;
 
+ALTER TABLE controle_permissao_perfil ADD COLUMN id_usuario_cadastro integer;
+ALTER TABLE controle_permissao_perfil ADD COLUMN data_cadastro timestamp without time zone;
+ALTER TABLE controle_permissao_perfil ADD COLUMN id_usuario_alteracao integer;
+ALTER TABLE controle_permissao_perfil ADD COLUMN data_alteracao timestamp without time zone;
+ALTER TABLE controle_permissao_perfil ADD COLUMN id_usuario_exclusao integer;
+ALTER TABLE controle_permissao_perfil ADD COLUMN data_exclusao timestamp without time zone;
 
 
 ```
