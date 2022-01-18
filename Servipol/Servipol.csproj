@@ -311,6 +311,12 @@
     <EmbeddedResource Include="Forms\Configuração\Controle de Acesso\frmUsuarioAlterarSenha.resx">
       <DependentUpon>frmUsuarioAlterarSenha.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configuração\Controle de Acesso\frmUsuarioCadastrar.resx">
+      <DependentUpon>frmUsuarioCadastrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configuração\Controle de Acesso\frmUsuarioConsultar.resx">
+      <DependentUpon>frmUsuarioConsultar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configuração\Controle de Acesso\frmUsuarioPerfil.resx">
       <DependentUpon>frmUsuarioPerfil.cs</DependentUpon>
     </EmbeddedResource>

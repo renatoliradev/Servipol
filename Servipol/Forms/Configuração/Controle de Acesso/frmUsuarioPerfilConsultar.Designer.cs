@@ -41,16 +41,16 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.tBoxTextoConsulta = new System.Windows.Forms.TextBox();
             this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnExcluir = new DevExpress.XtraEditors.SimpleButton();
             this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
             this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
-            this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuario_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_manutencao_local = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dGridUsuarioPerfil = new System.Windows.Forms.DataGridView();
-            this.btnExcluir = new DevExpress.XtraEditors.SimpleButton();
+            this.id_controle_permissao_perfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuario_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -97,7 +97,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox4.Controls.Add(this.cBoxSituacao);
             this.groupBox4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(12, 7);
+            this.groupBox4.Location = new System.Drawing.Point(12, 5);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(115, 52);
             this.groupBox4.TabIndex = 10;
@@ -115,7 +115,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1238, 74);
+            this.panel1.Size = new System.Drawing.Size(1238, 71);
             this.panel1.TabIndex = 148;
             // 
             // btnConsultar
@@ -125,7 +125,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnConsultar.Appearance.Options.UseFont = true;
             this.btnConsultar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnConsultar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConsultar.ImageOptions.SvgImage")));
-            this.btnConsultar.Location = new System.Drawing.Point(1091, 13);
+            this.btnConsultar.Location = new System.Drawing.Point(1091, 11);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(144, 44);
             this.btnConsultar.TabIndex = 3;
@@ -137,7 +137,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.Controls.Add(this.cBoxTipoBusca);
             this.groupBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(133, 7);
+            this.groupBox2.Location = new System.Drawing.Point(133, 5);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(224, 52);
             this.groupBox2.TabIndex = 11;
@@ -149,7 +149,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.tBoxTextoConsulta);
             this.groupBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(363, 7);
+            this.groupBox3.Location = new System.Drawing.Point(363, 5);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(722, 52);
             this.groupBox3.TabIndex = 12;
@@ -195,6 +195,21 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.panel2.Size = new System.Drawing.Size(1238, 61);
             this.panel2.TabIndex = 149;
             // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluir.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.Appearance.Options.UseFont = true;
+            this.btnExcluir.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnExcluir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExcluir.ImageOptions.SvgImage")));
+            this.btnExcluir.Location = new System.Drawing.Point(791, 9);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(144, 44);
+            this.btnExcluir.TabIndex = 189;
+            this.btnExcluir.TabStop = false;
+            this.btnExcluir.Text = "[Del] - Excluir";
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
             // btnIncluir
             // 
             this.btnIncluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -225,49 +240,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnEditar.Text = "[F3] - Editar";
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // ativo
-            // 
-            this.ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ativo.DataPropertyName = "ativo";
-            this.ativo.HeaderText = "Ativo";
-            this.ativo.Name = "ativo";
-            this.ativo.ReadOnly = true;
-            this.ativo.Width = 58;
-            // 
-            // data_cadastro
-            // 
-            this.data_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.data_cadastro.DataPropertyName = "data_cadastro";
-            this.data_cadastro.HeaderText = "Data Cadastro";
-            this.data_cadastro.Name = "data_cadastro";
-            this.data_cadastro.ReadOnly = true;
-            this.data_cadastro.Width = 96;
-            // 
-            // usuario_cadastro
-            // 
-            this.usuario_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.usuario_cadastro.DataPropertyName = "usuario_cadastro";
-            this.usuario_cadastro.HeaderText = "Usuário Cadastro";
-            this.usuario_cadastro.Name = "usuario_cadastro";
-            this.usuario_cadastro.ReadOnly = true;
-            this.usuario_cadastro.Width = 111;
-            // 
-            // descricao
-            // 
-            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descricao.DataPropertyName = "descricao";
-            this.descricao.HeaderText = "Descrição";
-            this.descricao.Name = "descricao";
-            this.descricao.ReadOnly = true;
-            // 
-            // id_manutencao_local
-            // 
-            this.id_manutencao_local.DataPropertyName = "id_manutencao_local";
-            this.id_manutencao_local.HeaderText = "ID";
-            this.id_manutencao_local.Name = "id_manutencao_local";
-            this.id_manutencao_local.ReadOnly = true;
-            this.id_manutencao_local.Visible = false;
-            // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -275,9 +247,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.dGridUsuarioPerfil);
-            this.panel3.Location = new System.Drawing.Point(0, 79);
+            this.panel3.Location = new System.Drawing.Point(0, 89);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1238, 367);
+            this.panel3.Size = new System.Drawing.Size(1238, 357);
             this.panel3.TabIndex = 150;
             // 
             // dGridUsuarioPerfil
@@ -292,7 +264,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.dGridUsuarioPerfil.BackgroundColor = System.Drawing.Color.White;
             this.dGridUsuarioPerfil.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGridUsuarioPerfil.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_manutencao_local,
+            this.id_controle_permissao_perfil,
             this.descricao,
             this.usuario_cadastro,
             this.data_cadastro,
@@ -305,24 +277,52 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.dGridUsuarioPerfil.RowHeadersVisible = false;
             this.dGridUsuarioPerfil.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dGridUsuarioPerfil.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGridUsuarioPerfil.Size = new System.Drawing.Size(1236, 365);
+            this.dGridUsuarioPerfil.Size = new System.Drawing.Size(1236, 355);
             this.dGridUsuarioPerfil.TabIndex = 0;
             this.dGridUsuarioPerfil.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridLocalManutencao_CellDoubleClick);
             // 
-            // btnExcluir
+            // id_controle_permissao_perfil
             // 
-            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluir.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Appearance.Options.UseFont = true;
-            this.btnExcluir.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnExcluir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-            this.btnExcluir.Location = new System.Drawing.Point(791, 9);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(144, 44);
-            this.btnExcluir.TabIndex = 189;
-            this.btnExcluir.TabStop = false;
-            this.btnExcluir.Text = "[Del] - Excluir";
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            this.id_controle_permissao_perfil.DataPropertyName = "id_controle_permissao_perfil";
+            this.id_controle_permissao_perfil.HeaderText = "ID";
+            this.id_controle_permissao_perfil.Name = "id_controle_permissao_perfil";
+            this.id_controle_permissao_perfil.ReadOnly = true;
+            this.id_controle_permissao_perfil.Visible = false;
+            // 
+            // descricao
+            // 
+            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descricao.DataPropertyName = "descricao";
+            this.descricao.HeaderText = "Descrição";
+            this.descricao.Name = "descricao";
+            this.descricao.ReadOnly = true;
+            // 
+            // usuario_cadastro
+            // 
+            this.usuario_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.usuario_cadastro.DataPropertyName = "usuario_cadastro";
+            this.usuario_cadastro.HeaderText = "Usuário Cadastro";
+            this.usuario_cadastro.Name = "usuario_cadastro";
+            this.usuario_cadastro.ReadOnly = true;
+            this.usuario_cadastro.Width = 111;
+            // 
+            // data_cadastro
+            // 
+            this.data_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.data_cadastro.DataPropertyName = "data_cadastro";
+            this.data_cadastro.HeaderText = "Data Cadastro";
+            this.data_cadastro.Name = "data_cadastro";
+            this.data_cadastro.ReadOnly = true;
+            this.data_cadastro.Width = 96;
+            // 
+            // ativo
+            // 
+            this.ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ativo.DataPropertyName = "ativo";
+            this.ativo.HeaderText = "Ativo";
+            this.ativo.Name = "ativo";
+            this.ativo.ReadOnly = true;
+            this.ativo.Width = 58;
             // 
             // frmUsuarioPerfilConsultar
             // 
@@ -368,13 +368,13 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.SimpleButton btnIncluir;
         private DevExpress.XtraEditors.SimpleButton btnEditar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ativo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data_cadastro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usuario_cadastro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_manutencao_local;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dGridUsuarioPerfil;
         private DevExpress.XtraEditors.SimpleButton btnExcluir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_controle_permissao_perfil;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usuario_cadastro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_cadastro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ativo;
     }
 }

@@ -50,7 +50,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.chkBoxAcessarTipoManutencao = new System.Windows.Forms.CheckBox();
             this.gBoxManutencaoDeVeiculo = new System.Windows.Forms.GroupBox();
             this.chkBoxPainelBI = new System.Windows.Forms.CheckBox();
-            this.chkBoxProxTrocasOleo = new System.Windows.Forms.CheckBox();
+            this.chkBoxProxTrocaOleo = new System.Windows.Forms.CheckBox();
             this.chkBoxExcluirManutencaoRealizada = new System.Windows.Forms.CheckBox();
             this.chkBoxManutencoesRealizadas = new System.Windows.Forms.CheckBox();
             this.chkBoxRegistrarManutencao = new System.Windows.Forms.CheckBox();
@@ -77,6 +77,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnBloquearTudo = new DevExpress.XtraEditors.SimpleButton();
             this.gbSelecionarPerfil = new System.Windows.Forms.GroupBox();
             this.cBoxPerfil = new System.Windows.Forms.ComboBox();
+            this.chkBoxInativarVeiculos = new System.Windows.Forms.CheckBox();
             this.gbDescricaoPerfil.SuspendLayout();
             this.gBoxUsuarios.SuspendLayout();
             this.gBoxTipoDeManutencao.SuspendLayout();
@@ -300,7 +301,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // gBoxManutencaoDeVeiculo
             // 
             this.gBoxManutencaoDeVeiculo.Controls.Add(this.chkBoxPainelBI);
-            this.gBoxManutencaoDeVeiculo.Controls.Add(this.chkBoxProxTrocasOleo);
+            this.gBoxManutencaoDeVeiculo.Controls.Add(this.chkBoxProxTrocaOleo);
             this.gBoxManutencaoDeVeiculo.Controls.Add(this.chkBoxExcluirManutencaoRealizada);
             this.gBoxManutencaoDeVeiculo.Controls.Add(this.chkBoxManutencoesRealizadas);
             this.gBoxManutencaoDeVeiculo.Controls.Add(this.chkBoxRegistrarManutencao);
@@ -323,16 +324,16 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.chkBoxPainelBI.Text = "Acessar Painel B.I.";
             this.chkBoxPainelBI.UseVisualStyleBackColor = true;
             // 
-            // chkBoxProxTrocasOleo
+            // chkBoxProxTrocaOleo
             // 
-            this.chkBoxProxTrocasOleo.AutoSize = true;
-            this.chkBoxProxTrocasOleo.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBoxProxTrocasOleo.Location = new System.Drawing.Point(6, 88);
-            this.chkBoxProxTrocasOleo.Name = "chkBoxProxTrocasOleo";
-            this.chkBoxProxTrocasOleo.Size = new System.Drawing.Size(188, 17);
-            this.chkBoxProxTrocasOleo.TabIndex = 1;
-            this.chkBoxProxTrocasOleo.Text = "Visualizar Próximas Trocas de Óleo";
-            this.chkBoxProxTrocasOleo.UseVisualStyleBackColor = true;
+            this.chkBoxProxTrocaOleo.AutoSize = true;
+            this.chkBoxProxTrocaOleo.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBoxProxTrocaOleo.Location = new System.Drawing.Point(6, 88);
+            this.chkBoxProxTrocaOleo.Name = "chkBoxProxTrocaOleo";
+            this.chkBoxProxTrocaOleo.Size = new System.Drawing.Size(188, 17);
+            this.chkBoxProxTrocaOleo.TabIndex = 1;
+            this.chkBoxProxTrocaOleo.Text = "Visualizar Próximas Trocas de Óleo";
+            this.chkBoxProxTrocaOleo.UseVisualStyleBackColor = true;
             // 
             // chkBoxExcluirManutencaoRealizada
             // 
@@ -427,13 +428,14 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             // gBoxVeiculos
             // 
+            this.gBoxVeiculos.Controls.Add(this.chkBoxInativarVeiculos);
             this.gBoxVeiculos.Controls.Add(this.chkBoxEditarVeiculos);
             this.gBoxVeiculos.Controls.Add(this.chkBoxIncluirVeiculos);
             this.gBoxVeiculos.Controls.Add(this.chkBoxAcessarVeiculos);
             this.gBoxVeiculos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gBoxVeiculos.Location = new System.Drawing.Point(201, 72);
             this.gBoxVeiculos.Name = "gBoxVeiculos";
-            this.gBoxVeiculos.Size = new System.Drawing.Size(192, 93);
+            this.gBoxVeiculos.Size = new System.Drawing.Size(192, 116);
             this.gBoxVeiculos.TabIndex = 4;
             this.gBoxVeiculos.TabStop = false;
             this.gBoxVeiculos.Text = "Veículos";
@@ -478,9 +480,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gBoxFuncionarios.Controls.Add(this.chkBoxIncluirFuncionarios);
             this.gBoxFuncionarios.Controls.Add(this.chkBoxAcessarFuncionarios);
             this.gBoxFuncionarios.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBoxFuncionarios.Location = new System.Drawing.Point(201, 171);
+            this.gBoxFuncionarios.Location = new System.Drawing.Point(201, 194);
             this.gBoxFuncionarios.Name = "gBoxFuncionarios";
-            this.gBoxFuncionarios.Size = new System.Drawing.Size(192, 138);
+            this.gBoxFuncionarios.Size = new System.Drawing.Size(192, 115);
             this.gBoxFuncionarios.TabIndex = 5;
             this.gBoxFuncionarios.TabStop = false;
             this.gBoxFuncionarios.Text = "Funcionários";
@@ -569,12 +571,13 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnCancelar.Appearance.Options.UseFont = true;
             this.btnCancelar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnCancelar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCancelar.ImageOptions.SvgImage")));
-            this.btnCancelar.Location = new System.Drawing.Point(12, 460);
+            this.btnCancelar.Location = new System.Drawing.Point(12, 462);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(143, 44);
             this.btnCancelar.TabIndex = 236;
             this.btnCancelar.TabStop = false;
             this.btnCancelar.Text = "[Esc] - Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnConfirmar
             // 
@@ -582,11 +585,12 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnConfirmar.Appearance.Options.UseFont = true;
             this.btnConfirmar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConfirmar.ImageOptions.SvgImage")));
-            this.btnConfirmar.Location = new System.Drawing.Point(466, 460);
+            this.btnConfirmar.Location = new System.Drawing.Point(466, 462);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(143, 44);
             this.btnConfirmar.TabIndex = 235;
             this.btnConfirmar.Text = "[F12] - Confirmar";
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // btnLiberarTudo
             // 
@@ -596,12 +600,13 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnLiberarTudo.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.btnLiberarTudo.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnLiberarTudo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLiberarTudo.ImageOptions.SvgImage")));
-            this.btnLiberarTudo.Location = new System.Drawing.Point(201, 460);
+            this.btnLiberarTudo.Location = new System.Drawing.Point(207, 462);
             this.btnLiberarTudo.Name = "btnLiberarTudo";
             this.btnLiberarTudo.Size = new System.Drawing.Size(100, 44);
             this.btnLiberarTudo.TabIndex = 237;
             this.btnLiberarTudo.TabStop = false;
             this.btnLiberarTudo.Text = "Liberar Tudo";
+            this.btnLiberarTudo.Click += new System.EventHandler(this.btnLiberarTudo_Click);
             // 
             // btnBloquearTudo
             // 
@@ -611,12 +616,13 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnBloquearTudo.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.btnBloquearTudo.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnBloquearTudo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBloquearTudo.ImageOptions.SvgImage")));
-            this.btnBloquearTudo.Location = new System.Drawing.Point(307, 460);
+            this.btnBloquearTudo.Location = new System.Drawing.Point(313, 462);
             this.btnBloquearTudo.Name = "btnBloquearTudo";
             this.btnBloquearTudo.Size = new System.Drawing.Size(100, 44);
             this.btnBloquearTudo.TabIndex = 238;
             this.btnBloquearTudo.TabStop = false;
             this.btnBloquearTudo.Text = "Bloquear Tudo";
+            this.btnBloquearTudo.Click += new System.EventHandler(this.btnBloquearTudo_Click);
             // 
             // gbSelecionarPerfil
             // 
@@ -645,11 +651,22 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.cBoxPerfil.TabStop = false;
             this.cBoxPerfil.SelectedIndexChanged += new System.EventHandler(this.cBoxPerfil_SelectedIndexChanged);
             // 
+            // chkBoxInativarVeiculos
+            // 
+            this.chkBoxInativarVeiculos.AutoSize = true;
+            this.chkBoxInativarVeiculos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBoxInativarVeiculos.Location = new System.Drawing.Point(22, 89);
+            this.chkBoxInativarVeiculos.Name = "chkBoxInativarVeiculos";
+            this.chkBoxInativarVeiculos.Size = new System.Drawing.Size(62, 17);
+            this.chkBoxInativarVeiculos.TabIndex = 4;
+            this.chkBoxInativarVeiculos.Text = "Inativar";
+            this.chkBoxInativarVeiculos.UseVisualStyleBackColor = true;
+            // 
             // frmUsuarioPerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1224, 518);
+            this.ClientSize = new System.Drawing.Size(620, 518);
             this.Controls.Add(this.btnBloquearTudo);
             this.Controls.Add(this.btnLiberarTudo);
             this.Controls.Add(this.btnCancelar);
@@ -661,8 +678,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.Controls.Add(this.gBoxLocalDeManutencao);
             this.Controls.Add(this.gBoxVeiculos);
             this.Controls.Add(this.gBoxFuncionarios);
-            this.Controls.Add(this.gbSelecionarPerfil);
             this.Controls.Add(this.gbDescricaoPerfil);
+            this.Controls.Add(this.gbSelecionarPerfil);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -709,7 +726,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private System.Windows.Forms.CheckBox chkBoxIncluirTipoManutencao;
         private System.Windows.Forms.CheckBox chkBoxAcessarTipoManutencao;
         private System.Windows.Forms.GroupBox gBoxManutencaoDeVeiculo;
-        private System.Windows.Forms.CheckBox chkBoxProxTrocasOleo;
+        private System.Windows.Forms.CheckBox chkBoxProxTrocaOleo;
         private System.Windows.Forms.CheckBox chkBoxExcluirManutencaoRealizada;
         private System.Windows.Forms.CheckBox chkBoxManutencoesRealizadas;
         private System.Windows.Forms.CheckBox chkBoxRegistrarManutencao;
@@ -742,5 +759,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private System.Windows.Forms.TextBox tBoxDescricao;
         private System.Windows.Forms.GroupBox gbSelecionarPerfil;
         private System.Windows.Forms.ComboBox cBoxPerfil;
+        private System.Windows.Forms.CheckBox chkBoxInativarVeiculos;
     }
 }
