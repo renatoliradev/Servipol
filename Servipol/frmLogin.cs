@@ -151,5 +151,14 @@ namespace Servipol
                     break;
             }
         }
+
+        private void frmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.F4)
+            {
+                Application.Exit();
+            }
+            
+        }
     }
 }

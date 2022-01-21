@@ -33,18 +33,23 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.label12 = new System.Windows.Forms.Label();
             this.tabControlFuncionario = new System.Windows.Forms.TabControl();
             this.tabPrincipal = new System.Windows.Forms.TabPage();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.tBoxRepeticaoNovaSenha = new System.Windows.Forms.TextBox();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.tBoxNovaSenha = new System.Windows.Forms.TextBox();
-            this.chkBoxAlterarSenha = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tBoxLogin = new System.Windows.Forms.TextBox();
             this.gbSituacao = new System.Windows.Forms.GroupBox();
             this.chkBoxRegistroAtivo = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tBoxNome = new System.Windows.Forms.TextBox();
+            this.gbNovaSenha = new System.Windows.Forms.GroupBox();
+            this.tBoxCriarRepeticaoSenha = new System.Windows.Forms.TextBox();
+            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
+            this.tBoxCriarSenha = new System.Windows.Forms.TextBox();
+            this.gbAlterarSenha = new System.Windows.Forms.GroupBox();
+            this.tBoxRepeticaoNovaSenha = new System.Windows.Forms.TextBox();
+            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.tBoxNovaSenha = new System.Windows.Forms.TextBox();
+            this.chkBoxAlterarSenha = new System.Windows.Forms.CheckBox();
             this.tabDadosRegistro = new System.Windows.Forms.TabPage();
             this.groupBox35 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -64,12 +69,15 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnConfirmar = new DevExpress.XtraEditors.SimpleButton();
             this.tabControlFuncionario.SuspendLayout();
             this.tabPrincipal.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.gbSituacao.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.gbNovaSenha.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
+            this.gbAlterarSenha.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.tabDadosRegistro.SuspendLayout();
             this.groupBox35.SuspendLayout();
             this.groupBox37.SuspendLayout();
@@ -99,10 +107,11 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             // tabPrincipal
             // 
-            this.tabPrincipal.Controls.Add(this.groupBox5);
             this.tabPrincipal.Controls.Add(this.groupBox3);
             this.tabPrincipal.Controls.Add(this.gbSituacao);
             this.tabPrincipal.Controls.Add(this.groupBox2);
+            this.tabPrincipal.Controls.Add(this.gbNovaSenha);
+            this.tabPrincipal.Controls.Add(this.gbAlterarSenha);
             this.tabPrincipal.Location = new System.Drawing.Point(4, 22);
             this.tabPrincipal.Name = "tabPrincipal";
             this.tabPrincipal.Padding = new System.Windows.Forms.Padding(3);
@@ -111,66 +120,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.tabPrincipal.Text = "Principal";
             this.tabPrincipal.UseVisualStyleBackColor = true;
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.tBoxRepeticaoNovaSenha);
-            this.groupBox5.Controls.Add(this.textEdit2);
-            this.groupBox5.Controls.Add(this.textEdit1);
-            this.groupBox5.Controls.Add(this.tBoxNovaSenha);
-            this.groupBox5.Controls.Add(this.chkBoxAlterarSenha);
-            this.groupBox5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(6, 125);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(415, 78);
-            this.groupBox5.TabIndex = 9;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Situação";
-            // 
-            // tBoxRepeticaoNovaSenha
-            // 
-            this.tBoxRepeticaoNovaSenha.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxRepeticaoNovaSenha.Font = new System.Drawing.Font("Calibri", 9F);
-            this.tBoxRepeticaoNovaSenha.Location = new System.Drawing.Point(302, 46);
-            this.tBoxRepeticaoNovaSenha.Name = "tBoxRepeticaoNovaSenha";
-            this.tBoxRepeticaoNovaSenha.Size = new System.Drawing.Size(107, 22);
-            this.tBoxRepeticaoNovaSenha.TabIndex = 5;
-            // 
-            // textEdit2
-            // 
-            this.textEdit2.EditValue = "Repita a senha:";
-            this.textEdit2.Location = new System.Drawing.Point(209, 46);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(87, 20);
-            this.textEdit2.TabIndex = 4;
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.EditValue = "Nova senha:";
-            this.textEdit1.Location = new System.Drawing.Point(6, 46);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(72, 20);
-            this.textEdit1.TabIndex = 3;
-            // 
-            // tBoxNovaSenha
-            // 
-            this.tBoxNovaSenha.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxNovaSenha.Font = new System.Drawing.Font("Calibri", 9F);
-            this.tBoxNovaSenha.Location = new System.Drawing.Point(84, 46);
-            this.tBoxNovaSenha.Name = "tBoxNovaSenha";
-            this.tBoxNovaSenha.Size = new System.Drawing.Size(107, 22);
-            this.tBoxNovaSenha.TabIndex = 2;
-            // 
-            // chkBoxAlterarSenha
-            // 
-            this.chkBoxAlterarSenha.AutoSize = true;
-            this.chkBoxAlterarSenha.Font = new System.Drawing.Font("Calibri", 9F);
-            this.chkBoxAlterarSenha.Location = new System.Drawing.Point(6, 22);
-            this.chkBoxAlterarSenha.Name = "chkBoxAlterarSenha";
-            this.chkBoxAlterarSenha.Size = new System.Drawing.Size(100, 18);
-            this.chkBoxAlterarSenha.TabIndex = 1;
-            this.chkBoxAlterarSenha.Text = "Alterar Senha";
-            this.chkBoxAlterarSenha.UseVisualStyleBackColor = true;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.tBoxLogin);
@@ -178,7 +127,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.groupBox3.Location = new System.Drawing.Point(6, 67);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(415, 55);
-            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Login*";
             // 
@@ -222,7 +171,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(415, 55);
-            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nome*";
             // 
@@ -235,6 +184,112 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.tBoxNome.Name = "tBoxNome";
             this.tBoxNome.Size = new System.Drawing.Size(403, 22);
             this.tBoxNome.TabIndex = 1;
+            // 
+            // gbNovaSenha
+            // 
+            this.gbNovaSenha.Controls.Add(this.tBoxCriarRepeticaoSenha);
+            this.gbNovaSenha.Controls.Add(this.textEdit3);
+            this.gbNovaSenha.Controls.Add(this.textEdit4);
+            this.gbNovaSenha.Controls.Add(this.tBoxCriarSenha);
+            this.gbNovaSenha.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbNovaSenha.Location = new System.Drawing.Point(6, 128);
+            this.gbNovaSenha.Name = "gbNovaSenha";
+            this.gbNovaSenha.Size = new System.Drawing.Size(415, 78);
+            this.gbNovaSenha.TabIndex = 4;
+            this.gbNovaSenha.TabStop = false;
+            // 
+            // tBoxCriarRepeticaoSenha
+            // 
+            this.tBoxCriarRepeticaoSenha.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxCriarRepeticaoSenha.Font = new System.Drawing.Font("Calibri", 9F);
+            this.tBoxCriarRepeticaoSenha.Location = new System.Drawing.Point(284, 46);
+            this.tBoxCriarRepeticaoSenha.Name = "tBoxCriarRepeticaoSenha";
+            this.tBoxCriarRepeticaoSenha.Size = new System.Drawing.Size(125, 22);
+            this.tBoxCriarRepeticaoSenha.TabIndex = 5;
+            // 
+            // textEdit3
+            // 
+            this.textEdit3.EditValue = "Repita a senha:";
+            this.textEdit3.Location = new System.Drawing.Point(191, 48);
+            this.textEdit3.Name = "textEdit3";
+            this.textEdit3.Size = new System.Drawing.Size(87, 20);
+            this.textEdit3.TabIndex = 4;
+            // 
+            // textEdit4
+            // 
+            this.textEdit4.EditValue = "Senha:";
+            this.textEdit4.Location = new System.Drawing.Point(6, 48);
+            this.textEdit4.Name = "textEdit4";
+            this.textEdit4.Size = new System.Drawing.Size(45, 20);
+            this.textEdit4.TabIndex = 3;
+            // 
+            // tBoxCriarSenha
+            // 
+            this.tBoxCriarSenha.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxCriarSenha.Font = new System.Drawing.Font("Calibri", 9F);
+            this.tBoxCriarSenha.Location = new System.Drawing.Point(57, 46);
+            this.tBoxCriarSenha.Name = "tBoxCriarSenha";
+            this.tBoxCriarSenha.Size = new System.Drawing.Size(125, 22);
+            this.tBoxCriarSenha.TabIndex = 2;
+            // 
+            // gbAlterarSenha
+            // 
+            this.gbAlterarSenha.Controls.Add(this.tBoxRepeticaoNovaSenha);
+            this.gbAlterarSenha.Controls.Add(this.textEdit2);
+            this.gbAlterarSenha.Controls.Add(this.textEdit1);
+            this.gbAlterarSenha.Controls.Add(this.tBoxNovaSenha);
+            this.gbAlterarSenha.Controls.Add(this.chkBoxAlterarSenha);
+            this.gbAlterarSenha.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbAlterarSenha.Location = new System.Drawing.Point(6, 125);
+            this.gbAlterarSenha.Name = "gbAlterarSenha";
+            this.gbAlterarSenha.Size = new System.Drawing.Size(415, 78);
+            this.gbAlterarSenha.TabIndex = 3;
+            this.gbAlterarSenha.TabStop = false;
+            // 
+            // tBoxRepeticaoNovaSenha
+            // 
+            this.tBoxRepeticaoNovaSenha.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxRepeticaoNovaSenha.Font = new System.Drawing.Font("Calibri", 9F);
+            this.tBoxRepeticaoNovaSenha.Location = new System.Drawing.Point(284, 46);
+            this.tBoxRepeticaoNovaSenha.Name = "tBoxRepeticaoNovaSenha";
+            this.tBoxRepeticaoNovaSenha.Size = new System.Drawing.Size(125, 22);
+            this.tBoxRepeticaoNovaSenha.TabIndex = 5;
+            // 
+            // textEdit2
+            // 
+            this.textEdit2.EditValue = "Repita a senha:";
+            this.textEdit2.Location = new System.Drawing.Point(191, 48);
+            this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Size = new System.Drawing.Size(87, 20);
+            this.textEdit2.TabIndex = 4;
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.EditValue = "Senha:";
+            this.textEdit1.Location = new System.Drawing.Point(6, 48);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(45, 20);
+            this.textEdit1.TabIndex = 3;
+            // 
+            // tBoxNovaSenha
+            // 
+            this.tBoxNovaSenha.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxNovaSenha.Font = new System.Drawing.Font("Calibri", 9F);
+            this.tBoxNovaSenha.Location = new System.Drawing.Point(57, 46);
+            this.tBoxNovaSenha.Name = "tBoxNovaSenha";
+            this.tBoxNovaSenha.Size = new System.Drawing.Size(125, 22);
+            this.tBoxNovaSenha.TabIndex = 2;
+            // 
+            // chkBoxAlterarSenha
+            // 
+            this.chkBoxAlterarSenha.AutoSize = true;
+            this.chkBoxAlterarSenha.Font = new System.Drawing.Font("Calibri", 9F);
+            this.chkBoxAlterarSenha.Location = new System.Drawing.Point(6, 22);
+            this.chkBoxAlterarSenha.Name = "chkBoxAlterarSenha";
+            this.chkBoxAlterarSenha.Size = new System.Drawing.Size(100, 18);
+            this.chkBoxAlterarSenha.TabIndex = 1;
+            this.chkBoxAlterarSenha.Text = "Alterar Senha";
+            this.chkBoxAlterarSenha.UseVisualStyleBackColor = true;
             // 
             // tabDadosRegistro
             // 
@@ -436,7 +491,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnConfirmar.Location = new System.Drawing.Point(289, 297);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(143, 44);
-            this.btnConfirmar.TabIndex = 237;
+            this.btnConfirmar.TabIndex = 5;
             this.btnConfirmar.Text = "[F12] - Confirmar";
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
@@ -444,7 +499,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 344);
+            this.ClientSize = new System.Drawing.Size(438, 344);
             this.Controls.Add(this.tabControlFuncionario);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnConfirmar);
@@ -459,16 +514,20 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.Load += new System.EventHandler(this.frmUsuarioCadastrar_Load);
             this.tabControlFuncionario.ResumeLayout(false);
             this.tabPrincipal.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.gbSituacao.ResumeLayout(false);
             this.gbSituacao.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.gbNovaSenha.ResumeLayout(false);
+            this.gbNovaSenha.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
+            this.gbAlterarSenha.ResumeLayout(false);
+            this.gbAlterarSenha.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.tabDadosRegistro.ResumeLayout(false);
             this.groupBox35.ResumeLayout(false);
             this.groupBox35.PerformLayout();
@@ -506,7 +565,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private System.Windows.Forms.TextBox tBoxUsuarioDesativacao;
         private DevExpress.XtraEditors.SimpleButton btnCancelar;
         private DevExpress.XtraEditors.SimpleButton btnConfirmar;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox gbAlterarSenha;
         private System.Windows.Forms.TextBox tBoxRepeticaoNovaSenha;
         private DevExpress.XtraEditors.TextEdit textEdit2;
         private DevExpress.XtraEditors.TextEdit textEdit1;
@@ -514,5 +573,10 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private System.Windows.Forms.CheckBox chkBoxAlterarSenha;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox tBoxLogin;
+        private System.Windows.Forms.GroupBox gbNovaSenha;
+        private System.Windows.Forms.TextBox tBoxCriarRepeticaoSenha;
+        private DevExpress.XtraEditors.TextEdit textEdit3;
+        private DevExpress.XtraEditors.TextEdit textEdit4;
+        private System.Windows.Forms.TextBox tBoxCriarSenha;
     }
 }
