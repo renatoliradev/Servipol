@@ -74,7 +74,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {
-            frmUsuarioPerfil frmUsuarioPerfil = new frmUsuarioPerfil("Incluir", 0);
+            frmUsuarioPerfil frmUsuarioPerfil = new frmUsuarioPerfil("Incluir", null, 0);
             frmUsuarioPerfil.Owner = this;
             frmUsuarioPerfil.ShowDialog();
         }
@@ -84,7 +84,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             try
             {
                 string idRegistroSelecionadoGrid = dGridUsuarioPerfil.SelectedRows[0].Cells[0].Value.ToString();
-                frmUsuarioPerfil frmUsuarioPerfil = new frmUsuarioPerfil("Editar", int.Parse(idRegistroSelecionadoGrid));
+                frmUsuarioPerfil frmUsuarioPerfil = new frmUsuarioPerfil("Editar", null, int.Parse(idRegistroSelecionadoGrid));
                 frmUsuarioPerfil.Owner = this;
                 frmUsuarioPerfil.ShowDialog();
             }

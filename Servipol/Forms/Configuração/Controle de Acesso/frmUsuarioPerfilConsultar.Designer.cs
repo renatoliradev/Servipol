@@ -97,7 +97,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox4.Controls.Add(this.cBoxSituacao);
             this.groupBox4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(12, 5);
+            this.groupBox4.Location = new System.Drawing.Point(12, 11);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(115, 52);
             this.groupBox4.TabIndex = 10;
@@ -115,7 +115,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1238, 71);
+            this.panel1.Size = new System.Drawing.Size(1238, 83);
             this.panel1.TabIndex = 148;
             // 
             // btnConsultar
@@ -125,7 +125,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnConsultar.Appearance.Options.UseFont = true;
             this.btnConsultar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnConsultar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConsultar.ImageOptions.SvgImage")));
-            this.btnConsultar.Location = new System.Drawing.Point(1091, 11);
+            this.btnConsultar.Location = new System.Drawing.Point(1091, 17);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(144, 44);
             this.btnConsultar.TabIndex = 3;
@@ -137,7 +137,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.Controls.Add(this.cBoxTipoBusca);
             this.groupBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(133, 5);
+            this.groupBox2.Location = new System.Drawing.Point(133, 11);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(224, 52);
             this.groupBox2.TabIndex = 11;
@@ -149,7 +149,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.tBoxTextoConsulta);
             this.groupBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(363, 5);
+            this.groupBox3.Location = new System.Drawing.Point(363, 11);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(722, 52);
             this.groupBox3.TabIndex = 12;
@@ -279,12 +279,11 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.dGridUsuarioPerfil.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGridUsuarioPerfil.Size = new System.Drawing.Size(1236, 355);
             this.dGridUsuarioPerfil.TabIndex = 0;
-            this.dGridUsuarioPerfil.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridLocalManutencao_CellDoubleClick);
             // 
             // id_controle_permissao_perfil
             // 
             this.id_controle_permissao_perfil.DataPropertyName = "id_controle_permissao_perfil";
-            this.id_controle_permissao_perfil.HeaderText = "ID";
+            this.id_controle_permissao_perfil.HeaderText = "id_controle_permissao_perfil";
             this.id_controle_permissao_perfil.Name = "id_controle_permissao_perfil";
             this.id_controle_permissao_perfil.ReadOnly = true;
             this.id_controle_permissao_perfil.Visible = false;
@@ -299,7 +298,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             // usuario_cadastro
             // 
-            this.usuario_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.usuario_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.usuario_cadastro.DataPropertyName = "usuario_cadastro";
             this.usuario_cadastro.HeaderText = "Usuário Cadastro";
             this.usuario_cadastro.Name = "usuario_cadastro";
@@ -308,7 +307,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             // data_cadastro
             // 
-            this.data_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.data_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.data_cadastro.DataPropertyName = "data_cadastro";
             this.data_cadastro.HeaderText = "Data Cadastro";
             this.data_cadastro.Name = "data_cadastro";
@@ -329,9 +328,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1238, 513);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel3);
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -368,9 +367,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.SimpleButton btnIncluir;
         private DevExpress.XtraEditors.SimpleButton btnEditar;
+        private DevExpress.XtraEditors.SimpleButton btnExcluir;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dGridUsuarioPerfil;
-        private DevExpress.XtraEditors.SimpleButton btnExcluir;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_controle_permissao_perfil;
         private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario_cadastro;

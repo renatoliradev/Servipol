@@ -39,15 +39,15 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.cBoxTipoBusca = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tBoxTextoConsulta = new System.Windows.Forms.TextBox();
-            this.dGridUsuarios = new System.Windows.Forms.DataGridView();
             this.btnExcluir = new DevExpress.XtraEditors.SimpleButton();
             this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
             this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnPermissoes = new DevExpress.XtraEditors.SimpleButton();
+            this.btnResetarSenha = new DevExpress.XtraEditors.SimpleButton();
             this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnResetarSenha = new DevExpress.XtraEditors.SimpleButton();
-            this.btnPermissoes = new DevExpress.XtraEditors.SimpleButton();
+            this.dGridUsuarios = new System.Windows.Forms.DataGridView();
             this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.login = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,9 +58,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGridUsuarios)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGridUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -145,6 +145,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.cBoxTipoBusca.Size = new System.Drawing.Size(212, 22);
             this.cBoxTipoBusca.TabIndex = 105;
             this.cBoxTipoBusca.TabStop = false;
+            this.cBoxTipoBusca.SelectedIndexChanged += new System.EventHandler(this.cBoxTipoBusca_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -168,35 +169,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.tBoxTextoConsulta.TabIndex = 107;
             this.tBoxTextoConsulta.TabStop = false;
             // 
-            // dGridUsuarios
-            // 
-            this.dGridUsuarios.AllowUserToAddRows = false;
-            this.dGridUsuarios.AllowUserToDeleteRows = false;
-            this.dGridUsuarios.AllowUserToResizeColumns = false;
-            this.dGridUsuarios.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
-            this.dGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dGridUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dGridUsuarios.BackgroundColor = System.Drawing.Color.White;
-            this.dGridUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGridUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_usuario,
-            this.login,
-            this.nome,
-            this.usuario_cadastro,
-            this.data_cadastro,
-            this.ativo});
-            this.dGridUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dGridUsuarios.Location = new System.Drawing.Point(0, 0);
-            this.dGridUsuarios.MultiSelect = false;
-            this.dGridUsuarios.Name = "dGridUsuarios";
-            this.dGridUsuarios.ReadOnly = true;
-            this.dGridUsuarios.RowHeadersVisible = false;
-            this.dGridUsuarios.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dGridUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGridUsuarios.Size = new System.Drawing.Size(1236, 355);
-            this.dGridUsuarios.TabIndex = 0;
-            // 
             // btnExcluir
             // 
             this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -209,7 +181,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnExcluir.Size = new System.Drawing.Size(144, 44);
             this.btnExcluir.TabIndex = 189;
             this.btnExcluir.TabStop = false;
-            this.btnExcluir.Text = "[Del] - Excluir";
+            this.btnExcluir.Text = "[Del] - Inativar";
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnIncluir
@@ -258,6 +230,36 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.panel2.Size = new System.Drawing.Size(1238, 61);
             this.panel2.TabIndex = 152;
             // 
+            // btnPermissoes
+            // 
+            this.btnPermissoes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPermissoes.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPermissoes.Appearance.Options.UseFont = true;
+            this.btnPermissoes.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnPermissoes.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnPermissoes.ImageOptions.SvgImage")));
+            this.btnPermissoes.Location = new System.Drawing.Point(449, 9);
+            this.btnPermissoes.Name = "btnPermissoes";
+            this.btnPermissoes.Size = new System.Drawing.Size(165, 44);
+            this.btnPermissoes.TabIndex = 191;
+            this.btnPermissoes.TabStop = false;
+            this.btnPermissoes.Text = "[F7] - Permissões";
+            this.btnPermissoes.Click += new System.EventHandler(this.btnPermissoes_Click);
+            // 
+            // btnResetarSenha
+            // 
+            this.btnResetarSenha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnResetarSenha.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetarSenha.Appearance.Options.UseFont = true;
+            this.btnResetarSenha.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnResetarSenha.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnResetarSenha.ImageOptions.SvgImage")));
+            this.btnResetarSenha.Location = new System.Drawing.Point(620, 9);
+            this.btnResetarSenha.Name = "btnResetarSenha";
+            this.btnResetarSenha.Size = new System.Drawing.Size(165, 44);
+            this.btnResetarSenha.TabIndex = 190;
+            this.btnResetarSenha.TabStop = false;
+            this.btnResetarSenha.Text = "[F6] - Resetar Senha";
+            this.btnResetarSenha.Click += new System.EventHandler(this.btnResetarSenha_Click);
+            // 
             // btnImprimirConsulta
             // 
             this.btnImprimirConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -280,52 +282,51 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.dGridUsuarios);
-            this.panel3.Location = new System.Drawing.Point(0, 89);
+            this.panel3.Location = new System.Drawing.Point(0, 77);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1238, 357);
+            this.panel3.Size = new System.Drawing.Size(1238, 369);
             this.panel3.TabIndex = 153;
             // 
-            // btnResetarSenha
+            // dGridUsuarios
             // 
-            this.btnResetarSenha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnResetarSenha.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetarSenha.Appearance.Options.UseFont = true;
-            this.btnResetarSenha.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnResetarSenha.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-            this.btnResetarSenha.Location = new System.Drawing.Point(620, 9);
-            this.btnResetarSenha.Name = "btnResetarSenha";
-            this.btnResetarSenha.Size = new System.Drawing.Size(165, 44);
-            this.btnResetarSenha.TabIndex = 190;
-            this.btnResetarSenha.TabStop = false;
-            this.btnResetarSenha.Text = "[F6] - Resetar Senha";
-            this.btnResetarSenha.Click += new System.EventHandler(this.btnResetarSenha_Click);
-            // 
-            // btnPermissoes
-            // 
-            this.btnPermissoes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPermissoes.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPermissoes.Appearance.Options.UseFont = true;
-            this.btnPermissoes.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnPermissoes.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton2.ImageOptions.SvgImage")));
-            this.btnPermissoes.Location = new System.Drawing.Point(449, 9);
-            this.btnPermissoes.Name = "btnPermissoes";
-            this.btnPermissoes.Size = new System.Drawing.Size(165, 44);
-            this.btnPermissoes.TabIndex = 191;
-            this.btnPermissoes.TabStop = false;
-            this.btnPermissoes.Text = "[F7] - Permissões";
-            this.btnPermissoes.Click += new System.EventHandler(this.btnPermissoes_Click);
+            this.dGridUsuarios.AllowUserToAddRows = false;
+            this.dGridUsuarios.AllowUserToDeleteRows = false;
+            this.dGridUsuarios.AllowUserToResizeColumns = false;
+            this.dGridUsuarios.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
+            this.dGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dGridUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dGridUsuarios.BackgroundColor = System.Drawing.Color.White;
+            this.dGridUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGridUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_usuario,
+            this.login,
+            this.nome,
+            this.usuario_cadastro,
+            this.data_cadastro,
+            this.ativo});
+            this.dGridUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dGridUsuarios.Location = new System.Drawing.Point(0, 0);
+            this.dGridUsuarios.MultiSelect = false;
+            this.dGridUsuarios.Name = "dGridUsuarios";
+            this.dGridUsuarios.ReadOnly = true;
+            this.dGridUsuarios.RowHeadersVisible = false;
+            this.dGridUsuarios.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dGridUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dGridUsuarios.Size = new System.Drawing.Size(1236, 367);
+            this.dGridUsuarios.TabIndex = 0;
             // 
             // id_usuario
             // 
             this.id_usuario.DataPropertyName = "id_usuario";
-            this.id_usuario.HeaderText = "ID";
+            this.id_usuario.HeaderText = "id_usuario";
             this.id_usuario.Name = "id_usuario";
             this.id_usuario.ReadOnly = true;
             this.id_usuario.Visible = false;
             // 
             // login
             // 
-            this.login.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.login.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.login.DataPropertyName = "login";
             this.login.HeaderText = "Login";
             this.login.Name = "login";
@@ -336,13 +337,13 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             this.nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nome.DataPropertyName = "nome";
-            this.nome.HeaderText = "Descrição";
+            this.nome.HeaderText = "Nome";
             this.nome.Name = "nome";
             this.nome.ReadOnly = true;
             // 
             // usuario_cadastro
             // 
-            this.usuario_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.usuario_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.usuario_cadastro.DataPropertyName = "usuario_cadastro";
             this.usuario_cadastro.HeaderText = "Usuário Cadastro";
             this.usuario_cadastro.Name = "usuario_cadastro";
@@ -351,7 +352,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             // data_cadastro
             // 
-            this.data_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.data_cadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.data_cadastro.DataPropertyName = "data_cadastro";
             this.data_cadastro.HeaderText = "Data Cadastro";
             this.data_cadastro.Name = "data_cadastro";
@@ -372,9 +373,10 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1238, 513);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel3);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmUsuarioConsultar";
@@ -383,14 +385,15 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuários";
             this.Load += new System.EventHandler(this.frmUsuarioConsultar_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmUsuarioConsultar_KeyDown);
             this.panel1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGridUsuarios)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dGridUsuarios)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -404,15 +407,15 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private System.Windows.Forms.ComboBox cBoxTipoBusca;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox tBoxTextoConsulta;
-        private System.Windows.Forms.DataGridView dGridUsuarios;
         private DevExpress.XtraEditors.SimpleButton btnExcluir;
         private DevExpress.XtraEditors.SimpleButton btnIncluir;
         private DevExpress.XtraEditors.SimpleButton btnEditar;
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.SimpleButton btnImprimirConsulta;
-        private System.Windows.Forms.Panel panel3;
         private DevExpress.XtraEditors.SimpleButton btnPermissoes;
         private DevExpress.XtraEditors.SimpleButton btnResetarSenha;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView dGridUsuarios;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn login;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;

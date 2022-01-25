@@ -291,7 +291,11 @@ namespace Servipol
 
         private void btnUsuarios_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            MemoryManagement.FlushMemory();
 
+            frmUsuarioConsultar frmUsuarioConsultar = new frmUsuarioConsultar();
+            frmUsuarioConsultar.MdiParent = this;
+            frmUsuarioConsultar.Show();
         }
 
         private void btnProxTrocaOleoRevisao_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

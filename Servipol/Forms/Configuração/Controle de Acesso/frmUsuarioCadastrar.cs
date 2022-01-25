@@ -29,6 +29,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private void frmUsuarioCadastrar_Load(object sender, EventArgs e)
         {
             VerificaTipoChamada();
+
+            tBoxNome.Select();
         }
 
         public void VerificaTipoChamada()
@@ -193,8 +195,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         {
             try
             {
-                BD.Conectar();
-
                 if (!ValidaCampos())
                 {
                     return;
@@ -203,6 +203,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                 {
                     if (TipoChamada == "Editar" && chkBoxAlterarSenha.Checked && tBoxNovaSenha.Text == tBoxRepeticaoNovaSenha.Text)
                     {
+                        BD.Conectar();
+
                         string sqlCommand = $"UPDATE usuario SET nome = '{tBoxNome.Text.ToUpper().Trim()}', login = '{tBoxLogin.Text.ToUpper().Trim()}', senha = UPPER(MD5('{tBoxNovaSenha.Text.ToUpper()}')) WHERE id_usuario = {IdUsuario}";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
@@ -215,6 +217,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     }
                     else if (TipoChamada == "Editar" && chkBoxAlterarSenha.Checked == false)
                     {
+                        BD.Conectar();
+
                         string sqlCommand = $"UPDATE usuario SET nome = '{tBoxNome.Text.ToUpper().Trim()}', login = '{tBoxLogin.Text.ToUpper().Trim()}' WHERE id_usuario = {IdUsuario}";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
@@ -227,7 +231,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     }
                     else if (TipoChamada == "Incluir")
                     {
-                        string sqlCommand = $"INSERT INTO usuario VALUES (nextval('seq_usuario'), '{tBoxNome.Text.ToUpper().Trim()}', login = '{tBoxLogin.Text.ToUpper().Trim()}', senha = UPPER(MD5('{tBoxCriarSenha.Text.ToUpper()}')), 'N', 'S', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL)";
+                        BD.Conectar();
+
+                        string sqlCommand = $"INSERT INTO usuario VALUES (nextval('seq_usuario'), '{tBoxNome.Text.ToUpper().Trim()}', '{tBoxLogin.Text.ToUpper().Trim()}', UPPER(MD5('{tBoxCriarSenha.Text.ToUpper()}')), 'N', 'S', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL)";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 
@@ -236,7 +242,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                         ((frmUsuarioConsultar)this.Owner).AtualizaDG();
                         this.Close();
 
-                        NpgsqlCommand com = new NpgsqlCommand($"SELECT id_usuario FROM usuario WHERE nome = '{tBoxNome.Text.ToUpper().Trim()} ' AND login = '{tBoxLogin.Text.ToUpper().Trim()}'", BD.ObjetoConexao);
+                        NpgsqlCommand com = new NpgsqlCommand($"SELECT id_usuario FROM usuario WHERE nome = '{tBoxNome.Text.ToUpper().Trim()}' AND login = '{tBoxLogin.Text.ToUpper().Trim()}'", BD.ObjetoConexao);
                         using (NpgsqlDataReader dr = com.ExecuteReader())
                         {
                             while (dr.Read())
@@ -245,20 +251,33 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                             }
                         }
 
-                        frmUsuarioPerfil frmUsuarioPerfil = new frmUsuarioPerfil("frmIncluirUsuario", IdUsuarioRecemCadastrado);
+                        frmUsuarioPerfil frmUsuarioPerfil = new frmUsuarioPerfil("frmIncluirUsuario", tBoxLogin.Text.ToUpper(), IdUsuarioRecemCadastrado);
                         frmUsuarioPerfil.ShowInTaskbar = false;
                         frmUsuarioPerfil.ShowDialog();
                     }
                     
                 }
             }
-            catch (Exception err)
-            {
-                XtraMessageBox.Show(err.Message, "Erro no botão confirmaEditarUsuario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+            //catch (Exception err)
+            //{
+            //    XtraMessageBox.Show(err.Message, "Erro na chamada btnConfirmar_Click", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //}
             finally
             {
                 BD.Desconectar();
+            }
+        }
+
+        private void frmUsuarioCadastrar_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F12:
+                    btnConfirmar_Click(sender, e);
+                    break;
+                case Keys.Escape:
+                    Close();
+                    break;
             }
         }
     }

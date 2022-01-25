@@ -31,6 +31,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuarioPerfil));
             this.gbDescricaoPerfil = new System.Windows.Forms.GroupBox();
+            this.cBoxPerfil = new System.Windows.Forms.ComboBox();
             this.tBoxDescricao = new System.Windows.Forms.TextBox();
             this.gBoxUsuarios = new System.Windows.Forms.GroupBox();
             this.chkBoxExcluirPerfil = new System.Windows.Forms.CheckBox();
@@ -60,6 +61,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.chkBoxIncluirLocalManutencao = new System.Windows.Forms.CheckBox();
             this.chkBoxAcessarLocalManutencao = new System.Windows.Forms.CheckBox();
             this.gBoxVeiculos = new System.Windows.Forms.GroupBox();
+            this.chkBoxInativarVeiculos = new System.Windows.Forms.CheckBox();
             this.chkBoxEditarVeiculos = new System.Windows.Forms.CheckBox();
             this.chkBoxIncluirVeiculos = new System.Windows.Forms.CheckBox();
             this.chkBoxAcessarVeiculos = new System.Windows.Forms.CheckBox();
@@ -76,8 +78,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnLiberarTudo = new DevExpress.XtraEditors.SimpleButton();
             this.btnBloquearTudo = new DevExpress.XtraEditors.SimpleButton();
             this.gbSelecionarPerfil = new System.Windows.Forms.GroupBox();
-            this.cBoxPerfil = new System.Windows.Forms.ComboBox();
-            this.chkBoxInativarVeiculos = new System.Windows.Forms.CheckBox();
+            this.btnRecarregaPermissoesUsuario = new DevExpress.XtraEditors.SimpleButton();
             this.gbDescricaoPerfil.SuspendLayout();
             this.gBoxUsuarios.SuspendLayout();
             this.gBoxTipoDeManutencao.SuspendLayout();
@@ -93,12 +94,28 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             this.gbDescricaoPerfil.Controls.Add(this.tBoxDescricao);
             this.gbDescricaoPerfil.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbDescricaoPerfil.Location = new System.Drawing.Point(12, 12);
+            this.gbDescricaoPerfil.Location = new System.Drawing.Point(12, 72);
             this.gbDescricaoPerfil.Name = "gbDescricaoPerfil";
             this.gbDescricaoPerfil.Size = new System.Drawing.Size(597, 54);
             this.gbDescricaoPerfil.TabIndex = 1;
             this.gbDescricaoPerfil.TabStop = false;
             this.gbDescricaoPerfil.Text = "Descrição do Perfil";
+            // 
+            // cBoxPerfil
+            // 
+            this.cBoxPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cBoxPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxPerfil.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxPerfil.FormattingEnabled = true;
+            this.cBoxPerfil.Items.AddRange(new object[] {
+            "Todos",
+            "Descrição"});
+            this.cBoxPerfil.Location = new System.Drawing.Point(6, 22);
+            this.cBoxPerfil.Name = "cBoxPerfil";
+            this.cBoxPerfil.Size = new System.Drawing.Size(542, 22);
+            this.cBoxPerfil.TabIndex = 239;
+            this.cBoxPerfil.TabStop = false;
+            this.cBoxPerfil.SelectedIndexChanged += new System.EventHandler(this.cBoxPerfil_SelectedIndexChanged);
             // 
             // tBoxDescricao
             // 
@@ -123,7 +140,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gBoxUsuarios.Controls.Add(this.chkBoxAcessarUsuarios);
             this.gBoxUsuarios.Controls.Add(this.chkBoxAcessarPerfil);
             this.gBoxUsuarios.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBoxUsuarios.Location = new System.Drawing.Point(12, 151);
+            this.gBoxUsuarios.Location = new System.Drawing.Point(12, 222);
             this.gBoxUsuarios.Name = "gBoxUsuarios";
             this.gBoxUsuarios.Size = new System.Drawing.Size(183, 303);
             this.gBoxUsuarios.TabIndex = 3;
@@ -247,7 +264,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gBoxTipoDeManutencao.Controls.Add(this.chkBoxIncluirTipoManutencao);
             this.gBoxTipoDeManutencao.Controls.Add(this.chkBoxAcessarTipoManutencao);
             this.gBoxTipoDeManutencao.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBoxTipoDeManutencao.Location = new System.Drawing.Point(399, 72);
+            this.gBoxTipoDeManutencao.Location = new System.Drawing.Point(399, 143);
             this.gBoxTipoDeManutencao.Name = "gBoxTipoDeManutencao";
             this.gBoxTipoDeManutencao.Size = new System.Drawing.Size(210, 116);
             this.gBoxTipoDeManutencao.TabIndex = 6;
@@ -306,7 +323,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gBoxManutencaoDeVeiculo.Controls.Add(this.chkBoxManutencoesRealizadas);
             this.gBoxManutencaoDeVeiculo.Controls.Add(this.chkBoxRegistrarManutencao);
             this.gBoxManutencaoDeVeiculo.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBoxManutencaoDeVeiculo.Location = new System.Drawing.Point(399, 315);
+            this.gBoxManutencaoDeVeiculo.Location = new System.Drawing.Point(399, 386);
             this.gBoxManutencaoDeVeiculo.Name = "gBoxManutencaoDeVeiculo";
             this.gBoxManutencaoDeVeiculo.Size = new System.Drawing.Size(210, 139);
             this.gBoxManutencaoDeVeiculo.TabIndex = 8;
@@ -375,7 +392,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gBoxLocalDeManutencao.Controls.Add(this.chkBoxIncluirLocalManutencao);
             this.gBoxLocalDeManutencao.Controls.Add(this.chkBoxAcessarLocalManutencao);
             this.gBoxLocalDeManutencao.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBoxLocalDeManutencao.Location = new System.Drawing.Point(399, 194);
+            this.gBoxLocalDeManutencao.Location = new System.Drawing.Point(399, 265);
             this.gBoxLocalDeManutencao.Name = "gBoxLocalDeManutencao";
             this.gBoxLocalDeManutencao.Size = new System.Drawing.Size(210, 115);
             this.gBoxLocalDeManutencao.TabIndex = 7;
@@ -433,12 +450,23 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gBoxVeiculos.Controls.Add(this.chkBoxIncluirVeiculos);
             this.gBoxVeiculos.Controls.Add(this.chkBoxAcessarVeiculos);
             this.gBoxVeiculos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBoxVeiculos.Location = new System.Drawing.Point(201, 72);
+            this.gBoxVeiculos.Location = new System.Drawing.Point(201, 143);
             this.gBoxVeiculos.Name = "gBoxVeiculos";
             this.gBoxVeiculos.Size = new System.Drawing.Size(192, 116);
             this.gBoxVeiculos.TabIndex = 4;
             this.gBoxVeiculos.TabStop = false;
             this.gBoxVeiculos.Text = "Veículos";
+            // 
+            // chkBoxInativarVeiculos
+            // 
+            this.chkBoxInativarVeiculos.AutoSize = true;
+            this.chkBoxInativarVeiculos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBoxInativarVeiculos.Location = new System.Drawing.Point(22, 89);
+            this.chkBoxInativarVeiculos.Name = "chkBoxInativarVeiculos";
+            this.chkBoxInativarVeiculos.Size = new System.Drawing.Size(62, 17);
+            this.chkBoxInativarVeiculos.TabIndex = 4;
+            this.chkBoxInativarVeiculos.Text = "Inativar";
+            this.chkBoxInativarVeiculos.UseVisualStyleBackColor = true;
             // 
             // chkBoxEditarVeiculos
             // 
@@ -480,7 +508,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gBoxFuncionarios.Controls.Add(this.chkBoxIncluirFuncionarios);
             this.gBoxFuncionarios.Controls.Add(this.chkBoxAcessarFuncionarios);
             this.gBoxFuncionarios.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBoxFuncionarios.Location = new System.Drawing.Point(201, 194);
+            this.gBoxFuncionarios.Location = new System.Drawing.Point(201, 265);
             this.gBoxFuncionarios.Name = "gBoxFuncionarios";
             this.gBoxFuncionarios.Size = new System.Drawing.Size(192, 115);
             this.gBoxFuncionarios.TabIndex = 5;
@@ -536,7 +564,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.groupBox1.Controls.Add(this.chkBoxEditarParametrosSistema);
             this.groupBox1.Controls.Add(this.chkBoxAcessarParametrosSistema);
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 72);
+            this.groupBox1.Location = new System.Drawing.Point(12, 143);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(183, 73);
             this.groupBox1.TabIndex = 2;
@@ -571,7 +599,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnCancelar.Appearance.Options.UseFont = true;
             this.btnCancelar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnCancelar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCancelar.ImageOptions.SvgImage")));
-            this.btnCancelar.Location = new System.Drawing.Point(12, 462);
+            this.btnCancelar.Location = new System.Drawing.Point(12, 533);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(143, 44);
             this.btnCancelar.TabIndex = 236;
@@ -585,7 +613,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnConfirmar.Appearance.Options.UseFont = true;
             this.btnConfirmar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConfirmar.ImageOptions.SvgImage")));
-            this.btnConfirmar.Location = new System.Drawing.Point(466, 462);
+            this.btnConfirmar.Location = new System.Drawing.Point(466, 533);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(143, 44);
             this.btnConfirmar.TabIndex = 235;
@@ -600,7 +628,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnLiberarTudo.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.btnLiberarTudo.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnLiberarTudo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLiberarTudo.ImageOptions.SvgImage")));
-            this.btnLiberarTudo.Location = new System.Drawing.Point(207, 462);
+            this.btnLiberarTudo.Location = new System.Drawing.Point(207, 533);
             this.btnLiberarTudo.Name = "btnLiberarTudo";
             this.btnLiberarTudo.Size = new System.Drawing.Size(100, 44);
             this.btnLiberarTudo.TabIndex = 237;
@@ -616,7 +644,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnBloquearTudo.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.btnBloquearTudo.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnBloquearTudo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBloquearTudo.ImageOptions.SvgImage")));
-            this.btnBloquearTudo.Location = new System.Drawing.Point(313, 462);
+            this.btnBloquearTudo.Location = new System.Drawing.Point(313, 533);
             this.btnBloquearTudo.Name = "btnBloquearTudo";
             this.btnBloquearTudo.Size = new System.Drawing.Size(100, 44);
             this.btnBloquearTudo.TabIndex = 238;
@@ -626,6 +654,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             // gbSelecionarPerfil
             // 
+            this.gbSelecionarPerfil.Controls.Add(this.btnRecarregaPermissoesUsuario);
             this.gbSelecionarPerfil.Controls.Add(this.cBoxPerfil);
             this.gbSelecionarPerfil.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbSelecionarPerfil.Location = new System.Drawing.Point(12, 12);
@@ -635,38 +664,28 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gbSelecionarPerfil.TabStop = false;
             this.gbSelecionarPerfil.Text = "Selecione um perfil ou defina manualmente as permissões nas opções abaixo";
             // 
-            // cBoxPerfil
+            // btnRecarregaPermissoesUsuario
             // 
-            this.cBoxPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cBoxPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxPerfil.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBoxPerfil.FormattingEnabled = true;
-            this.cBoxPerfil.Items.AddRange(new object[] {
-            "Todos",
-            "Descrição"});
-            this.cBoxPerfil.Location = new System.Drawing.Point(6, 22);
-            this.cBoxPerfil.Name = "cBoxPerfil";
-            this.cBoxPerfil.Size = new System.Drawing.Size(585, 22);
-            this.cBoxPerfil.TabIndex = 239;
-            this.cBoxPerfil.TabStop = false;
-            this.cBoxPerfil.SelectedIndexChanged += new System.EventHandler(this.cBoxPerfil_SelectedIndexChanged);
-            // 
-            // chkBoxInativarVeiculos
-            // 
-            this.chkBoxInativarVeiculos.AutoSize = true;
-            this.chkBoxInativarVeiculos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBoxInativarVeiculos.Location = new System.Drawing.Point(22, 89);
-            this.chkBoxInativarVeiculos.Name = "chkBoxInativarVeiculos";
-            this.chkBoxInativarVeiculos.Size = new System.Drawing.Size(62, 17);
-            this.chkBoxInativarVeiculos.TabIndex = 4;
-            this.chkBoxInativarVeiculos.Text = "Inativar";
-            this.chkBoxInativarVeiculos.UseVisualStyleBackColor = true;
+            this.btnRecarregaPermissoesUsuario.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecarregaPermissoesUsuario.Appearance.Options.UseFont = true;
+            this.btnRecarregaPermissoesUsuario.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnRecarregaPermissoesUsuario.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnRecarregaPermissoesUsuario.ImageOptions.SvgImage")));
+            this.btnRecarregaPermissoesUsuario.Location = new System.Drawing.Point(554, 13);
+            this.btnRecarregaPermissoesUsuario.Name = "btnRecarregaPermissoesUsuario";
+            this.btnRecarregaPermissoesUsuario.Size = new System.Drawing.Size(37, 35);
+            this.btnRecarregaPermissoesUsuario.TabIndex = 239;
+            this.btnRecarregaPermissoesUsuario.ToolTip = "Clique para recarregar as permissões que já estão definidas no usuário.";
+            this.btnRecarregaPermissoesUsuario.ToolTipAnchor = DevExpress.Utils.ToolTipAnchor.Object;
+            this.btnRecarregaPermissoesUsuario.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            this.btnRecarregaPermissoesUsuario.Click += new System.EventHandler(this.btnRecarregaPermissoesUsuario_Click);
             // 
             // frmUsuarioPerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 518);
+            this.ClientSize = new System.Drawing.Size(622, 585);
+            this.Controls.Add(this.gbSelecionarPerfil);
+            this.Controls.Add(this.gbDescricaoPerfil);
             this.Controls.Add(this.btnBloquearTudo);
             this.Controls.Add(this.btnLiberarTudo);
             this.Controls.Add(this.btnCancelar);
@@ -678,8 +697,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.Controls.Add(this.gBoxLocalDeManutencao);
             this.Controls.Add(this.gBoxVeiculos);
             this.Controls.Add(this.gBoxFuncionarios);
-            this.Controls.Add(this.gbDescricaoPerfil);
-            this.Controls.Add(this.gbSelecionarPerfil);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -760,5 +777,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private System.Windows.Forms.GroupBox gbSelecionarPerfil;
         private System.Windows.Forms.ComboBox cBoxPerfil;
         private System.Windows.Forms.CheckBox chkBoxInativarVeiculos;
+        private DevExpress.XtraEditors.SimpleButton btnRecarregaPermissoesUsuario;
     }
 }
