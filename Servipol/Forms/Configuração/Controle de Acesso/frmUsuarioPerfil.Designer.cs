@@ -31,8 +31,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuarioPerfil));
             this.gbDescricaoPerfil = new System.Windows.Forms.GroupBox();
-            this.cBoxPerfil = new System.Windows.Forms.ComboBox();
             this.tBoxDescricao = new System.Windows.Forms.TextBox();
+            this.cBoxPerfil = new System.Windows.Forms.ComboBox();
             this.gBoxUsuarios = new System.Windows.Forms.GroupBox();
             this.chkBoxExcluirPerfil = new System.Windows.Forms.CheckBox();
             this.chkBoxAlterarPermissaoUsuarios = new System.Windows.Forms.CheckBox();
@@ -101,6 +101,16 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gbDescricaoPerfil.TabStop = false;
             this.gbDescricaoPerfil.Text = "Descrição do Perfil";
             // 
+            // tBoxDescricao
+            // 
+            this.tBoxDescricao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxDescricao.Font = new System.Drawing.Font("Calibri", 9F);
+            this.tBoxDescricao.Location = new System.Drawing.Point(6, 22);
+            this.tBoxDescricao.Name = "tBoxDescricao";
+            this.tBoxDescricao.Size = new System.Drawing.Size(585, 22);
+            this.tBoxDescricao.TabIndex = 2;
+            // 
             // cBoxPerfil
             // 
             this.cBoxPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -116,16 +126,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.cBoxPerfil.TabIndex = 239;
             this.cBoxPerfil.TabStop = false;
             this.cBoxPerfil.SelectedIndexChanged += new System.EventHandler(this.cBoxPerfil_SelectedIndexChanged);
-            // 
-            // tBoxDescricao
-            // 
-            this.tBoxDescricao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxDescricao.Font = new System.Drawing.Font("Calibri", 9F);
-            this.tBoxDescricao.Location = new System.Drawing.Point(6, 22);
-            this.tBoxDescricao.Name = "tBoxDescricao";
-            this.tBoxDescricao.Size = new System.Drawing.Size(585, 22);
-            this.tBoxDescricao.TabIndex = 2;
             // 
             // gBoxUsuarios
             // 
@@ -684,6 +684,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(622, 585);
+            this.ControlBox = false;
             this.Controls.Add(this.gbSelecionarPerfil);
             this.Controls.Add(this.gbDescricaoPerfil);
             this.Controls.Add(this.btnBloquearTudo);
@@ -699,6 +700,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.Controls.Add(this.gBoxFuncionarios);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmUsuarioPerfil";
@@ -707,6 +709,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Perfil de Usuário";
             this.Load += new System.EventHandler(this.frmUsuarioPerfil_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmUsuarioPerfil_KeyDown);
             this.gbDescricaoPerfil.ResumeLayout(false);
             this.gbDescricaoPerfil.PerformLayout();
             this.gBoxUsuarios.ResumeLayout(false);

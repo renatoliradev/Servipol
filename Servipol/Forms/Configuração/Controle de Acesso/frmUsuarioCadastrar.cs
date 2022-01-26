@@ -255,13 +255,12 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                         frmUsuarioPerfil.ShowInTaskbar = false;
                         frmUsuarioPerfil.ShowDialog();
                     }
-                    
                 }
             }
-            //catch (Exception err)
-            //{
-            //    XtraMessageBox.Show(err.Message, "Erro na chamada btnConfirmar_Click", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //}
+            catch (Exception err)
+            {
+                XtraMessageBox.Show(err.Message, "Erro na chamada btnConfirmar_Click", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             finally
             {
                 BD.Desconectar();
