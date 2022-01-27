@@ -18,6 +18,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         public string Login { get; set; }
         public string PermissaoUsuario { get; set; }
         public string PermissaoPerfil { get; set; }
+        public string RegistroAtivo { get; set; }
 
         #endregion
 
@@ -32,8 +33,21 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
         private void frmUsuarioPerfil_Load(object sender, EventArgs e)
         {
-            BloqueiaTudo(this);
+            try
+            {
+                BloqueiaTudo(this);
+                VerificaTipoChamada();
+            }
+            finally
+            {
+                tBoxDescricao.Focus();
+            }
+        }
 
+        #region Methods
+
+        private void VerificaTipoChamada()
+        {
             if (TipoChamada == "Editar")
             {
                 gbDescricaoPerfil.Enabled = true;
@@ -53,6 +67,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
             if (TipoChamada == "Incluir")
             {
+                tabDadosRegistro.Parent = null;
+
                 gbDescricaoPerfil.Enabled = true;
                 gbDescricaoPerfil.Visible = true;
                 tBoxDescricao.Enabled = true;
@@ -68,6 +84,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
             if (TipoChamada == "frmIncluirUsuario")
             {
+                tabDadosRegistro.Parent = null;
+
                 gbDescricaoPerfil.Enabled = false;
                 gbDescricaoPerfil.Visible = false;
                 tBoxDescricao.Enabled = false;
@@ -90,6 +108,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
             if (TipoChamada == "frmUsuariosEditarPermissoes")
             {
+                gbDadosExclusaoRegistro.Visible = false;
+
                 gbDescricaoPerfil.Enabled = false;
                 gbDescricaoPerfil.Visible = false;
                 tBoxDescricao.Enabled = false;
@@ -108,11 +128,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
                 this.Text = $"Definindo as permissões do usuário: {Login}";
             }
-
-            tBoxDescricao.Focus();
         }
-
-        #region Methods
 
         public void CarregaPerfil()
         {
@@ -144,15 +160,23 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             try
             {
                 BD.Conectar();
-                NpgsqlCommand com = new NpgsqlCommand($"SELECT permissao FROM controle_permissao WHERE id_usuario = {IdPermissao}", BD.ObjetoConexao);
+
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT cp.permissao, uc.nome AS usuario_cadastro, cp.data_cadastro, ua.nome AS usuario_alteracao, cp.data_alteracao FROM controle_permissao AS cp INNER JOIN usuario AS uc ON(uc.id_usuario = cp.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = cp.id_usuario_alteracao) WHERE cp.id_usuario = {IdPermissao}", BD.ObjetoConexao);
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     while (dr.Read())
                     {
                         PermissaoUsuario = dr["permissao"].ToString();
+
+                        //Dados do Registro
+                        tBoxUsuarioCadastro.Text = dr["usuario_cadastro"].ToString();
+                        tBoxDataCadastro.Text = dr["data_cadastro"].ToString();
+                        tBoxUsuarioAlteracao.Text = dr["usuario_alteracao"].ToString();
+                        tBoxDataAlteracao.Text = dr["data_alteracao"].ToString();
                     }
                 }
 
+                #region Set permission to checkbox
                 //0	- Acessar Parâmetros do Sistema
                 if (PermissaoUsuario.Substring(0, 1) == "S") { chkBoxAcessarParametrosSistema.Checked = true; } else { chkBoxAcessarParametrosSistema.Checked = false; }
 
@@ -251,6 +275,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
                 //32 - Acessar Painel B.I.
                 if (PermissaoUsuario.Substring(32, 1) == "S") { chkBoxPainelBI.Checked = true; } else { chkBoxPainelBI.Checked = false; }
+
+                #endregion
             }
             finally
             {
@@ -263,7 +289,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             try
             {
                 BD.Conectar();
-                NpgsqlCommand com = new NpgsqlCommand($"SELECT descricao, permissao FROM controle_permissao_perfil WHERE id_controle_permissao_perfil = {cBoxPerfil.SelectedValue}", BD.ObjetoConexao);
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT cpp.descricao, cpp.permissao, uc.nome AS usuario_cadastro, cpp.data_cadastro, ua.nome AS usuario_alteracao, cpp.data_alteracao, ue.nome AS usuario_exclusao, cpp.data_exclusao FROM controle_permissao_perfil AS cpp INNER JOIN usuario AS uc ON(uc.id_usuario = cpp.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = cpp.id_usuario_alteracao) LEFT OUTER JOIN usuario AS ue ON(ue.id_usuario = cpp.id_usuario_exclusao) WHERE cpp.id_controle_permissao_perfil = {cBoxPerfil.SelectedValue}", BD.ObjetoConexao);
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     while (dr.Read())
@@ -272,6 +298,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                         tBoxDescricao.Text = dr["descricao"].ToString();
                     }
                 }
+
+                #region Set permission to checkbox
 
                 //0	- Acessar Parâmetros do Sistema
                 if (PermissaoPerfil.Substring(0, 1) == "S") { chkBoxAcessarParametrosSistema.Checked = true; } else { chkBoxAcessarParametrosSistema.Checked = false; }
@@ -371,6 +399,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
                 //32 - Acessar Painel B.I.
                 if (PermissaoPerfil.Substring(32, 1) == "S") { chkBoxPainelBI.Checked = true; } else { chkBoxPainelBI.Checked = false; }
+
+                #endregion
             }
             catch { }
             finally
@@ -384,15 +414,47 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             try
             {
                 BD.Conectar();
-                NpgsqlCommand com = new NpgsqlCommand($"SELECT descricao, permissao FROM controle_permissao_perfil WHERE id_controle_permissao_perfil = {IdPermissao}", BD.ObjetoConexao);
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT cpp.descricao, cpp.permissao, cpp.ativo, uc.nome AS usuario_cadastro, cpp.data_cadastro, ua.nome AS usuario_alteracao, cpp.data_alteracao, ue.nome AS usuario_exclusao, cpp.data_exclusao FROM controle_permissao_perfil AS cpp INNER JOIN usuario AS uc ON(uc.id_usuario = cpp.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = cpp.id_usuario_alteracao) LEFT OUTER JOIN usuario AS ue ON(ue.id_usuario = cpp.id_usuario_exclusao) WHERE cpp.id_controle_permissao_perfil = {IdPermissao}", BD.ObjetoConexao);
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     while (dr.Read())
                     {
                         PermissaoPerfil = dr["permissao"].ToString();
                         tBoxDescricao.Text = dr["descricao"].ToString();
+                        RegistroAtivo = dr["ativo"].ToString();
+
+                        //Dados do Registro
+                        tBoxUsuarioCadastro.Text = dr["usuario_cadastro"].ToString();
+                        tBoxDataCadastro.Text = dr["data_cadastro"].ToString();
+                        tBoxUsuarioAlteracao.Text = dr["usuario_alteracao"].ToString();
+                        tBoxDataAlteracao.Text = dr["data_alteracao"].ToString();
+                        tBoxUsuarioExclusao.Text = dr["usuario_exclusao"].ToString();
+                        tBoxDataExclusao.Text = dr["data_exclusao"].ToString();
+                    }
+
+                    if (RegistroAtivo == "N")
+                    {
+                        tBoxAlertaRegistroExc1.Text = "REGISTRO";
+                        tBoxAlertaRegistroExc2.Text = "EXCLUÍDO";
+
+                        btnConfirmar.Enabled = false;
+                        btnLiberarTudo.Enabled = false;
+                        btnBloquearTudo.Enabled = false;
+
+                        tBoxDescricao.Enabled = false;
+                        gbParametroSistema.Enabled = false;
+                        gbPerfilUsuarios.Enabled = false;
+                        gbVeiculos.Enabled = false;
+                        gbFuncionarios.Enabled = false;
+                        gbTipoDeManutencao.Enabled = false;
+                        gbLocalDeManutencao.Enabled = false;
+                        gbManutencaoDeVeiculo.Enabled = false;
+
+                        btnCancelar.Select();
                     }
                 }
+
+                #region Set permission to checkbox
 
                 //0	- Acessar Parâmetros do Sistema
                 if (PermissaoPerfil.Substring(0, 1) == "S") { chkBoxAcessarParametrosSistema.Checked = true; } else { chkBoxAcessarParametrosSistema.Checked = false; }
@@ -492,6 +554,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
                 //32 - Acessar Painel B.I.
                 if (PermissaoPerfil.Substring(32, 1) == "S") { chkBoxPainelBI.Checked = true; } else { chkBoxPainelBI.Checked = false; }
+
+                #endregion
             }
             catch { }
             finally
@@ -525,6 +589,19 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private void cBoxPerfil_SelectedIndexChanged(object sender, EventArgs e)
         {
             CarregaPermissaoPerfil();
+        }
+
+        private void frmUsuarioPerfil_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (RegistroAtivo == "S" && e.KeyCode == Keys.F12)
+            {
+                btnConfirmar_Click(sender, e);
+            }
+
+            if (TipoChamada != "frmIncluirUsuario" && e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
         }
 
         #endregion
@@ -776,8 +853,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             }
         }
 
-        #endregion
-
         private void btnRecarregaPermissoesUsuario_Click(object sender, EventArgs e)
         {
             CarregaPerfil();
@@ -789,18 +864,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             XtraMessageBox.Show("Permissões do usuário recarregadas com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void frmUsuarioPerfil_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.F12:
-                    btnConfirmar_Click(sender, e);
-                    break;
-            }
-            if (TipoChamada != "frmIncluirUsuario" && e.KeyCode == Keys.Escape)
-            {
-                Close();
-            }
-        }
+        #endregion
     }
 }

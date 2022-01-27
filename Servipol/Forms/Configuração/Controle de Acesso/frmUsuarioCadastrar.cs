@@ -37,6 +37,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         {
             if (TipoChamada == "Incluir")
             {
+                tabDadosRegistro.Parent = null;
+
                 gbNovaSenha.Enabled = true;
                 gbNovaSenha.Visible = true;
 

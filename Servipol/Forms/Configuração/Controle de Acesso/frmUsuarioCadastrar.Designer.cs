@@ -31,7 +31,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuarioCadastrar));
             this.label12 = new System.Windows.Forms.Label();
-            this.tabControlFuncionario = new System.Windows.Forms.TabControl();
+            this.tabControlUsuario = new System.Windows.Forms.TabControl();
             this.tabPrincipal = new System.Windows.Forms.TabPage();
             this.gbLogin = new System.Windows.Forms.GroupBox();
             this.tBoxLogin = new System.Windows.Forms.TextBox();
@@ -40,6 +40,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gbNome = new System.Windows.Forms.GroupBox();
             this.tBoxNome = new System.Windows.Forms.TextBox();
             this.gbNovaSenha = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.tBoxCriarRepeticaoSenha = new System.Windows.Forms.TextBox();
             this.tBoxCriarSenha = new System.Windows.Forms.TextBox();
             this.gbAlterarSenha = new System.Windows.Forms.GroupBox();
@@ -65,9 +67,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.tBoxUsuarioDesativacao = new System.Windows.Forms.TextBox();
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.btnConfirmar = new DevExpress.XtraEditors.SimpleButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tabControlFuncionario.SuspendLayout();
+            this.tabControlUsuario.SuspendLayout();
             this.tabPrincipal.SuspendLayout();
             this.gbLogin.SuspendLayout();
             this.gbSituacao.SuspendLayout();
@@ -92,16 +92,16 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.label12.TabIndex = 13;
             this.label12.Text = "Usuário:";
             // 
-            // tabControlFuncionario
+            // tabControlUsuario
             // 
-            this.tabControlFuncionario.Controls.Add(this.tabPrincipal);
-            this.tabControlFuncionario.Controls.Add(this.tabDadosRegistro);
-            this.tabControlFuncionario.Location = new System.Drawing.Point(1, 2);
-            this.tabControlFuncionario.Name = "tabControlFuncionario";
-            this.tabControlFuncionario.SelectedIndex = 0;
-            this.tabControlFuncionario.Size = new System.Drawing.Size(435, 289);
-            this.tabControlFuncionario.TabIndex = 241;
-            this.tabControlFuncionario.TabStop = false;
+            this.tabControlUsuario.Controls.Add(this.tabPrincipal);
+            this.tabControlUsuario.Controls.Add(this.tabDadosRegistro);
+            this.tabControlUsuario.Location = new System.Drawing.Point(1, 2);
+            this.tabControlUsuario.Name = "tabControlUsuario";
+            this.tabControlUsuario.SelectedIndex = 0;
+            this.tabControlUsuario.Size = new System.Drawing.Size(435, 289);
+            this.tabControlUsuario.TabIndex = 241;
+            this.tabControlUsuario.TabStop = false;
             // 
             // tabPrincipal
             // 
@@ -195,6 +195,26 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gbNovaSenha.Size = new System.Drawing.Size(415, 78);
             this.gbNovaSenha.TabIndex = 4;
             this.gbNovaSenha.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.label2.Location = new System.Drawing.Point(188, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 15);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Repita a senha:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.label1.Location = new System.Drawing.Point(6, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 15);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Senha:";
             // 
             // tBoxCriarRepeticaoSenha
             // 
@@ -295,12 +315,12 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.groupBox35.Controls.Add(this.label14);
             this.groupBox35.Controls.Add(this.tBoxUsuarioAlteracao);
             this.groupBox35.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox35.Location = new System.Drawing.Point(3, 156);
+            this.groupBox35.Location = new System.Drawing.Point(3, 83);
             this.groupBox35.Name = "groupBox35";
             this.groupBox35.Size = new System.Drawing.Size(421, 69);
             this.groupBox35.TabIndex = 999;
             this.groupBox35.TabStop = false;
-            this.groupBox35.Text = "Dados da Última Alteração do Cadastro";
+            this.groupBox35.Text = "Dados da última alteração do cadastro";
             // 
             // label13
             // 
@@ -358,7 +378,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.groupBox37.Size = new System.Drawing.Size(421, 71);
             this.groupBox37.TabIndex = 800;
             this.groupBox37.TabStop = false;
-            this.groupBox37.Text = "Dados de Inclusão do Cadastro";
+            this.groupBox37.Text = "Dados da inclusão do cadastro";
             // 
             // label9
             // 
@@ -411,12 +431,12 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.groupBox38.Controls.Add(this.label12);
             this.groupBox38.Controls.Add(this.tBoxUsuarioDesativacao);
             this.groupBox38.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox38.Location = new System.Drawing.Point(3, 80);
+            this.groupBox38.Location = new System.Drawing.Point(3, 158);
             this.groupBox38.Name = "groupBox38";
             this.groupBox38.Size = new System.Drawing.Size(421, 70);
             this.groupBox38.TabIndex = 900;
             this.groupBox38.TabStop = false;
-            this.groupBox38.Text = "Dados da Última Desativação do Cadastro";
+            this.groupBox38.Text = "Dados da última desativação do cadastro";
             // 
             // label11
             // 
@@ -479,32 +499,12 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnConfirmar.Text = "[F12] - Confirmar";
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F);
-            this.label1.Location = new System.Drawing.Point(6, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 15);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Senha:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F);
-            this.label2.Location = new System.Drawing.Point(188, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 15);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Repita a senha:";
-            // 
             // frmUsuarioCadastrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 344);
-            this.Controls.Add(this.tabControlFuncionario);
+            this.Controls.Add(this.tabControlUsuario);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnConfirmar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -517,7 +517,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmUsuarioCadastrar_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmUsuarioCadastrar_KeyDown);
-            this.tabControlFuncionario.ResumeLayout(false);
+            this.tabControlUsuario.ResumeLayout(false);
             this.tabPrincipal.ResumeLayout(false);
             this.gbLogin.ResumeLayout(false);
             this.gbLogin.PerformLayout();
@@ -545,7 +545,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         #endregion
 
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TabControl tabControlFuncionario;
+        private System.Windows.Forms.TabControl tabControlUsuario;
         private System.Windows.Forms.TabPage tabPrincipal;
         private System.Windows.Forms.GroupBox gbSituacao;
         private System.Windows.Forms.CheckBox chkBoxRegistroAtivo;

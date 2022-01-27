@@ -33,7 +33,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gbDescricaoPerfil = new System.Windows.Forms.GroupBox();
             this.tBoxDescricao = new System.Windows.Forms.TextBox();
             this.cBoxPerfil = new System.Windows.Forms.ComboBox();
-            this.gBoxUsuarios = new System.Windows.Forms.GroupBox();
+            this.gbPerfilUsuarios = new System.Windows.Forms.GroupBox();
             this.chkBoxExcluirPerfil = new System.Windows.Forms.CheckBox();
             this.chkBoxAlterarPermissaoUsuarios = new System.Windows.Forms.CheckBox();
             this.chkBoxResetarSenhaUsuarios = new System.Windows.Forms.CheckBox();
@@ -44,33 +44,33 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.chkBoxEditarUsuarios = new System.Windows.Forms.CheckBox();
             this.chkBoxAcessarUsuarios = new System.Windows.Forms.CheckBox();
             this.chkBoxAcessarPerfil = new System.Windows.Forms.CheckBox();
-            this.gBoxTipoDeManutencao = new System.Windows.Forms.GroupBox();
+            this.gbTipoDeManutencao = new System.Windows.Forms.GroupBox();
             this.chkBoxInativarTipoManutencao = new System.Windows.Forms.CheckBox();
             this.chkBoxEditarTipoManutencao = new System.Windows.Forms.CheckBox();
             this.chkBoxIncluirTipoManutencao = new System.Windows.Forms.CheckBox();
             this.chkBoxAcessarTipoManutencao = new System.Windows.Forms.CheckBox();
-            this.gBoxManutencaoDeVeiculo = new System.Windows.Forms.GroupBox();
+            this.gbManutencaoDeVeiculo = new System.Windows.Forms.GroupBox();
             this.chkBoxPainelBI = new System.Windows.Forms.CheckBox();
             this.chkBoxProxTrocaOleo = new System.Windows.Forms.CheckBox();
             this.chkBoxExcluirManutencaoRealizada = new System.Windows.Forms.CheckBox();
             this.chkBoxManutencoesRealizadas = new System.Windows.Forms.CheckBox();
             this.chkBoxRegistrarManutencao = new System.Windows.Forms.CheckBox();
-            this.gBoxLocalDeManutencao = new System.Windows.Forms.GroupBox();
+            this.gbLocalDeManutencao = new System.Windows.Forms.GroupBox();
             this.chkBoxInativarLocalManutencao = new System.Windows.Forms.CheckBox();
             this.chkBoxEditarLocalManutencao = new System.Windows.Forms.CheckBox();
             this.chkBoxIncluirLocalManutencao = new System.Windows.Forms.CheckBox();
             this.chkBoxAcessarLocalManutencao = new System.Windows.Forms.CheckBox();
-            this.gBoxVeiculos = new System.Windows.Forms.GroupBox();
+            this.gbVeiculos = new System.Windows.Forms.GroupBox();
             this.chkBoxInativarVeiculos = new System.Windows.Forms.CheckBox();
             this.chkBoxEditarVeiculos = new System.Windows.Forms.CheckBox();
             this.chkBoxIncluirVeiculos = new System.Windows.Forms.CheckBox();
             this.chkBoxAcessarVeiculos = new System.Windows.Forms.CheckBox();
-            this.gBoxFuncionarios = new System.Windows.Forms.GroupBox();
+            this.gbFuncionarios = new System.Windows.Forms.GroupBox();
             this.chkBoxVisualizarCadCompletoFunc = new System.Windows.Forms.CheckBox();
             this.chkBoxEditarFuncionarios = new System.Windows.Forms.CheckBox();
             this.chkBoxIncluirFuncionarios = new System.Windows.Forms.CheckBox();
             this.chkBoxAcessarFuncionarios = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbParametroSistema = new System.Windows.Forms.GroupBox();
             this.chkBoxEditarParametrosSistema = new System.Windows.Forms.CheckBox();
             this.chkBoxAcessarParametrosSistema = new System.Windows.Forms.CheckBox();
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
@@ -79,22 +79,50 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnBloquearTudo = new DevExpress.XtraEditors.SimpleButton();
             this.gbSelecionarPerfil = new System.Windows.Forms.GroupBox();
             this.btnRecarregaPermissoesUsuario = new DevExpress.XtraEditors.SimpleButton();
+            this.tabControlPerfilUsuario = new System.Windows.Forms.TabControl();
+            this.tabPrincipal = new System.Windows.Forms.TabPage();
+            this.tabDadosRegistro = new System.Windows.Forms.TabPage();
+            this.groupBox35 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tBoxDataAlteracao = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tBoxUsuarioAlteracao = new System.Windows.Forms.TextBox();
+            this.groupBox37 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tBoxDataCadastro = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tBoxUsuarioCadastro = new System.Windows.Forms.TextBox();
+            this.gbDadosExclusaoRegistro = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tBoxDataExclusao = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tBoxUsuarioExclusao = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tBoxAlertaRegistroExc1 = new System.Windows.Forms.TextBox();
+            this.tBoxAlertaRegistroExc2 = new System.Windows.Forms.TextBox();
             this.gbDescricaoPerfil.SuspendLayout();
-            this.gBoxUsuarios.SuspendLayout();
-            this.gBoxTipoDeManutencao.SuspendLayout();
-            this.gBoxManutencaoDeVeiculo.SuspendLayout();
-            this.gBoxLocalDeManutencao.SuspendLayout();
-            this.gBoxVeiculos.SuspendLayout();
-            this.gBoxFuncionarios.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gbPerfilUsuarios.SuspendLayout();
+            this.gbTipoDeManutencao.SuspendLayout();
+            this.gbManutencaoDeVeiculo.SuspendLayout();
+            this.gbLocalDeManutencao.SuspendLayout();
+            this.gbVeiculos.SuspendLayout();
+            this.gbFuncionarios.SuspendLayout();
+            this.gbParametroSistema.SuspendLayout();
             this.gbSelecionarPerfil.SuspendLayout();
+            this.tabControlPerfilUsuario.SuspendLayout();
+            this.tabPrincipal.SuspendLayout();
+            this.tabDadosRegistro.SuspendLayout();
+            this.groupBox35.SuspendLayout();
+            this.groupBox37.SuspendLayout();
+            this.gbDadosExclusaoRegistro.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbDescricaoPerfil
             // 
             this.gbDescricaoPerfil.Controls.Add(this.tBoxDescricao);
             this.gbDescricaoPerfil.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbDescricaoPerfil.Location = new System.Drawing.Point(12, 72);
+            this.gbDescricaoPerfil.Location = new System.Drawing.Point(6, 66);
             this.gbDescricaoPerfil.Name = "gbDescricaoPerfil";
             this.gbDescricaoPerfil.Size = new System.Drawing.Size(597, 54);
             this.gbDescricaoPerfil.TabIndex = 1;
@@ -127,25 +155,25 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.cBoxPerfil.TabStop = false;
             this.cBoxPerfil.SelectedIndexChanged += new System.EventHandler(this.cBoxPerfil_SelectedIndexChanged);
             // 
-            // gBoxUsuarios
+            // gbPerfilUsuarios
             // 
-            this.gBoxUsuarios.Controls.Add(this.chkBoxExcluirPerfil);
-            this.gBoxUsuarios.Controls.Add(this.chkBoxAlterarPermissaoUsuarios);
-            this.gBoxUsuarios.Controls.Add(this.chkBoxResetarSenhaUsuarios);
-            this.gBoxUsuarios.Controls.Add(this.chkBoxIncluirPerfil);
-            this.gBoxUsuarios.Controls.Add(this.chkBoxInativarReativarUsuarios);
-            this.gBoxUsuarios.Controls.Add(this.chkBoxIncluirUsuarios);
-            this.gBoxUsuarios.Controls.Add(this.chkBoxEditarPerfil);
-            this.gBoxUsuarios.Controls.Add(this.chkBoxEditarUsuarios);
-            this.gBoxUsuarios.Controls.Add(this.chkBoxAcessarUsuarios);
-            this.gBoxUsuarios.Controls.Add(this.chkBoxAcessarPerfil);
-            this.gBoxUsuarios.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBoxUsuarios.Location = new System.Drawing.Point(12, 222);
-            this.gBoxUsuarios.Name = "gBoxUsuarios";
-            this.gBoxUsuarios.Size = new System.Drawing.Size(183, 303);
-            this.gBoxUsuarios.TabIndex = 3;
-            this.gBoxUsuarios.TabStop = false;
-            this.gBoxUsuarios.Text = "Perfil e Usuários";
+            this.gbPerfilUsuarios.Controls.Add(this.chkBoxExcluirPerfil);
+            this.gbPerfilUsuarios.Controls.Add(this.chkBoxAlterarPermissaoUsuarios);
+            this.gbPerfilUsuarios.Controls.Add(this.chkBoxResetarSenhaUsuarios);
+            this.gbPerfilUsuarios.Controls.Add(this.chkBoxIncluirPerfil);
+            this.gbPerfilUsuarios.Controls.Add(this.chkBoxInativarReativarUsuarios);
+            this.gbPerfilUsuarios.Controls.Add(this.chkBoxIncluirUsuarios);
+            this.gbPerfilUsuarios.Controls.Add(this.chkBoxEditarPerfil);
+            this.gbPerfilUsuarios.Controls.Add(this.chkBoxEditarUsuarios);
+            this.gbPerfilUsuarios.Controls.Add(this.chkBoxAcessarUsuarios);
+            this.gbPerfilUsuarios.Controls.Add(this.chkBoxAcessarPerfil);
+            this.gbPerfilUsuarios.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbPerfilUsuarios.Location = new System.Drawing.Point(6, 216);
+            this.gbPerfilUsuarios.Name = "gbPerfilUsuarios";
+            this.gbPerfilUsuarios.Size = new System.Drawing.Size(183, 303);
+            this.gbPerfilUsuarios.TabIndex = 3;
+            this.gbPerfilUsuarios.TabStop = false;
+            this.gbPerfilUsuarios.Text = "Perfil e Usuários";
             // 
             // chkBoxExcluirPerfil
             // 
@@ -257,19 +285,19 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.chkBoxAcessarPerfil.Text = "Acessar Perfil";
             this.chkBoxAcessarPerfil.UseVisualStyleBackColor = true;
             // 
-            // gBoxTipoDeManutencao
+            // gbTipoDeManutencao
             // 
-            this.gBoxTipoDeManutencao.Controls.Add(this.chkBoxInativarTipoManutencao);
-            this.gBoxTipoDeManutencao.Controls.Add(this.chkBoxEditarTipoManutencao);
-            this.gBoxTipoDeManutencao.Controls.Add(this.chkBoxIncluirTipoManutencao);
-            this.gBoxTipoDeManutencao.Controls.Add(this.chkBoxAcessarTipoManutencao);
-            this.gBoxTipoDeManutencao.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBoxTipoDeManutencao.Location = new System.Drawing.Point(399, 143);
-            this.gBoxTipoDeManutencao.Name = "gBoxTipoDeManutencao";
-            this.gBoxTipoDeManutencao.Size = new System.Drawing.Size(210, 116);
-            this.gBoxTipoDeManutencao.TabIndex = 6;
-            this.gBoxTipoDeManutencao.TabStop = false;
-            this.gBoxTipoDeManutencao.Text = "Tipo de Manunteção";
+            this.gbTipoDeManutencao.Controls.Add(this.chkBoxInativarTipoManutencao);
+            this.gbTipoDeManutencao.Controls.Add(this.chkBoxEditarTipoManutencao);
+            this.gbTipoDeManutencao.Controls.Add(this.chkBoxIncluirTipoManutencao);
+            this.gbTipoDeManutencao.Controls.Add(this.chkBoxAcessarTipoManutencao);
+            this.gbTipoDeManutencao.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbTipoDeManutencao.Location = new System.Drawing.Point(393, 137);
+            this.gbTipoDeManutencao.Name = "gbTipoDeManutencao";
+            this.gbTipoDeManutencao.Size = new System.Drawing.Size(210, 116);
+            this.gbTipoDeManutencao.TabIndex = 6;
+            this.gbTipoDeManutencao.TabStop = false;
+            this.gbTipoDeManutencao.Text = "Tipo de Manunteção";
             // 
             // chkBoxInativarTipoManutencao
             // 
@@ -315,20 +343,20 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.chkBoxAcessarTipoManutencao.Text = "Acessar Tipo de Manutenção";
             this.chkBoxAcessarTipoManutencao.UseVisualStyleBackColor = true;
             // 
-            // gBoxManutencaoDeVeiculo
+            // gbManutencaoDeVeiculo
             // 
-            this.gBoxManutencaoDeVeiculo.Controls.Add(this.chkBoxPainelBI);
-            this.gBoxManutencaoDeVeiculo.Controls.Add(this.chkBoxProxTrocaOleo);
-            this.gBoxManutencaoDeVeiculo.Controls.Add(this.chkBoxExcluirManutencaoRealizada);
-            this.gBoxManutencaoDeVeiculo.Controls.Add(this.chkBoxManutencoesRealizadas);
-            this.gBoxManutencaoDeVeiculo.Controls.Add(this.chkBoxRegistrarManutencao);
-            this.gBoxManutencaoDeVeiculo.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBoxManutencaoDeVeiculo.Location = new System.Drawing.Point(399, 386);
-            this.gBoxManutencaoDeVeiculo.Name = "gBoxManutencaoDeVeiculo";
-            this.gBoxManutencaoDeVeiculo.Size = new System.Drawing.Size(210, 139);
-            this.gBoxManutencaoDeVeiculo.TabIndex = 8;
-            this.gBoxManutencaoDeVeiculo.TabStop = false;
-            this.gBoxManutencaoDeVeiculo.Text = "Manutenção de Veículos";
+            this.gbManutencaoDeVeiculo.Controls.Add(this.chkBoxPainelBI);
+            this.gbManutencaoDeVeiculo.Controls.Add(this.chkBoxProxTrocaOleo);
+            this.gbManutencaoDeVeiculo.Controls.Add(this.chkBoxExcluirManutencaoRealizada);
+            this.gbManutencaoDeVeiculo.Controls.Add(this.chkBoxManutencoesRealizadas);
+            this.gbManutencaoDeVeiculo.Controls.Add(this.chkBoxRegistrarManutencao);
+            this.gbManutencaoDeVeiculo.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbManutencaoDeVeiculo.Location = new System.Drawing.Point(393, 380);
+            this.gbManutencaoDeVeiculo.Name = "gbManutencaoDeVeiculo";
+            this.gbManutencaoDeVeiculo.Size = new System.Drawing.Size(210, 139);
+            this.gbManutencaoDeVeiculo.TabIndex = 8;
+            this.gbManutencaoDeVeiculo.TabStop = false;
+            this.gbManutencaoDeVeiculo.Text = "Manutenção de Veículos";
             // 
             // chkBoxPainelBI
             // 
@@ -385,19 +413,19 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.chkBoxRegistrarManutencao.Text = "Registrar Manutenção";
             this.chkBoxRegistrarManutencao.UseVisualStyleBackColor = true;
             // 
-            // gBoxLocalDeManutencao
+            // gbLocalDeManutencao
             // 
-            this.gBoxLocalDeManutencao.Controls.Add(this.chkBoxInativarLocalManutencao);
-            this.gBoxLocalDeManutencao.Controls.Add(this.chkBoxEditarLocalManutencao);
-            this.gBoxLocalDeManutencao.Controls.Add(this.chkBoxIncluirLocalManutencao);
-            this.gBoxLocalDeManutencao.Controls.Add(this.chkBoxAcessarLocalManutencao);
-            this.gBoxLocalDeManutencao.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBoxLocalDeManutencao.Location = new System.Drawing.Point(399, 265);
-            this.gBoxLocalDeManutencao.Name = "gBoxLocalDeManutencao";
-            this.gBoxLocalDeManutencao.Size = new System.Drawing.Size(210, 115);
-            this.gBoxLocalDeManutencao.TabIndex = 7;
-            this.gBoxLocalDeManutencao.TabStop = false;
-            this.gBoxLocalDeManutencao.Text = "Local de Manunteção";
+            this.gbLocalDeManutencao.Controls.Add(this.chkBoxInativarLocalManutencao);
+            this.gbLocalDeManutencao.Controls.Add(this.chkBoxEditarLocalManutencao);
+            this.gbLocalDeManutencao.Controls.Add(this.chkBoxIncluirLocalManutencao);
+            this.gbLocalDeManutencao.Controls.Add(this.chkBoxAcessarLocalManutencao);
+            this.gbLocalDeManutencao.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbLocalDeManutencao.Location = new System.Drawing.Point(393, 259);
+            this.gbLocalDeManutencao.Name = "gbLocalDeManutencao";
+            this.gbLocalDeManutencao.Size = new System.Drawing.Size(210, 115);
+            this.gbLocalDeManutencao.TabIndex = 7;
+            this.gbLocalDeManutencao.TabStop = false;
+            this.gbLocalDeManutencao.Text = "Local de Manunteção";
             // 
             // chkBoxInativarLocalManutencao
             // 
@@ -443,19 +471,19 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.chkBoxAcessarLocalManutencao.Text = "Acessar Local de Manutenção";
             this.chkBoxAcessarLocalManutencao.UseVisualStyleBackColor = true;
             // 
-            // gBoxVeiculos
+            // gbVeiculos
             // 
-            this.gBoxVeiculos.Controls.Add(this.chkBoxInativarVeiculos);
-            this.gBoxVeiculos.Controls.Add(this.chkBoxEditarVeiculos);
-            this.gBoxVeiculos.Controls.Add(this.chkBoxIncluirVeiculos);
-            this.gBoxVeiculos.Controls.Add(this.chkBoxAcessarVeiculos);
-            this.gBoxVeiculos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBoxVeiculos.Location = new System.Drawing.Point(201, 143);
-            this.gBoxVeiculos.Name = "gBoxVeiculos";
-            this.gBoxVeiculos.Size = new System.Drawing.Size(192, 116);
-            this.gBoxVeiculos.TabIndex = 4;
-            this.gBoxVeiculos.TabStop = false;
-            this.gBoxVeiculos.Text = "Veículos";
+            this.gbVeiculos.Controls.Add(this.chkBoxInativarVeiculos);
+            this.gbVeiculos.Controls.Add(this.chkBoxEditarVeiculos);
+            this.gbVeiculos.Controls.Add(this.chkBoxIncluirVeiculos);
+            this.gbVeiculos.Controls.Add(this.chkBoxAcessarVeiculos);
+            this.gbVeiculos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbVeiculos.Location = new System.Drawing.Point(195, 137);
+            this.gbVeiculos.Name = "gbVeiculos";
+            this.gbVeiculos.Size = new System.Drawing.Size(192, 116);
+            this.gbVeiculos.TabIndex = 4;
+            this.gbVeiculos.TabStop = false;
+            this.gbVeiculos.Text = "Veículos";
             // 
             // chkBoxInativarVeiculos
             // 
@@ -501,19 +529,19 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.chkBoxAcessarVeiculos.Text = "Acessar Veículos";
             this.chkBoxAcessarVeiculos.UseVisualStyleBackColor = true;
             // 
-            // gBoxFuncionarios
+            // gbFuncionarios
             // 
-            this.gBoxFuncionarios.Controls.Add(this.chkBoxVisualizarCadCompletoFunc);
-            this.gBoxFuncionarios.Controls.Add(this.chkBoxEditarFuncionarios);
-            this.gBoxFuncionarios.Controls.Add(this.chkBoxIncluirFuncionarios);
-            this.gBoxFuncionarios.Controls.Add(this.chkBoxAcessarFuncionarios);
-            this.gBoxFuncionarios.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBoxFuncionarios.Location = new System.Drawing.Point(201, 265);
-            this.gBoxFuncionarios.Name = "gBoxFuncionarios";
-            this.gBoxFuncionarios.Size = new System.Drawing.Size(192, 115);
-            this.gBoxFuncionarios.TabIndex = 5;
-            this.gBoxFuncionarios.TabStop = false;
-            this.gBoxFuncionarios.Text = "Funcionários";
+            this.gbFuncionarios.Controls.Add(this.chkBoxVisualizarCadCompletoFunc);
+            this.gbFuncionarios.Controls.Add(this.chkBoxEditarFuncionarios);
+            this.gbFuncionarios.Controls.Add(this.chkBoxIncluirFuncionarios);
+            this.gbFuncionarios.Controls.Add(this.chkBoxAcessarFuncionarios);
+            this.gbFuncionarios.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbFuncionarios.Location = new System.Drawing.Point(195, 259);
+            this.gbFuncionarios.Name = "gbFuncionarios";
+            this.gbFuncionarios.Size = new System.Drawing.Size(192, 115);
+            this.gbFuncionarios.TabIndex = 5;
+            this.gbFuncionarios.TabStop = false;
+            this.gbFuncionarios.Text = "Funcionários";
             // 
             // chkBoxVisualizarCadCompletoFunc
             // 
@@ -559,17 +587,17 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.chkBoxAcessarFuncionarios.Text = "Acessar Funcionários";
             this.chkBoxAcessarFuncionarios.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // gbParametroSistema
             // 
-            this.groupBox1.Controls.Add(this.chkBoxEditarParametrosSistema);
-            this.groupBox1.Controls.Add(this.chkBoxAcessarParametrosSistema);
-            this.groupBox1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 143);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(183, 73);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Parâmetros do Sistema";
+            this.gbParametroSistema.Controls.Add(this.chkBoxEditarParametrosSistema);
+            this.gbParametroSistema.Controls.Add(this.chkBoxAcessarParametrosSistema);
+            this.gbParametroSistema.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbParametroSistema.Location = new System.Drawing.Point(6, 137);
+            this.gbParametroSistema.Name = "gbParametroSistema";
+            this.gbParametroSistema.Size = new System.Drawing.Size(183, 73);
+            this.gbParametroSistema.TabIndex = 2;
+            this.gbParametroSistema.TabStop = false;
+            this.gbParametroSistema.Text = "Parâmetros do Sistema";
             // 
             // chkBoxEditarParametrosSistema
             // 
@@ -599,7 +627,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnCancelar.Appearance.Options.UseFont = true;
             this.btnCancelar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnCancelar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCancelar.ImageOptions.SvgImage")));
-            this.btnCancelar.Location = new System.Drawing.Point(12, 533);
+            this.btnCancelar.Location = new System.Drawing.Point(5, 556);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(143, 44);
             this.btnCancelar.TabIndex = 236;
@@ -613,7 +641,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnConfirmar.Appearance.Options.UseFont = true;
             this.btnConfirmar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConfirmar.ImageOptions.SvgImage")));
-            this.btnConfirmar.Location = new System.Drawing.Point(466, 533);
+            this.btnConfirmar.Location = new System.Drawing.Point(471, 556);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(143, 44);
             this.btnConfirmar.TabIndex = 235;
@@ -628,7 +656,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnLiberarTudo.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.btnLiberarTudo.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnLiberarTudo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLiberarTudo.ImageOptions.SvgImage")));
-            this.btnLiberarTudo.Location = new System.Drawing.Point(207, 533);
+            this.btnLiberarTudo.Location = new System.Drawing.Point(206, 556);
             this.btnLiberarTudo.Name = "btnLiberarTudo";
             this.btnLiberarTudo.Size = new System.Drawing.Size(100, 44);
             this.btnLiberarTudo.TabIndex = 237;
@@ -644,7 +672,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnBloquearTudo.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.btnBloquearTudo.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnBloquearTudo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBloquearTudo.ImageOptions.SvgImage")));
-            this.btnBloquearTudo.Location = new System.Drawing.Point(313, 533);
+            this.btnBloquearTudo.Location = new System.Drawing.Point(312, 556);
             this.btnBloquearTudo.Name = "btnBloquearTudo";
             this.btnBloquearTudo.Size = new System.Drawing.Size(100, 44);
             this.btnBloquearTudo.TabIndex = 238;
@@ -657,7 +685,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gbSelecionarPerfil.Controls.Add(this.btnRecarregaPermissoesUsuario);
             this.gbSelecionarPerfil.Controls.Add(this.cBoxPerfil);
             this.gbSelecionarPerfil.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbSelecionarPerfil.Location = new System.Drawing.Point(12, 12);
+            this.gbSelecionarPerfil.Location = new System.Drawing.Point(6, 6);
             this.gbSelecionarPerfil.Name = "gbSelecionarPerfil";
             this.gbSelecionarPerfil.Size = new System.Drawing.Size(597, 54);
             this.gbSelecionarPerfil.TabIndex = 3;
@@ -679,25 +707,274 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnRecarregaPermissoesUsuario.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
             this.btnRecarregaPermissoesUsuario.Click += new System.EventHandler(this.btnRecarregaPermissoesUsuario_Click);
             // 
+            // tabControlPerfilUsuario
+            // 
+            this.tabControlPerfilUsuario.Controls.Add(this.tabPrincipal);
+            this.tabControlPerfilUsuario.Controls.Add(this.tabDadosRegistro);
+            this.tabControlPerfilUsuario.Location = new System.Drawing.Point(1, 1);
+            this.tabControlPerfilUsuario.Name = "tabControlPerfilUsuario";
+            this.tabControlPerfilUsuario.SelectedIndex = 0;
+            this.tabControlPerfilUsuario.Size = new System.Drawing.Size(617, 549);
+            this.tabControlPerfilUsuario.TabIndex = 242;
+            this.tabControlPerfilUsuario.TabStop = false;
+            // 
+            // tabPrincipal
+            // 
+            this.tabPrincipal.Controls.Add(this.groupBox2);
+            this.tabPrincipal.Controls.Add(this.gbSelecionarPerfil);
+            this.tabPrincipal.Controls.Add(this.gbFuncionarios);
+            this.tabPrincipal.Controls.Add(this.gbDescricaoPerfil);
+            this.tabPrincipal.Controls.Add(this.gbVeiculos);
+            this.tabPrincipal.Controls.Add(this.gbLocalDeManutencao);
+            this.tabPrincipal.Controls.Add(this.gbManutencaoDeVeiculo);
+            this.tabPrincipal.Controls.Add(this.gbTipoDeManutencao);
+            this.tabPrincipal.Controls.Add(this.gbPerfilUsuarios);
+            this.tabPrincipal.Controls.Add(this.gbParametroSistema);
+            this.tabPrincipal.Location = new System.Drawing.Point(4, 22);
+            this.tabPrincipal.Name = "tabPrincipal";
+            this.tabPrincipal.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPrincipal.Size = new System.Drawing.Size(609, 523);
+            this.tabPrincipal.TabIndex = 0;
+            this.tabPrincipal.Text = "Principal";
+            this.tabPrincipal.UseVisualStyleBackColor = true;
+            // 
+            // tabDadosRegistro
+            // 
+            this.tabDadosRegistro.Controls.Add(this.groupBox35);
+            this.tabDadosRegistro.Controls.Add(this.groupBox37);
+            this.tabDadosRegistro.Controls.Add(this.gbDadosExclusaoRegistro);
+            this.tabDadosRegistro.Location = new System.Drawing.Point(4, 22);
+            this.tabDadosRegistro.Name = "tabDadosRegistro";
+            this.tabDadosRegistro.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDadosRegistro.Size = new System.Drawing.Size(609, 523);
+            this.tabDadosRegistro.TabIndex = 4;
+            this.tabDadosRegistro.Text = "Dados do Registro";
+            this.tabDadosRegistro.UseVisualStyleBackColor = true;
+            // 
+            // groupBox35
+            // 
+            this.groupBox35.Controls.Add(this.label13);
+            this.groupBox35.Controls.Add(this.tBoxDataAlteracao);
+            this.groupBox35.Controls.Add(this.label14);
+            this.groupBox35.Controls.Add(this.tBoxUsuarioAlteracao);
+            this.groupBox35.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox35.Location = new System.Drawing.Point(3, 83);
+            this.groupBox35.Name = "groupBox35";
+            this.groupBox35.Size = new System.Drawing.Size(603, 69);
+            this.groupBox35.TabIndex = 999;
+            this.groupBox35.TabStop = false;
+            this.groupBox35.Text = "Dados da última alteração do registro";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Calibri", 9F);
+            this.label13.Location = new System.Drawing.Point(6, 45);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(36, 14);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Data:";
+            // 
+            // tBoxDataAlteracao
+            // 
+            this.tBoxDataAlteracao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxDataAlteracao.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tBoxDataAlteracao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxDataAlteracao.Font = new System.Drawing.Font("Calibri", 9F);
+            this.tBoxDataAlteracao.Location = new System.Drawing.Point(65, 45);
+            this.tBoxDataAlteracao.Name = "tBoxDataAlteracao";
+            this.tBoxDataAlteracao.ReadOnly = true;
+            this.tBoxDataAlteracao.Size = new System.Drawing.Size(533, 15);
+            this.tBoxDataAlteracao.TabIndex = 14;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Calibri", 9F);
+            this.label14.Location = new System.Drawing.Point(6, 25);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(53, 14);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "Usuário:";
+            // 
+            // tBoxUsuarioAlteracao
+            // 
+            this.tBoxUsuarioAlteracao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxUsuarioAlteracao.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tBoxUsuarioAlteracao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxUsuarioAlteracao.Font = new System.Drawing.Font("Calibri", 9F);
+            this.tBoxUsuarioAlteracao.Location = new System.Drawing.Point(65, 25);
+            this.tBoxUsuarioAlteracao.Name = "tBoxUsuarioAlteracao";
+            this.tBoxUsuarioAlteracao.ReadOnly = true;
+            this.tBoxUsuarioAlteracao.Size = new System.Drawing.Size(532, 15);
+            this.tBoxUsuarioAlteracao.TabIndex = 12;
+            // 
+            // groupBox37
+            // 
+            this.groupBox37.Controls.Add(this.label9);
+            this.groupBox37.Controls.Add(this.tBoxDataCadastro);
+            this.groupBox37.Controls.Add(this.label10);
+            this.groupBox37.Controls.Add(this.tBoxUsuarioCadastro);
+            this.groupBox37.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox37.Location = new System.Drawing.Point(3, 6);
+            this.groupBox37.Name = "groupBox37";
+            this.groupBox37.Size = new System.Drawing.Size(603, 71);
+            this.groupBox37.TabIndex = 800;
+            this.groupBox37.TabStop = false;
+            this.groupBox37.Text = "Dados da inclusão do registro";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Calibri", 9F);
+            this.label9.Location = new System.Drawing.Point(6, 45);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(36, 14);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Data:";
+            // 
+            // tBoxDataCadastro
+            // 
+            this.tBoxDataCadastro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxDataCadastro.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tBoxDataCadastro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxDataCadastro.Font = new System.Drawing.Font("Calibri", 9F);
+            this.tBoxDataCadastro.Location = new System.Drawing.Point(65, 45);
+            this.tBoxDataCadastro.Name = "tBoxDataCadastro";
+            this.tBoxDataCadastro.ReadOnly = true;
+            this.tBoxDataCadastro.Size = new System.Drawing.Size(531, 15);
+            this.tBoxDataCadastro.TabIndex = 14;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Calibri", 9F);
+            this.label10.Location = new System.Drawing.Point(6, 25);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 14);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Usuário:";
+            // 
+            // tBoxUsuarioCadastro
+            // 
+            this.tBoxUsuarioCadastro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxUsuarioCadastro.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tBoxUsuarioCadastro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxUsuarioCadastro.Font = new System.Drawing.Font("Calibri", 9F);
+            this.tBoxUsuarioCadastro.Location = new System.Drawing.Point(65, 25);
+            this.tBoxUsuarioCadastro.Name = "tBoxUsuarioCadastro";
+            this.tBoxUsuarioCadastro.ReadOnly = true;
+            this.tBoxUsuarioCadastro.Size = new System.Drawing.Size(532, 15);
+            this.tBoxUsuarioCadastro.TabIndex = 12;
+            // 
+            // gbDadosExclusaoRegistro
+            // 
+            this.gbDadosExclusaoRegistro.Controls.Add(this.label11);
+            this.gbDadosExclusaoRegistro.Controls.Add(this.tBoxDataExclusao);
+            this.gbDadosExclusaoRegistro.Controls.Add(this.label12);
+            this.gbDadosExclusaoRegistro.Controls.Add(this.tBoxUsuarioExclusao);
+            this.gbDadosExclusaoRegistro.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbDadosExclusaoRegistro.Location = new System.Drawing.Point(3, 158);
+            this.gbDadosExclusaoRegistro.Name = "gbDadosExclusaoRegistro";
+            this.gbDadosExclusaoRegistro.Size = new System.Drawing.Size(603, 70);
+            this.gbDadosExclusaoRegistro.TabIndex = 900;
+            this.gbDadosExclusaoRegistro.TabStop = false;
+            this.gbDadosExclusaoRegistro.Text = "Dados da exclusão do registro";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Calibri", 9F);
+            this.label11.Location = new System.Drawing.Point(6, 45);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(36, 14);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Data:";
+            // 
+            // tBoxDataExclusao
+            // 
+            this.tBoxDataExclusao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxDataExclusao.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tBoxDataExclusao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxDataExclusao.Font = new System.Drawing.Font("Calibri", 9F);
+            this.tBoxDataExclusao.Location = new System.Drawing.Point(65, 45);
+            this.tBoxDataExclusao.Name = "tBoxDataExclusao";
+            this.tBoxDataExclusao.ReadOnly = true;
+            this.tBoxDataExclusao.Size = new System.Drawing.Size(532, 15);
+            this.tBoxDataExclusao.TabIndex = 14;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Calibri", 9F);
+            this.label12.Location = new System.Drawing.Point(6, 25);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 14);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "Usuário:";
+            // 
+            // tBoxUsuarioExclusao
+            // 
+            this.tBoxUsuarioExclusao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxUsuarioExclusao.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tBoxUsuarioExclusao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxUsuarioExclusao.Font = new System.Drawing.Font("Calibri", 9F);
+            this.tBoxUsuarioExclusao.Location = new System.Drawing.Point(65, 25);
+            this.tBoxUsuarioExclusao.Name = "tBoxUsuarioExclusao";
+            this.tBoxUsuarioExclusao.ReadOnly = true;
+            this.tBoxUsuarioExclusao.Size = new System.Drawing.Size(532, 15);
+            this.tBoxUsuarioExclusao.TabIndex = 12;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.tBoxAlertaRegistroExc2);
+            this.groupBox2.Controls.Add(this.tBoxAlertaRegistroExc1);
+            this.groupBox2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(195, 380);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(192, 139);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            // 
+            // tBoxAlertaRegistroExc1
+            // 
+            this.tBoxAlertaRegistroExc1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxAlertaRegistroExc1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tBoxAlertaRegistroExc1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxAlertaRegistroExc1.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxAlertaRegistroExc1.ForeColor = System.Drawing.Color.Red;
+            this.tBoxAlertaRegistroExc1.Location = new System.Drawing.Point(6, 43);
+            this.tBoxAlertaRegistroExc1.Name = "tBoxAlertaRegistroExc1";
+            this.tBoxAlertaRegistroExc1.Size = new System.Drawing.Size(180, 33);
+            this.tBoxAlertaRegistroExc1.TabIndex = 3;
+            this.tBoxAlertaRegistroExc1.TabStop = false;
+            this.tBoxAlertaRegistroExc1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tBoxAlertaRegistroExc2
+            // 
+            this.tBoxAlertaRegistroExc2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxAlertaRegistroExc2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tBoxAlertaRegistroExc2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxAlertaRegistroExc2.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxAlertaRegistroExc2.ForeColor = System.Drawing.Color.Red;
+            this.tBoxAlertaRegistroExc2.Location = new System.Drawing.Point(6, 75);
+            this.tBoxAlertaRegistroExc2.Name = "tBoxAlertaRegistroExc2";
+            this.tBoxAlertaRegistroExc2.Size = new System.Drawing.Size(180, 33);
+            this.tBoxAlertaRegistroExc2.TabIndex = 4;
+            this.tBoxAlertaRegistroExc2.TabStop = false;
+            this.tBoxAlertaRegistroExc2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmUsuarioPerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 585);
+            this.ClientSize = new System.Drawing.Size(619, 604);
             this.ControlBox = false;
-            this.Controls.Add(this.gbSelecionarPerfil);
-            this.Controls.Add(this.gbDescricaoPerfil);
+            this.Controls.Add(this.tabControlPerfilUsuario);
             this.Controls.Add(this.btnBloquearTudo);
             this.Controls.Add(this.btnLiberarTudo);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnConfirmar);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.gBoxUsuarios);
-            this.Controls.Add(this.gBoxTipoDeManutencao);
-            this.Controls.Add(this.gBoxManutencaoDeVeiculo);
-            this.Controls.Add(this.gBoxLocalDeManutencao);
-            this.Controls.Add(this.gBoxVeiculos);
-            this.Controls.Add(this.gBoxFuncionarios);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
@@ -712,54 +989,65 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmUsuarioPerfil_KeyDown);
             this.gbDescricaoPerfil.ResumeLayout(false);
             this.gbDescricaoPerfil.PerformLayout();
-            this.gBoxUsuarios.ResumeLayout(false);
-            this.gBoxUsuarios.PerformLayout();
-            this.gBoxTipoDeManutencao.ResumeLayout(false);
-            this.gBoxTipoDeManutencao.PerformLayout();
-            this.gBoxManutencaoDeVeiculo.ResumeLayout(false);
-            this.gBoxManutencaoDeVeiculo.PerformLayout();
-            this.gBoxLocalDeManutencao.ResumeLayout(false);
-            this.gBoxLocalDeManutencao.PerformLayout();
-            this.gBoxVeiculos.ResumeLayout(false);
-            this.gBoxVeiculos.PerformLayout();
-            this.gBoxFuncionarios.ResumeLayout(false);
-            this.gBoxFuncionarios.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbPerfilUsuarios.ResumeLayout(false);
+            this.gbPerfilUsuarios.PerformLayout();
+            this.gbTipoDeManutencao.ResumeLayout(false);
+            this.gbTipoDeManutencao.PerformLayout();
+            this.gbManutencaoDeVeiculo.ResumeLayout(false);
+            this.gbManutencaoDeVeiculo.PerformLayout();
+            this.gbLocalDeManutencao.ResumeLayout(false);
+            this.gbLocalDeManutencao.PerformLayout();
+            this.gbVeiculos.ResumeLayout(false);
+            this.gbVeiculos.PerformLayout();
+            this.gbFuncionarios.ResumeLayout(false);
+            this.gbFuncionarios.PerformLayout();
+            this.gbParametroSistema.ResumeLayout(false);
+            this.gbParametroSistema.PerformLayout();
             this.gbSelecionarPerfil.ResumeLayout(false);
+            this.tabControlPerfilUsuario.ResumeLayout(false);
+            this.tabPrincipal.ResumeLayout(false);
+            this.tabDadosRegistro.ResumeLayout(false);
+            this.groupBox35.ResumeLayout(false);
+            this.groupBox35.PerformLayout();
+            this.groupBox37.ResumeLayout(false);
+            this.groupBox37.PerformLayout();
+            this.gbDadosExclusaoRegistro.ResumeLayout(false);
+            this.gbDadosExclusaoRegistro.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.GroupBox gbDescricaoPerfil;
-        private System.Windows.Forms.GroupBox gBoxUsuarios;
+        private System.Windows.Forms.GroupBox gbPerfilUsuarios;
         private System.Windows.Forms.CheckBox chkBoxAlterarPermissaoUsuarios;
         private System.Windows.Forms.CheckBox chkBoxResetarSenhaUsuarios;
         private System.Windows.Forms.CheckBox chkBoxInativarReativarUsuarios;
         private System.Windows.Forms.CheckBox chkBoxEditarUsuarios;
         private System.Windows.Forms.CheckBox chkBoxIncluirUsuarios;
         private System.Windows.Forms.CheckBox chkBoxAcessarUsuarios;
-        private System.Windows.Forms.GroupBox gBoxTipoDeManutencao;
+        private System.Windows.Forms.GroupBox gbTipoDeManutencao;
         private System.Windows.Forms.CheckBox chkBoxInativarTipoManutencao;
         private System.Windows.Forms.CheckBox chkBoxEditarTipoManutencao;
         private System.Windows.Forms.CheckBox chkBoxIncluirTipoManutencao;
         private System.Windows.Forms.CheckBox chkBoxAcessarTipoManutencao;
-        private System.Windows.Forms.GroupBox gBoxManutencaoDeVeiculo;
+        private System.Windows.Forms.GroupBox gbManutencaoDeVeiculo;
         private System.Windows.Forms.CheckBox chkBoxProxTrocaOleo;
         private System.Windows.Forms.CheckBox chkBoxExcluirManutencaoRealizada;
         private System.Windows.Forms.CheckBox chkBoxManutencoesRealizadas;
         private System.Windows.Forms.CheckBox chkBoxRegistrarManutencao;
-        private System.Windows.Forms.GroupBox gBoxLocalDeManutencao;
+        private System.Windows.Forms.GroupBox gbLocalDeManutencao;
         private System.Windows.Forms.CheckBox chkBoxInativarLocalManutencao;
         private System.Windows.Forms.CheckBox chkBoxEditarLocalManutencao;
         private System.Windows.Forms.CheckBox chkBoxIncluirLocalManutencao;
         private System.Windows.Forms.CheckBox chkBoxAcessarLocalManutencao;
-        private System.Windows.Forms.GroupBox gBoxVeiculos;
+        private System.Windows.Forms.GroupBox gbVeiculos;
         private System.Windows.Forms.CheckBox chkBoxEditarVeiculos;
         private System.Windows.Forms.CheckBox chkBoxIncluirVeiculos;
         private System.Windows.Forms.CheckBox chkBoxAcessarVeiculos;
-        private System.Windows.Forms.GroupBox gBoxFuncionarios;
+        private System.Windows.Forms.GroupBox gbFuncionarios;
         private System.Windows.Forms.CheckBox chkBoxVisualizarCadCompletoFunc;
         private System.Windows.Forms.CheckBox chkBoxEditarFuncionarios;
         private System.Windows.Forms.CheckBox chkBoxIncluirFuncionarios;
@@ -769,7 +1057,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private System.Windows.Forms.CheckBox chkBoxEditarPerfil;
         private System.Windows.Forms.CheckBox chkBoxAcessarPerfil;
         private System.Windows.Forms.CheckBox chkBoxPainelBI;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbParametroSistema;
         private System.Windows.Forms.CheckBox chkBoxEditarParametrosSistema;
         private System.Windows.Forms.CheckBox chkBoxAcessarParametrosSistema;
         private DevExpress.XtraEditors.SimpleButton btnCancelar;
@@ -781,5 +1069,26 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private System.Windows.Forms.ComboBox cBoxPerfil;
         private System.Windows.Forms.CheckBox chkBoxInativarVeiculos;
         private DevExpress.XtraEditors.SimpleButton btnRecarregaPermissoesUsuario;
+        private System.Windows.Forms.TabControl tabControlPerfilUsuario;
+        private System.Windows.Forms.TabPage tabPrincipal;
+        private System.Windows.Forms.TabPage tabDadosRegistro;
+        private System.Windows.Forms.GroupBox groupBox35;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox tBoxDataAlteracao;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox tBoxUsuarioAlteracao;
+        private System.Windows.Forms.GroupBox groupBox37;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tBoxDataCadastro;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tBoxUsuarioCadastro;
+        private System.Windows.Forms.GroupBox gbDadosExclusaoRegistro;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox tBoxDataExclusao;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tBoxUsuarioExclusao;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox tBoxAlertaRegistroExc2;
+        private System.Windows.Forms.TextBox tBoxAlertaRegistroExc1;
     }
 }
