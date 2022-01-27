@@ -297,6 +297,16 @@ ALTER TABLE controle_permissao_perfil ADD COLUMN data_alteracao timestamp withou
 ALTER TABLE controle_permissao_perfil ADD COLUMN id_usuario_exclusao integer;
 ALTER TABLE controle_permissao_perfil ADD COLUMN data_exclusao timestamp without time zone;
 
+UPDATE controle_permissao_perfil SET id_usuario_cadastro = 1, data_cadastro = CURRENT_TIMESTAMP, ativo = 'S';
+
+ALTER TABLE controle_permissao ADD COLUMN id_usuario_cadastro integer;
+ALTER TABLE controle_permissao ADD COLUMN data_cadastro timestamp without time zone;
+ALTER TABLE controle_permissao ADD COLUMN id_usuario_alteracao integer;
+ALTER TABLE controle_permissao ADD COLUMN data_alteracao timestamp without time zone;
+ALTER TABLE controle_permissao ADD COLUMN ativo character(1);
+
+UPDATE controle_permissao SET id_usuario_cadastro = 1, data_cadastro = CURRENT_TIMESTAMP, ativo = 'S';
+
 
 ```
 

@@ -279,6 +279,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.dGridUsuarioPerfil.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGridUsuarioPerfil.Size = new System.Drawing.Size(1236, 355);
             this.dGridUsuarioPerfil.TabIndex = 0;
+            this.dGridUsuarioPerfil.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridUsuarioPerfil_CellDoubleClick);
             // 
             // id_controle_permissao_perfil
             // 

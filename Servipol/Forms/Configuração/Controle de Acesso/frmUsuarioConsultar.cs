@@ -270,6 +270,12 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                 case Keys.F5:
                     btnConsultar_Click(sender, e);
                     break;
+                case Keys.F6:
+                    btnResetarSenha_Click(sender, e);
+                    break;
+                case Keys.F7:
+                    btnPermissoes_Click(sender, e);
+                    break;
                 case Keys.Escape:
                     Close();
                     break;
@@ -282,6 +288,11 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             {
                 btnExcluir_Click(sender, e);
             }
+        }
+
+        private void dGridUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnEditar_Click(sender, e);
         }
     }
 }

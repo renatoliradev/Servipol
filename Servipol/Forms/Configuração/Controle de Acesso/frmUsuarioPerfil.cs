@@ -122,7 +122,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
                 NpgsqlCommand com = new NpgsqlCommand();
                 com.Connection = BD.ObjetoConexao;
-                com.CommandText = "SELECT id_controle_permissao_perfil, descricao FROM controle_permissao_perfil WHERE registro_excluido = 'N' ORDER BY 1";
+                com.CommandText = "SELECT id_controle_permissao_perfil, descricao FROM controle_permissao_perfil WHERE ativo = 'S' ORDER BY 1";
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     DataTable dt = new DataTable();
@@ -552,8 +552,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             {
                 BD.Conectar();
 
-                if (XtraMessageBox.Show("Confirmar alteração de permissões ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                if (TipoChamada == "frmIncluirUsuario" && XtraMessageBox.Show("Confirmar alteração de permissões ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 {
+                    #region Variáveis
                     string _acessarParametroSistema = chkBoxAcessarParametrosSistema.Checked ? "S" : "N";
                     string _editarParametroSistema = chkBoxEditarParametrosSistema.Checked ? "S" : "N";
 
@@ -596,14 +597,177 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     string _acessarPainelBI = chkBoxPainelBI.Checked ? "S" : "N";
 
                     string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}";
+                    #endregion
 
-                    XtraMessageBox.Show(novaPermissao);
+                    NpgsqlCommand update1 = new NpgsqlCommand($"INSERT INTO controle_permissao VALUES({IdPermissao}, '{novaPermissao}', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, 'S')", BD.ObjetoConexao);
+                    update1.ExecuteNonQuery();
 
-                    //NpgsqlCommand update1 = new NpgsqlCommand("UPDATE controle_permissao SET permissao = (SELECT OVERLAY(permissao placing '" + acessarUsuarios + "' from 1 for 1) FROM controle_permissao WHERE id_usuario = " + auxidUsuarioSelecionado + ") WHERE id_usuario = " + auxidUsuarioSelecionado + "", bd.ObjetoConexao);
-                    //update1.ExecuteNonQuery();
+                    XtraMessageBox.Show("Permissões alteradas com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
 
-                    //XtraMessageBox.Show("Permissões Alteradas com Sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //this.Close();
+                else if (TipoChamada == "frmUsuariosEditarPermissoes" && XtraMessageBox.Show("Confirmar alteração de permissões ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                {
+                    #region Variáveis
+                    string _acessarParametroSistema = chkBoxAcessarParametrosSistema.Checked ? "S" : "N";
+                    string _editarParametroSistema = chkBoxEditarParametrosSistema.Checked ? "S" : "N";
+
+                    string _acessarPerfil = chkBoxAcessarPerfil.Checked ? "S" : "N";
+                    string _incluirPerfil = chkBoxIncluirPerfil.Checked ? "S" : "N";
+                    string _editarPerfil = chkBoxEditarPerfil.Checked ? "S" : "N";
+                    string _excluirPerfil = chkBoxExcluirPerfil.Checked ? "S" : "N";
+
+                    string _acessarUsuario = chkBoxAcessarUsuarios.Checked ? "S" : "N";
+                    string _incluirUsuario = chkBoxIncluirUsuarios.Checked ? "S" : "N";
+                    string _editarUsuario = chkBoxEditarUsuarios.Checked ? "S" : "N";
+                    string _inativarReativarUsuario = chkBoxInativarReativarUsuarios.Checked ? "S" : "N";
+                    string _resetarSenhaUsuario = chkBoxResetarSenhaUsuarios.Checked ? "S" : "N";
+                    string _alterarPermissaoUsuario = chkBoxAlterarPermissaoUsuarios.Checked ? "S" : "N";
+
+                    string _acessarVeiculo = chkBoxAcessarVeiculos.Checked ? "S" : "N";
+                    string _incluirVeiculo = chkBoxIncluirVeiculos.Checked ? "S" : "N";
+                    string _editarVeiculo = chkBoxEditarVeiculos.Checked ? "S" : "N";
+                    string _inativarVeiculo = chkBoxInativarVeiculos.Checked ? "S" : "N";
+
+                    string _acessarFuncionario = chkBoxAcessarFuncionarios.Checked ? "S" : "N";
+                    string _incluirFuncionario = chkBoxIncluirFuncionarios.Checked ? "S" : "N";
+                    string _editarFuncionario = chkBoxEditarFuncionarios.Checked ? "S" : "N";
+                    string _visualizarCadCompletoFuncionario = chkBoxVisualizarCadCompletoFunc.Checked ? "S" : "N";
+
+                    string _acessarTipoManutencao = chkBoxAcessarTipoManutencao.Checked ? "S" : "N";
+                    string _incluirTipoManutencao = chkBoxIncluirTipoManutencao.Checked ? "S" : "N";
+                    string _editarTipoManutencao = chkBoxEditarTipoManutencao.Checked ? "S" : "N";
+                    string _inativarTipoManutencao = chkBoxInativarTipoManutencao.Checked ? "S" : "N";
+
+                    string _acessarLocalManutencao = chkBoxAcessarLocalManutencao.Checked ? "S" : "N";
+                    string _incluirLocalManutencao = chkBoxIncluirLocalManutencao.Checked ? "S" : "N";
+                    string _editarLocalManutencao = chkBoxEditarLocalManutencao.Checked ? "S" : "N";
+                    string _inativarLocalManutencao = chkBoxInativarLocalManutencao.Checked ? "S" : "N";
+
+                    string _registrarManutencao = chkBoxRegistrarManutencao.Checked ? "S" : "N";
+                    string _visualizarManutencoesRealizadas = chkBoxManutencoesRealizadas.Checked ? "S" : "N";
+                    string _excluirManutencaoRealizada = chkBoxExcluirManutencaoRealizada.Checked ? "S" : "N";
+                    string _visualizarProxTrocaOleo = chkBoxProxTrocaOleo.Checked ? "S" : "N";
+                    string _acessarPainelBI = chkBoxPainelBI.Checked ? "S" : "N";
+
+                    string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}";
+                    #endregion
+
+                    NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE controle_permissao SET permissao = '{novaPermissao}', id_usuario_alteracao = {SessaoSistema.UsuarioId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_usuario = {IdPermissao}", BD.ObjetoConexao);
+                    update1.ExecuteNonQuery();
+
+                    XtraMessageBox.Show("Permissões alteradas com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+
+                else if (TipoChamada == "Editar" && XtraMessageBox.Show("Confirmar alteração de permissões ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                {
+                    #region Variáveis
+                    string _acessarParametroSistema = chkBoxAcessarParametrosSistema.Checked ? "S" : "N";
+                    string _editarParametroSistema = chkBoxEditarParametrosSistema.Checked ? "S" : "N";
+
+                    string _acessarPerfil = chkBoxAcessarPerfil.Checked ? "S" : "N";
+                    string _incluirPerfil = chkBoxIncluirPerfil.Checked ? "S" : "N";
+                    string _editarPerfil = chkBoxEditarPerfil.Checked ? "S" : "N";
+                    string _excluirPerfil = chkBoxExcluirPerfil.Checked ? "S" : "N";
+
+                    string _acessarUsuario = chkBoxAcessarUsuarios.Checked ? "S" : "N";
+                    string _incluirUsuario = chkBoxIncluirUsuarios.Checked ? "S" : "N";
+                    string _editarUsuario = chkBoxEditarUsuarios.Checked ? "S" : "N";
+                    string _inativarReativarUsuario = chkBoxInativarReativarUsuarios.Checked ? "S" : "N";
+                    string _resetarSenhaUsuario = chkBoxResetarSenhaUsuarios.Checked ? "S" : "N";
+                    string _alterarPermissaoUsuario = chkBoxAlterarPermissaoUsuarios.Checked ? "S" : "N";
+
+                    string _acessarVeiculo = chkBoxAcessarVeiculos.Checked ? "S" : "N";
+                    string _incluirVeiculo = chkBoxIncluirVeiculos.Checked ? "S" : "N";
+                    string _editarVeiculo = chkBoxEditarVeiculos.Checked ? "S" : "N";
+                    string _inativarVeiculo = chkBoxInativarVeiculos.Checked ? "S" : "N";
+
+                    string _acessarFuncionario = chkBoxAcessarFuncionarios.Checked ? "S" : "N";
+                    string _incluirFuncionario = chkBoxIncluirFuncionarios.Checked ? "S" : "N";
+                    string _editarFuncionario = chkBoxEditarFuncionarios.Checked ? "S" : "N";
+                    string _visualizarCadCompletoFuncionario = chkBoxVisualizarCadCompletoFunc.Checked ? "S" : "N";
+
+                    string _acessarTipoManutencao = chkBoxAcessarTipoManutencao.Checked ? "S" : "N";
+                    string _incluirTipoManutencao = chkBoxIncluirTipoManutencao.Checked ? "S" : "N";
+                    string _editarTipoManutencao = chkBoxEditarTipoManutencao.Checked ? "S" : "N";
+                    string _inativarTipoManutencao = chkBoxInativarTipoManutencao.Checked ? "S" : "N";
+
+                    string _acessarLocalManutencao = chkBoxAcessarLocalManutencao.Checked ? "S" : "N";
+                    string _incluirLocalManutencao = chkBoxIncluirLocalManutencao.Checked ? "S" : "N";
+                    string _editarLocalManutencao = chkBoxEditarLocalManutencao.Checked ? "S" : "N";
+                    string _inativarLocalManutencao = chkBoxInativarLocalManutencao.Checked ? "S" : "N";
+
+                    string _registrarManutencao = chkBoxRegistrarManutencao.Checked ? "S" : "N";
+                    string _visualizarManutencoesRealizadas = chkBoxManutencoesRealizadas.Checked ? "S" : "N";
+                    string _excluirManutencaoRealizada = chkBoxExcluirManutencaoRealizada.Checked ? "S" : "N";
+                    string _visualizarProxTrocaOleo = chkBoxProxTrocaOleo.Checked ? "S" : "N";
+                    string _acessarPainelBI = chkBoxPainelBI.Checked ? "S" : "N";
+
+                    string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}";
+                    #endregion
+
+                    NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE controle_permissao_perfil SET descricao = '{tBoxDescricao.Text.ToUpper().Trim()}', permissao = '{novaPermissao}', id_usuario_alteracao = {SessaoSistema.UsuarioId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_controle_permissao_perfil = {IdPermissao}", BD.ObjetoConexao);
+                    update1.ExecuteNonQuery();
+
+                    XtraMessageBox.Show("Permissões alteradas com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ((frmUsuarioPerfilConsultar)this.Owner).AtualizaDG();
+                    this.Close();
+                }
+
+                else if (TipoChamada == "Incluir" && XtraMessageBox.Show("Confirmar alteração de permissões ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                {
+                    #region Variáveis
+                    string _acessarParametroSistema = chkBoxAcessarParametrosSistema.Checked ? "S" : "N";
+                    string _editarParametroSistema = chkBoxEditarParametrosSistema.Checked ? "S" : "N";
+
+                    string _acessarPerfil = chkBoxAcessarPerfil.Checked ? "S" : "N";
+                    string _incluirPerfil = chkBoxIncluirPerfil.Checked ? "S" : "N";
+                    string _editarPerfil = chkBoxEditarPerfil.Checked ? "S" : "N";
+                    string _excluirPerfil = chkBoxExcluirPerfil.Checked ? "S" : "N";
+
+                    string _acessarUsuario = chkBoxAcessarUsuarios.Checked ? "S" : "N";
+                    string _incluirUsuario = chkBoxIncluirUsuarios.Checked ? "S" : "N";
+                    string _editarUsuario = chkBoxEditarUsuarios.Checked ? "S" : "N";
+                    string _inativarReativarUsuario = chkBoxInativarReativarUsuarios.Checked ? "S" : "N";
+                    string _resetarSenhaUsuario = chkBoxResetarSenhaUsuarios.Checked ? "S" : "N";
+                    string _alterarPermissaoUsuario = chkBoxAlterarPermissaoUsuarios.Checked ? "S" : "N";
+
+                    string _acessarVeiculo = chkBoxAcessarVeiculos.Checked ? "S" : "N";
+                    string _incluirVeiculo = chkBoxIncluirVeiculos.Checked ? "S" : "N";
+                    string _editarVeiculo = chkBoxEditarVeiculos.Checked ? "S" : "N";
+                    string _inativarVeiculo = chkBoxInativarVeiculos.Checked ? "S" : "N";
+
+                    string _acessarFuncionario = chkBoxAcessarFuncionarios.Checked ? "S" : "N";
+                    string _incluirFuncionario = chkBoxIncluirFuncionarios.Checked ? "S" : "N";
+                    string _editarFuncionario = chkBoxEditarFuncionarios.Checked ? "S" : "N";
+                    string _visualizarCadCompletoFuncionario = chkBoxVisualizarCadCompletoFunc.Checked ? "S" : "N";
+
+                    string _acessarTipoManutencao = chkBoxAcessarTipoManutencao.Checked ? "S" : "N";
+                    string _incluirTipoManutencao = chkBoxIncluirTipoManutencao.Checked ? "S" : "N";
+                    string _editarTipoManutencao = chkBoxEditarTipoManutencao.Checked ? "S" : "N";
+                    string _inativarTipoManutencao = chkBoxInativarTipoManutencao.Checked ? "S" : "N";
+
+                    string _acessarLocalManutencao = chkBoxAcessarLocalManutencao.Checked ? "S" : "N";
+                    string _incluirLocalManutencao = chkBoxIncluirLocalManutencao.Checked ? "S" : "N";
+                    string _editarLocalManutencao = chkBoxEditarLocalManutencao.Checked ? "S" : "N";
+                    string _inativarLocalManutencao = chkBoxInativarLocalManutencao.Checked ? "S" : "N";
+
+                    string _registrarManutencao = chkBoxRegistrarManutencao.Checked ? "S" : "N";
+                    string _visualizarManutencoesRealizadas = chkBoxManutencoesRealizadas.Checked ? "S" : "N";
+                    string _excluirManutencaoRealizada = chkBoxExcluirManutencaoRealizada.Checked ? "S" : "N";
+                    string _visualizarProxTrocaOleo = chkBoxProxTrocaOleo.Checked ? "S" : "N";
+                    string _acessarPainelBI = chkBoxPainelBI.Checked ? "S" : "N";
+
+                    string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}";
+                    #endregion
+
+                    NpgsqlCommand update1 = new NpgsqlCommand($"INSERT INTO controle_permissao_perfil VALUES(nextval('seq_controle_permissao_perfil'), '{tBoxDescricao.Text.ToUpper().Trim()}', '{novaPermissao}', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S')", BD.ObjetoConexao);
+                    update1.ExecuteNonQuery();
+
+                    XtraMessageBox.Show("Permissões alteradas com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ((frmUsuarioPerfilConsultar)this.Owner).AtualizaDG();
+                    this.Close();
                 }
             }
             finally

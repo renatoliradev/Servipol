@@ -315,6 +315,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.dGridUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGridUsuarios.Size = new System.Drawing.Size(1236, 367);
             this.dGridUsuarios.TabIndex = 0;
+            this.dGridUsuarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridUsuarios_CellDoubleClick);
             // 
             // id_usuario
             // 

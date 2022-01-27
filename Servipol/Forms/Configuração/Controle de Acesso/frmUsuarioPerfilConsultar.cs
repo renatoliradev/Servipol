@@ -35,13 +35,13 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             switch (cBoxSituacao.SelectedIndex)
             {
                 case 0:
-                    situacaoTraduzida = "N";
-                    break;
-                case 1:
                     situacaoTraduzida = "S";
                     break;
-                default:
+                case 1:
                     situacaoTraduzida = "N";
+                    break;
+                default:
+                    situacaoTraduzida = "S";
                     break;
             }
 
@@ -61,7 +61,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT cpp.id_controle_permissao_perfil, CASE WHEN cpp.registro_excluido = 'N' THEN cpp.descricao ELSE '>>>>> [REGISTRO EXCLUÍDO] <<<<< | ' || cpp.descricao END AS descricao, uc.nome AS usuario_cadastro, cpp.data_cadastro, CASE WHEN cpp.registro_excluido = 'N' THEN 'Sim' ELSE 'Não' END AS ativo FROM controle_permissao_perfil AS cpp INNER JOIN usuario AS uc ON(uc.id_usuario = cpp.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = cpp.id_usuario_exclusao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = cpp.id_usuario_alteracao) WHERE cpp.registro_excluido = '{situacaoTraduzida}' AND {tipoBusca} ORDER BY 1 ASC", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT cpp.id_controle_permissao_perfil, CASE WHEN cpp.ativo = 'S' THEN cpp.descricao ELSE '>>>>> [REGISTRO EXCLUÍDO] <<<<< | ' || cpp.descricao END AS descricao, uc.nome AS usuario_cadastro, cpp.data_cadastro, CASE WHEN cpp.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM controle_permissao_perfil AS cpp INNER JOIN usuario AS uc ON(uc.id_usuario = cpp.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = cpp.id_usuario_exclusao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = cpp.id_usuario_alteracao) WHERE cpp.ativo = '{situacaoTraduzida}' AND {tipoBusca} ORDER BY 1 ASC", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridUsuarioPerfil.DataSource = dp;
@@ -88,10 +88,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                 frmUsuarioPerfil.Owner = this;
                 frmUsuarioPerfil.ShowDialog();
             }
-            catch
-            {
-                XtraMessageBox.Show("Primeiro selecione o registro que deseja editar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            catch { }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -101,22 +98,19 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                 BD.Conectar();
                 string idRegistroSelecionadoGrid = dGridUsuarioPerfil.SelectedRows[0].Cells[0].Value.ToString();
 
-                if (XtraMessageBox.Show("Deseja excluir o perfil selecionado ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                if (XtraMessageBox.Show("Deseja excluir o perfil selecionado ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    string sqlCommand = $"UPDATE controle_permissao_perfil SET registro_excluido = 'S', id_usuario_exclusao = {SessaoSistema.UsuarioId}, data_exclusao = CURRENT_TIMESTAMP WHERE id_controle_permissao_perfil = {idRegistroSelecionadoGrid}";
+                    string sqlCommand = $"UPDATE controle_permissao_perfil SET ativo = 'N', id_usuario_exclusao = {SessaoSistema.UsuarioId}, data_exclusao = CURRENT_TIMESTAMP WHERE id_controle_permissao_perfil = {idRegistroSelecionadoGrid}";
                     NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                     command.ExecuteNonQuery();
 
-                    XtraMessageBox.Show("Perfil de usuário excluído com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Perfil excluído com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     AtualizaDG();
                 }
 
             }
-            catch
-            {
-                XtraMessageBox.Show("Primeiro selecione o registro que deseja excluir.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            catch { }
             finally
             {
                 BD.Desconectar();
@@ -166,7 +160,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT cpp.id_controle_permissao_perfil, CASE WHEN cpp.registro_excluido = 'N' THEN cpp.descricao ELSE '>>>>> [REGISTRO EXCLUÍDO] <<<<< | ' || cpp.descricao END AS descricao, uc.nome AS usuario_cadastro, cpp.data_cadastro, CASE WHEN cpp.registro_excluido = 'N' THEN 'Sim' ELSE 'Não' END AS ativo FROM controle_permissao_perfil AS cpp INNER JOIN usuario AS uc ON(uc.id_usuario = cpp.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = cpp.id_usuario_exclusao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = cpp.id_usuario_alteracao) WHERE cpp.registro_excluido = 'N' ORDER BY 1 ASC", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT cpp.id_controle_permissao_perfil, CASE WHEN cpp.ativo = 'S' THEN cpp.descricao ELSE '>>>>> [REGISTRO EXCLUÍDO] <<<<< | ' || cpp.descricao END AS descricao, uc.nome AS usuario_cadastro, cpp.data_cadastro, CASE WHEN cpp.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM controle_permissao_perfil AS cpp INNER JOIN usuario AS uc ON(uc.id_usuario = cpp.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ud ON(ud.id_usuario = cpp.id_usuario_exclusao) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = cpp.id_usuario_alteracao) WHERE cpp.ativo = 'S' ORDER BY 1 ASC", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridUsuarioPerfil.DataSource = dp;
@@ -221,6 +215,11 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             {
                 btnEditar_Click(sender, e);
             }
+        }
+
+        private void dGridUsuarioPerfil_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnEditar_Click(sender, e);
         }
     }
 }
