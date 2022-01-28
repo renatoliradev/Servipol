@@ -414,7 +414,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
                     if (TipoChamada == "Incluir")
                     {
-                        string sqlCommand = $"INSERT INTO veiculo VALUES (nextval('seq_veiculo'), {cBoxTipoVeiculo.SelectedValue}, {cBoxCodigoVeiculo.SelectedValue}, '{tBoxDescricaoVeiculo.Text.ToUpper().Trim()}', '{tBoxPlacaVeiculo.Text.ToUpper()}', '{cBoxCombustivel.SelectedItem}', '{registra_km_diario}', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, NULL, NULL, {km_validade_oleo}, 'S')";
+                        string sqlCommand = $"INSERT INTO veiculo VALUES (nextval('seq_veiculo'), {cBoxTipoVeiculo.SelectedValue}, {cBoxCodigoVeiculo.SelectedValue}, '{tBoxDescricaoVeiculo.Text.ToUpper().Trim()}', '{tBoxPlacaVeiculo.Text.ToUpper()}', '{cBoxCombustivel.SelectedItem}', '{registra_km_diario}', {SessaoSistema.UserId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, NULL, NULL, {km_validade_oleo}, 'S')";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 
@@ -434,7 +434,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     }
                     else if (TipoChamada == "Editar")
                     {
-                        string sqlCommand = $"UPDATE veiculo SET id_veiculo_tipo = {cBoxTipoVeiculo.SelectedValue}, codigo = {cBoxCodigoVeiculo.SelectedValue}, descricao = '{tBoxDescricaoVeiculo.Text.ToUpper().Trim()}', placa = '{tBoxPlacaVeiculo.Text.ToUpper()}', combustivel = '{cBoxCombustivel.SelectedItem}', km_validade_oleo = '{km_validade_oleo}', registra_km_diario = '{registra_km_diario}', ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UsuarioId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_veiculo = {IdVeiculo}";
+                        string sqlCommand = $"UPDATE veiculo SET id_veiculo_tipo = {cBoxTipoVeiculo.SelectedValue}, codigo = {cBoxCodigoVeiculo.SelectedValue}, descricao = '{tBoxDescricaoVeiculo.Text.ToUpper().Trim()}', placa = '{tBoxPlacaVeiculo.Text.ToUpper()}', combustivel = '{cBoxCombustivel.SelectedItem}', km_validade_oleo = '{km_validade_oleo}', registra_km_diario = '{registra_km_diario}', ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UserId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_veiculo = {IdVeiculo}";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 
@@ -461,7 +461,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
                         if (registro_ativo == "N")
                         {
-                            string sqlCommand8 = $"UPDATE veiculo SET registra_km_diario = 'N', ativo = 'N', id_usuario_desativacao = {SessaoSistema.UsuarioId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_veiculo = {IdVeiculo}";
+                            string sqlCommand8 = $"UPDATE veiculo SET registra_km_diario = 'N', ativo = 'N', id_usuario_desativacao = {SessaoSistema.UserId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_veiculo = {IdVeiculo}";
                             NpgsqlCommand command8 = new NpgsqlCommand(sqlCommand8, BD.ObjetoConexao);
                             command8.ExecuteNonQuery();
 

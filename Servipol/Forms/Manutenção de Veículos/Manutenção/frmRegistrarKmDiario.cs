@@ -221,7 +221,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                     NpgsqlCommand command1 = new NpgsqlCommand(sqlCommand1, BD.ObjetoConexao);
                     command1.ExecuteNonQuery();
 
-                    string sqlCommand = $"INSERT INTO km_diario VALUES (nextval('seq_km_diario'), {cBoxVeiculo.SelectedValue}, {tBoxKmAtual.Text}, CURRENT_DATE, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP)";
+                    string sqlCommand = $"INSERT INTO km_diario VALUES (nextval('seq_km_diario'), {cBoxVeiculo.SelectedValue}, {tBoxKmAtual.Text}, CURRENT_DATE, {SessaoSistema.UserId}, CURRENT_TIMESTAMP)";
                     NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                     command.ExecuteNonQuery();
 

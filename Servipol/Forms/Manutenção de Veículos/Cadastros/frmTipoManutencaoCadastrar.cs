@@ -244,13 +244,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
                             if (registro_ativo == "N")
                             {
-                                string sqlCommand2 = $"UPDATE manutencao_tipo SET ativo = '{registro_ativo}', id_usuario_desativacao = {SessaoSistema.UsuarioId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_manutencao_tipo = {IdTipoManutencao}";
+                                string sqlCommand2 = $"UPDATE manutencao_tipo SET ativo = '{registro_ativo}', id_usuario_desativacao = {SessaoSistema.UserId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_manutencao_tipo = {IdTipoManutencao}";
                                 NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
                                 command2.ExecuteNonQuery();
                             }
                             else
                             {
-                                string sqlCommand3 = $"UPDATE manutencao_tipo SET ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UsuarioId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_manutencao_tipo = {IdTipoManutencao}";
+                                string sqlCommand3 = $"UPDATE manutencao_tipo SET ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UserId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_manutencao_tipo = {IdTipoManutencao}";
                                 NpgsqlCommand command3 = new NpgsqlCommand(sqlCommand3, BD.ObjetoConexao);
                                 command3.ExecuteNonQuery();
                             }
@@ -287,7 +287,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                             exigeKmValidadeOleo = "N";
                         #endregion
 
-                        string sqlCommand = $"INSERT INTO manutencao_tipo VALUES (nextval('seq_manutencao_tipo'), '{tBoxDescricao.Text.ToUpper().Trim()}', (SELECT MAX(ordem + 1) FROM manutencao_tipo), '{aplicacaoCarro}', '{aplicacaoMoto}', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S', '{exigeKmValidadeOleo}')";
+                        string sqlCommand = $"INSERT INTO manutencao_tipo VALUES (nextval('seq_manutencao_tipo'), '{tBoxDescricao.Text.ToUpper().Trim()}', (SELECT MAX(ordem + 1) FROM manutencao_tipo), '{aplicacaoCarro}', '{aplicacaoMoto}', {SessaoSistema.UserId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S', '{exigeKmValidadeOleo}')";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 

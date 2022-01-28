@@ -70,7 +70,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 {
                     if (XtraMessageBox.Show("********** OPERAÇÃO IRREVERSÍVEL **********\n\nConfirma exclusão da manutenção selecionada ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
-                        NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE manutencao SET registro_excluido = 'S', id_usuario_exclusao = {SessaoSistema.UsuarioId}, data_exclusao = CURRENT_TIMESTAMP, motivo_exclusao = '{tBoxMotivoExcluirManutencao.Text.Trim().ToUpper()}' WHERE id_manutencao = {IdRegistroSelecionado}", BD.ObjetoConexao);
+                        NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE manutencao SET registro_excluido = 'S', id_usuario_exclusao = {SessaoSistema.UserId}, data_exclusao = CURRENT_TIMESTAMP, motivo_exclusao = '{tBoxMotivoExcluirManutencao.Text.Trim().ToUpper()}' WHERE id_manutencao = {IdRegistroSelecionado}", BD.ObjetoConexao);
                         update1.ExecuteNonQuery();
 
                         XtraMessageBox.Show("Manutenção Excluída com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);

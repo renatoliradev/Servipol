@@ -20,8 +20,6 @@ namespace Servipol
         MemoryManagement MemoryManagement = new MemoryManagement();
         #endregion
 
-        private static string _userId, _userName;
-
         public frmPrincipal()
         {
             InitializeComponent();
@@ -36,6 +34,8 @@ namespace Servipol
             frmLogin Login = new frmLogin();
             Login.Owner = this;
             Login.ShowDialog();
+
+            VerificaPermissao();
         }
 
         #region Methods
@@ -51,15 +51,21 @@ namespace Servipol
                 {
                     while (dr.Read())
                     {
-                        _userId = dr["id_usuario"].ToString();
-                        _userName = dr["login"].ToString();
+                        SessaoSistema.UserId = dr["id_usuario"].ToString();
+                        SessaoSistema.UserName = dr["login"].ToString();
                     }
-                    statusBarUsuario.Caption = _userName;
-
-                    SessaoSistema.UsuarioId = _userId;
-                    SessaoSistema.UsuarioNome = _userName;
                 }
 
+                NpgsqlCommand com2 = new NpgsqlCommand($"SELECT permissao FROM controle_permissao WHERE id_usuario = (SELECT id_usuario FROM sis_sessao_login WHERE nome_pc = '{Environment.MachineName}' AND online = 'S')", BD.ObjetoConexao);
+                using (NpgsqlDataReader dr2 = com2.ExecuteReader())
+                {
+                    while (dr2.Read())
+                    {
+                        SessaoSistema.UserPermission = dr2["permissao"].ToString();
+                    }
+                }
+
+                statusBarUsuario.Caption = SessaoSistema.UserName;
                 CallRegistrarKmDiario();
 
             }
@@ -78,8 +84,8 @@ namespace Servipol
                 NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE sis_sessao_login SET data_logout = CURRENT_TIMESTAMP, online = 'N' WHERE nome_pc = '{Environment.MachineName}' AND online = 'S'", BD.ObjetoConexao);
                 update1.ExecuteNonQuery();
 
-                SessaoSistema.UsuarioId = null;
-                SessaoSistema.UsuarioNome = null;
+                SessaoSistema.UserId = null;
+                SessaoSistema.UserName = null;
 
                 statusBarUsuario.Caption = string.Empty;
             }
@@ -127,6 +133,18 @@ namespace Servipol
             finally
             {
                 BD.Desconectar();
+            }
+        }
+
+        public void VerificaPermissao()
+        {
+            if (SessaoSistema.UserPermission.Substring(12, 1) == "S")
+            {
+                btnVeiculos.Enabled = true;
+            }
+            else
+            {
+                btnVeiculos.Enabled = false;
             }
         }
 

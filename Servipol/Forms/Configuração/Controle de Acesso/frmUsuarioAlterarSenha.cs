@@ -56,7 +56,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                 }
                 else
                 {
-                    NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE usuarios SET senha = UPPER(MD5('{tBoxSenha.Text.ToUpper().Trim()}')) WHERE id_usuario = {SessaoSistema.UsuarioId}", BD.ObjetoConexao);
+                    NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE usuarios SET senha = UPPER(MD5('{tBoxSenha.Text.ToUpper().Trim()}')) WHERE id_usuario = {SessaoSistema.UserId}", BD.ObjetoConexao);
                     update1.ExecuteNonQuery();
 
                     XtraMessageBox.Show("Senha alterada com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);

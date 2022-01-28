@@ -167,7 +167,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
                 if (XtraMessageBox.Show("Deseja inativar o tipo de manutenção selecionado ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    string sqlCommand = $"UPDATE manutencao_tipo SET ativo = 'N', id_usuario_desativacao = {SessaoSistema.UsuarioId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_manutencao_tipo = {idRegistroSelecionadoGrid}";
+                    string sqlCommand = $"UPDATE manutencao_tipo SET ativo = 'N', id_usuario_desativacao = {SessaoSistema.UserId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_manutencao_tipo = {idRegistroSelecionadoGrid}";
                     NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                     command.ExecuteNonQuery();
 

@@ -676,7 +676,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}";
                     #endregion
 
-                    NpgsqlCommand update1 = new NpgsqlCommand($"INSERT INTO controle_permissao VALUES({IdPermissao}, '{novaPermissao}', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, 'S')", BD.ObjetoConexao);
+                    NpgsqlCommand update1 = new NpgsqlCommand($"INSERT INTO controle_permissao VALUES({IdPermissao}, '{novaPermissao}', {SessaoSistema.UserId}, CURRENT_TIMESTAMP, NULL, NULL, 'S')", BD.ObjetoConexao);
                     update1.ExecuteNonQuery();
 
                     XtraMessageBox.Show("Permissões alteradas com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -730,7 +730,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}";
                     #endregion
 
-                    NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE controle_permissao SET permissao = '{novaPermissao}', id_usuario_alteracao = {SessaoSistema.UsuarioId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_usuario = {IdPermissao}", BD.ObjetoConexao);
+                    NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE controle_permissao SET permissao = '{novaPermissao}', id_usuario_alteracao = {SessaoSistema.UserId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_usuario = {IdPermissao}", BD.ObjetoConexao);
                     update1.ExecuteNonQuery();
 
                     XtraMessageBox.Show("Permissões alteradas com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -784,7 +784,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}";
                     #endregion
 
-                    NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE controle_permissao_perfil SET descricao = '{tBoxDescricao.Text.ToUpper().Trim()}', permissao = '{novaPermissao}', id_usuario_alteracao = {SessaoSistema.UsuarioId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_controle_permissao_perfil = {IdPermissao}", BD.ObjetoConexao);
+                    NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE controle_permissao_perfil SET descricao = '{tBoxDescricao.Text.ToUpper().Trim()}', permissao = '{novaPermissao}', id_usuario_alteracao = {SessaoSistema.UserId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_controle_permissao_perfil = {IdPermissao}", BD.ObjetoConexao);
                     update1.ExecuteNonQuery();
 
                     XtraMessageBox.Show("Permissões alteradas com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -839,7 +839,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}";
                     #endregion
 
-                    NpgsqlCommand update1 = new NpgsqlCommand($"INSERT INTO controle_permissao_perfil VALUES(nextval('seq_controle_permissao_perfil'), '{tBoxDescricao.Text.ToUpper().Trim()}', '{novaPermissao}', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S')", BD.ObjetoConexao);
+                    NpgsqlCommand update1 = new NpgsqlCommand($"INSERT INTO controle_permissao_perfil VALUES(nextval('seq_controle_permissao_perfil'), '{tBoxDescricao.Text.ToUpper().Trim()}', '{novaPermissao}', {SessaoSistema.UserId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S')", BD.ObjetoConexao);
                     update1.ExecuteNonQuery();
 
                     XtraMessageBox.Show("Permissões alteradas com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);

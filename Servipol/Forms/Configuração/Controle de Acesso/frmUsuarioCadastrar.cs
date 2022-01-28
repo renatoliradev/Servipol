@@ -67,19 +67,25 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             try
             {
                 BD.Conectar();
-                string nome = string.Empty, login = string.Empty, ativo = string.Empty;
+                string ativo = string.Empty;
 
-                NpgsqlCommand com = new NpgsqlCommand($"SELECT login, nome, ativo FROM usuario WHERE id_usuario = {IdUsuario}", BD.ObjetoConexao);
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT u.login, u.nome, u.ativo, uc.nome AS usuario_cadastro, u.data_cadastro, ua.nome AS usuario_alteracao, u.data_alteracao, ue.nome AS usuario_exclusao, u.data_exclusao FROM usuario AS u INNER JOIN usuario AS uc ON(uc.id_usuario = u.id_usuario_cadastro) LEFT OUTER JOIN usuario AS ua ON(ua.id_usuario = u.id_usuario_alteracao) LEFT OUTER JOIN usuario AS ue ON(ue.id_usuario = u.id_usuario_exclusao) WHERE u.id_usuario = {IdUsuario}", BD.ObjetoConexao);
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     while (dr.Read())
                     {
-                        nome = dr["nome"].ToString();
-                        login = dr["login"].ToString();
+                        tBoxNome.Text = dr["nome"].ToString();
+                        tBoxLogin.Text = dr["login"].ToString();
                         ativo = dr["ativo"].ToString();
+
+                        //Dados do Registro
+                        tBoxUsuarioCadastro.Text = dr["usuario_cadastro"].ToString();
+                        tBoxDataCadastro.Text = dr["data_cadastro"].ToString();
+                        tBoxUsuarioAlteracao.Text = dr["usuario_alteracao"].ToString();
+                        tBoxDataAlteracao.Text = dr["data_alteracao"].ToString();
+                        tBoxUsuarioDesativacao.Text = dr["usuario_exclusao"].ToString();
+                        tBoxDataDesativacao.Text = dr["data_exclusao"].ToString();
                     }
-                    tBoxNome.Text = nome;
-                    tBoxLogin.Text = login;
 
                     if (ativo == "S")
                     {
@@ -147,7 +153,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             }
             else if (LoginJaCadastrado)
             {
-                XtraMessageBox.Show("Já existe um usuário com o Login [" + tBoxLogin.Text.ToUpper().Trim() + "]\n\nInforme outro [Login] para finalizar o cadastro.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                XtraMessageBox.Show("Já existe um usuário ativo com o Login [" + tBoxLogin.Text.ToUpper().Trim() + "]\n\nInforme outro Login para finalizar o cadastro.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 tBoxLogin.Clear();
                 tBoxLogin.Select();
                 return false;
@@ -165,7 +171,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                 BD.Conectar();
                 string usuario = string.Empty;
 
-                NpgsqlCommand com = new NpgsqlCommand($"SELECT login FROM usuario WHERE login = '{tBoxLogin.Text.ToUpper().Trim()}'", BD.ObjetoConexao);
+                NpgsqlCommand com = new NpgsqlCommand($"SELECT login FROM usuario WHERE login = '{tBoxLogin.Text.ToUpper().Trim()}' AND ativo = 'S'", BD.ObjetoConexao);
                 using (NpgsqlDataReader dr = com.ExecuteReader())
                 {
                     while (dr.Read())
@@ -207,11 +213,11 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     {
                         BD.Conectar();
 
-                        string sqlCommand = $"UPDATE usuario SET nome = '{tBoxNome.Text.ToUpper().Trim()}', login = '{tBoxLogin.Text.ToUpper().Trim()}', senha = UPPER(MD5('{tBoxNovaSenha.Text.ToUpper()}')) WHERE id_usuario = {IdUsuario}";
+                        string sqlCommand = $"UPDATE usuario SET nome = '{tBoxNome.Text.ToUpper().Trim()}', login = '{tBoxLogin.Text.ToUpper().Trim()}', senha = UPPER(MD5('{tBoxNovaSenha.Text.ToUpper()}')), id_usuario_alteracao = {SessaoSistema.UserId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_usuario = {IdUsuario}";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 
-                        XtraMessageBox.Show("Cadastro Alterado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        XtraMessageBox.Show("Cadastro alterado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         ((frmUsuarioConsultar)this.Owner).AtualizaDG();
                         this.Close();
@@ -221,11 +227,15 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     {
                         BD.Conectar();
 
-                        string sqlCommand = $"UPDATE usuario SET nome = '{tBoxNome.Text.ToUpper().Trim()}', login = '{tBoxLogin.Text.ToUpper().Trim()}' WHERE id_usuario = {IdUsuario}";
+                        #region Conversão Situação
+                        string registro_ativo = chkBoxRegistroAtivo.Checked ? "S" : "N";
+                        #endregion
+
+                        string sqlCommand = $"UPDATE usuario SET nome = '{tBoxNome.Text.ToUpper().Trim()}', login = '{tBoxLogin.Text.ToUpper().Trim()}', ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UserId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_usuario = {IdUsuario}";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 
-                        XtraMessageBox.Show("Cadastro Alterado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        XtraMessageBox.Show("Cadastro alterado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         ((frmUsuarioConsultar)this.Owner).AtualizaDG();
                         this.Close();
@@ -235,11 +245,11 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     {
                         BD.Conectar();
 
-                        string sqlCommand = $"INSERT INTO usuario VALUES (nextval('seq_usuario'), '{tBoxNome.Text.ToUpper().Trim()}', '{tBoxLogin.Text.ToUpper().Trim()}', UPPER(MD5('{tBoxCriarSenha.Text.ToUpper()}')), 'N', 'S', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL)";
+                        string sqlCommand = $"INSERT INTO usuario VALUES (nextval('seq_usuario'), '{tBoxNome.Text.ToUpper().Trim()}', '{tBoxLogin.Text.ToUpper().Trim()}', UPPER(MD5('{tBoxCriarSenha.Text.ToUpper()}')), 'N', 'S', {SessaoSistema.UserId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL)";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 
-                        XtraMessageBox.Show("Cadastro Realizado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        XtraMessageBox.Show("Cadastro realizado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         ((frmUsuarioConsultar)this.Owner).AtualizaDG();
                         this.Close();

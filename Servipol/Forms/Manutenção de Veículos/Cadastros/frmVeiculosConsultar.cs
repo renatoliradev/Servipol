@@ -248,7 +248,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                 
                 if (XtraMessageBox.Show("Deseja inativar o veículo selecionado ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    string sqlCommand = $"UPDATE veiculo SET registra_km_diario = 'N', ativo = 'N', id_usuario_desativacao = {SessaoSistema.UsuarioId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_veiculo = {idVeiculoSelecionadoGrid}";
+                    string sqlCommand = $"UPDATE veiculo SET registra_km_diario = 'N', ativo = 'N', id_usuario_desativacao = {SessaoSistema.UserId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_veiculo = {idVeiculoSelecionadoGrid}";
                     NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                     command.ExecuteNonQuery();
 

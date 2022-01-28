@@ -878,12 +878,12 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
                         if (KmJaRegistrado != "1")
                         {
-                            string sqlCommand5 = $"INSERT INTO km_diario VALUES (nextval('seq_km_diario'), {cBoxVeiculo.SelectedValue}, {tBoxKmAtual.Text}, CURRENT_DATE, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP)";
+                            string sqlCommand5 = $"INSERT INTO km_diario VALUES (nextval('seq_km_diario'), {cBoxVeiculo.SelectedValue}, {tBoxKmAtual.Text}, CURRENT_DATE, {SessaoSistema.UserId}, CURRENT_TIMESTAMP)";
                             NpgsqlCommand command5 = new NpgsqlCommand(sqlCommand5, BD.ObjetoConexao);
                             command5.ExecuteNonQuery();
                         }
 
-                        string sqlCommand = $"INSERT INTO manutencao VALUES (nextval('seq_manutencao'), '{tBoxDataManutencao.Value}', '{tBoxObservacaoManutencao.Text.ToUpper().Trim()}', {km_validade_oleo}, {cBoxVeiculo.SelectedValue}, {cBoxTipoManutencao.SelectedValue},  {cBoxLocalManutencao.SelectedValue}, {cBoxFuncionario.SelectedValue}, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, {UltimoKmServico}, {tBoxKmAtual.Text}, {valorPeca.ToString().Replace(",", ".")}, {valorServico.ToString().Replace(",", ".")}, {valorDesconto.ToString().Replace(",", ".")}, {valorAcrescimo.ToString().Replace(",", ".")}, {valorTotalManutencao.ToString().Replace(",", ".")}, 'N', 'N')";
+                        string sqlCommand = $"INSERT INTO manutencao VALUES (nextval('seq_manutencao'), '{tBoxDataManutencao.Value}', '{tBoxObservacaoManutencao.Text.ToUpper().Trim()}', {km_validade_oleo}, {cBoxVeiculo.SelectedValue}, {cBoxTipoManutencao.SelectedValue},  {cBoxLocalManutencao.SelectedValue}, {cBoxFuncionario.SelectedValue}, {SessaoSistema.UserId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, {UltimoKmServico}, {tBoxKmAtual.Text}, {valorPeca.ToString().Replace(",", ".")}, {valorServico.ToString().Replace(",", ".")}, {valorDesconto.ToString().Replace(",", ".")}, {valorAcrescimo.ToString().Replace(",", ".")}, {valorTotalManutencao.ToString().Replace(",", ".")}, 'N', 'N')";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 
@@ -909,12 +909,12 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
                     if (KmJaRegistrado != "1")
                     {
-                        string sqlCommand5 = $"INSERT INTO km_diario VALUES (nextval('seq_km_diario'), {cBoxVeiculo.SelectedValue}, {tBoxKmAtual.Text}, CURRENT_DATE, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP)";
+                        string sqlCommand5 = $"INSERT INTO km_diario VALUES (nextval('seq_km_diario'), {cBoxVeiculo.SelectedValue}, {tBoxKmAtual.Text}, CURRENT_DATE, {SessaoSistema.UserId}, CURRENT_TIMESTAMP)";
                         NpgsqlCommand command5 = new NpgsqlCommand(sqlCommand5, BD.ObjetoConexao);
                         command5.ExecuteNonQuery();
                     }
 
-                    string sqlCommand = $"INSERT INTO manutencao VALUES (nextval('seq_manutencao'), '{tBoxDataManutencao.Value}', '{tBoxObservacaoManutencao.Text.ToUpper().Trim()}', {km_validade_oleo}, {cBoxVeiculo.SelectedValue}, {cBoxTipoManutencao.SelectedValue},  {cBoxLocalManutencao.SelectedValue}, {cBoxFuncionario.SelectedValue}, {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, {UltimoKmServico}, {tBoxKmAtual.Text}, {valorPeca.ToString().Replace(",", ".")}, {valorServico.ToString().Replace(",", ".")}, {valorDesconto.ToString().Replace(",", ".")}, {valorAcrescimo.ToString().Replace(",", ".")}, {valorTotalManutencao.ToString().Replace(",", ".")}, 'N', 'N')";
+                    string sqlCommand = $"INSERT INTO manutencao VALUES (nextval('seq_manutencao'), '{tBoxDataManutencao.Value}', '{tBoxObservacaoManutencao.Text.ToUpper().Trim()}', {km_validade_oleo}, {cBoxVeiculo.SelectedValue}, {cBoxTipoManutencao.SelectedValue},  {cBoxLocalManutencao.SelectedValue}, {cBoxFuncionario.SelectedValue}, {SessaoSistema.UserId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, {UltimoKmServico}, {tBoxKmAtual.Text}, {valorPeca.ToString().Replace(",", ".")}, {valorServico.ToString().Replace(",", ".")}, {valorDesconto.ToString().Replace(",", ".")}, {valorAcrescimo.ToString().Replace(",", ".")}, {valorTotalManutencao.ToString().Replace(",", ".")}, 'N', 'N')";
                     NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                     command.ExecuteNonQuery();
 

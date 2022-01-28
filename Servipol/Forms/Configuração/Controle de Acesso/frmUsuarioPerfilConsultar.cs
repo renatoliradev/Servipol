@@ -100,7 +100,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
                 if (XtraMessageBox.Show("Deseja excluir o perfil selecionado ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    string sqlCommand = $"UPDATE controle_permissao_perfil SET ativo = 'N', id_usuario_exclusao = {SessaoSistema.UsuarioId}, data_exclusao = CURRENT_TIMESTAMP WHERE id_controle_permissao_perfil = {idRegistroSelecionadoGrid}";
+                    string sqlCommand = $"UPDATE controle_permissao_perfil SET ativo = 'N', id_usuario_exclusao = {SessaoSistema.UserId}, data_exclusao = CURRENT_TIMESTAMP WHERE id_controle_permissao_perfil = {idRegistroSelecionadoGrid}";
                     NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                     command.ExecuteNonQuery();
 

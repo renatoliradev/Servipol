@@ -212,7 +212,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                                 postoCombustivel = "N";
                             }
 
-                            string sqlCommand = $"INSERT INTO manutencao_local VALUES (nextval('seq_chave_primaria'), '{tBoxDescricao.Text.ToUpper().Trim()}', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S', '{postoCombustivel}')";
+                            string sqlCommand = $"INSERT INTO manutencao_local VALUES (nextval('seq_chave_primaria'), '{tBoxDescricao.Text.ToUpper().Trim()}', {SessaoSistema.UserId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S', '{postoCombustivel}')";
                             NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                             command.ExecuteNonQuery();
 
@@ -268,13 +268,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
                             if (registro_ativo == "N")
                             {
-                                string sqlCommand2 = $"UPDATE manutencao_local SET ativo = '{registro_ativo}', id_usuario_desativacao = {SessaoSistema.UsuarioId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_manutencao_local = {IdLocalManutencao}";
+                                string sqlCommand2 = $"UPDATE manutencao_local SET ativo = '{registro_ativo}', id_usuario_desativacao = {SessaoSistema.UserId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_manutencao_local = {IdLocalManutencao}";
                                 NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
                                 command2.ExecuteNonQuery();
                             }
                             else
                             {
-                                string sqlCommand3 = $"UPDATE manutencao_local SET ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UsuarioId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_manutencao_local = {IdLocalManutencao}";
+                                string sqlCommand3 = $"UPDATE manutencao_local SET ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UserId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_manutencao_local = {IdLocalManutencao}";
                                 NpgsqlCommand command3 = new NpgsqlCommand(sqlCommand3, BD.ObjetoConexao);
                                 command3.ExecuteNonQuery();
                             }
@@ -299,7 +299,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                             posto_combustivel = "N";
                         #endregion
 
-                        string sqlCommand = $"INSERT INTO manutencao_local VALUES (nextval('seq_manutencao_local'), '{tBoxDescricao.Text.ToUpper().Trim()}', {SessaoSistema.UsuarioId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S', '{posto_combustivel}')";
+                        string sqlCommand = $"INSERT INTO manutencao_local VALUES (nextval('seq_manutencao_local'), '{tBoxDescricao.Text.ToUpper().Trim()}', {SessaoSistema.UserId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S', '{posto_combustivel}')";
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 

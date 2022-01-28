@@ -172,9 +172,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
                 string idUserSelecionado = dGridUsuarios.SelectedRows[0].Cells[0].Value.ToString();
 
-                if (XtraMessageBox.Show("Deseja desativar o usuário selecionado ?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                if (XtraMessageBox.Show("Deseja desativar o usuário selecionado ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    string sqlCommand = $"UPDATE usuario SET ativo = 'N', id_usuario_desativacao = {SessaoSistema.UsuarioId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_usuario = {idUserSelecionado}";
+                    string sqlCommand = $"UPDATE usuario SET ativo = 'N', id_usuario_exclusao = {SessaoSistema.UserId}, data_exclusao = CURRENT_TIMESTAMP WHERE id_usuario = {idUserSelecionado}";
                     NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                     command.ExecuteNonQuery();
 
