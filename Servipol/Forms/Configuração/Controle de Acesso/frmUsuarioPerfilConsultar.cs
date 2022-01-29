@@ -10,9 +10,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
     public partial class frmUsuarioPerfilConsultar : DevExpress.XtraEditors.XtraForm
     {
         #region Instâncias e Propriedades
-
         readonly ConexaoBD BD = new ConexaoBD();
-
         #endregion
 
         public frmUsuarioPerfilConsultar()
@@ -25,7 +23,11 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             cBoxSituacao.SelectedIndex = 0;
             cBoxTipoBusca.SelectedIndex = 0;
             tBoxTextoConsulta.Clear();
+
+            VerificaPermissao();
         }
+
+        #region Buttons
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
@@ -117,6 +119,15 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             }
         }
 
+        private void btnImprimirConsulta_Click(object sender, EventArgs e)
+        {
+            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        #endregion
+
+        #region Methods
+
         private void cBoxSituacao_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnConsultar_Click(sender, e);
@@ -155,6 +166,13 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             }
         }
 
+        public void VerificaPermissao()
+        {
+            if (SessaoSistema.UserPermission.Substring(3, 1) == "S") { btnIncluir.Enabled = true; } else { btnIncluir.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(4, 1) == "S") { btnEditar.Enabled = true; } else { btnEditar.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(5, 1) == "S") { btnExcluir.Enabled = true; } else { btnExcluir.Enabled = false; }
+        }
+
         public void CarregaTabelaUsuarioPerfil()
         {
             try
@@ -184,11 +202,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             btnEditar_Click(sender, e);
         }
 
-        private void btnImprimirConsulta_Click(object sender, EventArgs e)
-        {
-            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void frmUsuarioPerfilConsultar_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -203,15 +216,20 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     Close();
                     break;
             }
+            if (SessaoSistema.UserPermission.Substring(3, 1) == "S" && e.KeyCode == Keys.F4) 
+            {
+                btnIncluir_Click(sender, e);
+            }
+
             if (e.Control && e.KeyCode == Keys.P)
             {
                 btnImprimirConsulta_Click(sender, e);
             }
-            if (cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.Delete)
+            if (SessaoSistema.UserPermission.Substring(5, 1) == "S" && cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.Delete)
             {
                 btnExcluir_Click(sender, e);
             }
-            if (cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.F3)
+            if (SessaoSistema.UserPermission.Substring(4, 1) == "S" && cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.F3)
             {
                 btnEditar_Click(sender, e);
             }
@@ -221,5 +239,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         {
             btnEditar_Click(sender, e);
         }
+
+        #endregion
     }
 }

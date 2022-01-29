@@ -51,7 +51,7 @@ namespace Servipol
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.btnCadastroEmpresa = new DevExpress.XtraBars.BarButtonItem();
             this.btnTipoContrato = new DevExpress.XtraBars.BarButtonItem();
-            this.btnParametrosGlobais = new DevExpress.XtraBars.BarButtonItem();
+            this.btnParametrosSistema = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
@@ -146,7 +146,7 @@ namespace Servipol
             this.barStaticItem1,
             this.btnCadastroEmpresa,
             this.btnTipoContrato,
-            this.btnParametrosGlobais,
+            this.btnParametrosSistema,
             this.barButtonItem8,
             this.barButtonItem9,
             this.barButtonItem13,
@@ -348,13 +348,14 @@ namespace Servipol
             this.btnTipoContrato.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnTipoContrato.ImageOptions.LargeImage")));
             this.btnTipoContrato.Name = "btnTipoContrato";
             // 
-            // btnParametrosGlobais
+            // btnParametrosSistema
             // 
-            this.btnParametrosGlobais.Caption = "Parâmetros do Sistema";
-            this.btnParametrosGlobais.Id = 22;
-            this.btnParametrosGlobais.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnParametrosGlobais.ImageOptions.Image")));
-            this.btnParametrosGlobais.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnParametrosGlobais.ImageOptions.LargeImage")));
-            this.btnParametrosGlobais.Name = "btnParametrosGlobais";
+            this.btnParametrosSistema.Caption = "Parâmetros do Sistema";
+            this.btnParametrosSistema.Id = 22;
+            this.btnParametrosSistema.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnParametrosSistema.ImageOptions.Image")));
+            this.btnParametrosSistema.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnParametrosSistema.ImageOptions.LargeImage")));
+            this.btnParametrosSistema.Name = "btnParametrosSistema";
+            this.btnParametrosSistema.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnParametrosSistema_ItemClick);
             // 
             // barButtonItem8
             // 
@@ -676,7 +677,7 @@ namespace Servipol
             // ribbonPageGroup6
             // 
             this.ribbonPageGroup6.AllowTextClipping = false;
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnParametrosGlobais);
+            this.ribbonPageGroup6.ItemLinks.Add(this.btnParametrosSistema);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             this.ribbonPageGroup6.ShowCaptionButton = false;
             // 
@@ -926,7 +927,7 @@ namespace Servipol
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.BarButtonItem btnTipoContrato;
-        private DevExpress.XtraBars.BarButtonItem btnParametrosGlobais;
+        private DevExpress.XtraBars.BarButtonItem btnParametrosSistema;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;

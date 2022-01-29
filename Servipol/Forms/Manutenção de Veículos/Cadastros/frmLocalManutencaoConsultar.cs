@@ -21,6 +21,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         private void frmLocalManutencaoConsultar_Load(object sender, EventArgs e)
         {
+            VerificaPermissao();
+
             cBoxSituacao.SelectedIndex = 0;
             cBoxTipoBusca.SelectedIndex = 0;
             tBoxTextoConsulta.Clear();
@@ -42,6 +44,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             {
                 BD.Desconectar();
             }
+        }
+
+        public void VerificaPermissao()
+        {
+            if (SessaoSistema.UserPermission.Substring(25, 1) == "S") { btnIncluir.Enabled = true; } else { btnIncluir.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(26, 1) == "S") { btnEditar.Enabled = true; } else { btnEditar.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(27, 1) == "S") { btnInativar.Enabled = true; } else { btnInativar.Enabled = false; }
         }
 
         private void cBoxSituacao_SelectedIndexChanged(object sender, EventArgs e)

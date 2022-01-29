@@ -21,6 +21,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         private void frmTipoManutencaoConsultar_Load(object sender, EventArgs e)
         {
+            VerificaPermissao();
+
             CarregaTabelaTipoManutencao();
 
             cBoxSituacao.SelectedIndex = 0;
@@ -43,6 +45,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             {
                 BD.Desconectar();
             }
+        }
+
+        public void VerificaPermissao()
+        {
+            if (SessaoSistema.UserPermission.Substring(21, 1) == "S") { btnIncluir.Enabled = true; } else { btnIncluir.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(22, 1) == "S") { btnEditar.Enabled = true; } else { btnEditar.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(23, 1) == "S") { btnInativar.Enabled = true; } else { btnInativar.Enabled = false; }
         }
 
         public void AtualizaDG()

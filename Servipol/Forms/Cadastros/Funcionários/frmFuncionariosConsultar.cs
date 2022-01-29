@@ -21,6 +21,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
 
         private void frmFuncionariosConsultar_Load(object sender, EventArgs e)
         {
+            VerificaPermissao();
+
             cBoxSituacao.SelectedIndex = 0;
             cBoxTipoBusca.SelectedIndex = 0;
             tBoxTextoConsulta.Clear();
@@ -49,6 +51,13 @@ namespace Servipol.Forms.Cadastros.Funcionários
             {
                 BD.Desconectar();
             }
+        }
+
+        public void VerificaPermissao()
+        {
+            if (SessaoSistema.UserPermission.Substring(17, 1) == "S") { btnIncluir.Enabled = true; } else { btnIncluir.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(18, 1) == "S") { btnEditar.Enabled = true; } else { btnEditar.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(19, 1) == "S") { btnVisualizar.Enabled = true; } else { btnVisualizar.Enabled = false; }
         }
 
         public void AtualizaDG()

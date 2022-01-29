@@ -2,13 +2,7 @@
 using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Servipol.Forms.Configuração.Controle_de_Acesso
@@ -30,6 +24,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         {
             cBoxSituacao.SelectedIndex = 0;
             cBoxTipoBusca.SelectedIndex = 0;
+
+            VerificaPermissao();
         }
 
         #region Methods
@@ -49,6 +45,15 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             {
                 BD.Desconectar();
             }
+        }
+
+        public void VerificaPermissao()
+        {
+            if (SessaoSistema.UserPermission.Substring(7, 1) == "S") { btnIncluir.Enabled = true; } else { btnIncluir.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(8, 1) == "S") { btnEditar.Enabled = true; } else { btnEditar.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(9, 1) == "S") { btnExcluir.Enabled = true; } else { btnExcluir.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(10, 1) == "S") { btnResetarSenha.Enabled = true; } else { btnResetarSenha.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(11, 1) == "S") { btnPermissoes.Enabled = true; } else { btnPermissoes.Enabled = false; }
         }
 
         public void AtualizaDG()
@@ -89,6 +94,60 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             {
                 BD.Desconectar();
             }
+        }
+
+        private void cBoxTipoBusca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cBoxTipoBusca.SelectedIndex != 0)
+            {
+                tBoxTextoConsulta.Enabled = true;
+                tBoxTextoConsulta.Clear();
+                tBoxTextoConsulta.Select();
+            }
+            else
+            {
+                tBoxTextoConsulta.Enabled = false;
+                tBoxTextoConsulta.Clear();
+                btnConsultar_Click(sender, e);
+            }
+        }
+
+        private void frmUsuarioConsultar_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F4:
+                    btnIncluir_Click(sender, e);
+                    break;
+                case Keys.F3:
+                    btnEditar_Click(sender, e);
+                    break;
+                case Keys.F5:
+                    btnConsultar_Click(sender, e);
+                    break;
+                case Keys.F6:
+                    btnResetarSenha_Click(sender, e);
+                    break;
+                case Keys.F7:
+                    btnPermissoes_Click(sender, e);
+                    break;
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+            if (e.Control && e.KeyCode == Keys.P)
+            {
+                btnImprimirConsulta_Click(sender, e);
+            }
+            if (cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.Delete)
+            {
+                btnExcluir_Click(sender, e);
+            }
+        }
+
+        private void dGridUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnEditar_Click(sender, e);
         }
 
         #endregion
@@ -241,58 +300,5 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
         #endregion
 
-        private void cBoxTipoBusca_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cBoxTipoBusca.SelectedIndex != 0)
-            {
-                tBoxTextoConsulta.Enabled = true;
-                tBoxTextoConsulta.Clear();
-                tBoxTextoConsulta.Select();
-            }
-            else
-            {
-                tBoxTextoConsulta.Enabled = false;
-                tBoxTextoConsulta.Clear();
-                btnConsultar_Click(sender, e);
-            }
-        }
-
-        private void frmUsuarioConsultar_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.F4:
-                    btnIncluir_Click(sender, e);
-                    break;
-                case Keys.F3:
-                    btnEditar_Click(sender, e);
-                    break;
-                case Keys.F5:
-                    btnConsultar_Click(sender, e);
-                    break;
-                case Keys.F6:
-                    btnResetarSenha_Click(sender, e);
-                    break;
-                case Keys.F7:
-                    btnPermissoes_Click(sender, e);
-                    break;
-                case Keys.Escape:
-                    Close();
-                    break;
-            }
-            if (e.Control && e.KeyCode == Keys.P)
-            {
-                btnImprimirConsulta_Click(sender, e);
-            }
-            if (cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.Delete)
-            {
-                btnExcluir_Click(sender, e);
-            }
-        }
-
-        private void dGridUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btnEditar_Click(sender, e);
-        }
     }
 }

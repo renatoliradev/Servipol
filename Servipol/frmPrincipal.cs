@@ -27,6 +27,8 @@ namespace Servipol
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            ribbonControl.SelectedPage = ribbonPage4;
+
             statusBarVersaoSistema.Caption = VerificaVersao.VersaoSistema();
 
             EfetuaLogout();
@@ -138,14 +140,17 @@ namespace Servipol
 
         public void VerificaPermissao()
         {
-            if (SessaoSistema.UserPermission.Substring(12, 1) == "S")
-            {
-                btnVeiculos.Enabled = true;
-            }
-            else
-            {
-                btnVeiculos.Enabled = false;
-            }
+            if (SessaoSistema.UserPermission.Substring(0, 1) == "S") { btnParametrosSistema.Enabled = true; } else { btnParametrosSistema.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(2, 1) == "S") { btnPerfilUsuario.Enabled = true; } else { btnPerfilUsuario.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(6, 1) == "S") { btnUsuarios.Enabled = true; } else { btnUsuarios.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(12, 1) == "S") { btnVeiculos.Enabled = true; } else { btnVeiculos.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(16, 1) == "S") { btnFuncionarios.Enabled = true; } else { btnFuncionarios.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(20, 1) == "S") { btnTipoManutencao.Enabled = true; } else { btnTipoManutencao.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(24, 1) == "S") { btnLocalManutencao.Enabled = true; } else { btnLocalManutencao.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(28, 1) == "S") { btnRegistrarManutencao.Enabled = true; } else { btnRegistrarManutencao.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(29, 1) == "S") { btnManutencoesRealizadas.Enabled = true; } else { btnManutencoesRealizadas.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(31, 1) == "S") { btnProxTrocaOleoRevisao.Enabled = true; } else { btnProxTrocaOleoRevisao.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(32, 1) == "S") { btnPainelBI.Enabled = true; } else { btnPainelBI.Enabled = false; }
         }
 
         private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -324,8 +329,12 @@ namespace Servipol
             frmProxTrocaOleoRevisao.Owner = this;
             frmProxTrocaOleoRevisao.ShowDialog();
         }
+
         #endregion
 
+        private void btnParametrosSistema_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
 
+        }
     }
 }

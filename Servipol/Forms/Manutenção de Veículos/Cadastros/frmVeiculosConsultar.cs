@@ -25,6 +25,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
             cBoxSituacao.SelectedIndex = 0;
             cBoxTipoBusca.SelectedIndex = 0;
+
+            VerificaPermissao();
         }
 
         #region Methods
@@ -65,6 +67,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             {
                 BD.Desconectar();
             }
+        }
+
+        public void VerificaPermissao()
+        {
+            if (SessaoSistema.UserPermission.Substring(13, 1) == "S") { btnIncluir.Enabled = true; } else { btnIncluir.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(14, 1) == "S") { btnEditar.Enabled = true; } else { btnEditar.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(15, 1) == "S") { btnInativar.Enabled = true; } else { btnInativar.Enabled = false; }
         }
 
         private void cBoxTipoVeiculo_SelectedIndexChanged(object sender, EventArgs e)
@@ -287,6 +296,5 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         #endregion
 
-        
     }
 }

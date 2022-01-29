@@ -25,6 +25,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         {
             try
             {
+                VerificaPermissao();
+
                 cBoxSituacao.SelectedIndex = 0;
                 cBoxTipoBusca.SelectedIndex = 0;
                 gBoxFuncionario.Visible = false;
@@ -106,6 +108,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 tBoxQtdRegistros.Text = dGridManutencoes.RowCount.ToString();
                 BD.Desconectar();
             }
+        }
+
+        public void VerificaPermissao()
+        {
+            if (SessaoSistema.UserPermission.Substring(30, 1) == "S") { btnExcluir.Enabled = true; } else { btnExcluir.Enabled = false; }
         }
 
         public void AtualizaDG()
@@ -537,6 +544,5 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         }
         #endregion
 
-        
     }
 }
