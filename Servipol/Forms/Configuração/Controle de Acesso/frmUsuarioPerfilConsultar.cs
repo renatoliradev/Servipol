@@ -20,11 +20,11 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
         private void frmUsuarioPerfilConsultar_Load(object sender, EventArgs e)
         {
+            VerificaPermissao();
+
             cBoxSituacao.SelectedIndex = 0;
             cBoxTipoBusca.SelectedIndex = 0;
             tBoxTextoConsulta.Clear();
-
-            VerificaPermissao();
         }
 
         #region Buttons
@@ -206,9 +206,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         {
             switch (e.KeyCode)
             {
-                case Keys.F4:
-                    btnIncluir_Click(sender, e);
-                    break;
                 case Keys.F5:
                     btnConsultar_Click(sender, e);
                     break;
@@ -220,7 +217,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             {
                 btnIncluir_Click(sender, e);
             }
-
             if (e.Control && e.KeyCode == Keys.P)
             {
                 btnImprimirConsulta_Click(sender, e);

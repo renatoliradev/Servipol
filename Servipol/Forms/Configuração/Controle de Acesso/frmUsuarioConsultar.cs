@@ -22,10 +22,10 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
         private void frmUsuarioConsultar_Load(object sender, EventArgs e)
         {
+            VerificaPermissao();
+
             cBoxSituacao.SelectedIndex = 0;
             cBoxTipoBusca.SelectedIndex = 0;
-
-            VerificaPermissao();
         }
 
         #region Methods
@@ -116,32 +116,36 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         {
             switch (e.KeyCode)
             {
-                case Keys.F4:
-                    btnIncluir_Click(sender, e);
-                    break;
-                case Keys.F3:
-                    btnEditar_Click(sender, e);
-                    break;
                 case Keys.F5:
                     btnConsultar_Click(sender, e);
-                    break;
-                case Keys.F6:
-                    btnResetarSenha_Click(sender, e);
-                    break;
-                case Keys.F7:
-                    btnPermissoes_Click(sender, e);
                     break;
                 case Keys.Escape:
                     Close();
                     break;
             }
+            if (SessaoSistema.UserPermission.Substring(7, 1) == "S" && e.KeyCode == Keys.F4)
+            {
+                btnIncluir_Click(sender, e);
+            }
+            if (SessaoSistema.UserPermission.Substring(8, 1) == "S" && cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.F3)
+            {
+                btnEditar_Click(sender, e);
+            }
             if (e.Control && e.KeyCode == Keys.P)
             {
                 btnImprimirConsulta_Click(sender, e);
             }
-            if (cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.Delete)
+            if (SessaoSistema.UserPermission.Substring(9, 1) == "S" && cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.Delete)
             {
                 btnExcluir_Click(sender, e);
+            }
+            if (SessaoSistema.UserPermission.Substring(10, 1) == "S" && e.KeyCode == Keys.F6)
+            {
+                btnResetarSenha_Click(sender, e);
+            }
+            if (SessaoSistema.UserPermission.Substring(11, 1) == "S" && e.KeyCode == Keys.F7)
+            {
+                btnPermissoes_Click(sender, e);
             }
         }
 
