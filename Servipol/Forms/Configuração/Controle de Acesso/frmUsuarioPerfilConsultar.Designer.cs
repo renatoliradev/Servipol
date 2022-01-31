@@ -30,7 +30,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuarioPerfilConsultar));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cBoxTipoBusca = new System.Windows.Forms.ComboBox();
             this.cBoxSituacao = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -258,8 +258,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.dGridUsuarioPerfil.AllowUserToDeleteRows = false;
             this.dGridUsuarioPerfil.AllowUserToResizeColumns = false;
             this.dGridUsuarioPerfil.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
-            this.dGridUsuarioPerfil.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lavender;
+            this.dGridUsuarioPerfil.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dGridUsuarioPerfil.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dGridUsuarioPerfil.BackgroundColor = System.Drawing.Color.White;
             this.dGridUsuarioPerfil.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

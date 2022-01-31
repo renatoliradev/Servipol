@@ -36,8 +36,6 @@ namespace Servipol
             frmLogin Login = new frmLogin();
             Login.Owner = this;
             Login.ShowDialog();
-
-            VerificaPermissao();
         }
 
         #region Methods
@@ -75,6 +73,8 @@ namespace Servipol
             {
                 BD.Desconectar();
                 FechaForms();
+
+                VerificaPermissao();
             }
         }
 
@@ -95,6 +95,20 @@ namespace Servipol
             {
                 BD.Desconectar();
                 FechaForms();
+
+                btnFuncionarios.Enabled = false;
+
+                btnParametrosSistema.Enabled = false;
+                btnPerfilUsuario.Enabled = false;
+                btnUsuarios.Enabled = false;
+
+                btnVeiculos.Enabled = false;
+                btnTipoManutencao.Enabled = false;
+                btnLocalManutencao.Enabled = false;
+                btnRegistrarManutencao.Enabled = false;
+                btnPainelBI.Enabled = false;
+                btnManutencoesRealizadas.Enabled = false;
+                btnProxTrocaOleoRevisao.Enabled = false;
             }
         }
 

@@ -92,18 +92,21 @@ namespace Servipol.Forms.Cadastros.Funcionários
         {
             switch (e.KeyCode)
             {
-                case Keys.F4:
-                    btnIncluir_Click(sender, e);
-                    break;
-                case Keys.F3:
-                    btnEditar_Click(sender, e);
-                    break;
-                case Keys.F8:
-                    btnVisualizar_Click(sender, e);
-                    break;
                 case Keys.F5:
                     btnConsultar_Click(sender, e);
                     break;
+            }
+            if (SessaoSistema.UserPermission.Substring(17, 1) == "S" && e.KeyCode == Keys.F4)
+            {
+                btnIncluir_Click(sender, e);
+            }
+            if (SessaoSistema.UserPermission.Substring(18, 1) == "S" && e.KeyCode == Keys.F3)
+            {
+                btnEditar_Click(sender, e);
+            }
+            if (SessaoSistema.UserPermission.Substring(19, 1) == "S" && e.KeyCode == Keys.F8)
+            {
+                btnVisualizar_Click(sender, e);
             }
             if (e.Control && e.KeyCode == Keys.P)
             {
@@ -134,7 +137,10 @@ namespace Servipol.Forms.Cadastros.Funcionários
 
         private void dGridFuncionarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnEditar_Click(sender, e);
+            if (SessaoSistema.UserPermission.Substring(18, 1) == "S")
+            {
+                btnEditar_Click(sender, e);
+            }
         }
 
         private void frmFuncionariosConsultar_FormClosing(object sender, FormClosingEventArgs e)
@@ -234,8 +240,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-
         #endregion
-
     }
 }

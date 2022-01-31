@@ -267,13 +267,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         {
             btnBuscar_Click(sender, e);
 
-            if (cBoxSituacao.SelectedIndex == 1)
+            if (SessaoSistema.UserPermission.Substring(30, 1) == "S" && cBoxSituacao.SelectedIndex == 0)
             {
-                btnExcluir.Enabled = false;
+                btnExcluir.Enabled = true;
             }
             else
             {
-                btnExcluir.Enabled = true;
+                btnExcluir.Enabled = false;
             }
         }
 
@@ -300,7 +300,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             {
                 btnImprimirConsulta_Click(sender, e);
             }
-            if (cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.Delete)
+            if (SessaoSistema.UserPermission.Substring(9, 1) == "S" && cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.Delete)
             {
                 btnExcluir_Click(sender, e);
             }

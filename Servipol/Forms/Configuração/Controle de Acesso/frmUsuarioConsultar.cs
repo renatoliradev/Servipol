@@ -68,17 +68,21 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         {
             string situacaoTraduzida;
 
-            if (cBoxSituacao.SelectedItem.ToString() == "Ativos")
+            if (SessaoSistema.UserPermission.Substring(9, 1) == "S" && cBoxSituacao.SelectedIndex == 0)
             {
-                btnExcluir.Visible = true;
                 btnExcluir.Enabled = true;
-                situacaoTraduzida = "S";
-                btnExcluir.Text = "[Del] - Inativar";
             }
             else
             {
-                btnExcluir.Visible = false;
                 btnExcluir.Enabled = false;
+            }
+
+            if (cBoxSituacao.SelectedIndex == 0)
+            {
+                situacaoTraduzida = "S";
+            }
+            else
+            {
                 situacaoTraduzida = "N";
             }
 
@@ -127,17 +131,17 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             {
                 btnIncluir_Click(sender, e);
             }
-            if (SessaoSistema.UserPermission.Substring(8, 1) == "S" && cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.F3)
+            if (SessaoSistema.UserPermission.Substring(8, 1) == "S" && e.KeyCode == Keys.F3)
             {
                 btnEditar_Click(sender, e);
-            }
-            if (e.Control && e.KeyCode == Keys.P)
-            {
-                btnImprimirConsulta_Click(sender, e);
             }
             if (SessaoSistema.UserPermission.Substring(9, 1) == "S" && cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.Delete)
             {
                 btnExcluir_Click(sender, e);
+            }
+            if (e.Control && e.KeyCode == Keys.P)
+            {
+                btnImprimirConsulta_Click(sender, e);
             }
             if (SessaoSistema.UserPermission.Substring(10, 1) == "S" && e.KeyCode == Keys.F6)
             {
@@ -151,7 +155,10 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
         private void dGridUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnEditar_Click(sender, e);
+            if (SessaoSistema.UserPermission.Substring(8, 1) == "S")
+            {
+                btnEditar_Click(sender, e);
+            }
         }
 
         #endregion
@@ -162,17 +169,21 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         {
             string situacaoTraduzida;
 
-            if (cBoxSituacao.SelectedIndex == 0)
+            if (SessaoSistema.UserPermission.Substring(9, 1) == "S" && cBoxSituacao.SelectedIndex == 0)
             {
-                btnExcluir.Visible = true;
                 btnExcluir.Enabled = true;
-                situacaoTraduzida = "S";
-                btnExcluir.Text = "[Del] - Inativar";
             }
             else
             {
-                btnExcluir.Visible = false;
                 btnExcluir.Enabled = false;
+            }
+
+            if (cBoxSituacao.SelectedIndex == 0)
+            {
+                situacaoTraduzida = "S";
+            }
+            else
+            {
                 situacaoTraduzida = "N";
             }
 

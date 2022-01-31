@@ -132,21 +132,22 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         {
             btnConsultar_Click(sender, e);
 
-            if (cBoxSituacao.SelectedIndex == 1)
+            if (SessaoSistema.UserPermission.Substring(4, 1) == "S" && cBoxSituacao.SelectedIndex == 0)
             {
-                btnExcluir.Visible = false;
-                btnExcluir.Enabled = false;
-
-                btnEditar.Visible = false;
-                btnEditar.Enabled = false;
+                btnEditar.Enabled = true;
             }
             else
             {
-                btnExcluir.Visible = true;
-                btnExcluir.Enabled = true;
+                btnEditar.Enabled = false;
+            }
 
-                btnEditar.Visible = true;
-                btnEditar.Enabled = true;
+            if (SessaoSistema.UserPermission.Substring(5, 1) == "S" && cBoxSituacao.SelectedIndex == 0)
+            {
+                btnExcluir.Enabled = true;
+            }
+            else
+            {
+                btnExcluir.Enabled = false;
             }
         }
 
@@ -197,11 +198,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             CarregaTabelaUsuarioPerfil();
         }
 
-        private void dGridLocalManutencao_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btnEditar_Click(sender, e);
-        }
-
         private void frmUsuarioPerfilConsultar_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -213,7 +209,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     Close();
                     break;
             }
-            if (SessaoSistema.UserPermission.Substring(3, 1) == "S" && e.KeyCode == Keys.F4) 
+            if (SessaoSistema.UserPermission.Substring(3, 1) == "S" && e.KeyCode == Keys.F4)
             {
                 btnIncluir_Click(sender, e);
             }
@@ -233,7 +229,10 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
         private void dGridUsuarioPerfil_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnEditar_Click(sender, e);
+            if (SessaoSistema.UserPermission.Substring(4, 1) == "S")
+            {
+                btnEditar_Click(sender, e);
+            }
         }
 
         #endregion

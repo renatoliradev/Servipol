@@ -66,33 +66,28 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         {
             btnConsultar_Click(sender, e);
 
-            if (cBoxSituacao.SelectedIndex == 1)
+            if (SessaoSistema.UserPermission.Substring(23, 1) == "S" && cBoxSituacao.SelectedIndex == 0)
             {
-                btnInativar.Visible = false;
-                btnInativar.Enabled = false;
+                btnInativar.Enabled = true;
             }
             else
             {
-                btnInativar.Visible = true;
-                btnInativar.Enabled = true;
+                btnInativar.Enabled = false;
             }
         }
 
         private void dGridTipoManutencao_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnEditar_Click(sender, e);
+            if (SessaoSistema.UserPermission.Substring(22, 1) == "S")
+            {
+                btnEditar_Click(sender, e);
+            }
         }
 
         private void frmTipoManutencaoConsultar_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
-                case Keys.F4:
-                    btnIncluir_Click(sender, e);
-                    break;
-                case Keys.F3:
-                    btnEditar_Click(sender, e);
-                    break;
                 case Keys.F5:
                     btnConsultar_Click(sender, e);
                     break;
@@ -100,13 +95,21 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     Close();
                     break;
             }
+            if (SessaoSistema.UserPermission.Substring(21, 1) == "S" && e.KeyCode == Keys.F4)
+            {
+                btnIncluir_Click(sender, e);
+            }
+            if (SessaoSistema.UserPermission.Substring(22, 1) == "S" && e.KeyCode == Keys.F3)
+            {
+                btnEditar_Click(sender, e);
+            }
+            if (SessaoSistema.UserPermission.Substring(23, 1) == "S" && cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.Delete)
+            {
+                btnInativar_Click(sender, e);
+            }
             if (e.Control && e.KeyCode == Keys.P)
             {
                 btnImprimirConsulta_Click(sender, e);
-            }
-            if (cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.Delete)
-            {
-                btnInativar_Click(sender, e);
             }
         }
 
