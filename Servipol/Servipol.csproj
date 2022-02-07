@@ -255,6 +255,12 @@
     <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoMotivoExcluir.Designer.cs">
       <DependentUpon>frmManutencaoMotivoExcluir.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmPainelBI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmPainelBI.Designer.cs">
+      <DependentUpon>frmPainelBI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmProxTrocaOleoRevisao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -347,6 +353,9 @@
     <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoConsultar.resx">
       <DependentUpon>frmManutencaoConsultar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoDetalhadaMesTotal.resx">
+      <DependentUpon>frmManutencaoDetalhadaMesTotal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoDetalhadaVeiculo.resx">
       <DependentUpon>frmManutencaoDetalhadaVeiculo.cs</DependentUpon>
     </EmbeddedResource>
@@ -355,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoRegistrar.resx">
       <DependentUpon>frmManutencaoRegistrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmPainelBI.resx">
+      <DependentUpon>frmPainelBI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmProxTrocaOleoRevisao.resx">
       <DependentUpon>frmProxTrocaOleoRevisao.cs</DependentUpon>

@@ -280,7 +280,9 @@ namespace Servipol
         {
             MemoryManagement.FlushMemory();
 
-            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmPainelBI frmPainelBI = new frmPainelBI();
+            frmPainelBI.MdiParent = this;
+            frmPainelBI.Show();
         }
 
         private void btnManutencoesRealizadas_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

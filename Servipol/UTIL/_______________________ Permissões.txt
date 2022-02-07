@@ -1,0 +1,50 @@
+Ordem das Permissões:
+
+-- Parâmetros do Sistema
+0	- Acessar Parâmetros do Sistema
+1	- Editar Parâmetros do Sistema
+
+-- Perfil
+2	- Acessar Perfil
+3	- Incluir Perfil
+4	- Editar Perfil
+5	- Excluir Perfil
+
+-- Usuários
+6	- Acessar Usuários
+7	- Incluir Usuários
+8	- Editar Usuários
+9	- Inativar / Reativar Usuários
+10	- Resetar Senha
+11	- Alterar Permissões
+
+-- Veículos
+12	- Acessar Veículos
+13	- Incluir Veículos
+14	- Editar Veículos
+15	- Inativar Veículos
+
+-- Funcionários
+16	- Acessar Funcionários
+17	- Incluir Funcionários
+18	- Editar Funcionários
+19	- Visualizar Cadastro Completo Funcionários
+
+-- Tipo de Manutenção
+20	- Acessar Tipo de Manutenção
+21	- Incluir Tipo de Manutenção
+22	- Editar Tipo de Manutenção
+23	- Inativar Tipo de Manutenção
+
+-- Local de Manutenção
+24	- Acessar Local de Manutenção
+25	- Incluir Local de Manutenção
+26	- Editar Local de Manutenção
+27	- Inativar Local de Manutenção
+
+-- Manutenção de Veículos
+28	- Registrar Manutenção
+29	- Visualizar Manutenções Realizadas
+30	- Excluir Manutenção Realizada
+31	- Visualizar Próximas Trocas de Óleo
+32	- Acessar Painel B.I.';

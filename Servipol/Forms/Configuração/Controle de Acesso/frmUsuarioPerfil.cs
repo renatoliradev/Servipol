@@ -616,11 +616,13 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private void btnLiberarTudo_Click(object sender, EventArgs e)
         {
             LiberaTudo(this);
+            cBoxPerfil.SelectedIndex = -1;
         }
 
         private void btnBloquearTudo_Click(object sender, EventArgs e)
         {
             BloqueiaTudo(this);
+            cBoxPerfil.SelectedIndex = -1;
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
