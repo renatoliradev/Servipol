@@ -301,7 +301,7 @@ namespace Servipol
 
         private void btnRegistrarAtaAgente_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
         }
 
         private void btnVerAtasFechadasAgente_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

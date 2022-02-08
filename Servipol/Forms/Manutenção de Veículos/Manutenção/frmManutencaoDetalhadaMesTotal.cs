@@ -69,7 +69,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         {
             try
             {
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT m.id_manutencao, m.data_manutencao, mt.descricao, m.valor_total FROM manutencao AS m INNER JOIN veiculo AS v ON(m.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS mt ON(m.id_manutencao_tipo = mt.id_manutencao_tipo) WHERE m.confirmada = 'S' AND m.registro_excluido = 'N' AND m.id_veiculo = {IdVeiculo} AND DATE(m.data_manutencao) BETWEEN '{PrimeiroDiaMes}' AND current_date GROUP BY m.id_manutencao, mt.descricao, m.valor_total ORDER BY 2 DESC", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT m.id_manutencao, m.data_manutencao, mt.descricao, m.valor_total FROM manutencao AS m INNER JOIN veiculo AS v ON(m.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS mt ON(m.id_manutencao_tipo = mt.id_manutencao_tipo) WHERE m.confirmada = 'S' AND m.registro_excluido = 'N' AND m.id_veiculo = {IdVeiculo} AND DATE(m.data_manutencao) BETWEEN '{PrimeiroDiaMes}' AND current_date GROUP BY m.id_manutencao, mt.descricao, m.valor_total ORDER BY m.id_manutencao DESC, m.data_manutencao", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridManutencoes.DataSource = dp;

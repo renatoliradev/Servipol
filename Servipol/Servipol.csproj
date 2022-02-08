@@ -329,6 +329,9 @@
     <EmbeddedResource Include="Forms\Configuração\Controle de Acesso\frmUsuarioPerfilConsultar.resx">
       <DependentUpon>frmUsuarioPerfilConsultar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configuração\frmEmpresaSistema.resx">
+      <DependentUpon>frmEmpresaSistema.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configuração\frmParametrosSistema.resx">
       <DependentUpon>frmParametrosSistema.cs</DependentUpon>
     </EmbeddedResource>

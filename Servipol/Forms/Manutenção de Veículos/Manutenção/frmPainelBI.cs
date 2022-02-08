@@ -103,5 +103,27 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         }
 
         #endregion
+
+        #region Buttons
+        private void btnImprimirConsulta_Click(object sender, EventArgs e)
+        {
+            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        #endregion
+
+        private void frmPainelBI_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+            if (e.Control && e.KeyCode == Keys.P)
+            {
+                btnImprimirConsulta_Click(sender, e);
+            }
+        }
     }
 }

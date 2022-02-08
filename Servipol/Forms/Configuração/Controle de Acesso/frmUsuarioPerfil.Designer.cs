@@ -81,6 +81,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnRecarregaPermissoesUsuario = new DevExpress.XtraEditors.SimpleButton();
             this.tabControlPerfilUsuario = new System.Windows.Forms.TabControl();
             this.tabPrincipal = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tBoxAlertaRegistroExc2 = new System.Windows.Forms.TextBox();
+            this.tBoxAlertaRegistroExc1 = new System.Windows.Forms.TextBox();
             this.tabDadosRegistro = new System.Windows.Forms.TabPage();
             this.groupBox35 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -97,9 +100,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.tBoxDataExclusao = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tBoxUsuarioExclusao = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tBoxAlertaRegistroExc1 = new System.Windows.Forms.TextBox();
-            this.tBoxAlertaRegistroExc2 = new System.Windows.Forms.TextBox();
             this.gbDescricaoPerfil.SuspendLayout();
             this.gbPerfilUsuarios.SuspendLayout();
             this.gbTipoDeManutencao.SuspendLayout();
@@ -111,11 +111,11 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gbSelecionarPerfil.SuspendLayout();
             this.tabControlPerfilUsuario.SuspendLayout();
             this.tabPrincipal.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tabDadosRegistro.SuspendLayout();
             this.groupBox35.SuspendLayout();
             this.groupBox37.SuspendLayout();
             this.gbDadosExclusaoRegistro.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbDescricaoPerfil
@@ -738,6 +738,45 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.tabPrincipal.Text = "Principal";
             this.tabPrincipal.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.tBoxAlertaRegistroExc2);
+            this.groupBox2.Controls.Add(this.tBoxAlertaRegistroExc1);
+            this.groupBox2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(195, 380);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(192, 139);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            // 
+            // tBoxAlertaRegistroExc2
+            // 
+            this.tBoxAlertaRegistroExc2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxAlertaRegistroExc2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tBoxAlertaRegistroExc2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxAlertaRegistroExc2.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxAlertaRegistroExc2.ForeColor = System.Drawing.Color.Red;
+            this.tBoxAlertaRegistroExc2.Location = new System.Drawing.Point(6, 75);
+            this.tBoxAlertaRegistroExc2.Name = "tBoxAlertaRegistroExc2";
+            this.tBoxAlertaRegistroExc2.Size = new System.Drawing.Size(180, 33);
+            this.tBoxAlertaRegistroExc2.TabIndex = 4;
+            this.tBoxAlertaRegistroExc2.TabStop = false;
+            this.tBoxAlertaRegistroExc2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tBoxAlertaRegistroExc1
+            // 
+            this.tBoxAlertaRegistroExc1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxAlertaRegistroExc1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tBoxAlertaRegistroExc1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxAlertaRegistroExc1.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxAlertaRegistroExc1.ForeColor = System.Drawing.Color.Red;
+            this.tBoxAlertaRegistroExc1.Location = new System.Drawing.Point(6, 43);
+            this.tBoxAlertaRegistroExc1.Name = "tBoxAlertaRegistroExc1";
+            this.tBoxAlertaRegistroExc1.Size = new System.Drawing.Size(180, 33);
+            this.tBoxAlertaRegistroExc1.TabIndex = 3;
+            this.tBoxAlertaRegistroExc1.TabStop = false;
+            this.tBoxAlertaRegistroExc1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // tabDadosRegistro
             // 
             this.tabDadosRegistro.Controls.Add(this.groupBox35);
@@ -925,50 +964,11 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.tBoxUsuarioExclusao.Size = new System.Drawing.Size(532, 15);
             this.tBoxUsuarioExclusao.TabIndex = 12;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.tBoxAlertaRegistroExc2);
-            this.groupBox2.Controls.Add(this.tBoxAlertaRegistroExc1);
-            this.groupBox2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(195, 380);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(192, 139);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            // 
-            // tBoxAlertaRegistroExc1
-            // 
-            this.tBoxAlertaRegistroExc1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxAlertaRegistroExc1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tBoxAlertaRegistroExc1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxAlertaRegistroExc1.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxAlertaRegistroExc1.ForeColor = System.Drawing.Color.Red;
-            this.tBoxAlertaRegistroExc1.Location = new System.Drawing.Point(6, 43);
-            this.tBoxAlertaRegistroExc1.Name = "tBoxAlertaRegistroExc1";
-            this.tBoxAlertaRegistroExc1.Size = new System.Drawing.Size(180, 33);
-            this.tBoxAlertaRegistroExc1.TabIndex = 3;
-            this.tBoxAlertaRegistroExc1.TabStop = false;
-            this.tBoxAlertaRegistroExc1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tBoxAlertaRegistroExc2
-            // 
-            this.tBoxAlertaRegistroExc2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxAlertaRegistroExc2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tBoxAlertaRegistroExc2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxAlertaRegistroExc2.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxAlertaRegistroExc2.ForeColor = System.Drawing.Color.Red;
-            this.tBoxAlertaRegistroExc2.Location = new System.Drawing.Point(6, 75);
-            this.tBoxAlertaRegistroExc2.Name = "tBoxAlertaRegistroExc2";
-            this.tBoxAlertaRegistroExc2.Size = new System.Drawing.Size(180, 33);
-            this.tBoxAlertaRegistroExc2.TabIndex = 4;
-            this.tBoxAlertaRegistroExc2.TabStop = false;
-            this.tBoxAlertaRegistroExc2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // frmUsuarioPerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(619, 604);
+            this.ClientSize = new System.Drawing.Size(607, 592);
             this.ControlBox = false;
             this.Controls.Add(this.tabControlPerfilUsuario);
             this.Controls.Add(this.btnBloquearTudo);
@@ -1006,6 +1006,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gbSelecionarPerfil.ResumeLayout(false);
             this.tabControlPerfilUsuario.ResumeLayout(false);
             this.tabPrincipal.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.tabDadosRegistro.ResumeLayout(false);
             this.groupBox35.ResumeLayout(false);
             this.groupBox35.PerformLayout();
@@ -1013,8 +1015,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.groupBox37.PerformLayout();
             this.gbDadosExclusaoRegistro.ResumeLayout(false);
             this.gbDadosExclusaoRegistro.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }

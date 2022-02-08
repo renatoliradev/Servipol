@@ -92,6 +92,9 @@ namespace Servipol.Forms.Cadastros.Funcionários
         {
             switch (e.KeyCode)
             {
+                case Keys.Escape:
+                    Close();
+                    break;
                 case Keys.F5:
                     btnConsultar_Click(sender, e);
                     break;

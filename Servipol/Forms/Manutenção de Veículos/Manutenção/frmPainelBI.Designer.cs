@@ -29,28 +29,30 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPainelBI));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tBoxValorTotal = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dGridDadosUltimaManutencaoRegistrada = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dGridTotalGastoManutencaoMes = new System.Windows.Forms.DataGridView();
             this.id_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.veiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.local_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valor_ultima_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dGridTotalGastoManutencaoMes = new System.Windows.Forms.DataGridView();
             this.id_veiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantidade_manutencao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,10 +70,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(71, -2);
+            this.label1.Location = new System.Drawing.Point(3, 1);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(201, 17);
             this.label1.TabIndex = 197;
@@ -80,10 +82,10 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LemonChiffon;
-            this.panel1.Controls.Add(this.tBoxValorTotal);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.tBoxValorTotal);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 318);
+            this.panel1.Location = new System.Drawing.Point(3, 317);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(358, 18);
             this.panel1.TabIndex = 201;
@@ -96,7 +98,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.tBoxValorTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tBoxValorTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tBoxValorTotal.ForeColor = System.Drawing.Color.Red;
-            this.tBoxValorTotal.Location = new System.Drawing.Point(278, -3);
+            this.tBoxValorTotal.Location = new System.Drawing.Point(277, 0);
             this.tBoxValorTotal.Name = "tBoxValorTotal";
             this.tBoxValorTotal.ReadOnly = true;
             this.tBoxValorTotal.Size = new System.Drawing.Size(75, 18);
@@ -111,17 +113,34 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnImprimirConsulta, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.groupBox3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1216, 339);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1216, 388);
             this.tableLayoutPanel1.TabIndex = 202;
+            // 
+            // btnImprimirConsulta
+            // 
+            this.btnImprimirConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimirConsulta.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirConsulta.Appearance.Options.UseFont = true;
+            this.btnImprimirConsulta.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnImprimirConsulta.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnImprimirConsulta.ImageOptions.SvgImage")));
+            this.btnImprimirConsulta.Location = new System.Drawing.Point(3, 341);
+            this.btnImprimirConsulta.Name = "btnImprimirConsulta";
+            this.btnImprimirConsulta.Size = new System.Drawing.Size(358, 44);
+            this.btnImprimirConsulta.TabIndex = 209;
+            this.btnImprimirConsulta.TabStop = false;
+            this.btnImprimirConsulta.Text = "[CTRL + P] - Imprimir Resumo Mensal";
+            this.btnImprimirConsulta.Click += new System.EventHandler(this.btnImprimirConsulta_Click);
             // 
             // groupBox3
             // 
@@ -130,7 +149,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.groupBox3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(367, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(846, 309);
+            this.groupBox3.Size = new System.Drawing.Size(846, 308);
             this.groupBox3.TabIndex = 131;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dados da última manutenção registrada por veículo";
@@ -163,83 +182,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGridDadosUltimaManutencaoRegistrada.ReadOnly = true;
             this.dGridDadosUltimaManutencaoRegistrada.RowHeadersVisible = false;
             this.dGridDadosUltimaManutencaoRegistrada.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGridDadosUltimaManutencaoRegistrada.Size = new System.Drawing.Size(834, 281);
+            this.dGridDadosUltimaManutencaoRegistrada.Size = new System.Drawing.Size(834, 280);
             this.dGridDadosUltimaManutencaoRegistrada.TabIndex = 124;
             this.dGridDadosUltimaManutencaoRegistrada.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridDadosUltimaManutencaoRegistrada_CellDoubleClick);
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.LemonChiffon;
-            this.panel4.Controls.Add(this.textEdit1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(367, 318);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(846, 18);
-            this.panel4.TabIndex = 200;
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textEdit1.EditValue = "*** OBS: Duplo clique sobre um registro vai mostrar informações mais detalhadas *" +
-    "**";
-            this.textEdit1.Enabled = false;
-            this.textEdit1.Location = new System.Drawing.Point(0, 0);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Appearance.BackColor = System.Drawing.Color.LemonChiffon;
-            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEdit1.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.textEdit1.Properties.Appearance.Options.UseBackColor = true;
-            this.textEdit1.Properties.Appearance.Options.UseFont = true;
-            this.textEdit1.Properties.Appearance.Options.UseForeColor = true;
-            this.textEdit1.Properties.Appearance.Options.UseTextOptions = true;
-            this.textEdit1.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.textEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.textEdit1.Size = new System.Drawing.Size(846, 18);
-            this.textEdit1.TabIndex = 0;
-            this.textEdit1.TabStop = false;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dGridTotalGastoManutencaoMes);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(3, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(358, 309);
-            this.groupBox2.TabIndex = 132;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Total gasto com manutenção por veículo no mês atual";
-            // 
-            // dGridTotalGastoManutencaoMes
-            // 
-            this.dGridTotalGastoManutencaoMes.AllowUserToAddRows = false;
-            this.dGridTotalGastoManutencaoMes.AllowUserToDeleteRows = false;
-            this.dGridTotalGastoManutencaoMes.AllowUserToResizeColumns = false;
-            this.dGridTotalGastoManutencaoMes.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Lavender;
-            this.dGridTotalGastoManutencaoMes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dGridTotalGastoManutencaoMes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dGridTotalGastoManutencaoMes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dGridTotalGastoManutencaoMes.BackgroundColor = System.Drawing.Color.White;
-            this.dGridTotalGastoManutencaoMes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dGridTotalGastoManutencaoMes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGridTotalGastoManutencaoMes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_veiculo,
-            this.dataGridViewTextBoxColumn2,
-            this.quantidade_manutencao,
-            this.total_manutencao});
-            this.dGridTotalGastoManutencaoMes.Location = new System.Drawing.Point(6, 22);
-            this.dGridTotalGastoManutencaoMes.MultiSelect = false;
-            this.dGridTotalGastoManutencaoMes.Name = "dGridTotalGastoManutencaoMes";
-            this.dGridTotalGastoManutencaoMes.ReadOnly = true;
-            this.dGridTotalGastoManutencaoMes.RowHeadersVisible = false;
-            this.dGridTotalGastoManutencaoMes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dGridTotalGastoManutencaoMes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGridTotalGastoManutencaoMes.Size = new System.Drawing.Size(346, 281);
-            this.dGridTotalGastoManutencaoMes.TabIndex = 124;
-            this.dGridTotalGastoManutencaoMes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridTotalGastoManutencaoMes_CellDoubleClick);
             // 
             // id_manutencao
             // 
@@ -299,6 +244,80 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.valor_ultima_manutencao.ReadOnly = true;
             this.valor_ultima_manutencao.Width = 45;
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.LemonChiffon;
+            this.panel4.Controls.Add(this.textEdit1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(367, 317);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(846, 18);
+            this.panel4.TabIndex = 200;
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textEdit1.EditValue = "*** OBS: Duplo clique sobre um registro vai mostrar informações mais detalhadas *" +
+    "**";
+            this.textEdit1.Enabled = false;
+            this.textEdit1.Location = new System.Drawing.Point(0, 0);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.Appearance.BackColor = System.Drawing.Color.LemonChiffon;
+            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textEdit1.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.textEdit1.Properties.Appearance.Options.UseBackColor = true;
+            this.textEdit1.Properties.Appearance.Options.UseFont = true;
+            this.textEdit1.Properties.Appearance.Options.UseForeColor = true;
+            this.textEdit1.Properties.Appearance.Options.UseTextOptions = true;
+            this.textEdit1.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.textEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.textEdit1.Size = new System.Drawing.Size(846, 18);
+            this.textEdit1.TabIndex = 0;
+            this.textEdit1.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dGridTotalGastoManutencaoMes);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(358, 308);
+            this.groupBox2.TabIndex = 132;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Total gasto com manutenção por veículo no mês atual";
+            // 
+            // dGridTotalGastoManutencaoMes
+            // 
+            this.dGridTotalGastoManutencaoMes.AllowUserToAddRows = false;
+            this.dGridTotalGastoManutencaoMes.AllowUserToDeleteRows = false;
+            this.dGridTotalGastoManutencaoMes.AllowUserToResizeColumns = false;
+            this.dGridTotalGastoManutencaoMes.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Lavender;
+            this.dGridTotalGastoManutencaoMes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dGridTotalGastoManutencaoMes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dGridTotalGastoManutencaoMes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dGridTotalGastoManutencaoMes.BackgroundColor = System.Drawing.Color.White;
+            this.dGridTotalGastoManutencaoMes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dGridTotalGastoManutencaoMes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGridTotalGastoManutencaoMes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_veiculo,
+            this.dataGridViewTextBoxColumn2,
+            this.quantidade_manutencao,
+            this.total_manutencao});
+            this.dGridTotalGastoManutencaoMes.Location = new System.Drawing.Point(6, 22);
+            this.dGridTotalGastoManutencaoMes.MultiSelect = false;
+            this.dGridTotalGastoManutencaoMes.Name = "dGridTotalGastoManutencaoMes";
+            this.dGridTotalGastoManutencaoMes.ReadOnly = true;
+            this.dGridTotalGastoManutencaoMes.RowHeadersVisible = false;
+            this.dGridTotalGastoManutencaoMes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dGridTotalGastoManutencaoMes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dGridTotalGastoManutencaoMes.Size = new System.Drawing.Size(346, 280);
+            this.dGridTotalGastoManutencaoMes.TabIndex = 124;
+            this.dGridTotalGastoManutencaoMes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridTotalGastoManutencaoMes_CellDoubleClick);
+            // 
             // id_veiculo
             // 
             this.id_veiculo.DataPropertyName = "id_veiculo";
@@ -345,7 +364,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1216, 339);
+            this.ClientSize = new System.Drawing.Size(1216, 388);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
@@ -357,6 +376,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Painel B.I.";
             this.Load += new System.EventHandler(this.frmPainelBI_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPainelBI_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -392,5 +412,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantidade_manutencao;
         private System.Windows.Forms.DataGridViewTextBoxColumn total_manutencao;
+        private DevExpress.XtraEditors.SimpleButton btnImprimirConsulta;
     }
 }

@@ -30,7 +30,7 @@ namespace Servipol.Entidades.Classes
 
                     if (VersaoBD != VersaoExe)
                     {
-                        if (XtraMessageBox.Show($"A versão do executável é diferente da versão do banco de dados!\n\nVersão do Executável: {VersaoExe}\nVersão do Banco de Dados: {VersaoBD}", "Versão Incompatível", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
+                        if (XtraMessageBox.Show($"A versão do executável é diferente da versão do banco de dados!\n\nVersão do Executável: {VersaoExe}\nVersão do Banco de Dados: {VersaoBD}\n\nCaso não consiga resolver, entre em contato com o suporte.", "Versão Incompatível", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
                         {
                             Application.Exit();
                         }
