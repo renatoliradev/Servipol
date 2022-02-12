@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using Npgsql;
 using Servipol.Entidades.Classes;
+using Servipol.Forms.Relatórios.Manutenção_de_Veículos;
 using System;
 using System.Data;
 using System.Linq;
@@ -540,7 +541,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
         private void btnImprimirConsulta_Click(object sender, EventArgs e)
         {
-            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            frmRelManutencaoRealizadaResumo frmRelManutencaoRealizadaResumo = new frmRelManutencaoRealizadaResumo();
+            frmRelManutencaoRealizadaResumo.ShowDialog();
+
         }
         #endregion
 

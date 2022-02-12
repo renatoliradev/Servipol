@@ -67,6 +67,24 @@
     <Reference Include="DevExpress.XtraBars.v19.1" />
     <Reference Include="DevExpress.Sparkline.v19.1.Core" />
     <Reference Include="DevExpress.XtraEditors.v19.1" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Mono.Security.dll</HintPath>
@@ -207,89 +225,95 @@
     <Compile Include="Forms\Configuração\frmTipoContratoConsultar.Designer.cs">
       <DependentUpon>frmTipoContratoConsultar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmLocalManutencaoCadastrar.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Cadastros\frmLocalManutencaoCadastrar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmLocalManutencaoCadastrar.Designer.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Cadastros\frmLocalManutencaoCadastrar.Designer.cs">
       <DependentUpon>frmLocalManutencaoCadastrar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmLocalManutencaoConsultar.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Cadastros\frmLocalManutencaoConsultar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmLocalManutencaoConsultar.Designer.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Cadastros\frmLocalManutencaoConsultar.Designer.cs">
       <DependentUpon>frmLocalManutencaoConsultar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmTipoManutencaoCadastrar.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Cadastros\frmTipoManutencaoCadastrar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmTipoManutencaoCadastrar.Designer.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Cadastros\frmTipoManutencaoCadastrar.Designer.cs">
       <DependentUpon>frmTipoManutencaoCadastrar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmTipoManutencaoConsultar.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Cadastros\frmTipoManutencaoConsultar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmTipoManutencaoConsultar.Designer.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Cadastros\frmTipoManutencaoConsultar.Designer.cs">
       <DependentUpon>frmTipoManutencaoConsultar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmVeiculosCadastrar.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Cadastros\frmVeiculosCadastrar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmVeiculosCadastrar.Designer.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Cadastros\frmVeiculosCadastrar.Designer.cs">
       <DependentUpon>frmVeiculosCadastrar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmVeiculosConsultar.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Cadastros\frmVeiculosConsultar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Cadastros\frmVeiculosConsultar.Designer.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Cadastros\frmVeiculosConsultar.Designer.cs">
       <DependentUpon>frmVeiculosConsultar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoConsultar.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoConsultar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoConsultar.Designer.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoConsultar.Designer.cs">
       <DependentUpon>frmManutencaoConsultar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoMotivoExcluir.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoMotivoExcluir.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoMotivoExcluir.Designer.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoMotivoExcluir.Designer.cs">
       <DependentUpon>frmManutencaoMotivoExcluir.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmPainelBI.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmPainelBI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmPainelBI.Designer.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmPainelBI.Designer.cs">
       <DependentUpon>frmPainelBI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmProxTrocaOleoRevisao.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmProxTrocaOleoRevisao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmProxTrocaOleoRevisao.Designer.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmProxTrocaOleoRevisao.Designer.cs">
       <DependentUpon>frmProxTrocaOleoRevisao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmRegistrarKmDiario.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmRegistrarKmDiario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmRegistrarKmDiario.Designer.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmRegistrarKmDiario.Designer.cs">
       <DependentUpon>frmRegistrarKmDiario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoRegistrar.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoRegistrar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoRegistrar.Designer.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoRegistrar.Designer.cs">
       <DependentUpon>frmManutencaoRegistrar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoDetalhadaVeiculo.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoDetalhadaVeiculo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoDetalhadaVeiculo.Designer.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoDetalhadaVeiculo.Designer.cs">
       <DependentUpon>frmManutencaoDetalhadaVeiculo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoDetalhadaMesTotal.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoDetalhadaMesTotal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoDetalhadaMesTotal.Designer.cs">
+    <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoDetalhadaMesTotal.Designer.cs">
       <DependentUpon>frmManutencaoDetalhadaMesTotal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Relatorios\frmRelManutencaoRealizadaResumo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Relatorios\frmRelManutencaoRealizadaResumo.Designer.cs">
+      <DependentUpon>frmRelManutencaoRealizadaResumo.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -305,6 +329,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Forms\Cadastros\Clientes\frmClientesConsultar.resx">
       <DependentUpon>frmClientesConsultar.cs</DependentUpon>
     </EmbeddedResource>
@@ -335,48 +360,52 @@
     <EmbeddedResource Include="Forms\Configuração\frmParametrosSistema.resx">
       <DependentUpon>frmParametrosSistema.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Manutenção de Veículos\Cadastros\frmLocalManutencaoCadastrar.resx">
+    <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Cadastros\frmLocalManutencaoCadastrar.resx">
       <DependentUpon>frmLocalManutencaoCadastrar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Manutenção de Veículos\Cadastros\frmLocalManutencaoConsultar.resx">
+    <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Cadastros\frmLocalManutencaoConsultar.resx">
       <DependentUpon>frmLocalManutencaoConsultar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Manutenção de Veículos\Cadastros\frmTipoManutencaoCadastrar.resx">
+    <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Cadastros\frmTipoManutencaoCadastrar.resx">
       <DependentUpon>frmTipoManutencaoCadastrar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Manutenção de Veículos\Cadastros\frmTipoManutencaoConsultar.resx">
+    <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Cadastros\frmTipoManutencaoConsultar.resx">
       <DependentUpon>frmTipoManutencaoConsultar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Manutenção de Veículos\Cadastros\frmVeiculosCadastrar.resx">
+    <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Cadastros\frmVeiculosCadastrar.resx">
       <DependentUpon>frmVeiculosCadastrar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Manutenção de Veículos\Cadastros\frmVeiculosConsultar.resx">
+    <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Cadastros\frmVeiculosConsultar.resx">
       <DependentUpon>frmVeiculosConsultar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoConsultar.resx">
+    <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoConsultar.resx">
       <DependentUpon>frmManutencaoConsultar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoDetalhadaMesTotal.resx">
+    <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoDetalhadaMesTotal.resx">
       <DependentUpon>frmManutencaoDetalhadaMesTotal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoDetalhadaVeiculo.resx">
+    <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoDetalhadaVeiculo.resx">
       <DependentUpon>frmManutencaoDetalhadaVeiculo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoMotivoExcluir.resx">
+    <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoMotivoExcluir.resx">
       <DependentUpon>frmManutencaoMotivoExcluir.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmManutencaoRegistrar.resx">
+    <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoRegistrar.resx">
       <DependentUpon>frmManutencaoRegistrar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmPainelBI.resx">
+    <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Manutencao\frmPainelBI.resx">
       <DependentUpon>frmPainelBI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmProxTrocaOleoRevisao.resx">
+    <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Manutencao\frmProxTrocaOleoRevisao.resx">
       <DependentUpon>frmProxTrocaOleoRevisao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Manutenção de Veículos\Manutenção\frmRegistrarKmDiario.resx">
+    <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Manutencao\frmRegistrarKmDiario.resx">
       <DependentUpon>frmRegistrarKmDiario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Relatorios\frmRelManutencaoRealizadaResumo.resx">
+      <DependentUpon>frmRelManutencaoRealizadaResumo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Relatorios\RelManutencaoRealizadaResumo.rdlc" />
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -394,6 +423,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -408,13 +438,8 @@
   <ItemGroup>
     <Folder Include="Entidades\Enums\" />
     <Folder Include="Entidades\Interfaces\" />
-    <Folder Include="Forms\Manutenção de Veículos\Abastecimento\" />
-    <Folder Include="Forms\Relatórios\ATA\Agente\" />
-    <Folder Include="Forms\Relatórios\ATA\Operador\" />
-    <Folder Include="Forms\Relatórios\Clientes\" />
-    <Folder Include="Forms\Relatórios\Equipamentos\" />
-    <Folder Include="Forms\Relatórios\Funcionários\" />
-    <Folder Include="Forms\Relatórios\Manutenção de Veículos\" />
+    <Folder Include="Forms\ManutencaoDeVeiculos\Abastecimento\" />
+    <Folder Include="Forms\Manutenção de Veículos\Manutenção\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -427,6 +452,21 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
