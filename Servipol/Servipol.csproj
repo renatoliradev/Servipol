@@ -61,12 +61,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v19.1" />
+    <Reference Include="DevExpress.Charts.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v19.1" />
+    <Reference Include="DevExpress.Office.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v19.1.Core" />
+    <Reference Include="DevExpress.RichEdit.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.1.Export, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v19.1" />
+    <Reference Include="DevExpress.Utils.v19.1.UI, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v19.1" />
     <Reference Include="DevExpress.Sparkline.v19.1.Core" />
+    <Reference Include="DevExpress.XtraCharts.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v19.1" />
+    <Reference Include="DevExpress.XtraGauges.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v19.1.Extensions, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -159,70 +171,70 @@
     <Compile Include="Forms\Cadastros\Equipamentos\frmEquipamentosConsultar.Designer.cs">
       <DependentUpon>frmEquipamentosConsultar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Cadastros\Funcionários\frmFuncionariosCadastrar.cs">
+    <Compile Include="Forms\Cadastros\Funcionarios\frmFuncionariosCadastrar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Cadastros\Funcionários\frmFuncionariosCadastrar.Designer.cs">
+    <Compile Include="Forms\Cadastros\Funcionarios\frmFuncionariosCadastrar.Designer.cs">
       <DependentUpon>frmFuncionariosCadastrar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Cadastros\Funcionários\frmFuncionariosConsultar.cs">
+    <Compile Include="Forms\Cadastros\Funcionarios\frmFuncionariosConsultar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Cadastros\Funcionários\frmFuncionariosConsultar.Designer.cs">
+    <Compile Include="Forms\Cadastros\Funcionarios\frmFuncionariosConsultar.Designer.cs">
       <DependentUpon>frmFuncionariosConsultar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioPerfil.cs">
+    <Compile Include="Forms\Configuracao\ControleDeAcesso\frmUsuarioPerfil.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioPerfil.Designer.cs">
+    <Compile Include="Forms\Configuracao\ControleDeAcesso\frmUsuarioPerfil.Designer.cs">
       <DependentUpon>frmUsuarioPerfil.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioAlterarSenha.cs">
+    <Compile Include="Forms\Configuracao\ControleDeAcesso\frmUsuarioAlterarSenha.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioAlterarSenha.Designer.cs">
+    <Compile Include="Forms\Configuracao\ControleDeAcesso\frmUsuarioAlterarSenha.Designer.cs">
       <DependentUpon>frmUsuarioAlterarSenha.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioCadastrar.cs">
+    <Compile Include="Forms\Configuracao\ControleDeAcesso\frmUsuarioCadastrar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioCadastrar.Designer.cs">
+    <Compile Include="Forms\Configuracao\ControleDeAcesso\frmUsuarioCadastrar.Designer.cs">
       <DependentUpon>frmUsuarioCadastrar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioConsultar.cs">
+    <Compile Include="Forms\Configuracao\ControleDeAcesso\frmUsuarioConsultar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioConsultar.Designer.cs">
+    <Compile Include="Forms\Configuracao\ControleDeAcesso\frmUsuarioConsultar.Designer.cs">
       <DependentUpon>frmUsuarioConsultar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioPerfilConsultar.cs">
+    <Compile Include="Forms\Configuracao\ControleDeAcesso\frmUsuarioPerfilConsultar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Configuração\Controle de Acesso\frmUsuarioPerfilConsultar.Designer.cs">
+    <Compile Include="Forms\Configuracao\ControleDeAcesso\frmUsuarioPerfilConsultar.Designer.cs">
       <DependentUpon>frmUsuarioPerfilConsultar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Configuração\frmEmpresaSistema.cs">
+    <Compile Include="Forms\Configuracao\frmEmpresaSistema.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Configuração\frmEmpresaSistema.Designer.cs">
+    <Compile Include="Forms\Configuracao\frmEmpresaSistema.Designer.cs">
       <DependentUpon>frmEmpresaSistema.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Configuração\frmParametrosSistema.cs">
+    <Compile Include="Forms\Configuracao\frmParametrosSistema.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Configuração\frmParametrosSistema.Designer.cs">
+    <Compile Include="Forms\Configuracao\frmParametrosSistema.Designer.cs">
       <DependentUpon>frmParametrosSistema.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Configuração\frmTipoContratoCadastrar.cs">
+    <Compile Include="Forms\Configuracao\frmTipoContratoCadastrar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Configuração\frmTipoContratoCadastrar.Designer.cs">
+    <Compile Include="Forms\Configuracao\frmTipoContratoCadastrar.Designer.cs">
       <DependentUpon>frmTipoContratoCadastrar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Configuração\frmTipoContratoConsultar.cs">
+    <Compile Include="Forms\Configuracao\frmTipoContratoConsultar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Configuração\frmTipoContratoConsultar.Designer.cs">
+    <Compile Include="Forms\Configuracao\frmTipoContratoConsultar.Designer.cs">
       <DependentUpon>frmTipoContratoConsultar.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ManutencaoDeVeiculos\Cadastros\frmLocalManutencaoCadastrar.cs">
@@ -309,11 +321,11 @@
     <Compile Include="Forms\ManutencaoDeVeiculos\Manutencao\frmManutencaoDetalhadaMesTotal.Designer.cs">
       <DependentUpon>frmManutencaoDetalhadaMesTotal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Relatorios\frmRelManutencaoRealizadaResumo.cs">
+    <Compile Include="Forms\Relatorios\frmRelatorio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Relatorios\frmRelManutencaoRealizadaResumo.Designer.cs">
-      <DependentUpon>frmRelManutencaoRealizadaResumo.cs</DependentUpon>
+    <Compile Include="Forms\Relatorios\frmRelatorio.Designer.cs">
+      <DependentUpon>frmRelatorio.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -333,31 +345,31 @@
     <EmbeddedResource Include="Forms\Cadastros\Clientes\frmClientesConsultar.resx">
       <DependentUpon>frmClientesConsultar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Cadastros\Funcionários\frmFuncionariosCadastrar.resx">
+    <EmbeddedResource Include="Forms\Cadastros\Funcionarios\frmFuncionariosCadastrar.resx">
       <DependentUpon>frmFuncionariosCadastrar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Cadastros\Funcionários\frmFuncionariosConsultar.resx">
+    <EmbeddedResource Include="Forms\Cadastros\Funcionarios\frmFuncionariosConsultar.resx">
       <DependentUpon>frmFuncionariosConsultar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Configuração\Controle de Acesso\frmUsuarioAlterarSenha.resx">
+    <EmbeddedResource Include="Forms\Configuracao\ControleDeAcesso\frmUsuarioAlterarSenha.resx">
       <DependentUpon>frmUsuarioAlterarSenha.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Configuração\Controle de Acesso\frmUsuarioCadastrar.resx">
+    <EmbeddedResource Include="Forms\Configuracao\ControleDeAcesso\frmUsuarioCadastrar.resx">
       <DependentUpon>frmUsuarioCadastrar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Configuração\Controle de Acesso\frmUsuarioConsultar.resx">
+    <EmbeddedResource Include="Forms\Configuracao\ControleDeAcesso\frmUsuarioConsultar.resx">
       <DependentUpon>frmUsuarioConsultar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Configuração\Controle de Acesso\frmUsuarioPerfil.resx">
+    <EmbeddedResource Include="Forms\Configuracao\ControleDeAcesso\frmUsuarioPerfil.resx">
       <DependentUpon>frmUsuarioPerfil.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Configuração\Controle de Acesso\frmUsuarioPerfilConsultar.resx">
+    <EmbeddedResource Include="Forms\Configuracao\ControleDeAcesso\frmUsuarioPerfilConsultar.resx">
       <DependentUpon>frmUsuarioPerfilConsultar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Configuração\frmEmpresaSistema.resx">
+    <EmbeddedResource Include="Forms\Configuracao\frmEmpresaSistema.resx">
       <DependentUpon>frmEmpresaSistema.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Configuração\frmParametrosSistema.resx">
+    <EmbeddedResource Include="Forms\Configuracao\frmParametrosSistema.resx">
       <DependentUpon>frmParametrosSistema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Cadastros\frmLocalManutencaoCadastrar.resx">
@@ -402,8 +414,8 @@
     <EmbeddedResource Include="Forms\ManutencaoDeVeiculos\Manutencao\frmRegistrarKmDiario.resx">
       <DependentUpon>frmRegistrarKmDiario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Relatorios\frmRelManutencaoRealizadaResumo.resx">
-      <DependentUpon>frmRelManutencaoRealizadaResumo.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Relatorios\frmRelatorio.resx">
+      <DependentUpon>frmRelatorio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Relatorios\RelManutencaoRealizadaResumo.rdlc" />
     <EmbeddedResource Include="frmLogin.resx">
@@ -439,7 +451,6 @@
     <Folder Include="Entidades\Enums\" />
     <Folder Include="Entidades\Interfaces\" />
     <Folder Include="Forms\ManutencaoDeVeiculos\Abastecimento\" />
-    <Folder Include="Forms\Manutenção de Veículos\Manutenção\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

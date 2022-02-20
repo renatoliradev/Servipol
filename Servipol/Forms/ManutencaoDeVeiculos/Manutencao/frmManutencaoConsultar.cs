@@ -1,8 +1,8 @@
 ﻿using DevExpress.XtraEditors;
 using Npgsql;
 using Servipol.Entidades.Classes;
-using Servipol.Forms.Relatórios.Manutenção_de_Veículos;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -541,10 +541,20 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
         private void btnImprimirConsulta_Click(object sender, EventArgs e)
         {
-            //XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var dadosRelatorio = from DataGridViewRow linha in dGridManutencoes.Rows
+                                 select new
+                                 {
+                                     DataManutencao = linha.Cells["data_manutencao"].Value,
+                                     Placa = linha.Cells["placa"].Value,
+                                     Veiculo = linha.Cells["veiculo"].Value,
+                                     KmManutencao = linha.Cells["km_veiculo"].Value,
+                                     KmAtual = linha.Cells["km_atual"].Value,
+                                     KmRodado = linha.Cells["km_rodado"].Value,
+                                     TipoManutencao = linha.Cells["descricao_tipo_manutencao"].Value
+                                 };
+            
 
-            frmRelManutencaoRealizadaResumo frmRelManutencaoRealizadaResumo = new frmRelManutencaoRealizadaResumo();
-            frmRelManutencaoRealizadaResumo.ShowDialog();
+            Relatorios.frmRelatorio.ShowReport("Servipol.Forms.Relatorios.RelManutencaoRealizadaResumo.rdlc", true, new Dictionary<string, object>() { { "DataSetManutencao", dadosRelatorio.AsEnumerable() } });
 
         }
         #endregion
