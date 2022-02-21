@@ -47,7 +47,7 @@ namespace Servipol.Forms.Relatorios
         public static void ShowReport(string path, bool isEmbeddedResource, Dictionary<string, object> dataSources, Dictionary<string, object> reportParameters = null)
         {
             var frmRelatorio = new frmRelatorio(path, isEmbeddedResource, dataSources, reportParameters);
-            frmRelatorio.Show();
+            frmRelatorio.ShowDialog();
         }
     }
 }

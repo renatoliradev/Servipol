@@ -550,10 +550,13 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                                      KmManutencao = linha.Cells["km_veiculo"].Value,
                                      KmAtual = linha.Cells["km_atual"].Value,
                                      KmRodado = linha.Cells["km_rodado"].Value,
-                                     TipoManutencao = linha.Cells["descricao_tipo_manutencao"].Value
+                                     TipoManutencao = linha.Cells["descricao_tipo_manutencao"].Value, 
+                                     LocalManutencao = linha.Cells["descricao_local_manutencao"].Value,
+                                     Funcionario = linha.Cells["qra"].Value,
+                                     Situacao = linha.Cells["situacao"].Value,
+                                     ValorManutencao = linha.Cells["valor_total_manutencao"].Value
                                  };
             
-
             Relatorios.frmRelatorio.ShowReport("Servipol.Forms.Relatorios.RelManutencaoRealizadaResumo.rdlc", true, new Dictionary<string, object>() { { "DataSetManutencao", dadosRelatorio.AsEnumerable() } });
 
         }
