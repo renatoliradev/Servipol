@@ -5,6 +5,8 @@ using System;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 {
@@ -201,7 +203,18 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         private void btnImprimirConsulta_Click(object sender, EventArgs e)
         {
-            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var dadosRelatorio = from DataGridViewRow linha in dGridTipoManutencao.Rows
+                                 select new
+                                 {
+                                     Descricao = linha.Cells["descricao"].Value,
+                                     AplicacaoCarro = linha.Cells["aplicacao_carro"].Value,
+                                     AplicacaoMoto = linha.Cells["aplicacao_moto"].Value,
+                                     UsuarioCadastro = linha.Cells["usuario_cadastro"].Value,
+                                     DataCadastro = linha.Cells["data_cadastro"].Value,
+                                     Ativo = linha.Cells["ativo"].Value
+                                 };
+
+            Relatorios.frmRelatorio.ShowReport("Servipol.Forms.Relatorios.RelacaoTipoDeManutencao.rdlc", true, new Dictionary<string, object>() { { "DataSetTipoManutencao", dadosRelatorio.AsEnumerable() } });
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)

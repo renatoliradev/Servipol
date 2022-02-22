@@ -417,7 +417,9 @@
     <EmbeddedResource Include="Forms\Relatorios\frmRelatorio.resx">
       <DependentUpon>frmRelatorio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Relatorios\RelManutencaoRealizadaResumo.rdlc" />
+    <EmbeddedResource Include="Forms\Relatorios\RelacaoDeVeiculos.rdlc" />
+    <EmbeddedResource Include="Forms\Relatorios\RelacaoTipoDeManutencao.rdlc" />
+    <EmbeddedResource Include="Forms\Relatorios\ResumoManutencaoRealizada.rdlc" />
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>

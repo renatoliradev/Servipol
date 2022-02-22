@@ -557,8 +557,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                                      ValorManutencao = linha.Cells["valor_total_manutencao"].Value
                                  };
             
-            Relatorios.frmRelatorio.ShowReport("Servipol.Forms.Relatorios.RelManutencaoRealizadaResumo.rdlc", true, new Dictionary<string, object>() { { "DataSetManutencao", dadosRelatorio.AsEnumerable() } });
-
+            Relatorios.frmRelatorio.ShowReport("Servipol.Forms.Relatorios.ResumoManutencaoRealizada.rdlc", true, new Dictionary<string, object>() { { "DataSetManutencao", dadosRelatorio.AsEnumerable() } });
         }
         #endregion
 

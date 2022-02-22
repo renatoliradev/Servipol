@@ -2,8 +2,10 @@
 using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
@@ -293,7 +295,19 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         private void btnImprimirConsulta_Click(object sender, EventArgs e)
         {
-            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var dadosRelatorio = from DataGridViewRow linha in dGridVeiculos.Rows
+                                 select new
+                                 {
+                                     Tipo = linha.Cells["tipo"].Value,
+                                     Codigo = linha.Cells["codigo"].Value,
+                                     Placa = linha.Cells["placa"].Value,
+                                     Descricao = linha.Cells["descricao"].Value,
+                                     ObrigatorioKmDiario = linha.Cells["registra_km_diario"].Value,
+                                     KmValidadeOleo = linha.Cells["km_validade_oleo"].Value,
+                                     Ativo = linha.Cells["ativo"].Value
+                                 };
+
+            Relatorios.frmRelatorio.ShowReport("Servipol.Forms.Relatorios.RelacaoDeVeiculos.rdlc", true, new Dictionary<string, object>() { { "DataSetVeiculos", dadosRelatorio.AsEnumerable() } });
         }
 
         #endregion
