@@ -2,8 +2,10 @@
 using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Servipol.Forms.Cadastros.Funcionários
@@ -240,7 +242,22 @@ namespace Servipol.Forms.Cadastros.Funcionários
 
         private void btnImprimirConsulta_Click(object sender, EventArgs e)
         {
-            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var dadosRelatorio = from DataGridViewRow linha in dGridFuncionarios.Rows
+                                 select new
+                                 {
+                                     Cargo = linha.Cells["descricao_funcionario_cargo"].Value,
+                                     TipoSanguineo = linha.Cells["tipo_sanguineo"].Value,
+                                     CodigoAgente = linha.Cells["codigo_ase"].Value,
+                                     Nome = linha.Cells["nome"].Value,
+                                     Telefone1 = linha.Cells["telefone_1"].Value,
+                                     Telefone2 = linha.Cells["telefone_2"].Value,
+                                     DataAdmissao = linha.Cells["data_admissao"].Value,
+                                     Ativo = linha.Cells["ativo"].Value,
+                                     Telefone3 = linha.Cells["telefone_3"].Value,
+                                     Telefone4 = linha.Cells["telefone_4"].Value
+                                 };
+
+            Relatorios.frmRelatorio.ShowReport("Servipol.Forms.Relatorios.RelacaoDeFuncionarios.rdlc", true, new Dictionary<string, object>() { { "DataSetFuncionarios", dadosRelatorio.AsEnumerable() } });
         }
 
         #endregion

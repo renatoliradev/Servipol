@@ -42,23 +42,23 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnConsultar = new DevExpress.XtraEditors.SimpleButton();
             this.dGridFuncionarios = new System.Windows.Forms.DataGridView();
-            this.id_funcionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricao_funcionario_cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_admissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigo_ase = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo_sanguineo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefone_funcionario_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefone_funcionario_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefone_funcionario_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefone_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnVisualizar = new DevExpress.XtraEditors.SimpleButton();
             this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
             this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
             this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.id_funcionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao_funcionario_cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_admissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigo_ase = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo_sanguineo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefone_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefone_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefone_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefone_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -193,9 +193,9 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.codigo_ase,
             this.nome,
             this.tipo_sanguineo,
-            this.telefone_funcionario_1,
-            this.telefone_funcionario_2,
-            this.telefone_funcionario_3,
+            this.telefone_1,
+            this.telefone_2,
+            this.telefone_3,
             this.telefone_4,
             this.ativo});
             this.dGridFuncionarios.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -209,112 +209,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.dGridFuncionarios.Size = new System.Drawing.Size(1236, 353);
             this.dGridFuncionarios.TabIndex = 0;
             this.dGridFuncionarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridFuncionarios_CellDoubleClick);
-            // 
-            // id_funcionario
-            // 
-            this.id_funcionario.DataPropertyName = "id_funcionario";
-            this.id_funcionario.FillWeight = 1F;
-            this.id_funcionario.HeaderText = "ID";
-            this.id_funcionario.MinimumWidth = 2;
-            this.id_funcionario.Name = "id_funcionario";
-            this.id_funcionario.ReadOnly = true;
-            this.id_funcionario.Visible = false;
-            // 
-            // descricao_funcionario_cargo
-            // 
-            this.descricao_funcionario_cargo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.descricao_funcionario_cargo.DataPropertyName = "descricao_funcionario_cargo";
-            this.descricao_funcionario_cargo.HeaderText = "Cargo";
-            this.descricao_funcionario_cargo.Name = "descricao_funcionario_cargo";
-            this.descricao_funcionario_cargo.ReadOnly = true;
-            this.descricao_funcionario_cargo.Width = 63;
-            // 
-            // data_admissao
-            // 
-            this.data_admissao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.data_admissao.DataPropertyName = "data_admissao";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.data_admissao.DefaultCellStyle = dataGridViewCellStyle2;
-            this.data_admissao.HeaderText = "Data Admissão";
-            this.data_admissao.Name = "data_admissao";
-            this.data_admissao.ReadOnly = true;
-            this.data_admissao.Width = 99;
-            // 
-            // codigo_ase
-            // 
-            this.codigo_ase.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.codigo_ase.DataPropertyName = "codigo_ase";
-            this.codigo_ase.FillWeight = 80F;
-            this.codigo_ase.HeaderText = "Cód. Agente";
-            this.codigo_ase.Name = "codigo_ase";
-            this.codigo_ase.ReadOnly = true;
-            this.codigo_ase.Width = 88;
-            // 
-            // nome
-            // 
-            this.nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nome.DataPropertyName = "nome";
-            this.nome.FillWeight = 180F;
-            this.nome.HeaderText = "Nome";
-            this.nome.Name = "nome";
-            this.nome.ReadOnly = true;
-            // 
-            // tipo_sanguineo
-            // 
-            this.tipo_sanguineo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.tipo_sanguineo.DataPropertyName = "tipo_sanguineo";
-            this.tipo_sanguineo.HeaderText = "Tipo Sanguíneo";
-            this.tipo_sanguineo.Name = "tipo_sanguineo";
-            this.tipo_sanguineo.ReadOnly = true;
-            this.tipo_sanguineo.Width = 105;
-            // 
-            // telefone_funcionario_1
-            // 
-            this.telefone_funcionario_1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.telefone_funcionario_1.DataPropertyName = "telefone_1";
-            this.telefone_funcionario_1.HeaderText = "Telefone 1";
-            this.telefone_funcionario_1.Name = "telefone_funcionario_1";
-            this.telefone_funcionario_1.ReadOnly = true;
-            this.telefone_funcionario_1.Width = 78;
-            // 
-            // telefone_funcionario_2
-            // 
-            this.telefone_funcionario_2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.telefone_funcionario_2.DataPropertyName = "telefone_2";
-            this.telefone_funcionario_2.HeaderText = "Telefone 2";
-            this.telefone_funcionario_2.Name = "telefone_funcionario_2";
-            this.telefone_funcionario_2.ReadOnly = true;
-            this.telefone_funcionario_2.Width = 78;
-            // 
-            // telefone_funcionario_3
-            // 
-            this.telefone_funcionario_3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.telefone_funcionario_3.DataPropertyName = "telefone_3";
-            this.telefone_funcionario_3.HeaderText = "Telefone 3";
-            this.telefone_funcionario_3.Name = "telefone_funcionario_3";
-            this.telefone_funcionario_3.ReadOnly = true;
-            this.telefone_funcionario_3.Width = 78;
-            // 
-            // telefone_4
-            // 
-            this.telefone_4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.telefone_4.DataPropertyName = "telefone_4";
-            this.telefone_4.HeaderText = "Telefone 4";
-            this.telefone_4.Name = "telefone_4";
-            this.telefone_4.ReadOnly = true;
-            this.telefone_4.Width = 78;
-            // 
-            // ativo
-            // 
-            this.ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ativo.DataPropertyName = "ativo";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ativo.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ativo.FillWeight = 50F;
-            this.ativo.HeaderText = "Ativo";
-            this.ativo.Name = "ativo";
-            this.ativo.ReadOnly = true;
-            this.ativo.Width = 58;
             // 
             // panel2
             // 
@@ -402,6 +296,112 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.panel3.Size = new System.Drawing.Size(1238, 355);
             this.panel3.TabIndex = 138;
             // 
+            // id_funcionario
+            // 
+            this.id_funcionario.DataPropertyName = "id_funcionario";
+            this.id_funcionario.FillWeight = 1F;
+            this.id_funcionario.HeaderText = "ID";
+            this.id_funcionario.MinimumWidth = 2;
+            this.id_funcionario.Name = "id_funcionario";
+            this.id_funcionario.ReadOnly = true;
+            this.id_funcionario.Visible = false;
+            // 
+            // descricao_funcionario_cargo
+            // 
+            this.descricao_funcionario_cargo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.descricao_funcionario_cargo.DataPropertyName = "descricao_funcionario_cargo";
+            this.descricao_funcionario_cargo.HeaderText = "Cargo";
+            this.descricao_funcionario_cargo.Name = "descricao_funcionario_cargo";
+            this.descricao_funcionario_cargo.ReadOnly = true;
+            this.descricao_funcionario_cargo.Width = 63;
+            // 
+            // data_admissao
+            // 
+            this.data_admissao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.data_admissao.DataPropertyName = "data_admissao";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.data_admissao.DefaultCellStyle = dataGridViewCellStyle2;
+            this.data_admissao.HeaderText = "Data Admissão";
+            this.data_admissao.Name = "data_admissao";
+            this.data_admissao.ReadOnly = true;
+            this.data_admissao.Width = 99;
+            // 
+            // codigo_ase
+            // 
+            this.codigo_ase.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.codigo_ase.DataPropertyName = "codigo_ase";
+            this.codigo_ase.FillWeight = 80F;
+            this.codigo_ase.HeaderText = "Cód. Agente";
+            this.codigo_ase.Name = "codigo_ase";
+            this.codigo_ase.ReadOnly = true;
+            this.codigo_ase.Width = 88;
+            // 
+            // nome
+            // 
+            this.nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nome.DataPropertyName = "nome";
+            this.nome.FillWeight = 180F;
+            this.nome.HeaderText = "Nome";
+            this.nome.Name = "nome";
+            this.nome.ReadOnly = true;
+            // 
+            // tipo_sanguineo
+            // 
+            this.tipo_sanguineo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.tipo_sanguineo.DataPropertyName = "tipo_sanguineo";
+            this.tipo_sanguineo.HeaderText = "Tipo Sanguíneo";
+            this.tipo_sanguineo.Name = "tipo_sanguineo";
+            this.tipo_sanguineo.ReadOnly = true;
+            this.tipo_sanguineo.Width = 105;
+            // 
+            // telefone_1
+            // 
+            this.telefone_1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.telefone_1.DataPropertyName = "telefone_1";
+            this.telefone_1.HeaderText = "Telefone 1";
+            this.telefone_1.Name = "telefone_1";
+            this.telefone_1.ReadOnly = true;
+            this.telefone_1.Width = 78;
+            // 
+            // telefone_2
+            // 
+            this.telefone_2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.telefone_2.DataPropertyName = "telefone_2";
+            this.telefone_2.HeaderText = "Telefone 2";
+            this.telefone_2.Name = "telefone_2";
+            this.telefone_2.ReadOnly = true;
+            this.telefone_2.Width = 78;
+            // 
+            // telefone_3
+            // 
+            this.telefone_3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.telefone_3.DataPropertyName = "telefone_3";
+            this.telefone_3.HeaderText = "Telefone 3";
+            this.telefone_3.Name = "telefone_3";
+            this.telefone_3.ReadOnly = true;
+            this.telefone_3.Width = 78;
+            // 
+            // telefone_4
+            // 
+            this.telefone_4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.telefone_4.DataPropertyName = "telefone_4";
+            this.telefone_4.HeaderText = "Telefone 4";
+            this.telefone_4.Name = "telefone_4";
+            this.telefone_4.ReadOnly = true;
+            this.telefone_4.Width = 78;
+            // 
+            // ativo
+            // 
+            this.ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ativo.DataPropertyName = "ativo";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ativo.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ativo.FillWeight = 50F;
+            this.ativo.HeaderText = "Ativo";
+            this.ativo.Name = "ativo";
+            this.ativo.ReadOnly = true;
+            this.ativo.Width = 58;
+            // 
             // frmFuncionariosConsultar
             // 
             this.Appearance.Options.UseFont = true;
@@ -460,9 +460,9 @@ namespace Servipol.Forms.Cadastros.Funcionários
         private System.Windows.Forms.DataGridViewTextBoxColumn codigo_ase;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo_sanguineo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefone_funcionario_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefone_funcionario_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefone_funcionario_3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefone_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefone_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefone_3;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefone_4;
         private System.Windows.Forms.DataGridViewTextBoxColumn ativo;
     }

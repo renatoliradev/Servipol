@@ -37,6 +37,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProxTrocaOleoRevisao));
             this.tBoxInfo = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -51,6 +52,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.km_atual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.km_falta_troca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_km_diario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -90,7 +92,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1200, 410);
+            this.groupControl1.Size = new System.Drawing.Size(1200, 369);
             this.groupControl1.TabIndex = 233;
             // 
             // dGrid
@@ -100,9 +102,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
             this.dGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dGrid.BackgroundColor = System.Drawing.Color.White;
             this.dGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -118,6 +117,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.km_atual,
             this.km_falta_troca,
             this.data_km_diario});
+            this.dGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dGrid.Location = new System.Drawing.Point(2, 22);
             this.dGrid.MultiSelect = false;
@@ -127,7 +127,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGrid.Size = new System.Drawing.Size(1196, 388);
+            this.dGrid.Size = new System.Drawing.Size(1196, 345);
             this.dGrid.TabIndex = 226;
             this.dGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGrid_CellDoubleClick);
             this.dGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dGrid_CellFormatting);
@@ -248,11 +248,27 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.data_km_diario.ReadOnly = true;
             this.data_km_diario.Visible = false;
             // 
+            // btnImprimirConsulta
+            // 
+            this.btnImprimirConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnImprimirConsulta.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirConsulta.Appearance.Options.UseFont = true;
+            this.btnImprimirConsulta.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnImprimirConsulta.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnImprimirConsulta.ImageOptions.SvgImage")));
+            this.btnImprimirConsulta.Location = new System.Drawing.Point(2, 375);
+            this.btnImprimirConsulta.Name = "btnImprimirConsulta";
+            this.btnImprimirConsulta.Size = new System.Drawing.Size(1196, 44);
+            this.btnImprimirConsulta.TabIndex = 234;
+            this.btnImprimirConsulta.TabStop = false;
+            this.btnImprimirConsulta.Text = "[CTRL + P] - Imprimir consulta";
+            this.btnImprimirConsulta.Click += new System.EventHandler(this.btnImprimirConsulta_Click);
+            // 
             // frmProxTrocaOleoRevisao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 457);
+            this.Controls.Add(this.btnImprimirConsulta);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupControl1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
@@ -292,5 +308,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         private System.Windows.Forms.DataGridViewTextBoxColumn km_atual;
         private System.Windows.Forms.DataGridViewTextBoxColumn km_falta_troca;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_km_diario;
+        private DevExpress.XtraEditors.SimpleButton btnImprimirConsulta;
     }
 }

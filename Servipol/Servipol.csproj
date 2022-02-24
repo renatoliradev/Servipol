@@ -418,7 +418,10 @@
       <DependentUpon>frmRelatorio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Relatorios\RelacaoDeVeiculos.rdlc" />
+    <EmbeddedResource Include="Forms\Relatorios\RelacaoLocalDeManutencao.rdlc" />
     <EmbeddedResource Include="Forms\Relatorios\RelacaoTipoDeManutencao.rdlc" />
+    <EmbeddedResource Include="Forms\Relatorios\RelacaoProximaTrocaOleo.rdlc" />
+    <EmbeddedResource Include="Forms\Relatorios\RelacaoDeFuncionarios.rdlc" />
     <EmbeddedResource Include="Forms\Relatorios\ResumoManutencaoRealizada.rdlc" />
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

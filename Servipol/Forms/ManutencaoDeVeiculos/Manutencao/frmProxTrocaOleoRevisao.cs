@@ -2,8 +2,10 @@
 using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
@@ -92,9 +94,30 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                     this.Close();
                     break;
             }
+            if (e.Control && e.KeyCode == Keys.P)
+            {
+                btnImprimirConsulta_Click(sender, e);
+            }
         }
 
         #endregion
 
+        private void btnImprimirConsulta_Click(object sender, EventArgs e)
+        {
+            var dadosRelatorio = from DataGridViewRow linha in dGrid.Rows
+                                 select new
+                                 {
+                                     Placa = linha.Cells["placa"].Value,
+                                     Veiculo = linha.Cells["veiculo"].Value,
+                                     DataUltimaTrocaOleo = linha.Cells["data_manutencao"].Value,
+                                     FuncUltimaTrocaOleo = linha.Cells["funcionario_ultima_troca"].Value,
+                                     LocalUltimaTrocaOleo = linha.Cells["local_troca"].Value,
+                                     KmProxTrocaOleo = linha.Cells["km_prox_troca"].Value,
+                                     KmAtual = linha.Cells["km_atual"].Value,
+                                     KmFaltaProxTrocaOleo = linha.Cells["km_falta_troca"].Value
+                                 };
+
+            Relatorios.frmRelatorio.ShowReport("Servipol.Forms.Relatorios.RelacaoProximaTrocaOleo.rdlc", true, new Dictionary<string, object>() { { "DataSetProxTrocaOleo", dadosRelatorio.AsEnumerable() } });
+        }
     }
 }
