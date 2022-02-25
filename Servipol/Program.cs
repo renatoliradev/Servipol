@@ -1,4 +1,5 @@
-﻿using DevExpress.UserSkins;
+﻿using DevExpress.Skins;
+using DevExpress.UserSkins;
 using System;
 using System.Windows.Forms;
 
@@ -16,6 +17,7 @@ namespace Servipol
             Application.SetCompatibleTextRenderingDefault(false);
 
             BonusSkins.Register();
+            SkinManager.EnableFormSkins();
             Application.Run(new frmPrincipal());
         }
     }

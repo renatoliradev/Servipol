@@ -30,7 +30,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuarioPerfilConsultar));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cBoxTipoBusca = new System.Windows.Forms.ComboBox();
             this.cBoxSituacao = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -39,7 +39,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tBoxTextoConsulta = new System.Windows.Forms.TextBox();
-            this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnExcluir = new DevExpress.XtraEditors.SimpleButton();
             this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
@@ -51,6 +50,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.usuario_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -166,21 +166,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.tBoxTextoConsulta.TabIndex = 107;
             this.tBoxTextoConsulta.TabStop = false;
             // 
-            // btnImprimirConsulta
-            // 
-            this.btnImprimirConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnImprimirConsulta.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirConsulta.Appearance.Options.UseFont = true;
-            this.btnImprimirConsulta.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnImprimirConsulta.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnImprimirConsulta.ImageOptions.SvgImage")));
-            this.btnImprimirConsulta.Location = new System.Drawing.Point(3, 9);
-            this.btnImprimirConsulta.Name = "btnImprimirConsulta";
-            this.btnImprimirConsulta.Size = new System.Drawing.Size(233, 44);
-            this.btnImprimirConsulta.TabIndex = 188;
-            this.btnImprimirConsulta.TabStop = false;
-            this.btnImprimirConsulta.Text = "[CTRL + P] - Imprimir consulta";
-            this.btnImprimirConsulta.Click += new System.EventHandler(this.btnImprimirConsulta_Click);
-            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -258,8 +243,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.dGridUsuarioPerfil.AllowUserToDeleteRows = false;
             this.dGridUsuarioPerfil.AllowUserToResizeColumns = false;
             this.dGridUsuarioPerfil.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lavender;
-            this.dGridUsuarioPerfil.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
+            this.dGridUsuarioPerfil.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dGridUsuarioPerfil.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dGridUsuarioPerfil.BackgroundColor = System.Drawing.Color.White;
             this.dGridUsuarioPerfil.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -324,6 +309,22 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.ativo.ReadOnly = true;
             this.ativo.Width = 58;
             // 
+            // btnImprimirConsulta
+            // 
+            this.btnImprimirConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnImprimirConsulta.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirConsulta.Appearance.Options.UseFont = true;
+            this.btnImprimirConsulta.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnImprimirConsulta.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnImprimirConsulta.ImageOptions.SvgImage")));
+            this.btnImprimirConsulta.Location = new System.Drawing.Point(3, 9);
+            this.btnImprimirConsulta.Name = "btnImprimirConsulta";
+            this.btnImprimirConsulta.Size = new System.Drawing.Size(233, 44);
+            this.btnImprimirConsulta.TabIndex = 188;
+            this.btnImprimirConsulta.TabStop = false;
+            this.btnImprimirConsulta.Text = "[CTRL + P] - Imprimir consulta";
+            this.btnImprimirConsulta.Visible = false;
+            this.btnImprimirConsulta.Click += new System.EventHandler(this.btnImprimirConsulta_Click);
+            // 
             // frmUsuarioPerfilConsultar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,7 +365,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox tBoxTextoConsulta;
-        private DevExpress.XtraEditors.SimpleButton btnImprimirConsulta;
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.SimpleButton btnIncluir;
         private DevExpress.XtraEditors.SimpleButton btnEditar;
@@ -376,5 +376,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario_cadastro;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_cadastro;
         private System.Windows.Forms.DataGridViewTextBoxColumn ativo;
+        private DevExpress.XtraEditors.SimpleButton btnImprimirConsulta;
     }
 }

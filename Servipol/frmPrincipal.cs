@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.LookAndFeel;
+using DevExpress.XtraEditors;
 using Npgsql;
 using Servipol.Entidades.Classes;
 using Servipol.Forms.Cadastros.Clientes;
@@ -40,7 +41,7 @@ namespace Servipol
 
         #region Methods
 
-        public void IniciaSessao()
+            public void IniciaSessao()
         {
             try
             {

@@ -25,5 +25,8 @@ namespace Servipol.Properties
                 return defaultInstance;
             }
         }
+
+        public string SkinName { get; internal set; }
+        public string Palette { get; internal set; }
     }
 }

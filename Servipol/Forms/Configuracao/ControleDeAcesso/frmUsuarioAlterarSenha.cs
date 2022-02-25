@@ -26,7 +26,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             tBoxUsuario.Text = UsuarioLogado;
         }
 
-        #region Button
+        #region Buttons
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
@@ -40,7 +40,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
                 if (tBoxSenha.Text == string.Empty)
                 {
-                    XtraMessageBox.Show("Informar a [Nova Senha].", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    XtraMessageBox.Show("Informe a [Nova Senha].", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     tBoxSenha.Text = string.Empty;
                     tBoxRepeticaoSenha.Text = string.Empty;
                     gbNovaSenha.Focus();
@@ -56,7 +56,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                 }
                 else
                 {
-                    NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE usuarios SET senha = UPPER(MD5('{tBoxSenha.Text.ToUpper().Trim()}')) WHERE id_usuario = {SessaoSistema.UserId}", BD.ObjetoConexao);
+                    NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE usuario SET senha = UPPER(MD5('{tBoxSenha.Text.ToUpper().Trim()}')) WHERE id_usuario = {SessaoSistema.UserId}", BD.ObjetoConexao);
                     update1.ExecuteNonQuery();
 
                     XtraMessageBox.Show("Senha alterada com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -103,14 +103,10 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             switch (e.KeyCode)
             {
                 case Keys.F12:
-                    {
-                        btnConfirmar_Click(sender, e);
-                    }
+                    btnConfirmar_Click(sender, e);
                     break;
                 case Keys.Escape:
-                    {
-                        btnCancelar_Click(sender, e);
-                    }
+                    Close();
                     break;
             }
         }

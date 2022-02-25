@@ -2,7 +2,9 @@
 using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Servipol.Forms.Configuração.Controle_de_Acesso
@@ -271,14 +273,14 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                 string idUserSelecionado = dGridUsuarios.SelectedRows[0].Cells[0].Value.ToString();
                 string loginUserSelecionado = dGridUsuarios.SelectedRows[0].Cells["login"].Value.ToString();
 
-                if (XtraMessageBox.Show($"Deseja realmente resetar a senha do usuário [{loginUserSelecionado}] ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                if (XtraMessageBox.Show($"Deseja realmente resetar a senha do usuário [{loginUserSelecionado}] ?\n\n A nova senha será: 123456", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
                     BD.Conectar();
                     string sqlCommand = $"UPDATE usuario SET senha = UPPER(MD5('123456')) WHERE id_usuario = {idUserSelecionado}";
                     NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                     command.ExecuteNonQuery();
 
-                    XtraMessageBox.Show("Nova senha: 123456", "Senha resetada com sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Senha resetada com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception)
@@ -310,7 +312,17 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
         private void btnImprimirConsulta_Click(object sender, EventArgs e)
         {
-            XtraMessageBox.Show("Funcionalidade em desenvolvimento.", "Em breve", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var dadosRelatorio = from DataGridViewRow linha in dGridUsuarios.Rows
+                                 select new
+                                 {
+                                     Login = linha.Cells["login"].Value,
+                                     Nome = linha.Cells["nome"].Value,
+                                     UsuarioCadastro = linha.Cells["usuario_cadastro"].Value,
+                                     DataCadastro = linha.Cells["data_cadastro"].Value,
+                                     Ativo = linha.Cells["ativo"].Value
+                                 };
+
+            Relatorios.frmRelatorio.ShowReport("Servipol.Forms.Relatorios.RelacaoDeUsuarios.rdlc", true, new Dictionary<string, object>() { { "DataSetUsuarios", dadosRelatorio.AsEnumerable() } });
         }
 
         #endregion

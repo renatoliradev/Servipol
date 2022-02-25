@@ -968,7 +968,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(607, 592);
+            this.ClientSize = new System.Drawing.Size(618, 603);
             this.ControlBox = false;
             this.Controls.Add(this.tabControlPerfilUsuario);
             this.Controls.Add(this.btnBloquearTudo);

@@ -213,10 +213,10 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             {
                 btnIncluir_Click(sender, e);
             }
-            if (e.Control && e.KeyCode == Keys.P)
-            {
-                btnImprimirConsulta_Click(sender, e);
-            }
+            //if (e.Control && e.KeyCode == Keys.P)
+            //{
+            //    btnImprimirConsulta_Click(sender, e);
+            //}
             if (SessaoSistema.UserPermission.Substring(5, 1) == "S" && cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.Delete)
             {
                 btnExcluir_Click(sender, e);
