@@ -13,7 +13,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
     public partial class frmVeiculosConsultar : DevExpress.XtraEditors.XtraForm
     {
         #region Instâncias
-        ConexaoBD BD = new ConexaoBD();
+        readonly ConexaoBD BD = new ConexaoBD();
         #endregion
 
         public frmVeiculosConsultar()
@@ -187,8 +187,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            string situacaoTraduzida = string.Empty;
-            string tipoBusca = string.Empty;
+            string situacaoTraduzida, tipoBusca;
 
             switch (cBoxSituacao.SelectedIndex)
             {

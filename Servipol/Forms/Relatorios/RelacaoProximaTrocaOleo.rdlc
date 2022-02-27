@@ -69,7 +69,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.58161cm</Width>
+                  <Width>2.31703cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>4.38715cm</Width>
@@ -78,16 +78,16 @@
                   <Width>2.34579cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.38643cm</Width>
+                  <Width>5.4658cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.67328cm</Width>
+                  <Width>4.56745cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.67414cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.89392cm</Width>
+                  <Width>2.18496cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>3.79892cm</Width>
@@ -286,7 +286,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Km Próxima Troca Óleo</Value>
+                                  <Value>Km Próxima Troca Óleo (A)</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -322,7 +322,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Km Atual</Value>
+                                  <Value>Km Atual (B)</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -358,7 +358,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Km Falta para Próxima Troca de Óleo</Value>
+                                  <Value>Km Falta para Próxima Troca de Óleo (A - B)</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontWeight>Bold</FontWeight>

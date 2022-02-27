@@ -179,7 +179,7 @@ namespace Servipol
             this.skinDropDownButtonItem2,
             this.skinDropDownButtonItem3});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 16;
+            this.ribbonControl.MaxItemId = 18;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.ribbonCategoriaInterno,

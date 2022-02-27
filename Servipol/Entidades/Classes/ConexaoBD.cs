@@ -11,10 +11,12 @@ namespace Servipol.Entidades.Classes
         private String _stringConexao;
         private NpgsqlConnection _conexao;
         private static string Arq_Config = @"opt\hidden\prime.prime";
-        private static string IP_BD;
-        private static string PORTA_BD;
-        private static string NOME_BD;
-        private static string USER_BD;
+
+        public string IP_BD { get; set; }
+        public string PORT_BD { get; set; }
+        public string NAME_BD { get; set; }
+        public string USER_BD { get; set; }
+        public string PASS_BD { get; set; }
 
         public ConexaoBD()
         {
@@ -29,16 +31,19 @@ namespace Servipol.Entidades.Classes
                     if (linha.StartsWith("IP_BD"))
                         IP_BD = linha.Substring(6).Trim();
 
-                    if (linha.StartsWith("PORTA_BD"))
-                        PORTA_BD = linha.Substring(9).Trim();
+                    if (linha.StartsWith("PORT_BD"))
+                        PORT_BD = linha.Substring(8).Trim();
 
-                    if (linha.StartsWith("NOME_BD"))
-                        NOME_BD = linha.Substring(8).Trim();
+                    if (linha.StartsWith("NAME_BD"))
+                        NAME_BD = linha.Substring(8).Trim();
 
                     if (linha.StartsWith("USER_BD"))
                         USER_BD = linha.Substring(8).Trim();
 
-                    StringConexao = $"Server={IP_BD}; Port={PORTA_BD}; User ID={USER_BD}; Password=cmo4lat1; Database={NOME_BD}; Pooling=true; MinPoolSize=1;";
+                    if (linha.StartsWith("PASS_BD"))
+                        PASS_BD = linha.Substring(8).Trim();
+
+                    StringConexao = $"Server={IP_BD}; Port={PORT_BD}; User ID={USER_BD}; Password={PASS_BD}; Database={NAME_BD}; Pooling=true; MinPoolSize=1;";
                 }
                 rd.Close();
                 rd.Dispose();
