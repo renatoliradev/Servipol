@@ -41,14 +41,9 @@ namespace ServipolConfig
             this.tBoxBDPort = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.tBoxBDServer = new DevExpress.XtraEditors.TextEdit();
-            this.gBoxParametrosSistema = new System.Windows.Forms.GroupBox();
-            this.btnFindSystemPath = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.tBoxSystemPath = new DevExpress.XtraEditors.TextEdit();
             this.btnValidateConnectionBD = new DevExpress.XtraEditors.SimpleButton();
             this.btnBackup = new DevExpress.XtraEditors.SimpleButton();
             this.btnRestore = new DevExpress.XtraEditors.SimpleButton();
-            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.btnExit = new DevExpress.XtraEditors.SimpleButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,8 +53,6 @@ namespace ServipolConfig
             ((System.ComponentModel.ISupportInitialize)(this.tBoxBDUser.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBoxBDPort.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBoxBDServer.Properties)).BeginInit();
-            this.gBoxParametrosSistema.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tBoxSystemPath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,12 +68,12 @@ namespace ServipolConfig
             this.gBoxConexaoBD.Controls.Add(this.tBoxBDPort);
             this.gBoxConexaoBD.Controls.Add(this.labelControl2);
             this.gBoxConexaoBD.Controls.Add(this.tBoxBDServer);
-            this.gBoxConexaoBD.Location = new System.Drawing.Point(12, 202);
+            this.gBoxConexaoBD.Location = new System.Drawing.Point(12, 141);
             this.gBoxConexaoBD.Name = "gBoxConexaoBD";
             this.gBoxConexaoBD.Size = new System.Drawing.Size(577, 109);
             this.gBoxConexaoBD.TabIndex = 0;
             this.gBoxConexaoBD.TabStop = false;
-            this.gBoxConexaoBD.Text = "Dados de conexão com o banco de dados";
+            this.gBoxConexaoBD.Text = "Dados de conexão com o banco de dados PostgreSQL 9.5";
             // 
             // labelControl6
             // 
@@ -165,56 +158,22 @@ namespace ServipolConfig
             this.tBoxBDServer.Size = new System.Drawing.Size(252, 20);
             this.tBoxBDServer.TabIndex = 2;
             // 
-            // gBoxParametrosSistema
-            // 
-            this.gBoxParametrosSistema.Controls.Add(this.btnFindSystemPath);
-            this.gBoxParametrosSistema.Controls.Add(this.labelControl1);
-            this.gBoxParametrosSistema.Controls.Add(this.tBoxSystemPath);
-            this.gBoxParametrosSistema.Location = new System.Drawing.Point(12, 141);
-            this.gBoxParametrosSistema.Name = "gBoxParametrosSistema";
-            this.gBoxParametrosSistema.Size = new System.Drawing.Size(792, 55);
-            this.gBoxParametrosSistema.TabIndex = 1;
-            this.gBoxParametrosSistema.TabStop = false;
-            this.gBoxParametrosSistema.Text = "Parâmetros do sistema";
-            // 
-            // btnFindSystemPath
-            // 
-            this.btnFindSystemPath.Location = new System.Drawing.Point(759, 21);
-            this.btnFindSystemPath.Name = "btnFindSystemPath";
-            this.btnFindSystemPath.Size = new System.Drawing.Size(27, 20);
-            this.btnFindSystemPath.TabIndex = 5;
-            this.btnFindSystemPath.Text = "...";
-            this.btnFindSystemPath.ToolTip = "Clique para localizar o diretório do arquivo";
-            this.btnFindSystemPath.Click += new System.EventHandler(this.btnFindSystemPath_Click);
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(6, 24);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(229, 13);
-            this.labelControl1.TabIndex = 1;
-            this.labelControl1.Text = "Caminho do executável principal (Servipol.exe):";
-            // 
-            // tBoxSystemPath
-            // 
-            this.tBoxSystemPath.EditValue = "";
-            this.tBoxSystemPath.Location = new System.Drawing.Point(252, 21);
-            this.tBoxSystemPath.Name = "tBoxSystemPath";
-            this.tBoxSystemPath.Size = new System.Drawing.Size(501, 20);
-            this.tBoxSystemPath.TabIndex = 0;
-            // 
             // btnValidateConnectionBD
             // 
-            this.btnValidateConnectionBD.Location = new System.Drawing.Point(595, 214);
+            this.btnValidateConnectionBD.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.btnValidateConnectionBD.Appearance.Options.UseFont = true;
+            this.btnValidateConnectionBD.Location = new System.Drawing.Point(595, 153);
             this.btnValidateConnectionBD.Name = "btnValidateConnectionBD";
             this.btnValidateConnectionBD.Size = new System.Drawing.Size(209, 26);
             this.btnValidateConnectionBD.TabIndex = 2;
-            this.btnValidateConnectionBD.Text = "Validar Conexão com BD";
+            this.btnValidateConnectionBD.Text = "Salvar e Validar Conexão com BD";
             this.btnValidateConnectionBD.Click += new System.EventHandler(this.btnValidateConnectionBD_Click);
             // 
             // btnBackup
             // 
-            this.btnBackup.Location = new System.Drawing.Point(595, 246);
+            this.btnBackup.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.btnBackup.Appearance.Options.UseFont = true;
+            this.btnBackup.Location = new System.Drawing.Point(595, 185);
             this.btnBackup.Name = "btnBackup";
             this.btnBackup.Size = new System.Drawing.Size(209, 26);
             this.btnBackup.TabIndex = 3;
@@ -223,25 +182,27 @@ namespace ServipolConfig
             // 
             // btnRestore
             // 
-            this.btnRestore.Location = new System.Drawing.Point(595, 278);
+            this.btnRestore.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.btnRestore.Appearance.Options.UseFont = true;
+            this.btnRestore.Location = new System.Drawing.Point(595, 217);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(209, 26);
             this.btnRestore.TabIndex = 4;
             this.btnRestore.Text = "Realizar Restore";
             this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
-            // folderBrowserDialog
-            // 
-            this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
-            this.folderBrowserDialog.ShowNewFolderButton = false;
-            // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(12, 340);
+            this.btnExit.Appearance.BorderColor = System.Drawing.Color.Black;
+            this.btnExit.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.btnExit.Appearance.Options.UseBorderColor = true;
+            this.btnExit.Appearance.Options.UseFont = true;
+            this.btnExit.Location = new System.Drawing.Point(12, 274);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(792, 52);
             this.btnExit.TabIndex = 5;
             this.btnExit.Text = "Fechar Configurador";
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // pictureBox1
             // 
@@ -267,14 +228,13 @@ namespace ServipolConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 397);
+            this.ClientSize = new System.Drawing.Size(816, 339);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnRestore);
             this.Controls.Add(this.btnBackup);
             this.Controls.Add(this.btnValidateConnectionBD);
-            this.Controls.Add(this.gBoxParametrosSistema);
             this.Controls.Add(this.gBoxConexaoBD);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -291,9 +251,6 @@ namespace ServipolConfig
             ((System.ComponentModel.ISupportInitialize)(this.tBoxBDUser.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBoxBDPort.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBoxBDServer.Properties)).EndInit();
-            this.gBoxParametrosSistema.ResumeLayout(false);
-            this.gBoxParametrosSistema.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tBoxSystemPath.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -305,9 +262,6 @@ namespace ServipolConfig
         private System.Windows.Forms.GroupBox gBoxConexaoBD;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit tBoxBDServer;
-        private System.Windows.Forms.GroupBox gBoxParametrosSistema;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit tBoxSystemPath;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.TextEdit tBoxBDPass;
         private DevExpress.XtraEditors.LabelControl labelControl4;
@@ -319,8 +273,6 @@ namespace ServipolConfig
         private DevExpress.XtraEditors.SimpleButton btnRestore;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.TextEdit tBoxBDName;
-        private DevExpress.XtraEditors.SimpleButton btnFindSystemPath;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private DevExpress.XtraEditors.SimpleButton btnExit;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;

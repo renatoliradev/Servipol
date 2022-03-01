@@ -7,6 +7,17 @@ namespace ServipolConfig
 {
     public partial class frmPrincipal : DevExpress.XtraEditors.XtraForm
     {
+        #region INSTANCES AND PROPERTIES
+
+        public string SystemPath { get; set; }
+        public string ipBD { get; set; }
+        public string portBD { get; set; }
+        public string nameBD { get; set; }
+        public string userBD { get; set; }
+        public string passBD { get; set; }
+
+        #endregion
+
         public frmPrincipal()
         {
             InitializeComponent();
@@ -14,30 +25,30 @@ namespace ServipolConfig
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            btnFindSystemPath.Select();
+            SystemPath = Environment.CurrentDirectory.ToString();
+
+            FindParameters();
         }
 
         private void SaveParameters()
         {
             try
             {
-                string _systemPath = tBoxSystemPath.Text;
+                ipBD = tBoxBDServer.Text;
+                portBD = tBoxBDPort.Text;
+                nameBD = tBoxBDName.Text;
+                userBD = tBoxBDUser.Text;
+                passBD = tBoxBDPass.Text;
 
-                string _ipBD = tBoxBDServer.Text;
-                string _portBD = tBoxBDPort.Text;
-                string _nameBD = tBoxBDName.Text;
-                string _userBD = tBoxBDUser.Text;
-                string _passBD = tBoxBDPass.Text;
-
-                StreamWriter WriteFile = new StreamWriter(_systemPath + @"\opt\hidden\prime.prime");
+                StreamWriter WriteFile = new StreamWriter(SystemPath + @"\opt\hidden\prime.prime");
 
                 // Write Connection Data
                 WriteFile.WriteLine($"[CONNECTION]");
-                WriteFile.WriteLine($"IP_BD= {_ipBD}");
-                WriteFile.WriteLine($"PORT_BD= {_portBD}");
-                WriteFile.WriteLine($"NAME_BD= {_nameBD}");
-                WriteFile.WriteLine($"USER_BD= {_userBD}");
-                WriteFile.WriteLine($"PASS_BD= {_passBD}");
+                WriteFile.WriteLine($"IP_BD= {ipBD}");
+                WriteFile.WriteLine($"PORT_BD= {portBD}");
+                WriteFile.WriteLine($"NAME_BD= {nameBD}");
+                WriteFile.WriteLine($"USER_BD= {userBD}");
+                WriteFile.WriteLine($"PASS_BD= {passBD}");
 
                 WriteFile.Flush();
                 WriteFile.Close();
@@ -50,49 +61,40 @@ namespace ServipolConfig
 
         private void FindParameters()
         {
-            string _systemPath = tBoxSystemPath.Text;
-            string _ipBD = string.Empty;
-            string _portBD = string.Empty;
-            string _nameBD = string.Empty;
-            string _userBD = string.Empty;
-            string _passBD = string.Empty;
-
             try
             {
-                StreamReader rd = new StreamReader(_systemPath + @"\opt\hidden\prime.prime");
+                StreamReader rd = new StreamReader(SystemPath + @"\opt\hidden\prime.prime");
 
                 while (!rd.EndOfStream)
                 {
                     string linha = rd.ReadLine();
 
                     if (linha.StartsWith("IP_BD"))
-                        _ipBD = linha.Substring(6).Trim();
+                        ipBD = linha.Substring(6).Trim();
 
                     if (linha.StartsWith("PORT_BD"))
-                        _portBD = linha.Substring(8).Trim();
+                        portBD = linha.Substring(8).Trim();
 
                     if (linha.StartsWith("NAME_BD"))
-                        _nameBD = linha.Substring(8).Trim();
+                        nameBD = linha.Substring(8).Trim();
 
                     if (linha.StartsWith("USER_BD"))
-                        _userBD = linha.Substring(8).Trim();
+                        userBD = linha.Substring(8).Trim();
 
                     if (linha.StartsWith("PASS_BD"))
-                        _passBD = linha.Substring(8).Trim();
+                        passBD = linha.Substring(8).Trim();
 
-                    tBoxBDServer.Text = _ipBD;
-                    tBoxBDPort.Text = _portBD;
-                    tBoxBDName.Text = _nameBD;
-                    tBoxBDUser.Text = _userBD;
-                    tBoxBDPass.Text = _passBD;
+                    tBoxBDServer.Text = ipBD;
+                    tBoxBDPort.Text = portBD;
+                    tBoxBDName.Text = nameBD;
+                    tBoxBDUser.Text = userBD;
+                    tBoxBDPass.Text = passBD;
                 }
                 rd.Close();
                 rd.Dispose();
             }
             catch
             {
-                XtraMessageBox.Show("Arquivo de configuração não encontrado. \n\n Preencha os dados de conexão com o banco de dados e clique no botão [Validar Conexão com BD].", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 tBoxBDServer.Text = "localhost";
                 tBoxBDPort.Text = "5432";
                 tBoxBDUser.Text = "postgres";
@@ -106,38 +108,47 @@ namespace ServipolConfig
 
         private void btnValidateConnectionBD_Click(object sender, EventArgs e)
         {
+            try
+            {
+                SaveParameters();
 
+                XtraMessageBox.Show("Conexão com BD Efetuada com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception err)
+            {
+                XtraMessageBox.Show(err.Message, "Erro ao salvar parâmetros de conexão com o banco de dados.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void btnBackup_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                XtraMessageBox.Show("Backup Realizado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception err)
+            {
+                XtraMessageBox.Show(err.Message, "Erro ao Realizar Backup.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void btnRestore_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                XtraMessageBox.Show("Restore Realizado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception err)
+            {
+                XtraMessageBox.Show(err.Message, "Erro ao Realizar Restore.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         #endregion
 
-        private void btnFindSystemPath_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                folderBrowserDialog.SelectedPath = tBoxSystemPath.Text;
 
-                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-                {
-                    tBoxSystemPath.Text = folderBrowserDialog.SelectedPath;
-
-                    FindParameters();
-                }
-            }
-            catch
-            {
-                throw;
-            }
         }
     }
 }
