@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using Npgsql;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -9,12 +10,16 @@ namespace ServipolConfig
     {
         #region INSTANCES AND PROPERTIES
 
+        private String _stringConexao;
+        private NpgsqlConnection _conexao;
+
         public string SystemPath { get; set; }
         public string ipBD { get; set; }
         public string portBD { get; set; }
         public string nameBD { get; set; }
         public string userBD { get; set; }
         public string passBD { get; set; }
+        public bool ValidateConn { get; set; }
 
         #endregion
 
@@ -25,10 +30,14 @@ namespace ServipolConfig
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            ValidateConn = false;
+
             SystemPath = Environment.CurrentDirectory.ToString();
 
             FindParameters();
         }
+
+        #region Methods
 
         private void SaveParameters()
         {
@@ -55,7 +64,7 @@ namespace ServipolConfig
             }
             catch (Exception err)
             {
-                XtraMessageBox.Show(err.Message);
+                XtraMessageBox.Show(err.Message, "Erro ao salvar parâmetros de conexão com o banco de dados.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -104,15 +113,82 @@ namespace ServipolConfig
             }
         }
 
+        public String StringConexao
+        {
+            get { return _stringConexao; }
+            set { _stringConexao = value; }
+        }
+
+        public NpgsqlConnection ObjetoConexao
+        {
+            get { return _conexao; }
+            set { _conexao = value; }
+        }
+
+        public void ConnectBD()
+        {
+            try
+            {
+                _conexao.Close();
+                _conexao.Open();
+
+                XtraMessageBox.Show("Conexão com o BD Efetuada com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                ValidateConn = true;
+            }
+            catch (Exception err)
+            {
+                XtraMessageBox.Show(err.Message, "Erro ao efetuar conexão com o banco de dados.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                ValidateConn = false;
+            }
+        }
+
+        public void DisconnectBD()
+        {
+            try
+            {
+                _conexao.Close();
+            }
+            catch { }
+        }
+
+        public void DisposeConnectionBD()
+        {
+            try
+            {
+                _conexao.Close();
+                _conexao.Dispose();
+            }
+            catch { }
+        }
+
+        #endregion
+
         #region Buttons
 
         private void btnValidateConnectionBD_Click(object sender, EventArgs e)
         {
             try
             {
-                SaveParameters();
+                ipBD = tBoxBDServer.Text;
+                portBD = tBoxBDPort.Text;
+                nameBD = tBoxBDName.Text;
+                userBD = tBoxBDUser.Text;
+                passBD = tBoxBDPass.Text;
 
-                XtraMessageBox.Show("Conexão com BD Efetuada com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                StringConexao = $"Server={ipBD}; Port={portBD}; User ID={userBD}; Password={passBD}; Database={nameBD};";
+
+                this._conexao = new NpgsqlConnection();
+                this._stringConexao = StringConexao;
+                this._conexao.ConnectionString = StringConexao;
+
+                ConnectBD();
+
+                if (ValidateConn)
+                {
+                    SaveParameters();
+                }
             }
             catch (Exception err)
             {
@@ -124,7 +200,7 @@ namespace ServipolConfig
         {
             try
             {
-                XtraMessageBox.Show("Backup Realizado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show("Funcionalidade em Desenvolvimento!", "Em breve...", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception err)
             {
@@ -136,7 +212,7 @@ namespace ServipolConfig
         {
             try
             {
-                XtraMessageBox.Show("Restore Realizado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show("Funcionalidade em Desenvolvimento!", "Em breve...", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception err)
             {
@@ -144,11 +220,19 @@ namespace ServipolConfig
             }
         }
 
-        #endregion
-
         private void btnExit_Click(object sender, EventArgs e)
         {
+            if (ValidateConn)
+            {
+                SaveParameters();
+            }
 
+            DisposeConnectionBD();
+
+            Close();
         }
+
+        #endregion
+
     }
 }
