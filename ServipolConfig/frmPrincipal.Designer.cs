@@ -47,7 +47,6 @@ namespace ServipolConfig
             this.btnExit = new DevExpress.XtraEditors.SimpleButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.gBoxConexaoBD.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tBoxBDName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBoxBDPass.Properties)).BeginInit();
@@ -69,7 +68,7 @@ namespace ServipolConfig
             this.gBoxConexaoBD.Controls.Add(this.tBoxBDPort);
             this.gBoxConexaoBD.Controls.Add(this.labelControl2);
             this.gBoxConexaoBD.Controls.Add(this.tBoxBDServer);
-            this.gBoxConexaoBD.Location = new System.Drawing.Point(12, 181);
+            this.gBoxConexaoBD.Location = new System.Drawing.Point(12, 141);
             this.gBoxConexaoBD.Name = "gBoxConexaoBD";
             this.gBoxConexaoBD.Size = new System.Drawing.Size(577, 109);
             this.gBoxConexaoBD.TabIndex = 0;
@@ -80,7 +79,7 @@ namespace ServipolConfig
             // 
             this.labelControl6.Location = new System.Drawing.Point(6, 76);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(115, 13);
+            this.labelControl6.Size = new System.Drawing.Size(126, 13);
             this.labelControl6.TabIndex = 11;
             this.labelControl6.Text = "Denominação do banco:";
             // 
@@ -96,7 +95,7 @@ namespace ServipolConfig
             // 
             this.labelControl5.Location = new System.Drawing.Point(418, 50);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(34, 13);
+            this.labelControl5.Size = new System.Drawing.Size(35, 13);
             this.labelControl5.TabIndex = 9;
             this.labelControl5.Text = "Senha:";
             // 
@@ -113,7 +112,7 @@ namespace ServipolConfig
             // 
             this.labelControl4.Location = new System.Drawing.Point(81, 50);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(40, 13);
+            this.labelControl4.Size = new System.Drawing.Size(43, 13);
             this.labelControl4.TabIndex = 7;
             this.labelControl4.Text = "Usuário:";
             // 
@@ -147,7 +146,7 @@ namespace ServipolConfig
             // 
             this.labelControl2.Location = new System.Drawing.Point(77, 24);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(44, 13);
+            this.labelControl2.Size = new System.Drawing.Size(45, 13);
             this.labelControl2.TabIndex = 3;
             this.labelControl2.Text = "Servidor:";
             // 
@@ -163,7 +162,7 @@ namespace ServipolConfig
             // 
             this.btnValidateConnectionBD.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.btnValidateConnectionBD.Appearance.Options.UseFont = true;
-            this.btnValidateConnectionBD.Location = new System.Drawing.Point(595, 193);
+            this.btnValidateConnectionBD.Location = new System.Drawing.Point(595, 153);
             this.btnValidateConnectionBD.Name = "btnValidateConnectionBD";
             this.btnValidateConnectionBD.Size = new System.Drawing.Size(209, 26);
             this.btnValidateConnectionBD.TabIndex = 2;
@@ -174,7 +173,7 @@ namespace ServipolConfig
             // 
             this.btnBackup.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.btnBackup.Appearance.Options.UseFont = true;
-            this.btnBackup.Location = new System.Drawing.Point(595, 225);
+            this.btnBackup.Location = new System.Drawing.Point(595, 185);
             this.btnBackup.Name = "btnBackup";
             this.btnBackup.Size = new System.Drawing.Size(209, 26);
             this.btnBackup.TabIndex = 3;
@@ -185,7 +184,7 @@ namespace ServipolConfig
             // 
             this.btnRestore.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.btnRestore.Appearance.Options.UseFont = true;
-            this.btnRestore.Location = new System.Drawing.Point(595, 257);
+            this.btnRestore.Location = new System.Drawing.Point(595, 217);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(209, 26);
             this.btnRestore.TabIndex = 4;
@@ -198,7 +197,7 @@ namespace ServipolConfig
             this.btnExit.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.btnExit.Appearance.Options.UseBorderColor = true;
             this.btnExit.Appearance.Options.UseFont = true;
-            this.btnExit.Location = new System.Drawing.Point(12, 314);
+            this.btnExit.Location = new System.Drawing.Point(12, 274);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(792, 52);
             this.btnExit.TabIndex = 5;
@@ -225,26 +224,11 @@ namespace ServipolConfig
             this.label1.TabIndex = 7;
             this.label1.Text = "Servipol Configurador";
             // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.Beige;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(12, 150);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(792, 14);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.Text = "Caso não tenha alterado os dados de conexão padrão na instalação do PostgreSQL 9." +
-    "5, não modifique os dados abaixo";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 379);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(816, 338);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnExit);
@@ -252,7 +236,9 @@ namespace ServipolConfig
             this.Controls.Add(this.btnBackup);
             this.Controls.Add(this.btnValidateConnectionBD);
             this.Controls.Add(this.gBoxConexaoBD);
+            this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmPrincipal";
@@ -292,6 +278,5 @@ namespace ServipolConfig
         private DevExpress.XtraEditors.SimpleButton btnExit;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }

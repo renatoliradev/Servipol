@@ -259,7 +259,6 @@ namespace Servipol
             // btnEquipamentos
             // 
             this.btnEquipamentos.Caption = "Equipamentos";
-            this.btnEquipamentos.Enabled = false;
             this.btnEquipamentos.Id = 10;
             this.btnEquipamentos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEquipamentos.ImageOptions.Image")));
             this.btnEquipamentos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnEquipamentos.ImageOptions.LargeImage")));
@@ -604,9 +603,9 @@ namespace Servipol
             this.ribbonCategoriaInterno.Color = System.Drawing.Color.LightSteelBlue;
             this.ribbonCategoriaInterno.Name = "ribbonCategoriaInterno";
             this.ribbonCategoriaInterno.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ribbonPage3,
             this.ribbonPage1,
-            this.ribbonPage2,
-            this.ribbonPage3});
+            this.ribbonPage2});
             this.ribbonCategoriaInterno.Text = "Interno";
             // 
             // ribbonPage1

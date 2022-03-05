@@ -19,7 +19,7 @@ namespace ServipolConfig
         public string nameBD { get; set; }
         public string userBD { get; set; }
         public string passBD { get; set; }
-        public bool ValidateConn { get; set; }
+        public bool ValidatedConn { get; set; }
 
         #endregion
 
@@ -30,7 +30,7 @@ namespace ServipolConfig
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            ValidateConn = false;
+            ValidatedConn = false;
 
             SystemPath = Environment.CurrentDirectory.ToString();
 
@@ -132,15 +132,11 @@ namespace ServipolConfig
                 _conexao.Close();
                 _conexao.Open();
 
-                XtraMessageBox.Show("Conexão com o BD Efetuada com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                ValidateConn = true;
+                ValidatedConn = true;
             }
-            catch (Exception err)
+            catch 
             {
-                XtraMessageBox.Show(err.Message, "Erro ao efetuar conexão com o banco de dados.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                ValidateConn = false;
+                ValidatedConn = false;
             }
         }
 
@@ -185,9 +181,14 @@ namespace ServipolConfig
 
                 ConnectBD();
 
-                if (ValidateConn)
+                if (ValidatedConn)
                 {
                     SaveParameters();
+                    XtraMessageBox.Show("Conexão com o BD Efetuada com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    XtraMessageBox.Show("Erro ao efetuar conexão com o banco de dados.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception err)
@@ -222,7 +223,21 @@ namespace ServipolConfig
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            if (ValidateConn)
+            ipBD = tBoxBDServer.Text;
+            portBD = tBoxBDPort.Text;
+            nameBD = tBoxBDName.Text;
+            userBD = tBoxBDUser.Text;
+            passBD = tBoxBDPass.Text;
+
+            StringConexao = $"Server={ipBD}; Port={portBD}; User ID={userBD}; Password={passBD}; Database={nameBD};";
+
+            this._conexao = new NpgsqlConnection();
+            this._stringConexao = StringConexao;
+            this._conexao.ConnectionString = StringConexao;
+
+            ConnectBD();
+
+            if (ValidatedConn)
             {
                 SaveParameters();
             }

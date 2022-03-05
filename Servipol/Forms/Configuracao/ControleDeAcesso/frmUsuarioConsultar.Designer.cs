@@ -74,17 +74,17 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1238, 71);
+            this.panel1.Size = new System.Drawing.Size(1238, 77);
             this.panel1.TabIndex = 151;
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnConsultar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConsultar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultar.Appearance.Options.UseFont = true;
             this.btnConsultar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnConsultar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConsultar.ImageOptions.SvgImage")));
-            this.btnConsultar.Location = new System.Drawing.Point(1091, 11);
+            this.btnConsultar.Location = new System.Drawing.Point(1091, 14);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(144, 44);
             this.btnConsultar.TabIndex = 3;
@@ -93,10 +93,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox4.Controls.Add(this.cBoxSituacao);
             this.groupBox4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(12, 5);
+            this.groupBox4.Location = new System.Drawing.Point(12, 8);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(115, 52);
             this.groupBox4.TabIndex = 10;
@@ -121,10 +120,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.Controls.Add(this.cBoxTipoBusca);
             this.groupBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(133, 5);
+            this.groupBox2.Location = new System.Drawing.Point(133, 8);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(224, 52);
             this.groupBox2.TabIndex = 11;
@@ -149,10 +147,11 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.tBoxTextoConsulta);
             this.groupBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(363, 5);
+            this.groupBox3.Location = new System.Drawing.Point(363, 8);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(722, 52);
             this.groupBox3.TabIndex = 12;
@@ -282,9 +281,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.dGridUsuarios);
-            this.panel3.Location = new System.Drawing.Point(0, 77);
+            this.panel3.Location = new System.Drawing.Point(0, 83);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1238, 369);
+            this.panel3.Size = new System.Drawing.Size(1238, 363);
             this.panel3.TabIndex = 153;
             // 
             // dGridUsuarios
@@ -313,7 +312,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.dGridUsuarios.RowHeadersVisible = false;
             this.dGridUsuarios.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dGridUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGridUsuarios.Size = new System.Drawing.Size(1236, 367);
+            this.dGridUsuarios.Size = new System.Drawing.Size(1236, 361);
             this.dGridUsuarios.TabIndex = 0;
             this.dGridUsuarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridUsuarios_CellDoubleClick);
             // 

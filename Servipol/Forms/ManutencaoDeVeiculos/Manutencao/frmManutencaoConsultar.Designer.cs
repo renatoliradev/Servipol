@@ -397,9 +397,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGridManutencoes.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
             this.dGridManutencoes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dGridManutencoes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dGridManutencoes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dGridManutencoes.BackgroundColor = System.Drawing.Color.White;
             this.dGridManutencoes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -419,8 +416,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.qra,
             this.situacao,
             this.valor_total_manutencao});
+            this.dGridManutencoes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGridManutencoes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dGridManutencoes.Location = new System.Drawing.Point(3, 3);
+            this.dGridManutencoes.Location = new System.Drawing.Point(0, 0);
             this.dGridManutencoes.MultiSelect = false;
             this.dGridManutencoes.Name = "dGridManutencoes";
             this.dGridManutencoes.ReadOnly = true;
@@ -428,7 +426,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
             this.dGridManutencoes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dGridManutencoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dGridManutencoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGridManutencoes.Size = new System.Drawing.Size(1160, 206);
+            this.dGridManutencoes.Size = new System.Drawing.Size(1166, 209);
             this.dGridManutencoes.TabIndex = 181;
             this.dGridManutencoes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridManutencoes_CellDoubleClick);
             // 

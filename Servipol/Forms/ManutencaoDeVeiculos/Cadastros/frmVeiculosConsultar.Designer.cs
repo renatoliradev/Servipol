@@ -30,10 +30,19 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVeiculosConsultar));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVeiculosConsultar));
             this.panel3 = new System.Windows.Forms.Panel();
             this.dGridVeiculos = new System.Windows.Forms.DataGridView();
+            this.id_veiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.combustivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.registra_km_diario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.km_validade_oleo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
             this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -47,15 +56,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.cBoxTipoBusca = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cBoxTipoVeiculo = new System.Windows.Forms.ComboBox();
-            this.id_veiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.combustivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.registra_km_diario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.km_validade_oleo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridVeiculos)).BeginInit();
             this.panel2.SuspendLayout();
@@ -72,9 +72,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.dGridVeiculos);
-            this.panel3.Location = new System.Drawing.Point(0, 91);
+            this.panel3.Location = new System.Drawing.Point(0, 83);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1238, 355);
+            this.panel3.Size = new System.Drawing.Size(1238, 363);
             this.panel3.TabIndex = 141;
             // 
             // dGridVeiculos
@@ -106,9 +106,92 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.dGridVeiculos.RowHeadersVisible = false;
             this.dGridVeiculos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dGridVeiculos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGridVeiculos.Size = new System.Drawing.Size(1236, 353);
+            this.dGridVeiculos.Size = new System.Drawing.Size(1236, 361);
             this.dGridVeiculos.TabIndex = 0;
             this.dGridVeiculos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridVeiculos_CellDoubleClick);
+            // 
+            // id_veiculo
+            // 
+            this.id_veiculo.DataPropertyName = "id_veiculo";
+            this.id_veiculo.FillWeight = 1F;
+            this.id_veiculo.HeaderText = "ID";
+            this.id_veiculo.MinimumWidth = 2;
+            this.id_veiculo.Name = "id_veiculo";
+            this.id_veiculo.ReadOnly = true;
+            this.id_veiculo.Visible = false;
+            // 
+            // tipo
+            // 
+            this.tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.tipo.DataPropertyName = "tipo";
+            this.tipo.HeaderText = "Tipo";
+            this.tipo.Name = "tipo";
+            this.tipo.ReadOnly = true;
+            this.tipo.Width = 55;
+            // 
+            // codigo
+            // 
+            this.codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.codigo.DataPropertyName = "codigo";
+            this.codigo.HeaderText = "Código";
+            this.codigo.Name = "codigo";
+            this.codigo.ReadOnly = true;
+            this.codigo.Width = 70;
+            // 
+            // placa
+            // 
+            this.placa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.placa.DataPropertyName = "placa";
+            this.placa.HeaderText = "Placa";
+            this.placa.Name = "placa";
+            this.placa.ReadOnly = true;
+            this.placa.Width = 58;
+            // 
+            // descricao
+            // 
+            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descricao.DataPropertyName = "descricao";
+            this.descricao.HeaderText = "Descrição";
+            this.descricao.Name = "descricao";
+            this.descricao.ReadOnly = true;
+            // 
+            // combustivel
+            // 
+            this.combustivel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.combustivel.DataPropertyName = "combustivel";
+            this.combustivel.HeaderText = "Combustível Preferencial";
+            this.combustivel.Name = "combustivel";
+            this.combustivel.ReadOnly = true;
+            this.combustivel.Width = 144;
+            // 
+            // registra_km_diario
+            // 
+            this.registra_km_diario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.registra_km_diario.DataPropertyName = "registra_km_diario";
+            this.registra_km_diario.HeaderText = "Obrigatório Registrar Km Diário";
+            this.registra_km_diario.Name = "registra_km_diario";
+            this.registra_km_diario.ReadOnly = true;
+            this.registra_km_diario.Width = 119;
+            // 
+            // km_validade_oleo
+            // 
+            this.km_validade_oleo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.km_validade_oleo.DataPropertyName = "km_validade_oleo";
+            this.km_validade_oleo.HeaderText = "Km Validade Óleo";
+            this.km_validade_oleo.Name = "km_validade_oleo";
+            this.km_validade_oleo.ReadOnly = true;
+            this.km_validade_oleo.Width = 89;
+            // 
+            // ativo
+            // 
+            this.ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ativo.DataPropertyName = "ativo";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ativo.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ativo.HeaderText = "Ativo";
+            this.ativo.Name = "ativo";
+            this.ativo.ReadOnly = true;
+            this.ativo.Width = 58;
             // 
             // btnImprimirConsulta
             // 
@@ -186,12 +269,12 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnConsultar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConsultar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultar.Appearance.Options.UseFont = true;
             this.btnConsultar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnConsultar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConsultar.ImageOptions.SvgImage")));
-            this.btnConsultar.Location = new System.Drawing.Point(1091, 18);
+            this.btnConsultar.Location = new System.Drawing.Point(1091, 14);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(144, 44);
             this.btnConsultar.TabIndex = 3;
@@ -209,15 +292,14 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1238, 85);
+            this.panel1.Size = new System.Drawing.Size(1238, 77);
             this.panel1.TabIndex = 139;
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox4.Controls.Add(this.cBoxSituacao);
             this.groupBox4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(12, 12);
+            this.groupBox4.Location = new System.Drawing.Point(12, 8);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(115, 52);
             this.groupBox4.TabIndex = 10;
@@ -242,10 +324,9 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.Controls.Add(this.cBoxTipoBusca);
             this.groupBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(133, 12);
+            this.groupBox2.Location = new System.Drawing.Point(133, 8);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(224, 52);
             this.groupBox2.TabIndex = 11;
@@ -270,10 +351,11 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.cBoxTipoVeiculo);
             this.groupBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(363, 12);
+            this.groupBox3.Location = new System.Drawing.Point(363, 8);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(722, 52);
             this.groupBox3.TabIndex = 12;
@@ -292,89 +374,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             this.cBoxTipoVeiculo.TabStop = false;
             this.cBoxTipoVeiculo.SelectedIndexChanged += new System.EventHandler(this.cBoxTipoVeiculo_SelectedIndexChanged_1);
             this.cBoxTipoVeiculo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cBoxTipoVeiculo_KeyDown);
-            // 
-            // id_veiculo
-            // 
-            this.id_veiculo.DataPropertyName = "id_veiculo";
-            this.id_veiculo.FillWeight = 1F;
-            this.id_veiculo.HeaderText = "ID";
-            this.id_veiculo.MinimumWidth = 2;
-            this.id_veiculo.Name = "id_veiculo";
-            this.id_veiculo.ReadOnly = true;
-            this.id_veiculo.Visible = false;
-            // 
-            // tipo
-            // 
-            this.tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.tipo.DataPropertyName = "tipo";
-            this.tipo.HeaderText = "Tipo";
-            this.tipo.Name = "tipo";
-            this.tipo.ReadOnly = true;
-            this.tipo.Width = 55;
-            // 
-            // codigo
-            // 
-            this.codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.codigo.DataPropertyName = "codigo";
-            this.codigo.HeaderText = "Código";
-            this.codigo.Name = "codigo";
-            this.codigo.ReadOnly = true;
-            this.codigo.Width = 70;
-            // 
-            // placa
-            // 
-            this.placa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.placa.DataPropertyName = "placa";
-            this.placa.HeaderText = "Placa";
-            this.placa.Name = "placa";
-            this.placa.ReadOnly = true;
-            this.placa.Width = 58;
-            // 
-            // descricao
-            // 
-            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descricao.DataPropertyName = "descricao";
-            this.descricao.HeaderText = "Descrição";
-            this.descricao.Name = "descricao";
-            this.descricao.ReadOnly = true;
-            // 
-            // combustivel
-            // 
-            this.combustivel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.combustivel.DataPropertyName = "combustivel";
-            this.combustivel.HeaderText = "Combustível Preferencial";
-            this.combustivel.Name = "combustivel";
-            this.combustivel.ReadOnly = true;
-            this.combustivel.Width = 144;
-            // 
-            // registra_km_diario
-            // 
-            this.registra_km_diario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.registra_km_diario.DataPropertyName = "registra_km_diario";
-            this.registra_km_diario.HeaderText = "Obrigatório Registrar Km Diário";
-            this.registra_km_diario.Name = "registra_km_diario";
-            this.registra_km_diario.ReadOnly = true;
-            this.registra_km_diario.Width = 132;
-            // 
-            // km_validade_oleo
-            // 
-            this.km_validade_oleo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.km_validade_oleo.DataPropertyName = "km_validade_oleo";
-            this.km_validade_oleo.HeaderText = "Km Validade Óleo";
-            this.km_validade_oleo.Name = "km_validade_oleo";
-            this.km_validade_oleo.ReadOnly = true;
-            this.km_validade_oleo.Width = 112;
-            // 
-            // ativo
-            // 
-            this.ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ativo.DataPropertyName = "ativo";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ativo.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ativo.HeaderText = "Ativo";
-            this.ativo.Name = "ativo";
-            this.ativo.ReadOnly = true;
-            this.ativo.Width = 58;
             // 
             // frmVeiculosConsultar
             // 

@@ -41,6 +41,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.tBoxTextoConsulta = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnExcluir = new DevExpress.XtraEditors.SimpleButton();
+            this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
             this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
             this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -50,7 +51,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.usuario_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_cadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -94,10 +94,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox4.Controls.Add(this.cBoxSituacao);
             this.groupBox4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(12, 11);
+            this.groupBox4.Location = new System.Drawing.Point(12, 8);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(115, 52);
             this.groupBox4.TabIndex = 10;
@@ -115,17 +114,17 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1238, 83);
+            this.panel1.Size = new System.Drawing.Size(1238, 77);
             this.panel1.TabIndex = 148;
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnConsultar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConsultar.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultar.Appearance.Options.UseFont = true;
             this.btnConsultar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnConsultar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConsultar.ImageOptions.SvgImage")));
-            this.btnConsultar.Location = new System.Drawing.Point(1091, 17);
+            this.btnConsultar.Location = new System.Drawing.Point(1091, 14);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(144, 44);
             this.btnConsultar.TabIndex = 3;
@@ -134,10 +133,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.Controls.Add(this.cBoxTipoBusca);
             this.groupBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(133, 11);
+            this.groupBox2.Location = new System.Drawing.Point(133, 8);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(224, 52);
             this.groupBox2.TabIndex = 11;
@@ -146,10 +144,11 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.tBoxTextoConsulta);
             this.groupBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(363, 11);
+            this.groupBox3.Location = new System.Drawing.Point(363, 8);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(722, 52);
             this.groupBox3.TabIndex = 12;
@@ -195,6 +194,22 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnExcluir.Text = "[Del] - Excluir";
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
+            // btnImprimirConsulta
+            // 
+            this.btnImprimirConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnImprimirConsulta.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirConsulta.Appearance.Options.UseFont = true;
+            this.btnImprimirConsulta.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnImprimirConsulta.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnImprimirConsulta.ImageOptions.SvgImage")));
+            this.btnImprimirConsulta.Location = new System.Drawing.Point(3, 9);
+            this.btnImprimirConsulta.Name = "btnImprimirConsulta";
+            this.btnImprimirConsulta.Size = new System.Drawing.Size(233, 44);
+            this.btnImprimirConsulta.TabIndex = 188;
+            this.btnImprimirConsulta.TabStop = false;
+            this.btnImprimirConsulta.Text = "[CTRL + P] - Imprimir consulta";
+            this.btnImprimirConsulta.Visible = false;
+            this.btnImprimirConsulta.Click += new System.EventHandler(this.btnImprimirConsulta_Click);
+            // 
             // btnIncluir
             // 
             this.btnIncluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -232,9 +247,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.dGridUsuarioPerfil);
-            this.panel3.Location = new System.Drawing.Point(0, 89);
+            this.panel3.Location = new System.Drawing.Point(0, 83);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1238, 357);
+            this.panel3.Size = new System.Drawing.Size(1238, 363);
             this.panel3.TabIndex = 150;
             // 
             // dGridUsuarioPerfil
@@ -262,7 +277,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.dGridUsuarioPerfil.RowHeadersVisible = false;
             this.dGridUsuarioPerfil.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dGridUsuarioPerfil.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGridUsuarioPerfil.Size = new System.Drawing.Size(1236, 355);
+            this.dGridUsuarioPerfil.Size = new System.Drawing.Size(1236, 361);
             this.dGridUsuarioPerfil.TabIndex = 0;
             this.dGridUsuarioPerfil.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridUsuarioPerfil_CellDoubleClick);
             // 
@@ -308,22 +323,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.ativo.Name = "ativo";
             this.ativo.ReadOnly = true;
             this.ativo.Width = 58;
-            // 
-            // btnImprimirConsulta
-            // 
-            this.btnImprimirConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnImprimirConsulta.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirConsulta.Appearance.Options.UseFont = true;
-            this.btnImprimirConsulta.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnImprimirConsulta.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnImprimirConsulta.ImageOptions.SvgImage")));
-            this.btnImprimirConsulta.Location = new System.Drawing.Point(3, 9);
-            this.btnImprimirConsulta.Name = "btnImprimirConsulta";
-            this.btnImprimirConsulta.Size = new System.Drawing.Size(233, 44);
-            this.btnImprimirConsulta.TabIndex = 188;
-            this.btnImprimirConsulta.TabStop = false;
-            this.btnImprimirConsulta.Text = "[CTRL + P] - Imprimir consulta";
-            this.btnImprimirConsulta.Visible = false;
-            this.btnImprimirConsulta.Click += new System.EventHandler(this.btnImprimirConsulta_Click);
             // 
             // frmUsuarioPerfilConsultar
             // 
