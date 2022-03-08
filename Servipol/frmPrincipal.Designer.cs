@@ -40,7 +40,6 @@ namespace Servipol
             this.btnPerfilUsuario = new DevExpress.XtraBars.BarButtonItem();
             this.btnUsuarios = new DevExpress.XtraBars.BarButtonItem();
             this.btnFuncionarios = new DevExpress.XtraBars.BarButtonItem();
-            this.btnEquipamentos = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
@@ -83,17 +82,20 @@ namespace Servipol
             this.btnLocalManutencao = new DevExpress.XtraBars.BarButtonItem();
             this.skinDropDownButtonItem2 = new DevExpress.XtraBars.SkinDropDownButtonItem();
             this.skinDropDownButtonItem3 = new DevExpress.XtraBars.SkinDropDownButtonItem();
+            this.btnMenuEquipamentos = new DevExpress.XtraBars.BarSubItem();
+            this.btnEquipamentos = new DevExpress.XtraBars.BarButtonItem();
+            this.btnEquipamentosAjusteEstoque = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonCategoriaInterno = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
+            this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonCategoriaOperacional = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -114,6 +116,7 @@ namespace Servipol
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage7 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.btnCategoriaEquipamentos = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
@@ -135,7 +138,6 @@ namespace Servipol
             this.btnPerfilUsuario,
             this.btnUsuarios,
             this.btnFuncionarios,
-            this.btnEquipamentos,
             this.barButtonItem10,
             this.barButtonItem11,
             this.barButtonItem12,
@@ -177,9 +179,13 @@ namespace Servipol
             this.btnTipoManutencao,
             this.btnLocalManutencao,
             this.skinDropDownButtonItem2,
-            this.skinDropDownButtonItem3});
+            this.skinDropDownButtonItem3,
+            this.btnMenuEquipamentos,
+            this.btnEquipamentos,
+            this.btnEquipamentosAjusteEstoque,
+            this.btnCategoriaEquipamentos});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 18;
+            this.ribbonControl.MaxItemId = 22;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.ribbonCategoriaInterno,
@@ -255,16 +261,6 @@ namespace Servipol
             this.btnFuncionarios.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnFuncionarios.ImageOptions.LargeImage")));
             this.btnFuncionarios.Name = "btnFuncionarios";
             this.btnFuncionarios.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFuncionarios_ItemClick);
-            // 
-            // btnEquipamentos
-            // 
-            this.btnEquipamentos.Caption = "Equipamentos";
-            this.btnEquipamentos.Id = 10;
-            this.btnEquipamentos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEquipamentos.ImageOptions.Image")));
-            this.btnEquipamentos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnEquipamentos.ImageOptions.LargeImage")));
-            this.btnEquipamentos.Name = "btnEquipamentos";
-            this.btnEquipamentos.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.btnEquipamentos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEquipamentos_ItemClick);
             // 
             // barButtonItem10
             // 
@@ -598,6 +594,24 @@ namespace Servipol
             this.skinDropDownButtonItem3.Id = 15;
             this.skinDropDownButtonItem3.Name = "skinDropDownButtonItem3";
             // 
+            // btnMenuEquipamentos
+            // 
+            this.btnMenuEquipamentos.Caption = "Equipamentos";
+            this.btnMenuEquipamentos.Id = 18;
+            this.btnMenuEquipamentos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuEquipamentos.ImageOptions.Image")));
+            this.btnMenuEquipamentos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMenuEquipamentos.ImageOptions.LargeImage")));
+            this.btnMenuEquipamentos.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnEquipamentos),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnCategoriaEquipamentos)});
+            this.btnMenuEquipamentos.Name = "btnMenuEquipamentos";
+            // 
+            // btnEquipamentos
+            // 
+            this.btnEquipamentos.Caption = "Equipamentos";
+            this.btnEquipamentos.Id = 19;
+            this.btnEquipamentos.Name = "btnEquipamentos";
+            this.btnEquipamentos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEquipamentos_ItemClick);
+            // 
             // ribbonCategoriaInterno
             // 
             this.ribbonCategoriaInterno.Color = System.Drawing.Color.LightSteelBlue;
@@ -607,6 +621,41 @@ namespace Servipol
             this.ribbonPage1,
             this.ribbonPage2});
             this.ribbonCategoriaInterno.Text = "Interno";
+            // 
+            // ribbonPage3
+            // 
+            this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup6,
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup10});
+            this.ribbonPage3.Name = "ribbonPage3";
+            this.ribbonPage3.Text = "Sistema";
+            // 
+            // ribbonPageGroup6
+            // 
+            this.ribbonPageGroup6.AllowTextClipping = false;
+            this.ribbonPageGroup6.ItemLinks.Add(this.btnParametrosSistema);
+            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
+            this.ribbonPageGroup6.ShowCaptionButton = false;
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.AllowTextClipping = false;
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnPerfilUsuario);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnUsuarios);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.ShowCaptionButton = false;
+            this.ribbonPageGroup2.State = DevExpress.XtraBars.Ribbon.RibbonPageGroupState.Expanded;
+            this.ribbonPageGroup2.Text = "Controle de Acesso";
+            // 
+            // ribbonPageGroup10
+            // 
+            this.ribbonPageGroup10.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
+            this.ribbonPageGroup10.AllowTextClipping = false;
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnAlterarSenha);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnEfetuarLogout);
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            this.ribbonPageGroup10.ShowCaptionButton = false;
             // 
             // ribbonPage1
             // 
@@ -621,7 +670,7 @@ namespace Servipol
             this.ribbonPageGroup1.AllowTextClipping = false;
             this.ribbonPageGroup1.ItemLinks.Add(this.btnClientes);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnFuncionarios);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnEquipamentos);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnMenuEquipamentos);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.ShowCaptionButton = false;
             // 
@@ -663,41 +712,6 @@ namespace Servipol
             this.ribbonPageGroup9.ItemLinks.Add(this.btnEfetuarLogout);
             this.ribbonPageGroup9.Name = "ribbonPageGroup9";
             this.ribbonPageGroup9.ShowCaptionButton = false;
-            // 
-            // ribbonPage3
-            // 
-            this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup6,
-            this.ribbonPageGroup2,
-            this.ribbonPageGroup10});
-            this.ribbonPage3.Name = "ribbonPage3";
-            this.ribbonPage3.Text = "Configuração";
-            // 
-            // ribbonPageGroup6
-            // 
-            this.ribbonPageGroup6.AllowTextClipping = false;
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnParametrosSistema);
-            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            this.ribbonPageGroup6.ShowCaptionButton = false;
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.AllowTextClipping = false;
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnPerfilUsuario);
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnUsuarios);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.ShowCaptionButton = false;
-            this.ribbonPageGroup2.State = DevExpress.XtraBars.Ribbon.RibbonPageGroupState.Expanded;
-            this.ribbonPageGroup2.Text = "Controle de Acesso";
-            // 
-            // ribbonPageGroup10
-            // 
-            this.ribbonPageGroup10.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
-            this.ribbonPageGroup10.AllowTextClipping = false;
-            this.ribbonPageGroup10.ItemLinks.Add(this.btnAlterarSenha);
-            this.ribbonPageGroup10.ItemLinks.Add(this.btnEfetuarLogout);
-            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
-            this.ribbonPageGroup10.ShowCaptionButton = false;
             // 
             // ribbonCategoriaOperacional
             // 
@@ -865,6 +879,13 @@ namespace Servipol
             this.ribbonPage7.Name = "ribbonPage7";
             this.ribbonPage7.Text = "ribbonPage7";
             // 
+            // btnCategoriaEquipamentos
+            // 
+            this.btnCategoriaEquipamentos.Caption = "Categoria de equipamento";
+            this.btnCategoriaEquipamentos.Id = 21;
+            this.btnCategoriaEquipamentos.Name = "btnCategoriaEquipamentos";
+            this.btnCategoriaEquipamentos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCategoriaEquipamentos_ItemClick);
+            // 
             // frmPrincipal
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
@@ -909,7 +930,6 @@ namespace Servipol
         private DevExpress.XtraBars.BarButtonItem btnPerfilUsuario;
         private DevExpress.XtraBars.BarButtonItem btnUsuarios;
         private DevExpress.XtraBars.BarButtonItem btnFuncionarios;
-        private DevExpress.XtraBars.BarButtonItem btnEquipamentos;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
@@ -979,6 +999,10 @@ namespace Servipol
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup19;
         private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem2;
         private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem3;
+        private DevExpress.XtraBars.BarSubItem btnMenuEquipamentos;
+        private DevExpress.XtraBars.BarButtonItem btnEquipamentos;
+        private DevExpress.XtraBars.BarButtonItem btnEquipamentosAjusteEstoque;
+        private DevExpress.XtraBars.BarButtonItem btnCategoriaEquipamentos;
     }
 }
 

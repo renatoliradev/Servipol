@@ -81,9 +81,11 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnRecarregaPermissoesUsuario = new DevExpress.XtraEditors.SimpleButton();
             this.tabControlPerfilUsuario = new System.Windows.Forms.TabControl();
             this.tabPrincipal = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tBoxAlertaRegistroExc2 = new System.Windows.Forms.TextBox();
-            this.tBoxAlertaRegistroExc1 = new System.Windows.Forms.TextBox();
+            this.gbEquipamentos = new System.Windows.Forms.GroupBox();
+            this.chkBoxInativarEquipamentos = new System.Windows.Forms.CheckBox();
+            this.chkBoxAcessarEquipamentos = new System.Windows.Forms.CheckBox();
+            this.chkBoxEditarEquipamentos = new System.Windows.Forms.CheckBox();
+            this.chkBoxIncluirEquipamentos = new System.Windows.Forms.CheckBox();
             this.tabDadosRegistro = new System.Windows.Forms.TabPage();
             this.groupBox35 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -100,6 +102,10 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.tBoxDataExclusao = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tBoxUsuarioExclusao = new System.Windows.Forms.TextBox();
+            this.chkBoxInativarCategoriaEquip = new System.Windows.Forms.CheckBox();
+            this.chkBoxAcessarCategoriaEquipamentos = new System.Windows.Forms.CheckBox();
+            this.chkBoxEditarCategoriaEquip = new System.Windows.Forms.CheckBox();
+            this.chkBoxIncluirCategoriaEquip = new System.Windows.Forms.CheckBox();
             this.gbDescricaoPerfil.SuspendLayout();
             this.gbPerfilUsuarios.SuspendLayout();
             this.gbTipoDeManutencao.SuspendLayout();
@@ -111,7 +117,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gbSelecionarPerfil.SuspendLayout();
             this.tabControlPerfilUsuario.SuspendLayout();
             this.tabPrincipal.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gbEquipamentos.SuspendLayout();
             this.tabDadosRegistro.SuspendLayout();
             this.groupBox35.SuspendLayout();
             this.groupBox37.SuspendLayout();
@@ -170,7 +176,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gbPerfilUsuarios.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbPerfilUsuarios.Location = new System.Drawing.Point(6, 216);
             this.gbPerfilUsuarios.Name = "gbPerfilUsuarios";
-            this.gbPerfilUsuarios.Size = new System.Drawing.Size(183, 303);
+            this.gbPerfilUsuarios.Size = new System.Drawing.Size(183, 301);
             this.gbPerfilUsuarios.TabIndex = 3;
             this.gbPerfilUsuarios.TabStop = false;
             this.gbPerfilUsuarios.Text = "Perfil e Usuários";
@@ -353,7 +359,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gbManutencaoDeVeiculo.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbManutencaoDeVeiculo.Location = new System.Drawing.Point(393, 380);
             this.gbManutencaoDeVeiculo.Name = "gbManutencaoDeVeiculo";
-            this.gbManutencaoDeVeiculo.Size = new System.Drawing.Size(210, 139);
+            this.gbManutencaoDeVeiculo.Size = new System.Drawing.Size(210, 137);
             this.gbManutencaoDeVeiculo.TabIndex = 8;
             this.gbManutencaoDeVeiculo.TabStop = false;
             this.gbManutencaoDeVeiculo.Text = "Manutenção de Veículos";
@@ -478,9 +484,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gbVeiculos.Controls.Add(this.chkBoxIncluirVeiculos);
             this.gbVeiculos.Controls.Add(this.chkBoxAcessarVeiculos);
             this.gbVeiculos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbVeiculos.Location = new System.Drawing.Point(195, 137);
+            this.gbVeiculos.Location = new System.Drawing.Point(195, 380);
             this.gbVeiculos.Name = "gbVeiculos";
-            this.gbVeiculos.Size = new System.Drawing.Size(192, 116);
+            this.gbVeiculos.Size = new System.Drawing.Size(192, 137);
             this.gbVeiculos.TabIndex = 4;
             this.gbVeiculos.TabStop = false;
             this.gbVeiculos.Text = "Veículos";
@@ -536,9 +542,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gbFuncionarios.Controls.Add(this.chkBoxIncluirFuncionarios);
             this.gbFuncionarios.Controls.Add(this.chkBoxAcessarFuncionarios);
             this.gbFuncionarios.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbFuncionarios.Location = new System.Drawing.Point(195, 259);
+            this.gbFuncionarios.Location = new System.Drawing.Point(6, 523);
             this.gbFuncionarios.Name = "gbFuncionarios";
-            this.gbFuncionarios.Size = new System.Drawing.Size(192, 115);
+            this.gbFuncionarios.Size = new System.Drawing.Size(183, 117);
             this.gbFuncionarios.TabIndex = 5;
             this.gbFuncionarios.TabStop = false;
             this.gbFuncionarios.Text = "Funcionários";
@@ -549,9 +555,9 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.chkBoxVisualizarCadCompletoFunc.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkBoxVisualizarCadCompletoFunc.Location = new System.Drawing.Point(22, 90);
             this.chkBoxVisualizarCadCompletoFunc.Name = "chkBoxVisualizarCadCompletoFunc";
-            this.chkBoxVisualizarCadCompletoFunc.Size = new System.Drawing.Size(165, 17);
+            this.chkBoxVisualizarCadCompletoFunc.Size = new System.Drawing.Size(134, 17);
             this.chkBoxVisualizarCadCompletoFunc.TabIndex = 4;
-            this.chkBoxVisualizarCadCompletoFunc.Text = "Visualizar Cadastro Completo";
+            this.chkBoxVisualizarCadCompletoFunc.Text = "Ver Cadastro Completo";
             this.chkBoxVisualizarCadCompletoFunc.UseVisualStyleBackColor = true;
             // 
             // chkBoxEditarFuncionarios
@@ -627,7 +633,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnCancelar.Appearance.Options.UseFont = true;
             this.btnCancelar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnCancelar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCancelar.ImageOptions.SvgImage")));
-            this.btnCancelar.Location = new System.Drawing.Point(5, 556);
+            this.btnCancelar.Location = new System.Drawing.Point(11, 679);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(143, 44);
             this.btnCancelar.TabIndex = 236;
@@ -641,7 +647,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnConfirmar.Appearance.Options.UseFont = true;
             this.btnConfirmar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnConfirmar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnConfirmar.ImageOptions.SvgImage")));
-            this.btnConfirmar.Location = new System.Drawing.Point(471, 556);
+            this.btnConfirmar.Location = new System.Drawing.Point(469, 679);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(143, 44);
             this.btnConfirmar.TabIndex = 235;
@@ -656,7 +662,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnLiberarTudo.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.btnLiberarTudo.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnLiberarTudo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLiberarTudo.ImageOptions.SvgImage")));
-            this.btnLiberarTudo.Location = new System.Drawing.Point(206, 556);
+            this.btnLiberarTudo.Location = new System.Drawing.Point(208, 679);
             this.btnLiberarTudo.Name = "btnLiberarTudo";
             this.btnLiberarTudo.Size = new System.Drawing.Size(100, 44);
             this.btnLiberarTudo.TabIndex = 237;
@@ -672,7 +678,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.btnBloquearTudo.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.btnBloquearTudo.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnBloquearTudo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBloquearTudo.ImageOptions.SvgImage")));
-            this.btnBloquearTudo.Location = new System.Drawing.Point(312, 556);
+            this.btnBloquearTudo.Location = new System.Drawing.Point(314, 679);
             this.btnBloquearTudo.Name = "btnBloquearTudo";
             this.btnBloquearTudo.Size = new System.Drawing.Size(100, 44);
             this.btnBloquearTudo.TabIndex = 238;
@@ -714,13 +720,13 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.tabControlPerfilUsuario.Location = new System.Drawing.Point(1, 1);
             this.tabControlPerfilUsuario.Name = "tabControlPerfilUsuario";
             this.tabControlPerfilUsuario.SelectedIndex = 0;
-            this.tabControlPerfilUsuario.Size = new System.Drawing.Size(617, 549);
+            this.tabControlPerfilUsuario.Size = new System.Drawing.Size(615, 672);
             this.tabControlPerfilUsuario.TabIndex = 242;
             this.tabControlPerfilUsuario.TabStop = false;
             // 
             // tabPrincipal
             // 
-            this.tabPrincipal.Controls.Add(this.groupBox2);
+            this.tabPrincipal.Controls.Add(this.gbEquipamentos);
             this.tabPrincipal.Controls.Add(this.gbSelecionarPerfil);
             this.tabPrincipal.Controls.Add(this.gbFuncionarios);
             this.tabPrincipal.Controls.Add(this.gbDescricaoPerfil);
@@ -733,49 +739,72 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.tabPrincipal.Location = new System.Drawing.Point(4, 22);
             this.tabPrincipal.Name = "tabPrincipal";
             this.tabPrincipal.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPrincipal.Size = new System.Drawing.Size(609, 523);
+            this.tabPrincipal.Size = new System.Drawing.Size(607, 646);
             this.tabPrincipal.TabIndex = 0;
             this.tabPrincipal.Text = "Principal";
             this.tabPrincipal.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // gbEquipamentos
             // 
-            this.groupBox2.Controls.Add(this.tBoxAlertaRegistroExc2);
-            this.groupBox2.Controls.Add(this.tBoxAlertaRegistroExc1);
-            this.groupBox2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(195, 380);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(192, 139);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
+            this.gbEquipamentos.Controls.Add(this.chkBoxInativarCategoriaEquip);
+            this.gbEquipamentos.Controls.Add(this.chkBoxAcessarCategoriaEquipamentos);
+            this.gbEquipamentos.Controls.Add(this.chkBoxEditarCategoriaEquip);
+            this.gbEquipamentos.Controls.Add(this.chkBoxIncluirCategoriaEquip);
+            this.gbEquipamentos.Controls.Add(this.chkBoxInativarEquipamentos);
+            this.gbEquipamentos.Controls.Add(this.chkBoxAcessarEquipamentos);
+            this.gbEquipamentos.Controls.Add(this.chkBoxEditarEquipamentos);
+            this.gbEquipamentos.Controls.Add(this.chkBoxIncluirEquipamentos);
+            this.gbEquipamentos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbEquipamentos.Location = new System.Drawing.Point(195, 137);
+            this.gbEquipamentos.Name = "gbEquipamentos";
+            this.gbEquipamentos.Size = new System.Drawing.Size(192, 237);
+            this.gbEquipamentos.TabIndex = 9;
+            this.gbEquipamentos.TabStop = false;
+            this.gbEquipamentos.Text = "Equipamentos";
             // 
-            // tBoxAlertaRegistroExc2
+            // chkBoxInativarEquipamentos
             // 
-            this.tBoxAlertaRegistroExc2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxAlertaRegistroExc2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tBoxAlertaRegistroExc2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxAlertaRegistroExc2.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxAlertaRegistroExc2.ForeColor = System.Drawing.Color.Red;
-            this.tBoxAlertaRegistroExc2.Location = new System.Drawing.Point(6, 75);
-            this.tBoxAlertaRegistroExc2.Name = "tBoxAlertaRegistroExc2";
-            this.tBoxAlertaRegistroExc2.Size = new System.Drawing.Size(180, 33);
-            this.tBoxAlertaRegistroExc2.TabIndex = 4;
-            this.tBoxAlertaRegistroExc2.TabStop = false;
-            this.tBoxAlertaRegistroExc2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.chkBoxInativarEquipamentos.AutoSize = true;
+            this.chkBoxInativarEquipamentos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBoxInativarEquipamentos.Location = new System.Drawing.Point(22, 89);
+            this.chkBoxInativarEquipamentos.Name = "chkBoxInativarEquipamentos";
+            this.chkBoxInativarEquipamentos.Size = new System.Drawing.Size(62, 17);
+            this.chkBoxInativarEquipamentos.TabIndex = 7;
+            this.chkBoxInativarEquipamentos.Text = "Inativar";
+            this.chkBoxInativarEquipamentos.UseVisualStyleBackColor = true;
             // 
-            // tBoxAlertaRegistroExc1
+            // chkBoxAcessarEquipamentos
             // 
-            this.tBoxAlertaRegistroExc1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxAlertaRegistroExc1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tBoxAlertaRegistroExc1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxAlertaRegistroExc1.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxAlertaRegistroExc1.ForeColor = System.Drawing.Color.Red;
-            this.tBoxAlertaRegistroExc1.Location = new System.Drawing.Point(6, 43);
-            this.tBoxAlertaRegistroExc1.Name = "tBoxAlertaRegistroExc1";
-            this.tBoxAlertaRegistroExc1.Size = new System.Drawing.Size(180, 33);
-            this.tBoxAlertaRegistroExc1.TabIndex = 3;
-            this.tBoxAlertaRegistroExc1.TabStop = false;
-            this.tBoxAlertaRegistroExc1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.chkBoxAcessarEquipamentos.AutoSize = true;
+            this.chkBoxAcessarEquipamentos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBoxAcessarEquipamentos.Location = new System.Drawing.Point(6, 20);
+            this.chkBoxAcessarEquipamentos.Name = "chkBoxAcessarEquipamentos";
+            this.chkBoxAcessarEquipamentos.Size = new System.Drawing.Size(133, 17);
+            this.chkBoxAcessarEquipamentos.TabIndex = 4;
+            this.chkBoxAcessarEquipamentos.Text = "Acessar Equipamentos";
+            this.chkBoxAcessarEquipamentos.UseVisualStyleBackColor = true;
+            // 
+            // chkBoxEditarEquipamentos
+            // 
+            this.chkBoxEditarEquipamentos.AutoSize = true;
+            this.chkBoxEditarEquipamentos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBoxEditarEquipamentos.Location = new System.Drawing.Point(22, 66);
+            this.chkBoxEditarEquipamentos.Name = "chkBoxEditarEquipamentos";
+            this.chkBoxEditarEquipamentos.Size = new System.Drawing.Size(54, 17);
+            this.chkBoxEditarEquipamentos.TabIndex = 6;
+            this.chkBoxEditarEquipamentos.Text = "Editar";
+            this.chkBoxEditarEquipamentos.UseVisualStyleBackColor = true;
+            // 
+            // chkBoxIncluirEquipamentos
+            // 
+            this.chkBoxIncluirEquipamentos.AutoSize = true;
+            this.chkBoxIncluirEquipamentos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBoxIncluirEquipamentos.Location = new System.Drawing.Point(22, 43);
+            this.chkBoxIncluirEquipamentos.Name = "chkBoxIncluirEquipamentos";
+            this.chkBoxIncluirEquipamentos.Size = new System.Drawing.Size(56, 17);
+            this.chkBoxIncluirEquipamentos.TabIndex = 5;
+            this.chkBoxIncluirEquipamentos.Text = "Incluir";
+            this.chkBoxIncluirEquipamentos.UseVisualStyleBackColor = true;
             // 
             // tabDadosRegistro
             // 
@@ -785,7 +814,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.tabDadosRegistro.Location = new System.Drawing.Point(4, 22);
             this.tabDadosRegistro.Name = "tabDadosRegistro";
             this.tabDadosRegistro.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDadosRegistro.Size = new System.Drawing.Size(609, 523);
+            this.tabDadosRegistro.Size = new System.Drawing.Size(876, 523);
             this.tabDadosRegistro.TabIndex = 4;
             this.tabDadosRegistro.Text = "Dados do Registro";
             this.tabDadosRegistro.UseVisualStyleBackColor = true;
@@ -964,11 +993,55 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.tBoxUsuarioExclusao.Size = new System.Drawing.Size(532, 15);
             this.tBoxUsuarioExclusao.TabIndex = 12;
             // 
+            // chkBoxInativarCategoriaEquip
+            // 
+            this.chkBoxInativarCategoriaEquip.AutoSize = true;
+            this.chkBoxInativarCategoriaEquip.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBoxInativarCategoriaEquip.Location = new System.Drawing.Point(22, 181);
+            this.chkBoxInativarCategoriaEquip.Name = "chkBoxInativarCategoriaEquip";
+            this.chkBoxInativarCategoriaEquip.Size = new System.Drawing.Size(62, 17);
+            this.chkBoxInativarCategoriaEquip.TabIndex = 11;
+            this.chkBoxInativarCategoriaEquip.Text = "Inativar";
+            this.chkBoxInativarCategoriaEquip.UseVisualStyleBackColor = true;
+            // 
+            // chkBoxAcessarCategoriaEquipamentos
+            // 
+            this.chkBoxAcessarCategoriaEquipamentos.AutoSize = true;
+            this.chkBoxAcessarCategoriaEquipamentos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBoxAcessarCategoriaEquipamentos.Location = new System.Drawing.Point(6, 112);
+            this.chkBoxAcessarCategoriaEquipamentos.Name = "chkBoxAcessarCategoriaEquipamentos";
+            this.chkBoxAcessarCategoriaEquipamentos.Size = new System.Drawing.Size(157, 17);
+            this.chkBoxAcessarCategoriaEquipamentos.TabIndex = 8;
+            this.chkBoxAcessarCategoriaEquipamentos.Text = "Acessar Categoria de equip.";
+            this.chkBoxAcessarCategoriaEquipamentos.UseVisualStyleBackColor = true;
+            // 
+            // chkBoxEditarCategoriaEquip
+            // 
+            this.chkBoxEditarCategoriaEquip.AutoSize = true;
+            this.chkBoxEditarCategoriaEquip.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBoxEditarCategoriaEquip.Location = new System.Drawing.Point(22, 158);
+            this.chkBoxEditarCategoriaEquip.Name = "chkBoxEditarCategoriaEquip";
+            this.chkBoxEditarCategoriaEquip.Size = new System.Drawing.Size(54, 17);
+            this.chkBoxEditarCategoriaEquip.TabIndex = 10;
+            this.chkBoxEditarCategoriaEquip.Text = "Editar";
+            this.chkBoxEditarCategoriaEquip.UseVisualStyleBackColor = true;
+            // 
+            // chkBoxIncluirCategoriaEquip
+            // 
+            this.chkBoxIncluirCategoriaEquip.AutoSize = true;
+            this.chkBoxIncluirCategoriaEquip.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBoxIncluirCategoriaEquip.Location = new System.Drawing.Point(22, 135);
+            this.chkBoxIncluirCategoriaEquip.Name = "chkBoxIncluirCategoriaEquip";
+            this.chkBoxIncluirCategoriaEquip.Size = new System.Drawing.Size(56, 17);
+            this.chkBoxIncluirCategoriaEquip.TabIndex = 9;
+            this.chkBoxIncluirCategoriaEquip.Text = "Incluir";
+            this.chkBoxIncluirCategoriaEquip.UseVisualStyleBackColor = true;
+            // 
             // frmUsuarioPerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 603);
+            this.ClientSize = new System.Drawing.Size(619, 732);
             this.ControlBox = false;
             this.Controls.Add(this.tabControlPerfilUsuario);
             this.Controls.Add(this.btnBloquearTudo);
@@ -1006,8 +1079,8 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
             this.gbSelecionarPerfil.ResumeLayout(false);
             this.tabControlPerfilUsuario.ResumeLayout(false);
             this.tabPrincipal.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.gbEquipamentos.ResumeLayout(false);
+            this.gbEquipamentos.PerformLayout();
             this.tabDadosRegistro.ResumeLayout(false);
             this.groupBox35.ResumeLayout(false);
             this.groupBox35.PerformLayout();
@@ -1087,8 +1160,14 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
         private System.Windows.Forms.TextBox tBoxDataExclusao;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox tBoxUsuarioExclusao;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox tBoxAlertaRegistroExc2;
-        private System.Windows.Forms.TextBox tBoxAlertaRegistroExc1;
+        private System.Windows.Forms.GroupBox gbEquipamentos;
+        private System.Windows.Forms.CheckBox chkBoxInativarEquipamentos;
+        private System.Windows.Forms.CheckBox chkBoxAcessarEquipamentos;
+        private System.Windows.Forms.CheckBox chkBoxEditarEquipamentos;
+        private System.Windows.Forms.CheckBox chkBoxIncluirEquipamentos;
+        private System.Windows.Forms.CheckBox chkBoxInativarCategoriaEquip;
+        private System.Windows.Forms.CheckBox chkBoxAcessarCategoriaEquipamentos;
+        private System.Windows.Forms.CheckBox chkBoxEditarCategoriaEquip;
+        private System.Windows.Forms.CheckBox chkBoxIncluirCategoriaEquip;
     }
 }

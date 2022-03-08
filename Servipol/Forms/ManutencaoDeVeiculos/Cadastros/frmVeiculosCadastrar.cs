@@ -55,7 +55,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
         {
             try
             {
-                BD.Conectar();
                 if (TipoChamada == "Incluir")
                 {
                     this.Text = "Incluir Veículo";
@@ -79,7 +78,6 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
             }
             finally
             {
-                BD.Desconectar();
             }
         }
 

@@ -205,6 +205,20 @@ CREATE SEQUENCE seq_controle_permissao_perfil
     MAXVALUE 9223372036854775807
     START 1
     CACHE 1;
+    
+    CREATE SEQUENCE seq_equipamento
+    INCREMENT 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    START 1
+    CACHE 1;
+    
+    CREATE SEQUENCE seq_equipamento_categoria
+    INCREMENT 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    START 1
+    CACHE 1;
 
 DELETE FROM sis_sessao_login;
 

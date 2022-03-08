@@ -345,6 +345,12 @@
     <EmbeddedResource Include="Forms\Cadastros\Clientes\frmClientesConsultar.resx">
       <DependentUpon>frmClientesConsultar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cadastros\Equipamentos\frmEquipamentosCadastrar.resx">
+      <DependentUpon>frmEquipamentosCadastrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cadastros\Equipamentos\frmEquipamentosConsultar.resx">
+      <DependentUpon>frmEquipamentosConsultar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cadastros\Funcionarios\frmFuncionariosCadastrar.resx">
       <DependentUpon>frmFuncionariosCadastrar.cs</DependentUpon>
     </EmbeddedResource>
@@ -418,6 +424,7 @@
       <DependentUpon>frmRelatorio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Relatorios\RelacaoDeUsuarios.rdlc" />
+    <EmbeddedResource Include="Forms\Relatorios\RelacaoDeEquipamentos.rdlc" />
     <EmbeddedResource Include="Forms\Relatorios\RelacaoDeVeiculos.rdlc" />
     <EmbeddedResource Include="Forms\Relatorios\RelacaoLocalDeManutencao.rdlc" />
     <EmbeddedResource Include="Forms\Relatorios\RelacaoTipoDeManutencao.rdlc" />

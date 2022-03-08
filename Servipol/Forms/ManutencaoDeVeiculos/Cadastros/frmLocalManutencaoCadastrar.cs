@@ -303,7 +303,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 
-                        XtraMessageBox.Show("Cadastrado Efetuado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        XtraMessageBox.Show("Cadastro Efetuado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         ((frmLocalManutencaoConsultar)this.Owner).AtualizaDG();
                         this.Close();

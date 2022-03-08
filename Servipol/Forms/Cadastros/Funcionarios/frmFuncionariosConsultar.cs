@@ -12,6 +12,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
 {
     public partial class frmFuncionariosConsultar : DevExpress.XtraEditors.XtraForm
     {
+
         #region Instâncias
         readonly ConexaoBD BD = new ConexaoBD();
         #endregion
@@ -214,8 +215,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
         {
             try
             {
-                string idFuncionarioGrid = dGridFuncionarios.SelectedRows[0].Cells[0].Value.ToString();
-                frmFuncionariosCadastrar frmFuncionariosCadastrar = new frmFuncionariosCadastrar("Editar", int.Parse(idFuncionarioGrid));
+                string _idRegistroSelecionadoGrid = dGridFuncionarios.SelectedRows[0].Cells[0].Value.ToString();
+                frmFuncionariosCadastrar frmFuncionariosCadastrar = new frmFuncionariosCadastrar("Editar", int.Parse(_idRegistroSelecionadoGrid));
                 frmFuncionariosCadastrar.Owner = this;
                 frmFuncionariosCadastrar.ShowDialog();
             }

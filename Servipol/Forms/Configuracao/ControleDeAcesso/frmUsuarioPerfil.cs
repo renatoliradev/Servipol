@@ -177,6 +177,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                 }
 
                 #region Set permission to checkbox
+
                 //0	- Acessar Parâmetros do Sistema
                 if (PermissaoUsuario.Substring(0, 1) == "S") { chkBoxAcessarParametrosSistema.Checked = true; } else { chkBoxAcessarParametrosSistema.Checked = false; }
 
@@ -275,6 +276,30 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
                 //32 - Acessar Painel B.I.
                 if (PermissaoUsuario.Substring(32, 1) == "S") { chkBoxPainelBI.Checked = true; } else { chkBoxPainelBI.Checked = false; }
+
+                //33 - Acessar Equipamentos
+                if (PermissaoUsuario.Substring(33, 1) == "S") { chkBoxAcessarEquipamentos.Checked = true; } else { chkBoxAcessarEquipamentos.Checked = false; }
+
+                //34 - Incluir Equipamentos
+                if (PermissaoUsuario.Substring(34, 1) == "S") { chkBoxIncluirEquipamentos.Checked = true; } else { chkBoxIncluirEquipamentos.Checked = false; }
+
+                //35 - Editar Equipamentos
+                if (PermissaoUsuario.Substring(35, 1) == "S") { chkBoxEditarEquipamentos.Checked = true; } else { chkBoxEditarEquipamentos.Checked = false; }
+
+                //36 - Inativar Equipamentos
+                if (PermissaoUsuario.Substring(36, 1) == "S") { chkBoxInativarEquipamentos.Checked = true; } else { chkBoxInativarEquipamentos.Checked = false; }
+
+                //37 - Acessar Categoria de Equipamentos
+                if (PermissaoUsuario.Substring(37, 1) == "S") { chkBoxAcessarCategoriaEquipamentos.Checked = true; } else { chkBoxAcessarCategoriaEquipamentos.Checked = false; }
+
+                //38 - Incluir Categoria de Equipamentos
+                if (PermissaoUsuario.Substring(38, 1) == "S") { chkBoxIncluirCategoriaEquip.Checked = true; } else { chkBoxIncluirCategoriaEquip.Checked = false; }
+
+                //39 - Editar Categoria de Equipamentos
+                if (PermissaoUsuario.Substring(39, 1) == "S") { chkBoxEditarCategoriaEquip.Checked = true; } else { chkBoxEditarCategoriaEquip.Checked = false; }
+
+                //40 - Inativar Categoria de Equipamentos
+                if (PermissaoUsuario.Substring(40, 1) == "S") { chkBoxInativarCategoriaEquip.Checked = true; } else { chkBoxInativarCategoriaEquip.Checked = false; }
 
                 #endregion
             }
@@ -400,6 +425,30 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                 //32 - Acessar Painel B.I.
                 if (PermissaoPerfil.Substring(32, 1) == "S") { chkBoxPainelBI.Checked = true; } else { chkBoxPainelBI.Checked = false; }
 
+                //33 - Acessar Equipamentos
+                if (PermissaoPerfil.Substring(33, 1) == "S") { chkBoxAcessarEquipamentos.Checked = true; } else { chkBoxAcessarEquipamentos.Checked = false; }
+
+                //34 - Incluir Equipamentos
+                if (PermissaoPerfil.Substring(34, 1) == "S") { chkBoxIncluirEquipamentos.Checked = true; } else { chkBoxIncluirEquipamentos.Checked = false; }
+
+                //35 - Editar Equipamentos
+                if (PermissaoPerfil.Substring(35, 1) == "S") { chkBoxEditarEquipamentos.Checked = true; } else { chkBoxEditarEquipamentos.Checked = false; }
+
+                //36 - Inativar Equipamentos
+                if (PermissaoPerfil.Substring(36, 1) == "S") { chkBoxInativarEquipamentos.Checked = true; } else { chkBoxInativarEquipamentos.Checked = false; }
+
+                //37 - Acessar Categoria de Equipamentos
+                if (PermissaoPerfil.Substring(37, 1) == "S") { chkBoxAcessarCategoriaEquipamentos.Checked = true; } else { chkBoxAcessarCategoriaEquipamentos.Checked = false; }
+
+                //38 - Incluir Categoria de Equipamentos
+                if (PermissaoPerfil.Substring(38, 1) == "S") { chkBoxIncluirCategoriaEquip.Checked = true; } else { chkBoxIncluirCategoriaEquip.Checked = false; }
+
+                //39 - Editar Categoria de Equipamentos
+                if (PermissaoPerfil.Substring(39, 1) == "S") { chkBoxEditarCategoriaEquip.Checked = true; } else { chkBoxEditarCategoriaEquip.Checked = false; }
+
+                //40 - Inativar Categoria de Equipamentos
+                if (PermissaoPerfil.Substring(40, 1) == "S") { chkBoxInativarCategoriaEquip.Checked = true; } else { chkBoxInativarCategoriaEquip.Checked = false; }
+
                 #endregion
             }
             catch { }
@@ -434,9 +483,6 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
                     if (RegistroAtivo == "N")
                     {
-                        tBoxAlertaRegistroExc1.Text = "REGISTRO";
-                        tBoxAlertaRegistroExc2.Text = "EXCLUÍDO";
-
                         btnConfirmar.Enabled = false;
                         btnLiberarTudo.Enabled = false;
                         btnBloquearTudo.Enabled = false;
@@ -449,6 +495,7 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                         gbTipoDeManutencao.Enabled = false;
                         gbLocalDeManutencao.Enabled = false;
                         gbManutencaoDeVeiculo.Enabled = false;
+                        gbEquipamentos.Enabled = false;
 
                         btnCancelar.Select();
                     }
@@ -554,6 +601,30 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
 
                 //32 - Acessar Painel B.I.
                 if (PermissaoPerfil.Substring(32, 1) == "S") { chkBoxPainelBI.Checked = true; } else { chkBoxPainelBI.Checked = false; }
+
+                //33 - Acessar Equipamentos
+                if (PermissaoPerfil.Substring(33, 1) == "S") { chkBoxAcessarEquipamentos.Checked = true; } else { chkBoxAcessarEquipamentos.Checked = false; }
+
+                //34 - Incluir Equipamentos
+                if (PermissaoPerfil.Substring(34, 1) == "S") { chkBoxIncluirEquipamentos.Checked = true; } else { chkBoxIncluirEquipamentos.Checked = false; }
+
+                //35 - Editar Equipamentos
+                if (PermissaoPerfil.Substring(35, 1) == "S") { chkBoxEditarEquipamentos.Checked = true; } else { chkBoxEditarEquipamentos.Checked = false; }
+
+                //36 - Inativar Equipamentos
+                if (PermissaoPerfil.Substring(36, 1) == "S") { chkBoxInativarEquipamentos.Checked = true; } else { chkBoxInativarEquipamentos.Checked = false; }
+
+                //37 - Acessar Categoria de Equipamentos
+                if (PermissaoPerfil.Substring(37, 1) == "S") { chkBoxAcessarCategoriaEquipamentos.Checked = true; } else { chkBoxAcessarCategoriaEquipamentos.Checked = false; }
+
+                //38 - Incluir Categoria de Equipamentos
+                if (PermissaoPerfil.Substring(38, 1) == "S") { chkBoxIncluirCategoriaEquip.Checked = true; } else { chkBoxIncluirCategoriaEquip.Checked = false; }
+
+                //39 - Editar Categoria de Equipamentos
+                if (PermissaoPerfil.Substring(39, 1) == "S") { chkBoxEditarCategoriaEquip.Checked = true; } else { chkBoxEditarCategoriaEquip.Checked = false; }
+
+                //40 - Inativar Categoria de Equipamentos
+                if (PermissaoPerfil.Substring(40, 1) == "S") { chkBoxInativarCategoriaEquip.Checked = true; } else { chkBoxInativarCategoriaEquip.Checked = false; }
 
                 #endregion
             }
@@ -675,7 +746,16 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     string _visualizarProxTrocaOleo = chkBoxProxTrocaOleo.Checked ? "S" : "N";
                     string _acessarPainelBI = chkBoxPainelBI.Checked ? "S" : "N";
 
-                    string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}";
+                    string _acessarEquipamentos = chkBoxAcessarEquipamentos.Checked ? "S" : "N";
+                    string _incluirEquipamentos = chkBoxIncluirEquipamentos.Checked ? "S" : "N";
+                    string _editarEquipamentos = chkBoxEditarEquipamentos.Checked ? "S" : "N";
+                    string _inativarEquipamentos = chkBoxInativarEquipamentos.Checked ? "S" : "N";
+                    string _acessarCategoriaEquipamentos = chkBoxAcessarCategoriaEquipamentos.Checked ? "S" : "N";
+                    string _incluirCategoriaEquipamentos = chkBoxIncluirCategoriaEquip.Checked ? "S" : "N";
+                    string _editarCategoriaEquipamentos = chkBoxEditarCategoriaEquip.Checked ? "S" : "N";
+                    string _inativarCategoriaEquipamentos = chkBoxInativarCategoriaEquip.Checked ? "S" : "N";
+
+                    string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}{_acessarEquipamentos}{_incluirEquipamentos}{_editarEquipamentos}{_inativarEquipamentos}{_acessarCategoriaEquipamentos}{_incluirCategoriaEquipamentos}{_editarCategoriaEquipamentos}{_inativarCategoriaEquipamentos}";
                     #endregion
 
                     NpgsqlCommand update1 = new NpgsqlCommand($"INSERT INTO controle_permissao VALUES({IdPermissao}, '{novaPermissao}', {SessaoSistema.UserId}, CURRENT_TIMESTAMP, NULL, NULL, 'S')", BD.ObjetoConexao);
@@ -729,7 +809,16 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     string _visualizarProxTrocaOleo = chkBoxProxTrocaOleo.Checked ? "S" : "N";
                     string _acessarPainelBI = chkBoxPainelBI.Checked ? "S" : "N";
 
-                    string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}";
+                    string _acessarEquipamentos = chkBoxAcessarEquipamentos.Checked ? "S" : "N";
+                    string _incluirEquipamentos = chkBoxIncluirEquipamentos.Checked ? "S" : "N";
+                    string _editarEquipamentos = chkBoxEditarEquipamentos.Checked ? "S" : "N";
+                    string _inativarEquipamentos = chkBoxInativarEquipamentos.Checked ? "S" : "N";
+                    string _acessarCategoriaEquipamentos = chkBoxAcessarCategoriaEquipamentos.Checked ? "S" : "N";
+                    string _incluirCategoriaEquipamentos = chkBoxIncluirCategoriaEquip.Checked ? "S" : "N";
+                    string _editarCategoriaEquipamentos = chkBoxEditarCategoriaEquip.Checked ? "S" : "N";
+                    string _inativarCategoriaEquipamentos = chkBoxInativarCategoriaEquip.Checked ? "S" : "N";
+
+                    string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}{_acessarEquipamentos}{_incluirEquipamentos}{_editarEquipamentos}{_inativarEquipamentos}{_acessarCategoriaEquipamentos}{_incluirCategoriaEquipamentos}{_editarCategoriaEquipamentos}{_inativarCategoriaEquipamentos}";
                     #endregion
 
                     NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE controle_permissao SET permissao = '{novaPermissao}', id_usuario_alteracao = {SessaoSistema.UserId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_usuario = {IdPermissao}", BD.ObjetoConexao);
@@ -783,7 +872,16 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     string _visualizarProxTrocaOleo = chkBoxProxTrocaOleo.Checked ? "S" : "N";
                     string _acessarPainelBI = chkBoxPainelBI.Checked ? "S" : "N";
 
-                    string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}";
+                    string _acessarEquipamentos = chkBoxAcessarEquipamentos.Checked ? "S" : "N";
+                    string _incluirEquipamentos = chkBoxIncluirEquipamentos.Checked ? "S" : "N";
+                    string _editarEquipamentos = chkBoxEditarEquipamentos.Checked ? "S" : "N";
+                    string _inativarEquipamentos = chkBoxInativarEquipamentos.Checked ? "S" : "N";
+                    string _acessarCategoriaEquipamentos = chkBoxAcessarCategoriaEquipamentos.Checked ? "S" : "N";
+                    string _incluirCategoriaEquipamentos = chkBoxIncluirCategoriaEquip.Checked ? "S" : "N";
+                    string _editarCategoriaEquipamentos = chkBoxEditarCategoriaEquip.Checked ? "S" : "N";
+                    string _inativarCategoriaEquipamentos = chkBoxInativarCategoriaEquip.Checked ? "S" : "N";
+
+                    string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}{_acessarEquipamentos}{_incluirEquipamentos}{_editarEquipamentos}{_inativarEquipamentos}{_acessarCategoriaEquipamentos}{_incluirCategoriaEquipamentos}{_editarCategoriaEquipamentos}{_inativarCategoriaEquipamentos}";
                     #endregion
 
                     NpgsqlCommand update1 = new NpgsqlCommand($"UPDATE controle_permissao_perfil SET descricao = '{tBoxDescricao.Text.ToUpper().Trim()}', permissao = '{novaPermissao}', id_usuario_alteracao = {SessaoSistema.UserId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_controle_permissao_perfil = {IdPermissao}", BD.ObjetoConexao);
@@ -838,7 +936,16 @@ namespace Servipol.Forms.Configuração.Controle_de_Acesso
                     string _visualizarProxTrocaOleo = chkBoxProxTrocaOleo.Checked ? "S" : "N";
                     string _acessarPainelBI = chkBoxPainelBI.Checked ? "S" : "N";
 
-                    string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}";
+                    string _acessarEquipamentos = chkBoxAcessarEquipamentos.Checked ? "S" : "N";
+                    string _incluirEquipamentos = chkBoxIncluirEquipamentos.Checked ? "S" : "N";
+                    string _editarEquipamentos = chkBoxEditarEquipamentos.Checked ? "S" : "N";
+                    string _inativarEquipamentos = chkBoxInativarEquipamentos.Checked ? "S" : "N";
+                    string _acessarCategoriaEquipamentos = chkBoxAcessarCategoriaEquipamentos.Checked ? "S" : "N";
+                    string _incluirCategoriaEquipamentos = chkBoxIncluirCategoriaEquip.Checked ? "S" : "N";
+                    string _editarCategoriaEquipamentos = chkBoxEditarCategoriaEquip.Checked ? "S" : "N";
+                    string _inativarCategoriaEquipamentos = chkBoxInativarCategoriaEquip.Checked ? "S" : "N";
+
+                    string novaPermissao = $"{_acessarParametroSistema}{_editarParametroSistema}{_acessarPerfil}{_incluirPerfil}{_editarPerfil}{_excluirPerfil}{_acessarUsuario}{_incluirUsuario}{_editarUsuario}{_inativarReativarUsuario}{_resetarSenhaUsuario}{_alterarPermissaoUsuario}{_acessarVeiculo}{_incluirVeiculo}{_editarVeiculo}{_inativarVeiculo}{_acessarFuncionario}{_incluirFuncionario}{_editarFuncionario}{_visualizarCadCompletoFuncionario}{_acessarTipoManutencao}{_incluirTipoManutencao}{_editarTipoManutencao}{_inativarTipoManutencao}{_acessarLocalManutencao}{_incluirLocalManutencao}{_editarLocalManutencao}{_inativarLocalManutencao}{_registrarManutencao}{_visualizarManutencoesRealizadas}{_excluirManutencaoRealizada}{_visualizarProxTrocaOleo}{_acessarPainelBI}{_acessarEquipamentos}{_incluirEquipamentos}{_editarEquipamentos}{_inativarEquipamentos}{_acessarCategoriaEquipamentos}{_incluirCategoriaEquipamentos}{_editarCategoriaEquipamentos}{_inativarCategoriaEquipamentos}";
                     #endregion
 
                     NpgsqlCommand update1 = new NpgsqlCommand($"INSERT INTO controle_permissao_perfil VALUES(nextval('seq_controle_permissao_perfil'), '{tBoxDescricao.Text.ToUpper().Trim()}', '{novaPermissao}', {SessaoSistema.UserId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S')", BD.ObjetoConexao);

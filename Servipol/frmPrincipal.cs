@@ -1,5 +1,4 @@
-﻿using DevExpress.LookAndFeel;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using Npgsql;
 using Servipol.Entidades.Classes;
 using Servipol.Forms.Cadastros.Clientes;
@@ -110,6 +109,8 @@ namespace Servipol
                 btnPainelBI.Enabled = false;
                 btnManutencoesRealizadas.Enabled = false;
                 btnProxTrocaOleoRevisao.Enabled = false;
+                btnEquipamentos.Enabled = false;
+                btnCategoriaEquipamentos.Enabled = false;
             }
         }
 
@@ -166,6 +167,9 @@ namespace Servipol
             if (SessaoSistema.UserPermission.Substring(29, 1) == "S") { btnManutencoesRealizadas.Enabled = true; } else { btnManutencoesRealizadas.Enabled = false; }
             if (SessaoSistema.UserPermission.Substring(31, 1) == "S") { btnProxTrocaOleoRevisao.Enabled = true; } else { btnProxTrocaOleoRevisao.Enabled = false; }
             if (SessaoSistema.UserPermission.Substring(32, 1) == "S") { btnPainelBI.Enabled = true; } else { btnPainelBI.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(33, 1) == "S") { btnEquipamentos.Enabled = true; } else { btnEquipamentos.Enabled = false; }
+            if (SessaoSistema.UserPermission.Substring(37, 1) == "S") { btnCategoriaEquipamentos.Enabled = true; } else { btnCategoriaEquipamentos.Enabled = false; }
+
         }
 
         private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -218,13 +222,6 @@ namespace Servipol
             frmFuncionariosConsultar frmFuncionarios = new frmFuncionariosConsultar();
             frmFuncionarios.MdiParent = this;
             frmFuncionarios.Show();
-        }
-
-        private void btnEquipamentos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            frmEquipamentosConsultar frmEquipamentos = new frmEquipamentosConsultar();
-            frmEquipamentos.MdiParent = this;
-            frmEquipamentos.Show();
         }
 
         private void btnVeiculos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -347,11 +344,23 @@ namespace Servipol
             frmProxTrocaOleoRevisao.ShowDialog();
         }
 
-        #endregion
-
         private void btnParametrosSistema_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
         }
+
+        private void btnEquipamentos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmEquipamentosConsultar frmEquipamentos = new frmEquipamentosConsultar();
+            frmEquipamentos.MdiParent = this;
+            frmEquipamentos.Show();
+        }
+        private void btnCategoriaEquipamentos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        #endregion
+
     }
 }

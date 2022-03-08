@@ -47,4 +47,14 @@ Ordem das Permissões:
 29	- Visualizar Manutenções Realizadas
 30	- Excluir Manutenção Realizada
 31	- Visualizar Próximas Trocas de Óleo
-32	- Acessar Painel B.I.';
+32	- Acessar Painel B.I.
+
+-- Equipamentos
+33	- Acessar Equipamentos
+34	- Incluir Equipamento
+35	- Editar Equipamento
+36	- Inativar Equipamento
+37	- Acessar Categoria de Equipamento
+38	- Incluir Categoria de Equipamento
+39	- Editar Categoria de Equipamento
+40	- Inativar Categoria de Equipamento
