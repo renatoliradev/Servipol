@@ -2,13 +2,8 @@
 using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Servipol.Forms.Cadastros.Equipamentos
@@ -32,7 +27,13 @@ namespace Servipol.Forms.Cadastros.Equipamentos
 
         private void frmEquipamentosCadastrar_Load(object sender, EventArgs e)
         {
+            CarregaCategoriaEquipamento();
             VerificaTipoChamada();
+
+            gbCodigo.Focus();
+            tBoxCodigo.Select();
+
+
         }
 
         #region Methods
@@ -56,6 +57,12 @@ namespace Servipol.Forms.Cadastros.Equipamentos
                     chkBoxRegistroAtivo.Checked = true;
                     chkBoxRegistroAtivo.Enabled = false;
                     tabDadosRegistro.Parent = null;
+
+                    cBoxCategoriaEquipamento.SelectedIndex = -1;
+                    tBoxPrecoCusto.Text = "R$ 0,00";
+                    tBoxMargemDesejada.Text = "0";
+                    tBoxPrecoSugerido.Text = "R$ 0,00";
+                    tBoxPrecoVenda.Text = "R$ 0,00";
                 }
                 else if (TipoChamada == "Editar")
                 {
@@ -65,6 +72,28 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             }
             finally
             {
+            }
+        }
+
+        public void CarregaCategoriaEquipamento()
+        {
+            try
+            {
+                BD.Conectar();
+                NpgsqlCommand com = new NpgsqlCommand();
+                com.Connection = BD.ObjetoConexao;
+                com.CommandText = $"SELECT ec.id_equipamento_categoria, ec.descricao FROM equipamento_categoria AS ec WHERE ec.ativo = 'S'";
+                NpgsqlDataReader dr = com.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(dr);
+
+                cBoxCategoriaEquipamento.ValueMember = "id_equipamento_categoria";
+                cBoxCategoriaEquipamento.DisplayMember = "descricao";
+                cBoxCategoriaEquipamento.DataSource = dt;
+            }
+            finally
+            {
+                BD.Desconectar();
             }
         }
 
@@ -186,104 +215,6 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             }
         }
 
-        #endregion
-
-        private void frmEquipamentosCadastrar_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.Escape:
-                    btnCancelar_Click(sender, e);
-                    break;
-                case Keys.F12:
-                    btnConfirmar_Click(sender, e);
-                    break;
-            }
-        }
-
-        #region Buttons
-
-        private void btnConfirmar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!ValidaCampos())
-                {
-                    return;
-                }
-                else
-                {
-                    BD.Conectar();
-
-                    double valorCusto = Convert.ToDouble(tBoxPrecoCusto.Text.Replace("R$", ""));
-                    int margemDesejada = Convert.ToInt32(tBoxMargemDesejada.Text);
-                    double valorVenda = Convert.ToDouble(tBoxPrecoVenda.Text.Replace("R$", ""));
-
-                    #region Tipo Chamada: EDITAR
-                    if (TipoChamada == "Editar")
-                    {
-                        string registro_ativo = string.Empty;
-
-                        #region Conversão Situação
-                        registro_ativo = chkBoxRegistroAtivo.Checked ? "S" : "N";
-                        #endregion
-
-                        if (XtraMessageBox.Show("Confirmar Alterações ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                        {
-                            string sqlCommand = $"UPDATE equipamento SET codigo = '{tBoxCodigo.Text.Trim()}', descricao = '{tBoxDescricao.Text.ToUpper().Trim()}', id_equipamento_categoria = {cBoxCategoriaEquipamento.SelectedValue}, preco_custo = {valorCusto.ToString().Replace(",", ".")}, margem_desejada = {margemDesejada.ToString()}, preco_venda = {valorVenda.ToString().Replace(",", ".")}, estoque_atual = {tBoxQuantidadeEstoque.Text} WHERE id_manutencao_local = {IdEquipamento}";
-                            NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
-                            command.ExecuteNonQuery();
-
-                            if (registro_ativo == "N")
-                            {
-                                string sqlCommand2 = $"UPDATE equipamento SET ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UserId}, data_alteracao = CURRENT_TIMESTAMP, id_usuario_desativacao = {SessaoSistema.UserId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_manutencao_local = {IdEquipamento}";
-                                NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
-                                command2.ExecuteNonQuery();
-                            }
-                            else
-                            {
-                                string sqlCommand3 = $"UPDATE equipamento SET ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UserId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_manutencao_local = {IdEquipamento}";
-                                NpgsqlCommand command3 = new NpgsqlCommand(sqlCommand3, BD.ObjetoConexao);
-                                command3.ExecuteNonQuery();
-                            }
-
-                            XtraMessageBox.Show("Equipamento Alterado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            ((frmEquipamentosConsultar)this.Owner).AtualizaDG();
-                            this.Close();
-                        }
-                    }
-                    #endregion
-
-                    #region Tipo Chamada: INCLUIR
-                    else
-                    {
-                        string sqlCommand = $"INSERT INTO equipamento VALUES (nextval('seq_equipamento'), {cBoxCategoriaEquipamento.SelectedValue}, '{tBoxCodigo.Text.Trim()}', '{tBoxDescricao.Text.ToUpper().Trim()}', {valorCusto.ToString().Replace(",", ".")}, {valorVenda.ToString().Replace(",", ".")}, {margemDesejada.ToString()}, {tBoxQuantidadeEstoque.Text}, {SessaoSistema.UserId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S')";
-                        NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
-                        command.ExecuteNonQuery();
-
-                        XtraMessageBox.Show("Cadastro Efetuado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        ((frmEquipamentosConsultar)this.Owner).AtualizaDG();
-                        this.Close();
-                    }
-                }
-
-                #endregion
-            }
-            finally
-            {
-                BD.Desconectar();
-            }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        #endregion
-
         private void tBoxPrecoCusto_Enter(object sender, EventArgs e)
         {
             String x = "";
@@ -385,7 +316,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             }
             catch
             {
-                
+
             }
         }
 
@@ -473,6 +404,174 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
             {
                 e.Handled = true;
+            }
+        }
+
+        private void frmEquipamentosCadastrar_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    btnCancelar_Click(sender, e);
+                    break;
+                case Keys.F12:
+                    btnConfirmar_Click(sender, e);
+                    break;
+            }
+        }
+
+        #endregion
+
+        #region Buttons
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!ValidaCampos())
+                {
+                    return;
+                }
+                else
+                {
+                    BD.Conectar();
+
+                    double valorCusto = Convert.ToDouble(tBoxPrecoCusto.Text.Replace("R$", ""));
+                    double margemDesejada = Convert.ToDouble(tBoxMargemDesejada.Text);
+                    double valorVenda = Convert.ToDouble(tBoxPrecoVenda.Text.Replace("R$", ""));
+
+                    #region Tipo Chamada: EDITAR
+                    if (TipoChamada == "Editar")
+                    {
+                        #region Conversão Situação
+                        string registro_ativo = chkBoxRegistroAtivo.Checked ? "S" : "N";
+                        #endregion
+
+                        if (XtraMessageBox.Show("Confirmar Alterações ?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                        {
+                            string sqlCommand = $"UPDATE equipamento SET codigo = '{tBoxCodigo.Text.Trim()}', descricao = '{tBoxDescricao.Text.ToUpper().Trim()}', id_equipamento_categoria = {cBoxCategoriaEquipamento.SelectedValue}, preco_custo = {valorCusto.ToString().Replace(",", ".")}, margem_desejada = {margemDesejada.ToString().Replace(",", ".")}, preco_venda = {valorVenda.ToString().Replace(",", ".")}, estoque_atual = {tBoxQuantidadeEstoque.Text} WHERE id_equipamento = {IdEquipamento}";
+                            NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
+                            command.ExecuteNonQuery();
+
+                            if (registro_ativo == "N")
+                            {
+                                string sqlCommand2 = $"UPDATE equipamento SET ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UserId}, data_alteracao = CURRENT_TIMESTAMP, id_usuario_desativacao = {SessaoSistema.UserId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_equipamento = {IdEquipamento}";
+                                NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
+                                command2.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                string sqlCommand3 = $"UPDATE equipamento SET ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UserId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_equipamento = {IdEquipamento}";
+                                NpgsqlCommand command3 = new NpgsqlCommand(sqlCommand3, BD.ObjetoConexao);
+                                command3.ExecuteNonQuery();
+                            }
+
+                            XtraMessageBox.Show("Equipamento Alterado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            ((frmEquipamentosConsultar)this.Owner).AtualizaDG();
+                            this.Close();
+                        }
+                    }
+                    #endregion
+
+                    #region Tipo Chamada: INCLUIR
+                    else
+                    {
+                        string sqlCommand = $"INSERT INTO equipamento VALUES (nextval('seq_equipamento'), {cBoxCategoriaEquipamento.SelectedValue}, '{tBoxCodigo.Text.Trim()}', '{tBoxDescricao.Text.ToUpper().Trim()}', {valorCusto.ToString().Replace(",", ".")}, {valorVenda.ToString().Replace(",", ".")}, {margemDesejada.ToString()}, {tBoxQuantidadeEstoque.Text}, {SessaoSistema.UserId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, 'S')";
+                        NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
+                        command.ExecuteNonQuery();
+
+                        XtraMessageBox.Show("Cadastro Efetuado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        ((frmEquipamentosConsultar)this.Owner).AtualizaDG();
+                        this.Close();
+                    }
+                }
+
+
+
+                #endregion
+            }
+            finally
+            {
+                BD.Desconectar();
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        #endregion
+
+        private void tBoxCodigo_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    tBoxDescricao.Select();
+                    break;
+            }
+        }
+
+        private void tBoxDescricao_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    cBoxCategoriaEquipamento.Select();
+                    break;
+            }
+        }
+
+        private void cBoxCategoriaEquipamento_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    tBoxPrecoCusto.Select();
+                    break;
+            }
+        }
+
+        private void tBoxPrecoCusto_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    tBoxMargemDesejada.Select();
+                    break;
+            }
+        }
+
+        private void tBoxMargemDesejada_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    tBoxPrecoVenda.Select();
+                    break;
+            }
+        }
+
+        private void tBoxPrecoVenda_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    tBoxQuantidadeEstoque.Select();
+                    break;
+            }
+        }
+
+        private void tBoxQuantidadeEstoque_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    btnConfirmar.Select();
+                    break;
             }
         }
     }

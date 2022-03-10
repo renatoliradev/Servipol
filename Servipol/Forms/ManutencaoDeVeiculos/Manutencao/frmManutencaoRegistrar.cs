@@ -19,7 +19,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         public string DescricaoManutencao { get; set; }
         public string ExigeKmTrocaOleo { get; set; }
         public string KmJaRegistrado { get; set; }
-        public int ExisteManutencaoNaoConfirmada { get; set; }
+        public bool ExisteManutencaoNaoConfirmada { get; set; }
         #endregion
 
         public frmManutencaoRegistrar()
@@ -39,7 +39,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 CarregaTabelaPreRegistroManutencao();
                 LimparCampos();
 
-                if (ExisteManutencaoNaoConfirmada > 0)
+                if (ExisteManutencaoNaoConfirmada)
                 {
                     XtraMessageBox.Show("Existem manutenções que foram incluídas porém não foram confirmadas. Os registros serão carregados novamente.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -58,13 +58,17 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
         {
             try
             {
+                int _existeManutencaoNaoConfirmada = 0;
+
                 NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT mv.id_manutencao AS pre_id_manutencao_veiculo, mv.id_veiculo AS pre_id_veiculo, mv.data_manutencao AS pre_data_manutencao, v.placa AS pre_placa, mv.km_veiculo AS pre_km_manutencao, CAST(CASE WHEN tv.descricao = 'Carro' THEN v.descricao WHEN v.ativo = 'N' AND tv.descricao = 'Moto' THEN tv.descricao || ' ' || v.codigo || ' >>> REGISTRO INATIVO <<<' WHEN v.ativo = 'N' AND tv.descricao = 'Carro' THEN v.descricao || ' >>> REGISTRO INATIVO <<<'  ELSE tv.descricao || ' ' || v.codigo END AS VARCHAR) AS pre_veiculo, tm.descricao AS pre_tipo_manutencao, lm.descricao AS pre_local_manutencao, mv.valor_peca AS pre_valor_produto, mv.valor_servico AS pre_valor_servico, mv.valor_desconto AS pre_valor_desconto, mv.valor_acrescimo AS pre_valor_acrescimo, mv.valor_total AS pre_total_manutencao, CAST(CASE WHEN id_funcionario_cargo = 1 THEN codigo_ase || ' - ' || qra_ase ELSE nome END AS VARCHAR) AS pre_funcionario_manutencao FROM manutencao AS mv INNER JOIN veiculo AS v ON(mv.id_veiculo = v.id_veiculo) INNER JOIN manutencao_tipo AS tm ON(mv.id_manutencao_tipo = tm.id_manutencao_tipo) INNER JOIN manutencao_local AS lm ON(mv.id_manutencao_local = lm.id_manutencao_local) INNER JOIN funcionario AS f ON(mv.id_funcionario = f.id_funcionario) INNER JOIN veiculo_tipo AS tv ON(v.id_veiculo_tipo = tv.id_veiculo_tipo) WHERE mv.confirmada = 'N' GROUP BY mv.id_manutencao, tv.descricao, v.id_veiculo, v.descricao, v.placa, v.codigo, tm.descricao, lm.descricao, f.id_funcionario_cargo, f.codigo_ase, f.qra_ase, f.nome ORDER BY v.id_veiculo_tipo DESC, v.codigo ASC, mv.id_manutencao ASC", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridPreRegistroManutencao.DataSource = dp;
                 dGridPreRegistroManutencao.ClearSelection();
 
-                ExisteManutencaoNaoConfirmada = Convert.ToInt32(dGridPreRegistroManutencao.RowCount.ToString());
+                _existeManutencaoNaoConfirmada = Convert.ToInt32(dGridPreRegistroManutencao.RowCount.ToString());
+
+                if (_existeManutencaoNaoConfirmada > 0) { ExisteManutencaoNaoConfirmada = true; } else { ExisteManutencaoNaoConfirmada = false; };
             }
             catch { }
         }
@@ -423,7 +427,7 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
 
         private void frmManutencaoRegistrar_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
-            if (e.CloseReason == CloseReason.UserClosing && ExisteManutencaoNaoConfirmada > 0)
+            if (e.CloseReason == CloseReason.UserClosing && ExisteManutencaoNaoConfirmada)
             {
                 var result = XtraMessageBox.Show("Existem registros pendentes de confirmação!\nOs registros ficarão pendentes e serão carregados automaticamente quando essa tela for reaberta. \n\nDeseja fechar essa tela ? ", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                 if (result != DialogResult.Yes)

@@ -29,17 +29,13 @@ namespace Servipol.Forms.Cadastros.Equipamentos
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEquipamentosConsultar));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dGridEquipamentos = new System.Windows.Forms.DataGridView();
-            this.id_equipamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricao_categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricao_equipamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.preco_venda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
             this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -54,6 +50,13 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.gbConsulta = new System.Windows.Forms.GroupBox();
             this.cBoxCategoriaEquipamento = new System.Windows.Forms.ComboBox();
             this.tBoxTextoConsulta = new System.Windows.Forms.TextBox();
+            this.id_equipamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao_categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao_equipamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estoque_atual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.preco_venda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridEquipamentos)).BeginInit();
             this.panel2.SuspendLayout();
@@ -80,8 +83,8 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.dGridEquipamentos.AllowUserToDeleteRows = false;
             this.dGridEquipamentos.AllowUserToResizeColumns = false;
             this.dGridEquipamentos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
-            this.dGridEquipamentos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Lavender;
+            this.dGridEquipamentos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dGridEquipamentos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -93,6 +96,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.codigo,
             this.descricao_categoria,
             this.descricao_equipamento,
+            this.estoque_atual,
             this.preco_venda,
             this.ativo});
             this.dGridEquipamentos.Location = new System.Drawing.Point(0, 3);
@@ -105,61 +109,6 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.dGridEquipamentos.Size = new System.Drawing.Size(1238, 357);
             this.dGridEquipamentos.TabIndex = 0;
             this.dGridEquipamentos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridEquipamentos_CellDoubleClick);
-            // 
-            // id_equipamento
-            // 
-            this.id_equipamento.DataPropertyName = "id_equipamento";
-            this.id_equipamento.HeaderText = "";
-            this.id_equipamento.Name = "id_equipamento";
-            this.id_equipamento.ReadOnly = true;
-            this.id_equipamento.Visible = false;
-            // 
-            // codigo
-            // 
-            this.codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.codigo.DataPropertyName = "codigo";
-            this.codigo.HeaderText = "Código";
-            this.codigo.Name = "codigo";
-            this.codigo.ReadOnly = true;
-            this.codigo.Width = 70;
-            // 
-            // descricao_categoria
-            // 
-            this.descricao_categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.descricao_categoria.DataPropertyName = "descricao_categoria";
-            this.descricao_categoria.HeaderText = "Categoria";
-            this.descricao_categoria.Name = "descricao_categoria";
-            this.descricao_categoria.ReadOnly = true;
-            this.descricao_categoria.Width = 82;
-            // 
-            // descricao_equipamento
-            // 
-            this.descricao_equipamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descricao_equipamento.DataPropertyName = "descricao_equipamento";
-            this.descricao_equipamento.HeaderText = "Descrição";
-            this.descricao_equipamento.Name = "descricao_equipamento";
-            this.descricao_equipamento.ReadOnly = true;
-            // 
-            // preco_venda
-            // 
-            this.preco_venda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.preco_venda.DataPropertyName = "preco_venda";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.preco_venda.DefaultCellStyle = dataGridViewCellStyle2;
-            this.preco_venda.HeaderText = "Preço Venda";
-            this.preco_venda.Name = "preco_venda";
-            this.preco_venda.ReadOnly = true;
-            this.preco_venda.Width = 95;
-            // 
-            // ativo
-            // 
-            this.ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ativo.DataPropertyName = "ativo";
-            this.ativo.HeaderText = "Ativo";
-            this.ativo.Name = "ativo";
-            this.ativo.ReadOnly = true;
-            this.ativo.Width = 58;
             // 
             // btnImprimirConsulta
             // 
@@ -355,6 +304,75 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.tBoxTextoConsulta.TabIndex = 106;
             this.tBoxTextoConsulta.TabStop = false;
             // 
+            // id_equipamento
+            // 
+            this.id_equipamento.DataPropertyName = "id_equipamento";
+            this.id_equipamento.HeaderText = "";
+            this.id_equipamento.Name = "id_equipamento";
+            this.id_equipamento.ReadOnly = true;
+            this.id_equipamento.Visible = false;
+            // 
+            // codigo
+            // 
+            this.codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.codigo.DataPropertyName = "codigo";
+            this.codigo.HeaderText = "Código";
+            this.codigo.Name = "codigo";
+            this.codigo.ReadOnly = true;
+            this.codigo.Width = 70;
+            // 
+            // descricao_categoria
+            // 
+            this.descricao_categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descricao_categoria.DataPropertyName = "descricao_categoria";
+            this.descricao_categoria.HeaderText = "Categoria";
+            this.descricao_categoria.Name = "descricao_categoria";
+            this.descricao_categoria.ReadOnly = true;
+            this.descricao_categoria.Width = 82;
+            // 
+            // descricao_equipamento
+            // 
+            this.descricao_equipamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descricao_equipamento.DataPropertyName = "descricao_equipamento";
+            this.descricao_equipamento.HeaderText = "Descrição";
+            this.descricao_equipamento.Name = "descricao_equipamento";
+            this.descricao_equipamento.ReadOnly = true;
+            // 
+            // estoque_atual
+            // 
+            this.estoque_atual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.estoque_atual.DataPropertyName = "estoque_atual";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.estoque_atual.DefaultCellStyle = dataGridViewCellStyle6;
+            this.estoque_atual.HeaderText = "Quant. Estoque";
+            this.estoque_atual.Name = "estoque_atual";
+            this.estoque_atual.ReadOnly = true;
+            this.estoque_atual.Width = 103;
+            // 
+            // preco_venda
+            // 
+            this.preco_venda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.preco_venda.DataPropertyName = "preco_venda";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "C2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.preco_venda.DefaultCellStyle = dataGridViewCellStyle7;
+            this.preco_venda.HeaderText = "Preço Venda";
+            this.preco_venda.Name = "preco_venda";
+            this.preco_venda.ReadOnly = true;
+            this.preco_venda.Width = 87;
+            // 
+            // ativo
+            // 
+            this.ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ativo.DataPropertyName = "ativo";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ativo.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ativo.HeaderText = "Ativo";
+            this.ativo.Name = "ativo";
+            this.ativo.ReadOnly = true;
+            this.ativo.Width = 58;
+            // 
             // frmEquipamentosConsultar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -402,12 +420,13 @@ namespace Servipol.Forms.Cadastros.Equipamentos
         private System.Windows.Forms.GroupBox gbConsulta;
         private System.Windows.Forms.TextBox tBoxTextoConsulta;
         private DevExpress.XtraEditors.SimpleButton btnInativar;
+        private System.Windows.Forms.ComboBox cBoxCategoriaEquipamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_equipamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn descricao_categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn descricao_equipamento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estoque_atual;
         private System.Windows.Forms.DataGridViewTextBoxColumn preco_venda;
         private System.Windows.Forms.DataGridViewTextBoxColumn ativo;
-        private System.Windows.Forms.ComboBox cBoxCategoriaEquipamento;
     }
 }

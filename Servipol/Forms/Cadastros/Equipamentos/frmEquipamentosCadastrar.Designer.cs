@@ -60,6 +60,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.gbPrecoVenda = new System.Windows.Forms.GroupBox();
             this.tBoxPrecoVenda = new System.Windows.Forms.TextBox();
             this.gbMargemDesejada = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tBoxMargemDesejada = new System.Windows.Forms.TextBox();
             this.gbPrecoCusto = new System.Windows.Forms.GroupBox();
             this.tBoxPrecoCusto = new System.Windows.Forms.TextBox();
@@ -268,6 +269,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.tBoxDescricao.Name = "tBoxDescricao";
             this.tBoxDescricao.Size = new System.Drawing.Size(340, 22);
             this.tBoxDescricao.TabIndex = 1;
+            this.tBoxDescricao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tBoxDescricao_KeyDown);
             // 
             // gbDescricao
             // 
@@ -276,7 +278,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.gbDescricao.Location = new System.Drawing.Point(126, 6);
             this.gbDescricao.Name = "gbDescricao";
             this.gbDescricao.Size = new System.Drawing.Size(352, 60);
-            this.gbDescricao.TabIndex = 2;
+            this.gbDescricao.TabIndex = 1;
             this.gbDescricao.TabStop = false;
             this.gbDescricao.Text = "Descrição*";
             // 
@@ -326,7 +328,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.btnConfirmar.Location = new System.Drawing.Point(346, 304);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(143, 44);
-            this.btnConfirmar.TabIndex = 243;
+            this.btnConfirmar.TabIndex = 10;
             this.btnConfirmar.Text = "[F12] - Confirmar";
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
@@ -367,7 +369,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.gbQuantidadeEstoque.Location = new System.Drawing.Point(3, 204);
             this.gbQuantidadeEstoque.Name = "gbQuantidadeEstoque";
             this.gbQuantidadeEstoque.Size = new System.Drawing.Size(359, 60);
-            this.gbQuantidadeEstoque.TabIndex = 5;
+            this.gbQuantidadeEstoque.TabIndex = 6;
             this.gbQuantidadeEstoque.TabStop = false;
             this.gbQuantidadeEstoque.Text = "Quantidade estoque";
             // 
@@ -381,6 +383,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.tBoxQuantidadeEstoque.Size = new System.Drawing.Size(347, 22);
             this.tBoxQuantidadeEstoque.TabIndex = 1;
             this.tBoxQuantidadeEstoque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tBoxQuantidadeEstoque.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tBoxQuantidadeEstoque_KeyDown);
             // 
             // gbPrecoSugerido
             // 
@@ -389,7 +392,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.gbPrecoSugerido.Location = new System.Drawing.Point(258, 138);
             this.gbPrecoSugerido.Name = "gbPrecoSugerido";
             this.gbPrecoSugerido.Size = new System.Drawing.Size(104, 60);
-            this.gbPrecoSugerido.TabIndex = 7;
+            this.gbPrecoSugerido.TabIndex = 88;
             this.gbPrecoSugerido.TabStop = false;
             this.gbPrecoSugerido.Text = "Preço sugerido";
             // 
@@ -403,6 +406,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.tBoxPrecoSugerido.ReadOnly = true;
             this.tBoxPrecoSugerido.Size = new System.Drawing.Size(92, 22);
             this.tBoxPrecoSugerido.TabIndex = 1;
+            this.tBoxPrecoSugerido.TabStop = false;
             this.tBoxPrecoSugerido.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // gbPrecoVenda
@@ -412,7 +416,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.gbPrecoVenda.Location = new System.Drawing.Point(368, 138);
             this.gbPrecoVenda.Name = "gbPrecoVenda";
             this.gbPrecoVenda.Size = new System.Drawing.Size(110, 60);
-            this.gbPrecoVenda.TabIndex = 6;
+            this.gbPrecoVenda.TabIndex = 5;
             this.gbPrecoVenda.TabStop = false;
             this.gbPrecoVenda.Text = "Preço venda";
             // 
@@ -428,19 +432,37 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.tBoxPrecoVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tBoxPrecoVenda.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tBoxPrecoVenda_MouseClick);
             this.tBoxPrecoVenda.Enter += new System.EventHandler(this.tBoxPrecoVenda_Enter);
+            this.tBoxPrecoVenda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tBoxPrecoVenda_KeyDown);
             this.tBoxPrecoVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tBoxPrecoVenda_KeyPress);
             this.tBoxPrecoVenda.Leave += new System.EventHandler(this.tBoxPrecoVenda_Leave);
             // 
             // gbMargemDesejada
             // 
+            this.gbMargemDesejada.Controls.Add(this.textBox1);
             this.gbMargemDesejada.Controls.Add(this.tBoxMargemDesejada);
             this.gbMargemDesejada.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbMargemDesejada.Location = new System.Drawing.Point(126, 138);
             this.gbMargemDesejada.Name = "gbMargemDesejada";
             this.gbMargemDesejada.Size = new System.Drawing.Size(126, 60);
-            this.gbMargemDesejada.TabIndex = 6;
+            this.gbMargemDesejada.TabIndex = 4;
             this.gbMargemDesejada.TabStop = false;
             this.gbMargemDesejada.Text = "Margem desejada";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textBox1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(97, 24);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(23, 20);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.TabStop = false;
+            this.textBox1.Text = "%";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tBoxMargemDesejada
             // 
@@ -449,11 +471,12 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.tBoxMargemDesejada.Font = new System.Drawing.Font("Calibri", 9F);
             this.tBoxMargemDesejada.Location = new System.Drawing.Point(6, 22);
             this.tBoxMargemDesejada.Name = "tBoxMargemDesejada";
-            this.tBoxMargemDesejada.Size = new System.Drawing.Size(114, 22);
+            this.tBoxMargemDesejada.Size = new System.Drawing.Size(85, 22);
             this.tBoxMargemDesejada.TabIndex = 1;
             this.tBoxMargemDesejada.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tBoxMargemDesejada.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tBoxMargemDesejada_MouseClick);
             this.tBoxMargemDesejada.Enter += new System.EventHandler(this.tBoxMargemDesejada_Enter);
+            this.tBoxMargemDesejada.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tBoxMargemDesejada_KeyDown);
             this.tBoxMargemDesejada.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tBoxMargemDesejada_KeyPress);
             this.tBoxMargemDesejada.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tBoxMargemDesejada_KeyUp);
             this.tBoxMargemDesejada.Leave += new System.EventHandler(this.tBoxMargemDesejada_Leave);
@@ -465,7 +488,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.gbPrecoCusto.Location = new System.Drawing.Point(3, 138);
             this.gbPrecoCusto.Name = "gbPrecoCusto";
             this.gbPrecoCusto.Size = new System.Drawing.Size(117, 60);
-            this.gbPrecoCusto.TabIndex = 5;
+            this.gbPrecoCusto.TabIndex = 3;
             this.gbPrecoCusto.TabStop = false;
             this.gbPrecoCusto.Text = "Preço custo";
             // 
@@ -481,6 +504,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.tBoxPrecoCusto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tBoxPrecoCusto.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tBoxPrecoCusto_MouseClick);
             this.tBoxPrecoCusto.Enter += new System.EventHandler(this.tBoxPrecoCusto_Enter);
+            this.tBoxPrecoCusto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tBoxPrecoCusto_KeyDown);
             this.tBoxPrecoCusto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tBoxPrecoCusto_KeyPress);
             this.tBoxPrecoCusto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tBoxPrecoCusto_KeyUp);
             this.tBoxPrecoCusto.Leave += new System.EventHandler(this.tBoxPrecoCusto_Leave);
@@ -492,7 +516,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.gbCodigo.Location = new System.Drawing.Point(3, 6);
             this.gbCodigo.Name = "gbCodigo";
             this.gbCodigo.Size = new System.Drawing.Size(117, 60);
-            this.gbCodigo.TabIndex = 4;
+            this.gbCodigo.TabIndex = 0;
             this.gbCodigo.TabStop = false;
             this.gbCodigo.Text = "Código";
             // 
@@ -505,6 +529,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.tBoxCodigo.Name = "tBoxCodigo";
             this.tBoxCodigo.Size = new System.Drawing.Size(105, 22);
             this.tBoxCodigo.TabIndex = 1;
+            this.tBoxCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tBoxCodigo_KeyDown);
             // 
             // gbCategoria
             // 
@@ -513,7 +538,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.gbCategoria.Location = new System.Drawing.Point(3, 72);
             this.gbCategoria.Name = "gbCategoria";
             this.gbCategoria.Size = new System.Drawing.Size(475, 60);
-            this.gbCategoria.TabIndex = 3;
+            this.gbCategoria.TabIndex = 2;
             this.gbCategoria.TabStop = false;
             this.gbCategoria.Text = "Categoria*";
             // 
@@ -526,8 +551,8 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.cBoxCategoriaEquipamento.Location = new System.Drawing.Point(6, 22);
             this.cBoxCategoriaEquipamento.Name = "cBoxCategoriaEquipamento";
             this.cBoxCategoriaEquipamento.Size = new System.Drawing.Size(463, 22);
-            this.cBoxCategoriaEquipamento.TabIndex = 106;
-            this.cBoxCategoriaEquipamento.TabStop = false;
+            this.cBoxCategoriaEquipamento.TabIndex = 1;
+            this.cBoxCategoriaEquipamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cBoxCategoriaEquipamento_KeyDown);
             // 
             // tabDadosRegistro
             // 
@@ -546,7 +571,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 353);
+            this.ClientSize = new System.Drawing.Size(494, 353);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.tabControlFuncionario);
@@ -631,5 +656,6 @@ namespace Servipol.Forms.Cadastros.Equipamentos
         private System.Windows.Forms.TextBox tBoxCodigo;
         private System.Windows.Forms.GroupBox gbCategoria;
         private System.Windows.Forms.ComboBox cBoxCategoriaEquipamento;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

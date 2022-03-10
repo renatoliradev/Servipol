@@ -43,7 +43,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
                 tBoxTextoConsulta.Clear();
 
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT e.id_equipamento, e.codigo, e.descricao AS descricao_equipamento, ec.descricao AS descricao_categoria, e.preco_venda, CASE WHEN e.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM equipamento AS e INNER JOIN equipamento_categoria AS ec ON(e.id_equipamento_categoria = ec.id_equipamento_categoria) WHERE e.ativo = 'S'", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT e.id_equipamento, e.codigo, e.descricao AS descricao_equipamento, ec.descricao AS descricao_categoria, e.estoque_atual, e.preco_venda, CASE WHEN e.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM equipamento AS e INNER JOIN equipamento_categoria AS ec ON(e.id_equipamento_categoria = ec.id_equipamento_categoria) WHERE e.ativo = 'S'", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
 
@@ -178,6 +178,10 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             }
         }
 
+        private void cBoxCategoriaEquipamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnConsultar_Click(sender, e);
+        }
         #endregion
 
         #region Buttons
@@ -219,7 +223,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             try
             {
                 BD.Conectar();
-                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT e.id_equipamento, e.codigo, e.descricao AS descricao_equipamento, ec.descricao AS descricao_categoria, e.preco_venda, CASE WHEN e.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM equipamento AS e INNER JOIN equipamento_categoria AS ec ON(e.id_equipamento_categoria = ec.id_equipamento_categoria) WHERE e.ativo = '{situacaoTraduzida}' AND {tipoBusca}", BD.ObjetoConexao);
+                NpgsqlDataAdapter retornoBD = new NpgsqlDataAdapter($"SELECT e.id_equipamento, e.codigo, e.descricao AS descricao_equipamento, ec.descricao AS descricao_categoria, e.estoque_atual, e.preco_venda, CASE WHEN e.ativo = 'S' THEN 'Sim' ELSE 'Não' END AS ativo FROM equipamento AS e INNER JOIN equipamento_categoria AS ec ON(e.id_equipamento_categoria = ec.id_equipamento_categoria) WHERE e.ativo = '{situacaoTraduzida}' AND {tipoBusca}", BD.ObjetoConexao);
                 DataTable dp = new DataTable();
                 retornoBD.Fill(dp);
                 dGridEquipamentos.DataSource = dp;
@@ -298,9 +302,5 @@ namespace Servipol.Forms.Cadastros.Equipamentos
 
         #endregion
 
-        private void cBoxCategoriaEquipamento_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            btnConsultar_Click(sender, e);
-        }
     }
 }
