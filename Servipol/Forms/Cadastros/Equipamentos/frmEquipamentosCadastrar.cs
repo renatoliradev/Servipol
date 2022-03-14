@@ -32,8 +32,6 @@ namespace Servipol.Forms.Cadastros.Equipamentos
 
             gbCodigo.Focus();
             tBoxCodigo.Select();
-
-
         }
 
         #region Methods

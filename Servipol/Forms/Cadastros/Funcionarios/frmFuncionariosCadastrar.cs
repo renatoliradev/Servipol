@@ -365,8 +365,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
                     tBoxDataCadastro.Text = data_cadastro;
                     tBoxUsuarioDesativacao.Text = usuario_desativacao;
                     tBoxDataDesativacao.Text = data_desativacao;
-                    tBoxUsuarioReativacao.Text = usuario_reativacao;
-                    tBoxDataReativacao.Text = data_reativacao;
                     tBoxUsuarioAlteracao.Text = usuario_alteracao;
                     tBoxDataAlteracao.Text = data_alteracao;
 
@@ -734,6 +732,8 @@ namespace Servipol.Forms.Cadastros.Funcionários
                 }
                 else
                 {
+                    #region Incluir
+
                     if (TipoChamada == "Incluir")
                     {
                         #region Variáveis
@@ -820,6 +820,11 @@ namespace Servipol.Forms.Cadastros.Funcionários
                         ((frmFuncionariosConsultar)this.Owner).AtualizaDG();
                         this.Close();
                     }
+
+                    #endregion
+
+                    #region Editar
+
                     else if (TipoChamada == "Editar")
                     {
                         #region Variáveis
@@ -914,10 +919,25 @@ namespace Servipol.Forms.Cadastros.Funcionários
                         NpgsqlCommand command = new NpgsqlCommand(sqlCommand, BD.ObjetoConexao);
                         command.ExecuteNonQuery();
 
+                        if (registro_ativo == "N")
+                        {
+                            string sqlCommand8 = $"UPDATE funcionario SET ativo = 'N', id_usuario_desativacao = {SessaoSistema.UserId}, data_desativacao = CURRENT_TIMESTAMP WHERE id_funcionario = {IdFuncionario}";
+                            NpgsqlCommand command8 = new NpgsqlCommand(sqlCommand8, BD.ObjetoConexao);
+                            command8.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            string sqlCommand8 = $"UPDATE funcionario SET ativo = 'S' WHERE id_funcionario = {IdFuncionario}";
+                            NpgsqlCommand command8 = new NpgsqlCommand(sqlCommand8, BD.ObjetoConexao);
+                            command8.ExecuteNonQuery();
+                        }
+
                         XtraMessageBox.Show("Cadastro Alterado com Sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ((frmFuncionariosConsultar)this.Owner).AtualizaDG();
                         this.Close();
                     }
+
+                    #endregion
                 }
             }
             finally

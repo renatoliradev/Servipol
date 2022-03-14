@@ -12,7 +12,8 @@
     <AssemblyName>Servipol 2.0</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Renato Lira\Desktop\AAA - FISCAL\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,10 +23,12 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <TargetCulture>pt-BR</TargetCulture>
+    <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -161,6 +164,12 @@
     </Compile>
     <Compile Include="Forms\Cadastros\Clientes\frmClientesConsultar.Designer.cs">
       <DependentUpon>frmClientesConsultar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cadastros\Equipamentos\frmEquipamentoCategoriaCadastrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cadastros\Equipamentos\frmEquipamentoCategoriaCadastrar.Designer.cs">
+      <DependentUpon>frmEquipamentoCategoriaCadastrar.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Cadastros\Equipamentos\frmEquipamentoCategoriaConsultar.cs">
       <SubType>Form</SubType>
@@ -350,9 +359,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Forms\Cadastros\Clientes\frmClientesConsultar.resx">
       <DependentUpon>frmClientesConsultar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cadastros\Equipamentos\frmEquipamentoCategoriaCadastrar.resx">
+      <DependentUpon>frmEquipamentoCategoriaCadastrar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cadastros\Equipamentos\frmEquipamentoCategoriaConsultar.resx">
       <DependentUpon>frmEquipamentoCategoriaConsultar.cs</DependentUpon>
@@ -492,19 +503,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="puzzle.ico" />
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

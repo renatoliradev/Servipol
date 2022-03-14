@@ -62,7 +62,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
                 BD.Conectar();
                 NpgsqlCommand com = new NpgsqlCommand();
                 com.Connection = BD.ObjetoConexao;
-                com.CommandText = $"SELECT ec.id_equipamento_categoria, ec.descricao FROM equipamento_categoria AS ec WHERE ec.ativo = 'S'";
+                com.CommandText = $"SELECT ec.id_equipamento_categoria, ec.descricao FROM equipamento_categoria AS ec WHERE ec.ativo = 'S' ORDER BY 2 ASC";
                 NpgsqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
@@ -165,6 +165,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
                 tBoxTextoConsulta.BringToFront();
                 tBoxTextoConsulta.Clear();
                 gbConsulta.Text = "Descrição";
+                tBoxTextoConsulta.Select();
             }
             //busca por Categoria
             else if (cBoxTipoBusca.SelectedIndex == 2)
@@ -175,6 +176,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
                 tBoxTextoConsulta.SendToBack();
                 tBoxTextoConsulta.Clear();
                 gbConsulta.Text = "Categoria";
+                cBoxCategoriaEquipamento.Select();
             }
         }
 
@@ -182,14 +184,24 @@ namespace Servipol.Forms.Cadastros.Equipamentos
         {
             btnConsultar_Click(sender, e);
         }
+
+        private void tBoxTextoConsulta_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    btnConsultar_Click(sender, e);
+                    break;
+            }
+        }
+
         #endregion
 
         #region Buttons
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            string situacaoTraduzida = string.Empty;
-            string tipoBusca = string.Empty;
+            string situacaoTraduzida, tipoBusca;
 
             switch (cBoxSituacao.SelectedIndex)
             {
@@ -213,7 +225,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
                     tipoBusca = $"e.descricao ILIKE '%{tBoxTextoConsulta.Text.ToUpper().Trim()}%'";
                     break;
                 case 2:
-                    tipoBusca = $"e.id_equipamento_categoria = {cBoxCategoriaEquipamento.SelectedIndex}";
+                    tipoBusca = $"e.id_equipamento_categoria = {cBoxCategoriaEquipamento.SelectedValue}";
                     break;
                 default:
                     tipoBusca = "1=1";
@@ -228,6 +240,7 @@ namespace Servipol.Forms.Cadastros.Equipamentos
                 retornoBD.Fill(dp);
                 dGridEquipamentos.DataSource = dp;
             }
+            catch { }
             finally
             {
                 BD.Desconectar();
@@ -301,6 +314,5 @@ namespace Servipol.Forms.Cadastros.Equipamentos
         }
 
         #endregion
-
     }
 }

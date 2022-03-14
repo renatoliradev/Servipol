@@ -2,13 +2,7 @@
 using Npgsql;
 using Servipol.Entidades.Classes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Servipol.Forms.Cadastros.Equipamentos
@@ -73,9 +67,6 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             CarregaTabelaCategoriaEquipamentos();
         }
 
-
-        #endregion
-
         private void cBoxSituacao_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnConsultar_Click(sender, e);
@@ -100,7 +91,27 @@ namespace Servipol.Forms.Cadastros.Equipamentos
 
         private void frmEquipamentoCategoriaConsultar_KeyDown(object sender, KeyEventArgs e)
         {
-
+            switch (e.KeyCode)
+            {
+                case Keys.F5:
+                    btnConsultar_Click(sender, e);
+                    break;
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+            if (SessaoSistema.UserPermission.Substring(38, 1) == "S" && e.KeyCode == Keys.F4)
+            {
+                btnIncluir_Click(sender, e);
+            }
+            if (SessaoSistema.UserPermission.Substring(39, 1) == "S" && e.KeyCode == Keys.F3)
+            {
+                btnEditar_Click(sender, e);
+            }
+            if (SessaoSistema.UserPermission.Substring(40, 1) == "S" && cBoxSituacao.SelectedIndex == 0 && e.KeyCode == Keys.Delete)
+            {
+                btnInativar_Click(sender, e);
+            }
         }
 
         private void cBoxTipoBusca_SelectedIndexChanged(object sender, EventArgs e)
@@ -117,16 +128,29 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             else if (cBoxTipoBusca.SelectedIndex == 1)
             {
                 tBoxTextoConsulta.Visible = true;
-                tBoxTextoConsulta.BringToFront();
                 tBoxTextoConsulta.Clear();
                 gbConsulta.Text = "Descrição";
+                tBoxTextoConsulta.Select();
             }
         }
 
+        private void tBoxTextoConsulta_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    btnConsultar_Click(sender, e);
+                    break;
+            }
+        }
+
+        #endregion
+
+        #region Buttons
+
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            string situacaoTraduzida = string.Empty;
-            string tipoBusca = string.Empty;
+            string situacaoTraduzida, tipoBusca;
 
             switch (cBoxSituacao.SelectedIndex)
             {
@@ -170,9 +194,9 @@ namespace Servipol.Forms.Cadastros.Equipamentos
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {
-            frmEquipamentosCadastrar frmEquipamentosCadastrar = new frmEquipamentosCadastrar("Incluir", 0);
-            frmEquipamentosCadastrar.Owner = this;
-            frmEquipamentosCadastrar.ShowDialog();
+            frmEquipamentoCategoriaCadastrar frmEquipamentoCategoriaCadastrar = new frmEquipamentoCategoriaCadastrar("Incluir", 0);
+            frmEquipamentoCategoriaCadastrar.Owner = this;
+            frmEquipamentoCategoriaCadastrar.ShowDialog();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -180,9 +204,9 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             try
             {
                 string _idRegistroSelecionadoGrid = dGridCategoriaEquipamentos.SelectedRows[0].Cells[0].Value.ToString();
-                frmEquipamentosCadastrar frmEquipamentosCadastrar = new frmEquipamentosCadastrar("Editar", int.Parse(_idRegistroSelecionadoGrid));
-                frmEquipamentosCadastrar.Owner = this;
-                frmEquipamentosCadastrar.ShowDialog();
+                frmEquipamentoCategoriaCadastrar frmEquipamentoCategoriaCadastrar = new frmEquipamentoCategoriaCadastrar("Editar", int.Parse(_idRegistroSelecionadoGrid));
+                frmEquipamentoCategoriaCadastrar.Owner = this;
+                frmEquipamentoCategoriaCadastrar.ShowDialog();
             }
             catch
             {
@@ -219,20 +243,6 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             }
         }
 
-        private void btnImprimirConsulta_Click(object sender, EventArgs e)
-        {
-            var dadosRelatorio = from DataGridViewRow linha in dGridCategoriaEquipamentos.Rows
-                                 select new
-                                 {
-                                     Codigo = linha.Cells["codigo"].Value,
-                                     Categoria = linha.Cells["descricao_categoria"].Value,
-                                     Descricao = linha.Cells["descricao_equipamento"].Value,
-                                     PrecoVenda = linha.Cells["preco_venda"].Value,
-                                     Ativo = linha.Cells["ativo"].Value
-                                 };
-
-            Relatorios.frmRelatorio.ShowReport("Servipol.Forms.Relatorios.RelacaoDeEquipamentos.rdlc", true, new Dictionary<string, object>() { { "DataSetEquipamentos", dadosRelatorio.AsEnumerable() } });
-
-        }
+        #endregion
     }
 }

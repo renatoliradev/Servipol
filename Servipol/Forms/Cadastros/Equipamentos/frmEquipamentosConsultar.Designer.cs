@@ -29,11 +29,11 @@ namespace Servipol.Forms.Cadastros.Equipamentos
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEquipamentosConsultar));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dGridEquipamentos = new System.Windows.Forms.DataGridView();
             this.btnImprimirConsulta = new DevExpress.XtraEditors.SimpleButton();
@@ -48,8 +48,8 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cBoxTipoBusca = new System.Windows.Forms.ComboBox();
             this.gbConsulta = new System.Windows.Forms.GroupBox();
-            this.cBoxCategoriaEquipamento = new System.Windows.Forms.ComboBox();
             this.tBoxTextoConsulta = new System.Windows.Forms.TextBox();
+            this.cBoxCategoriaEquipamento = new System.Windows.Forms.ComboBox();
             this.id_equipamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricao_categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,8 +83,8 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.dGridEquipamentos.AllowUserToDeleteRows = false;
             this.dGridEquipamentos.AllowUserToResizeColumns = false;
             this.dGridEquipamentos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Lavender;
-            this.dGridEquipamentos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
+            this.dGridEquipamentos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dGridEquipamentos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -271,14 +271,26 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             // 
             this.gbConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbConsulta.Controls.Add(this.cBoxCategoriaEquipamento);
             this.gbConsulta.Controls.Add(this.tBoxTextoConsulta);
+            this.gbConsulta.Controls.Add(this.cBoxCategoriaEquipamento);
             this.gbConsulta.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbConsulta.Location = new System.Drawing.Point(363, 8);
             this.gbConsulta.Name = "gbConsulta";
             this.gbConsulta.Size = new System.Drawing.Size(722, 52);
             this.gbConsulta.TabIndex = 12;
             this.gbConsulta.TabStop = false;
+            // 
+            // tBoxTextoConsulta
+            // 
+            this.tBoxTextoConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBoxTextoConsulta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tBoxTextoConsulta.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxTextoConsulta.Location = new System.Drawing.Point(6, 22);
+            this.tBoxTextoConsulta.Name = "tBoxTextoConsulta";
+            this.tBoxTextoConsulta.Size = new System.Drawing.Size(710, 22);
+            this.tBoxTextoConsulta.TabIndex = 106;
+            this.tBoxTextoConsulta.TabStop = false;
+            this.tBoxTextoConsulta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tBoxTextoConsulta_KeyDown);
             // 
             // cBoxCategoriaEquipamento
             // 
@@ -292,17 +304,6 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             this.cBoxCategoriaEquipamento.TabIndex = 106;
             this.cBoxCategoriaEquipamento.TabStop = false;
             this.cBoxCategoriaEquipamento.SelectedIndexChanged += new System.EventHandler(this.cBoxCategoriaEquipamento_SelectedIndexChanged);
-            // 
-            // tBoxTextoConsulta
-            // 
-            this.tBoxTextoConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxTextoConsulta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxTextoConsulta.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxTextoConsulta.Location = new System.Drawing.Point(6, 22);
-            this.tBoxTextoConsulta.Name = "tBoxTextoConsulta";
-            this.tBoxTextoConsulta.Size = new System.Drawing.Size(710, 22);
-            this.tBoxTextoConsulta.TabIndex = 106;
-            this.tBoxTextoConsulta.TabStop = false;
             // 
             // id_equipamento
             // 
@@ -342,21 +343,21 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             // 
             this.estoque_atual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.estoque_atual.DataPropertyName = "estoque_atual";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.estoque_atual.DefaultCellStyle = dataGridViewCellStyle6;
-            this.estoque_atual.HeaderText = "Quant. Estoque";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.estoque_atual.DefaultCellStyle = dataGridViewCellStyle2;
+            this.estoque_atual.HeaderText = "Quantidade em Estoque";
             this.estoque_atual.Name = "estoque_atual";
             this.estoque_atual.ReadOnly = true;
-            this.estoque_atual.Width = 103;
+            this.estoque_atual.Width = 105;
             // 
             // preco_venda
             // 
             this.preco_venda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.preco_venda.DataPropertyName = "preco_venda";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "C2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.preco_venda.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.preco_venda.DefaultCellStyle = dataGridViewCellStyle3;
             this.preco_venda.HeaderText = "Preço Venda";
             this.preco_venda.Name = "preco_venda";
             this.preco_venda.ReadOnly = true;
@@ -366,8 +367,8 @@ namespace Servipol.Forms.Cadastros.Equipamentos
             // 
             this.ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.ativo.DataPropertyName = "ativo";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ativo.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ativo.DefaultCellStyle = dataGridViewCellStyle4;
             this.ativo.HeaderText = "Ativo";
             this.ativo.Name = "ativo";
             this.ativo.ReadOnly = true;

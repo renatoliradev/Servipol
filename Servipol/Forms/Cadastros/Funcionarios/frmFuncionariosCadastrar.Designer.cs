@@ -144,11 +144,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tBoxDataAlteracao = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.tBoxUsuarioAlteracao = new System.Windows.Forms.TextBox();
-            this.groupBox27 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tBoxDataReativacao = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tBoxUsuarioReativacao = new System.Windows.Forms.TextBox();
             this.groupBox28 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tBoxDataCadastro = new System.Windows.Forms.TextBox();
@@ -214,7 +209,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tabControlFuncionario.SuspendLayout();
             this.tabDadosRegistro.SuspendLayout();
             this.groupBox30.SuspendLayout();
-            this.groupBox27.SuspendLayout();
             this.groupBox28.SuspendLayout();
             this.groupBox29.SuspendLayout();
             this.SuspendLayout();
@@ -1608,7 +1602,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             // tabDadosRegistro
             // 
             this.tabDadosRegistro.Controls.Add(this.groupBox30);
-            this.tabDadosRegistro.Controls.Add(this.groupBox27);
             this.tabDadosRegistro.Controls.Add(this.groupBox28);
             this.tabDadosRegistro.Controls.Add(this.groupBox29);
             this.tabDadosRegistro.Location = new System.Drawing.Point(4, 22);
@@ -1626,7 +1619,7 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.groupBox30.Controls.Add(this.label14);
             this.groupBox30.Controls.Add(this.tBoxUsuarioAlteracao);
             this.groupBox30.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox30.Location = new System.Drawing.Point(1, 231);
+            this.groupBox30.Location = new System.Drawing.Point(1, 156);
             this.groupBox30.Name = "groupBox30";
             this.groupBox30.Size = new System.Drawing.Size(633, 69);
             this.groupBox30.TabIndex = 999;
@@ -1676,64 +1669,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tBoxUsuarioAlteracao.ReadOnly = true;
             this.tBoxUsuarioAlteracao.Size = new System.Drawing.Size(562, 15);
             this.tBoxUsuarioAlteracao.TabIndex = 12;
-            // 
-            // groupBox27
-            // 
-            this.groupBox27.Controls.Add(this.label5);
-            this.groupBox27.Controls.Add(this.tBoxDataReativacao);
-            this.groupBox27.Controls.Add(this.label6);
-            this.groupBox27.Controls.Add(this.tBoxUsuarioReativacao);
-            this.groupBox27.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox27.Location = new System.Drawing.Point(1, 156);
-            this.groupBox27.Name = "groupBox27";
-            this.groupBox27.Size = new System.Drawing.Size(633, 69);
-            this.groupBox27.TabIndex = 950;
-            this.groupBox27.TabStop = false;
-            this.groupBox27.Text = "Dados da Última Reativação do Cadastro";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 9F);
-            this.label5.Location = new System.Drawing.Point(6, 45);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 14);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Data:";
-            // 
-            // tBoxDataReativacao
-            // 
-            this.tBoxDataReativacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxDataReativacao.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tBoxDataReativacao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxDataReativacao.Font = new System.Drawing.Font("Calibri", 9F);
-            this.tBoxDataReativacao.Location = new System.Drawing.Point(65, 45);
-            this.tBoxDataReativacao.Name = "tBoxDataReativacao";
-            this.tBoxDataReativacao.ReadOnly = true;
-            this.tBoxDataReativacao.Size = new System.Drawing.Size(563, 15);
-            this.tBoxDataReativacao.TabIndex = 14;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 9F);
-            this.label6.Location = new System.Drawing.Point(6, 25);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 14);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Usuário:";
-            // 
-            // tBoxUsuarioReativacao
-            // 
-            this.tBoxUsuarioReativacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxUsuarioReativacao.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tBoxUsuarioReativacao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tBoxUsuarioReativacao.Font = new System.Drawing.Font("Calibri", 9F);
-            this.tBoxUsuarioReativacao.Location = new System.Drawing.Point(65, 25);
-            this.tBoxUsuarioReativacao.Name = "tBoxUsuarioReativacao";
-            this.tBoxUsuarioReativacao.ReadOnly = true;
-            this.tBoxUsuarioReativacao.Size = new System.Drawing.Size(562, 15);
-            this.tBoxUsuarioReativacao.TabIndex = 12;
             // 
             // groupBox28
             // 
@@ -2013,8 +1948,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
             this.tabDadosRegistro.ResumeLayout(false);
             this.groupBox30.ResumeLayout(false);
             this.groupBox30.PerformLayout();
-            this.groupBox27.ResumeLayout(false);
-            this.groupBox27.PerformLayout();
             this.groupBox28.ResumeLayout(false);
             this.groupBox28.PerformLayout();
             this.groupBox29.ResumeLayout(false);
@@ -2135,11 +2068,6 @@ namespace Servipol.Forms.Cadastros.Funcionários
         private System.Windows.Forms.TextBox tBoxCidadeCursoVigilante;
         private System.Windows.Forms.ComboBox cBoxUfCursoVigilante;
         private System.Windows.Forms.TabPage tabDadosRegistro;
-        private System.Windows.Forms.GroupBox groupBox27;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tBoxDataReativacao;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tBoxUsuarioReativacao;
         private System.Windows.Forms.GroupBox groupBox28;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tBoxDataCadastro;

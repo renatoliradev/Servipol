@@ -1,5 +1,6 @@
-﻿[CONEXAO]
-IP_BD=    localhost
-PORTA_BD= 5432
-NOME_BD=  controleinternoservipol
-USER_BD=  postgres
+[CONNECTION]
+IP_BD= localhost
+PORT_BD= 5432
+NAME_BD= servipol
+USER_BD= postgres
+PASS_BD= cmo4lat1

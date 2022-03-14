@@ -212,9 +212,7 @@ CREATE INDEX idx_funcionario
   USING btree
   (id_funcionario);
   
-  
-  
--- Table: public.temp_manutencao
+
 
 CREATE TABLE public.temp_manutencao
 (
@@ -240,7 +238,16 @@ CREATE TABLE public.temp_manutencao
   valor_total numeric(13,2),
   registro_excluido character(1) DEFAULT 'N'::bpchar,
   confirmada character varying(255),
-  CONSTRAINT pk_manutencao PRIMARY KEY (id_manutencao)
+  CONSTRAINT pk_manutencao PRIMARY KEY (id_manutencao),
+  CONSTRAINT fk_manutencao_local FOREIGN KEY (id_manutencao_local)
+      REFERENCES public.manutencao_local (id_manutencao_local) MATCH SIMPLE
+      ON UPDATE RESTRICT ON DELETE RESTRICT,
+  CONSTRAINT fk_manutencao_tipo FOREIGN KEY (id_manutencao_tipo)
+      REFERENCES public.manutencao_tipo (id_manutencao_tipo) MATCH SIMPLE
+      ON UPDATE RESTRICT ON DELETE RESTRICT,
+  CONSTRAINT fk_veiculo FOREIGN KEY (id_veiculo)
+      REFERENCES public.veiculo (id_veiculo) MATCH SIMPLE
+      ON UPDATE RESTRICT ON DELETE RESTRICT
 )
 WITH (
   OIDS=FALSE,
@@ -249,12 +256,13 @@ WITH (
 ALTER TABLE public.temp_manutencao
   OWNER TO postgres;
 
--- Index: public.idx_manutencao
 
 CREATE INDEX idx_manutencao
   ON public.temp_manutencao
   USING btree
   (id_manutencao);
+
+
 
 
 
@@ -336,7 +344,7 @@ INSERT INTO public.temp_manutencao(
             (SELECT id, data_manutencao, obs_manutencao, km_validade_oleo, id_veiculo, id_tipo_manutencao, 
             local_manutencao, id_funcionario, id_usuario_cadastro, data_cadastro, motivo_exclusao, id_usuario_exclusao, data_exclusao, 
             km_anterior, km_veiculo, valor_peca, valor_servico, valor_desconto, valor_acrescimo, valor_total_manutencao, 
-            registro_excluido, confirmada FROM public.manutencao_veiculo);
+            registro_excluido, confirmada FROM public.temp_manutencao_veiculo);
 
 
 

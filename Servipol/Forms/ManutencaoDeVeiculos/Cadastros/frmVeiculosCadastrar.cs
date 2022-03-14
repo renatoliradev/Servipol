@@ -410,6 +410,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                     #endregion
                     #endregion
 
+                    #region Incluir
+
                     if (TipoChamada == "Incluir")
                     {
                         string sqlCommand = $"INSERT INTO veiculo VALUES (nextval('seq_veiculo'), {cBoxTipoVeiculo.SelectedValue}, {cBoxCodigoVeiculo.SelectedValue}, '{tBoxDescricaoVeiculo.Text.ToUpper().Trim()}', '{tBoxPlacaVeiculo.Text.ToUpper()}', '{cBoxCombustivel.SelectedItem}', '{registra_km_diario}', {SessaoSistema.UserId}, CURRENT_TIMESTAMP, NULL, NULL, NULL, NULL, NULL, NULL, {km_validade_oleo}, 'S')";
@@ -418,18 +420,25 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
 
                         if (cBoxTipoVeiculo.SelectedValue.ToString() == "1")
                         {
-                            string sqlCommand2 = $"UPDATE codigocarro SET id_veiculo = (SELECT MAX(id) AS id_veiculo FROM veiculo) WHERE id = {cBoxCodigoVeiculo.SelectedValue}";
+                            string sqlCommand2 = $"UPDATE codigocarro SET id_veiculo = (SELECT MAX(id_veiculo) AS id_veiculo FROM veiculo) WHERE id = {cBoxCodigoVeiculo.SelectedValue}";
                             NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
                             command2.ExecuteNonQuery();
                         }
                         else
                         {
-                            string sqlCommand2 = $"UPDATE codigomoto SET id_veiculo = (SELECT MAX(id) AS id_veiculo FROM veiculo) WHERE id = {cBoxCodigoVeiculo.SelectedValue}";
+                            string sqlCommand2 = $"UPDATE codigomoto SET id_veiculo = (SELECT MAX(id_veiculo) AS id_veiculo FROM veiculo) WHERE id = {cBoxCodigoVeiculo.SelectedValue}";
                             NpgsqlCommand command2 = new NpgsqlCommand(sqlCommand2, BD.ObjetoConexao);
                             command2.ExecuteNonQuery();
                         }
                         XtraMessageBox.Show("Veículo cadastrado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ((frmVeiculosConsultar)this.Owner).AtualizaDG();
+                        this.Close();
                     }
+
+                    #endregion
+
+                    #region Editar
+
                     else if (TipoChamada == "Editar")
                     {
                         string sqlCommand = $"UPDATE veiculo SET id_veiculo_tipo = {cBoxTipoVeiculo.SelectedValue}, codigo = {cBoxCodigoVeiculo.SelectedValue}, descricao = '{tBoxDescricaoVeiculo.Text.ToUpper().Trim()}', placa = '{tBoxPlacaVeiculo.Text.ToUpper()}', combustivel = '{cBoxCombustivel.SelectedItem}', km_validade_oleo = '{km_validade_oleo}', registra_km_diario = '{registra_km_diario}', ativo = '{registro_ativo}', id_usuario_alteracao = {SessaoSistema.UserId}, data_alteracao = CURRENT_TIMESTAMP WHERE id_veiculo = {IdVeiculo}";
@@ -476,6 +485,8 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Cadastros
                         ((frmVeiculosConsultar)this.Owner).AtualizaDG();
                         this.Close();
                     }
+
+                    #endregion
                 }
             }
             finally

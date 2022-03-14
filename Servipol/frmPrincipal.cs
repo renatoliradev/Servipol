@@ -351,13 +351,19 @@ namespace Servipol
 
         private void btnEquipamentos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            MemoryManagement.FlushMemory();
+
             frmEquipamentosConsultar frmEquipamentos = new frmEquipamentosConsultar();
             frmEquipamentos.MdiParent = this;
             frmEquipamentos.Show();
         }
         private void btnCategoriaEquipamentos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            MemoryManagement.FlushMemory();
 
+            frmEquipamentoCategoriaConsultar frmEquipamentoCategoriaConsultar = new frmEquipamentoCategoriaConsultar();
+            frmEquipamentoCategoriaConsultar.MdiParent = this;
+            frmEquipamentoCategoriaConsultar.Show();
         }
 
         #endregion

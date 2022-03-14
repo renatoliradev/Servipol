@@ -500,6 +500,18 @@ namespace Servipol.Forms.Manutenção_de_Veículos.Manutenção
                 dGridManutencoes.Columns["valor_total_manutencao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dGridManutencoes.Columns["valor_total_manutencao"].DefaultCellStyle.Format = "C2";
 
+                dGridManutencoes.Columns["data_manutencao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dGridManutencoes.Columns["placa"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dGridManutencoes.Columns["veiculo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dGridManutencoes.Columns["km_veiculo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dGridManutencoes.Columns["km_atual"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dGridManutencoes.Columns["km_rodado"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dGridManutencoes.Columns["descricao_tipo_manutencao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dGridManutencoes.Columns["descricao_local_manutencao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dGridManutencoes.Columns["qra"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dGridManutencoes.Columns["situacao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dGridManutencoes.Columns["valor_total_manutencao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
                 tBoxQtdRegistros.Text = dGridManutencoes.RowCount.ToString();
                 BD.Desconectar();
             }
