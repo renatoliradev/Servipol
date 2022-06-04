@@ -1,5 +1,5 @@
 <h1 align="center" style="max-width: 250px; margin: 30px 0;">
-    Servipol <img src="Servipol/UTIL/manutencao.png"
+    Servipol <img style="width: 32px;" src="Servipol/UTIL/manutencao.png"
 </h1>
 <h4 align="center">
   Aplicação desenvolvida em C# com DevExpress + PostgreSQL para controle de manutenção de veículos, cadastro de funcionários e equipamentos da empresa Servipol.
